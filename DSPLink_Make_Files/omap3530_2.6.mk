@@ -60,12 +60,12 @@ USE_DISTRIBUTION := 1
 #   ----------------------------------------------------------------------------
 #   Base directory for the GPP OS
 #   ----------------------------------------------------------------------------
-BASE_BUILDOS    := ${HOME}/omap3530/OMAP35x-PSP-SDK-03.00.00.02/src/kernel/linux-03.00.00.02
+BASE_BUILDOS    := /media/disk/OE/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/kernel
 
 #   ----------------------------------------------------------------------------
 #   Base for toolchain
 #   ----------------------------------------------------------------------------
-BASE_TOOLCHAIN  := ${HOME}/toolchains/git/arm-2009q1-203
+BASE_TOOLCHAIN  := /media/disk/OE/build/tmp-angstrom_2008_1/cross/armv7a
 
 #   ----------------------------------------------------------------------------
 #   Base for code generation tools - compiler, linker, archiver etc.
@@ -78,8 +78,8 @@ BASE_CGTOOLS    := $(BASE_TOOLCHAIN)/bin
 BASE_OSINC      := $(BASE_BUILDOS)/include
 
 OSINC_GENERIC   := $(BASE_OSINC)
-OSINC_PLATFORM  := $(BASE_TOOLCHAIN)/lib/gcc/arm-none-linux-gnueabi/4.2.3/include
-OSINC_TARGET    := $(BASE_TOOLCHAIN)/arm-none-linux-gnueabi/libc/usr/include
+OSINC_PLATFORM  := $(BASE_TOOLCHAIN)/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/include
+OSINC_TARGET    := $(BASE_TOOLCHAIN)/arm-angstrom-linux-gnueabi/libc/usr/include
 
 ifneq ("$(VARIANT)", "")
 OSINC_VARIANT   := $(BASE_OSINC)
@@ -107,10 +107,10 @@ endif
 #   ----------------------------------------------------------------------------
 #   Name of the compiler
 #   ----------------------------------------------------------------------------
-COMPILER        := $(BASE_CGTOOLS)/arm-none-linux-gnueabi-gcc
-LD              := $(BASE_CGTOOLS)/arm-none-linux-gnueabi-ld
+COMPILER        := $(BASE_CGTOOLS)/arm-angstrom-linux-gnueabi-gcc
+LD              := $(BASE_CGTOOLS)/arm-angstrom-linux-gnueabi-ld
 
-CROSS_COMPILE   := arm-none-linux-gnueabi-
+CROSS_COMPILE   := arm-angstrom-linux-gnueabi-
 export CROSS_COMPILE
 
 #   ----------------------------------------------------------------------------
@@ -154,7 +154,7 @@ STD_CC_DEFNS    := -D_REENTRANT
 #   ============================================================================
 #   ARCHIVER2 - This denotes the archiver.
 #   ============================================================================
-ARCHIVER        := $(BASE_CGTOOLS)/arm-none-linux-gnueabi-ar
+ARCHIVER        := $(BASE_CGTOOLS)/arm-angstrom-linux-gnueabi-ar
 
 #   ----------------------------------------------------------------------------
 #   Standard flags for the archiver
@@ -165,7 +165,7 @@ STD_AR_FLAGS    := -rs
 #   ============================================================================
 #   LINKER - The compiler is used for linking purpose as well.
 #   ============================================================================
-LINKER      := $(BASE_CGTOOLS)/arm-none-linux-gnueabi-gcc
+LINKER      := $(BASE_CGTOOLS)/arm-angstrom-linux-gnueabi-gcc
 
 #   ----------------------------------------------------------------------------
 #   Command line switches used by the linker

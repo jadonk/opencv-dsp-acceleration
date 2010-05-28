@@ -62,11 +62,11 @@ USE_DISTRIBUTION := 1
 #   ----------------------------------------------------------------------------
 BASE_INSTALL    := "$(TI_TOOLS_BASE_DIR)"
 ifeq ($(BASE_INSTALL), "")
-BASE_INSTALL    := /opt/ti-tools
+BASE_INSTALL    := /media/disk/OE/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti
 endif
 BASE_SABIOS     := "$(BIOS_INSTALL_DIR)"
 ifeq ($(BASE_SABIOS), "")
-BASE_SABIOS     := $(BASE_INSTALL)/bios
+BASE_SABIOS     := $(BASE_INSTALL)/ti-dspbios-tree
 endif
 BASE_BUILDOS    := $(BASE_SABIOS)/packages/ti/bios
 
@@ -75,7 +75,7 @@ BASE_BUILDOS    := $(BASE_SABIOS)/packages/ti/bios
 #   ----------------------------------------------------------------------------
 XDCTOOLS_DIR    := "$(XDC_INSTALL_DIR)"
 ifeq ($(XDCTOOLS_DIR), "")
-XDCTOOLS_DIR    := $(BASE_SABIOS)/xdctools
+XDCTOOLS_DIR    := $(BASE_INSTALL)/ti-xdctools-tree
 endif
 
 #   ----------------------------------------------------------------------------
@@ -83,7 +83,7 @@ endif
 #   ----------------------------------------------------------------------------
 BASE_CGTOOLS    := "$(CODEGEN_INSTALL_DIR)"
 ifeq ($(BASE_CGTOOLS), "")
-BASE_CGTOOLS    := $(BASE_INSTALL)/c6000/cgtools
+BASE_CGTOOLS    := $(BASE_INSTALL)/ti-cgt6x-tree
 endif
 BASE_CGTOOLSBIN := $(BASE_CGTOOLS)/bin
 

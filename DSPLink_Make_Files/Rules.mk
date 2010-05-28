@@ -49,8 +49,8 @@
 ifeq ("$(TI_DSPLINK_GPPOS)", "Linux")
 
 ifeq ("$(TI_DSPLINK_PLATFORM)", "OMAP3530")
-KERNEL_DIR    := ${HOME}/omap3530/OMAP35x-PSP-SDK-03.00.00.02/src/kernel/linux-03.00.00.02
-TOOL_PATH     := ${HOME}/toolchains/git/arm-2009q1-203/bin
+KERNEL_DIR    := /media/disk/OE/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/kernel
+TOOL_PATH     := /media/disk/OE/build/tmp-angstrom_2008_1/cross/armv7a/bin
 endif #ifeq ("$(TI_DSPLINK_PLATFORM)", "OMAP3530")
 
 ifeq ("$(TI_DSPLINK_PLATFORM)", "OMAPL138")
@@ -77,8 +77,8 @@ ifeq ("$(TI_DSPLINK_GPPOSPREFIX)", "uc")
 CG_PREFIX = arm-linux-uclibcgnueabi-
 MAKE_OPTS = ARCH=arm BOGUS_CROSS_COMPILE=$(TOOL_PATH)/arm-linux-uclibcgnueabi-
 else
-CG_PREFIX = arm-none-linux-gnueabi-
-MAKE_OPTS = ARCH=arm BOGUS_CROSS_COMPILE=$(TOOL_PATH)/arm-none-linux-gnueabi-
+CG_PREFIX = arm-angstrom-linux-gnueabi-
+MAKE_OPTS = ARCH=arm BOGUS_CROSS_COMPILE=$(TOOL_PATH)/arm-angstrom-linux-gnueabi-
 endif # ifeq ("$(TI_DSPLINK_GPPOSPREFIX)", "uc")
 
 endif # ifeq ("$(TI_DSPLINK_GPPOS)", "Linux")
