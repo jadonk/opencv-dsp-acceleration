@@ -1,0 +1,10 @@
+package/cfg/cvDFT_unitserver_evm3530/main.o64P: main.c /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/std.h /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/CERuntime.h /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/trace/gt.h /media/disk/OE/work/ti/ti-cgt6x-tree/include/stdarg.h /media/disk/OE/work/ti/ti-cgt6x-tree/include/stddef.h /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/std.h /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/gt.h /media/disk/OE/work/ti/ti-cgt6x-tree/include/stdint.h 
+main.c:
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/std.h:
+/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/CERuntime.h:
+/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/trace/gt.h:
+/media/disk/OE/work/ti/ti-cgt6x-tree/include/stdarg.h:
+/media/disk/OE/work/ti/ti-cgt6x-tree/include/stddef.h:
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/std.h:
+/media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/gt.h:
+/media/disk/OE/work/ti/ti-cgt6x-tree/include/stdint.h:

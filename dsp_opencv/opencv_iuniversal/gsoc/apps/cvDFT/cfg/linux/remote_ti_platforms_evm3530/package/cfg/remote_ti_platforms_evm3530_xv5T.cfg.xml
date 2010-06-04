@@ -1,0 +1,1532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/cfg/configuration.dtd -->
+<configuration name="remote_ti_platforms_evm3530/remote_ti_platforms_evm3530.xv5T"
+    platformName="ti.platforms.evm3530"
+    globalSection="null"
+    sysStack="4096"
+    stack="4096"
+    heap="4096"
+    argSize="512"
+    execCmd="@%24%28ECHO%29%20ti.platforms.evm3530%20platform%20package%20cannot%20execute%20remote_ti_platforms_evm3530.xv5T%20on%20Linux%0A@%24%28ECHO%29%20Check%20for%20updates%20to%20this%20package%20at%3A%0A@%24%28ECHO%29%20https%3A//www-a.ti.com/downloads/sds_support/targetcontent/rtsc/index.html%0A%09%3A"
+    endian="little"
+    codeModel="null"
+    dataModel="null">
+<targets>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,3.4,3"
+            usedby="gnu.targets.arm.rtsv5T"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,1"
+            usedby="ti.bios.power"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,0"
+            usedby="ti.sdo.utils.trace"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,1"
+            usedby="ti.sdo.ce.node"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,1"
+            usedby="ti.sdo.ce.utils.xdm"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,0"
+            usedby="ti.sdo.fc.memutils"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,1"
+            usedby="ti.sdo.ce.osal.linux"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,1"
+            usedby="ti.sdo.ce.ipc.dsplink"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,1"
+            usedby="ti.sdo.ce.alg"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,1"
+            usedby="ti.sdo.ce"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.2,1"
+            usedby="ti.sdo.ce.universal"/>
+    <target name="gnu.targets.arm.GCArmv5T"
+            version="1,0,4.3,3"
+            usedby="remote_ti_platforms_evm3530"/>
+</targets>
+<imports>
+    <package name="xdc.services.global" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="xdc.services.global.Clock"
+                used="true"
+                uses="">
+            <feature name="enable" type="boolean" value="false"/>
+            <feature name="showMemory" type="boolean" value="false"/>
+        </module>
+        <module name="xdc.services.global.Trace"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="xdc" version="1, 1, 1" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+    </package>
+    <package name="xdc.corevers" version="16, 0, 1, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+    </package>
+    <package name="xdc.shelf" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+    </package>
+    <package name="xdc.services.spec" version="1, 0, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+    </package>
+    <package name="xdc.services.intern.xsr" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+    </package>
+    <package name="xdc.services.intern.gen" version="1, 0, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+    </package>
+    <package name="xdc.services.intern.cmd" version="1, 0, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+    </package>
+    <package name="xdc.rov" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="xdc.rov.Model"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.rov.Program"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.rov.StructureDecoder"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.rov.StateReader"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.rov.ViewXml"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.rov.ViewInfo"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="xdc.runtime" version="2, 0, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="xdc.runtime.Assert"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Core"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Defaults"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Diags"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Error"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Gate"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.GateNull"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Log"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.LoggerBuf"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.LoggerSys"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Main"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Memory"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.HeapMin"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.HeapStd"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Rta"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Startup"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.System"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.SysStd"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.SysMin"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Text"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Timestamp"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.TimestampNull"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.TimestampStd"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.runtime.Types"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="gnu.targets.arm.rtsv5T" version="1, 0, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+    </package>
+    <package name="gsoc.algos.cvDFT" version="1, 0, 0" repository="/media/disk/OE/work/ti/my_fir_test/">
+        <module name="gsoc.algos.cvDFT.CVDFT"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.sdo.ce.global" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+        <module name="ti.sdo.ce.global.Settings"
+                used="true"
+                uses="">
+            <feature name="profile" type="string" value="release"/>
+        </module>
+    </package>
+    <package name="dsplink.gpp" version="5, 0, 0" repository="/media/disk/OE/work/ti/ti-dsplink-tree/packages/">
+        <module name="dsplink.gpp.Global"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.sdo.linuxutils.cmem" version="2, 2, 0" repository="/media/disk/OE/work/ti/ti-linuxutils-tree/packages/">
+        <module name="ti.sdo.linuxutils.cmem.CMEM"
+                used="true"
+                uses="">
+            <feature name="debug" type="boolean" value="false"/>
+        </module>
+    </package>
+    <package name="ti.bios.power" version="1, 1, 1" repository="/media/disk/OE/work/ti/ti-local-power-manager-tree/packages/">
+        <module name="ti.bios.power.TMS320CDM6441GPP"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.bios.power.TMS320CDM6441DSP"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.bios.power.TMS320CDM6446GPP"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.bios.power.TMS320CDM6446DSP"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.bios.power.TMS320C3430GPP"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.bios.power.TMS320C3430DSP"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.bios.power.OMAP2530GPP"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.bios.power.OMAP2530DSP"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.bios.power.OMAP3530GPP"
+                used="true"
+                uses="">
+            <feature name="opersys" type="object" value="ti.bios.power.ITMS320CDM644x.Opersys_Linux"/>
+            <feature name="transport" type="object" value="ti.bios.power.ITMS320CDM644x.Transport_Link_Linux"/>
+            <feature name="proxyFor" type="undefined" value="undefined"/>
+            <feature name="CPU_NAME" type="string" value="GPP"/>
+        </module>
+        <module name="ti.bios.power.OMAP3530DSP"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="xdc.bld" version="1, 0, 2" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="xdc.bld.BuildEnvironment"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.PackageContents"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Release"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Library"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Test"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Object"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Executable"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Repository"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Assembly"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Script"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Manifest"
+                used="false"
+                uses="">
+        </module>
+        <module name="xdc.bld.Utils"
+                used="true"
+                uses="">
+        </module>
+    </package>
+    <package name="gnu.targets" version="1, 0, 1" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="gnu.targets.Sparc"
+                used="false"
+                uses="">
+        </module>
+        <module name="gnu.targets.Linux86"
+                used="false"
+                uses="">
+        </module>
+        <module name="gnu.targets.Mingw"
+                used="false"
+                uses="">
+        </module>
+        <module name="gnu.targets.MVArm9"
+                used="false"
+                uses="">
+        </module>
+        <module name="gnu.targets.UCArm9"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="gnu.targets.arm" version="1, 0, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="gnu.targets.arm.GCArmv5T"
+                used="true"
+                uses="">
+            <feature name="name" type="string" value="GCArmv5T"/>
+            <feature name="suffix" type="string" value="v5T"/>
+            <feature name="compatibleSuffixes" type="object" value="%5B470MV%2C%20v5t%5D"><vector id="gnu.targets.arm.GCArmv5T/compatibleSuffixes" length="2">
+  <elem>470MV</elem>
+  <elem>v5t</elem>
+</vector>
+            </feature>
+            <feature name="isa" type="string" value="v5T"/>
+            <feature name="model" type="xdc.bld.ITarget.Model" value="%7Bendian%3A%20little%2C%20codeModel%3A%20undefined%2C%20dataModel%3A%20undefined%2C%20shortEnums%3A%20undefined%7D"><struct id="gnu.targets.arm.GCArmv5T/model">
+  <field name="endian">little</field>
+  <field name="codeModel">undefined</field>
+  <field name="dataModel">undefined</field>
+  <field name="shortEnums">undefined</field>
+</struct>
+            </feature>
+            <feature name="os" type="string" value="Linux"/>
+            <feature name="rts" type="string" value="gnu.targets.arm.rtsv5T"/>
+            <feature name="base" type="undefined" value="undefined"/>
+            <feature name="dllExt" type="string" value=".so"/>
+            <feature name="execExt" type="undefined" value="undefined"/>
+            <feature name="platform" type="string" value="host.platforms.arm"/>
+            <feature name="platforms" type="object" value="%5B%5D">
+            </feature>
+            <feature name="binaryParser" type="undefined" value="undefined"/>
+            <feature name="version" type="undefined" value="undefined"/>
+            <feature name="versionRaw" type="undefined" value="undefined"/>
+            <feature name="debugGen" type="xdc.bld.ITarget.DebugGen" value="%7BexecTemplate%3A%20undefined%2C%20execPattern%3A%20undefined%2C%20packageTemplate%3A%20undefined%2C%20packagePattern%3A%20undefined%7D"><struct id="gnu.targets.arm.GCArmv5T/debugGen">
+  <field name="execTemplate">undefined</field>
+  <field name="execPattern">undefined</field>
+  <field name="packageTemplate">undefined</field>
+  <field name="packagePattern">undefined</field>
+</struct>
+            </feature>
+            <feature name="extensions" type="object" value="%5B%0A%5B%27.asm%27%2C%20%7Bsuf%3A%20.asm%2C%20typ%3A%20asm%7D%5D%2C%0A%5B%27.c%27%2C%20%7Bsuf%3A%20.c%2C%20typ%3A%20c%7D%5D%2C%0A%5B%27.cpp%27%2C%20%7Bsuf%3A%20.cpp%2C%20typ%3A%20cpp%7D%5D%2C%0A%5B%27.cxx%27%2C%20%7Bsuf%3A%20.cxx%2C%20typ%3A%20cpp%7D%5D%2C%0A%5B%27.C%27%2C%20%7Bsuf%3A%20.C%2C%20typ%3A%20cpp%7D%5D%2C%0A%5B%27.cc%27%2C%20%7Bsuf%3A%20.cc%2C%20typ%3A%20cpp%7D%5D%0A%5D"/>
+            <feature name="versionMap" type="object" value="%5B%0A%5B%27gcc3.2%27%2C%201%2C0%2C3.2%2C0%5D%0A%5D"><map id="gnu.targets.arm.GCArmv5T/versionMap" length="1">
+  <entry key="gcc3.2">1,0,3.2,0</entry>
+</map>
+            </feature>
+            <feature name="alignDirectiveSupported" type="boolean" value="false"/>
+            <feature name="rootDir" type="undefined" value="undefined"/>
+            <feature name="profiles" type="object" value="%5B%0A%5B%27debug%27%2C%20%7BcompileOpts%3A%20%7Baopts%3A%20undefined%2C%20copts%3A%20-g%2C%20cfgcopts%3A%20undefined%2C%20defs%3A%20-D_DEBUG_%3D1%2C%20incs%3A%20undefined%7D%2C%20linkOpts%3A%20-g%2C%20archiveOpts%3A%20undefined%2C%20filters%3A%20%5B%5D%7D%5D%2C%0A%5B%27release%27%2C%20%7BcompileOpts%3A%20%7Baopts%3A%20undefined%2C%20copts%3A%20-O2%2C%20cfgcopts%3A%20undefined%2C%20defs%3A%20undefined%2C%20incs%3A%20undefined%7D%2C%20linkOpts%3A%20%2C%20archiveOpts%3A%20undefined%2C%20filters%3A%20%5B%5D%7D%5D%2C%0A%5B%27profile%27%2C%20%7BcompileOpts%3A%20%7Baopts%3A%20undefined%2C%20copts%3A%20-g%20-pg%2C%20cfgcopts%3A%20undefined%2C%20defs%3A%20undefined%2C%20incs%3A%20undefined%7D%2C%20linkOpts%3A%20-pg%2C%20archiveOpts%3A%20undefined%2C%20filters%3A%20%5B%5D%7D%5D%2C%0A%5B%27coverage%27%2C%20%7BcompileOpts%3A%20%7Baopts%3A%20undefined%2C%20copts%3A%20-fprofile-arcs%20-ftest-coverage%2C%20cfgcopts%3A%20undefined%2C%20defs%3A%20undefined%2C%20incs%3A%20undefined%7D%2C%20linkOpts%3A%20%2C%20archiveOpts%3A%20undefined%2C%20filters%3A%20%5B%5D%7D%5D%0A%5D"/>
+            <feature name="sectMap" type="object" value="%5B%0A%0A%5D">
+            </feature>
+            <feature name="stdInclude" type="string" value="gnu/targets/arm/std.h"/>
+            <feature name="stdTypes" type="xdc.bld.ITarget.StdTypes" value="%7Bt_IArg%3A%20%7Bsize%3A%200x4%2C%20align%3A%200x4%7D%2C%20t_Char%3A%20%7Bsize%3A%200x1%2C%20align%3A%200x1%7D%2C%20t_Double%3A%20%7Bsize%3A%200x8%2C%20align%3A%200x4%7D%2C%20t_Float%3A%20%7Bsize%3A%200x4%2C%20align%3A%200x4%7D%2C%20t_Fxn%3A%20%7Bsize%3A%200x4%2C%20align%3A%200x4%7D%2C%20t_Int%3A%20%7Bsize%3A%200x4%2C%20align%3A%200x4%7D%2C%20t_Int8%3A%20%7Bsize%3A%200x1%2C%20align%3A%200x1%7D%2C%20t_Int16%3A%20%7Bsize%3A%200x2%2C%20align%3A%200x2%7D%2C%20t_Int32%3A%20%7Bsize%3A%200x4%2C%20align%3A%200x4%7D%2C%20t_Int40%3A%20%7Bsize%3A%20undefined%2C%20align%3A%20undefined%7D%2C%20t_Int64%3A%20%7Bsize%3A%200x8%2C%20align%3A%200x4%7D%2C%20t_Long%3A%20%7Bsize%3A%200x4%2C%20align%3A%200x4%7D%2C%20t_LDouble%3A%20%7Bsize%3A%200x8%2C%20align%3A%200x4%7D%2C%20t_LLong%3A%20%7Bsize%3A%200x8%2C%20align%3A%200x4%7D%2C%20t_Ptr%3A%20%7Bsize%3A%200x4%2C%20align%3A%200x4%7D%2C%20t_Short%3A%20%7Bsize%3A%200x2%2C%20align%3A%200x2%7D%2C%20t_Size%3A%20%7Bsize%3A%20undefined%2C%20align%3A%20undefined%7D%7D"><struct id="gnu.targets.arm.GCArmv5T/stdTypes">
+  <field name="t_IArg">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_IArg">
+      <field name="size">0x4</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_Char">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Char">
+      <field name="size">0x1</field>
+      <field name="align">0x1</field>
+    </struct>
+  </field>
+  <field name="t_Double">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Double">
+      <field name="size">0x8</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_Float">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Float">
+      <field name="size">0x4</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_Fxn">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Fxn">
+      <field name="size">0x4</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_Int">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Int">
+      <field name="size">0x4</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_Int8">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Int8">
+      <field name="size">0x1</field>
+      <field name="align">0x1</field>
+    </struct>
+  </field>
+  <field name="t_Int16">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Int16">
+      <field name="size">0x2</field>
+      <field name="align">0x2</field>
+    </struct>
+  </field>
+  <field name="t_Int32">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Int32">
+      <field name="size">0x4</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_Int40">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Int40">
+      <field name="size">undefined</field>
+      <field name="align">undefined</field>
+    </struct>
+  </field>
+  <field name="t_Int64">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Int64">
+      <field name="size">0x8</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_Long">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Long">
+      <field name="size">0x4</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_LDouble">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_LDouble">
+      <field name="size">0x8</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_LLong">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_LLong">
+      <field name="size">0x8</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_Ptr">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Ptr">
+      <field name="size">0x4</field>
+      <field name="align">0x4</field>
+    </struct>
+  </field>
+  <field name="t_Short">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Short">
+      <field name="size">0x2</field>
+      <field name="align">0x2</field>
+    </struct>
+  </field>
+  <field name="t_Size">
+    <struct id="gnu.targets.arm.GCArmv5T/stdTypes/t_Size">
+      <field name="size">undefined</field>
+      <field name="align">undefined</field>
+    </struct>
+  </field>
+</struct>
+            </feature>
+            <feature name="bitsPerChar" type="number" value="8"/>
+            <feature name="GCCVERS" type="object" value="null"/>
+            <feature name="GCCTARG" type="object" value="null"/>
+            <feature name="LONGNAME" type="undefined" value="undefined"/>
+            <feature name="CYGWIN" type="boolean" value="false"/>
+            <feature name="noStdLinkScript" type="boolean" value="false"/>
+            <feature name="remoteHost" type="undefined" value="undefined"/>
+            <feature name="ar" type="gnu.targets.ITarget.Command" value="%7Bcmd%3A%20%24%28rootDir%29/%24%28GCCTARG%29/bin/ar%2C%20opts%3A%20cr%7D"><struct id="gnu.targets.arm.GCArmv5T/ar">
+  <field name="cmd">$(rootDir)/$(GCCTARG)/bin/ar</field>
+  <field name="opts">cr</field>
+</struct>
+            </feature>
+            <feature name="arOpts" type="gnu.targets.ITarget.Options" value="%7Bprefix%3A%20%2C%20suffix%3A%20%7D"><struct id="gnu.targets.arm.GCArmv5T/arOpts">
+  <field name="prefix"/>
+  <field name="suffix"/>
+</struct>
+            </feature>
+            <feature name="lnk" type="gnu.targets.ITarget.Command" value="%7Bcmd%3A%20%24%28rootDir%29/%24%28LONGNAME%29%2C%20opts%3A%20%7D"><struct id="gnu.targets.arm.GCArmv5T/lnk">
+  <field name="cmd">$(rootDir)/$(LONGNAME)</field>
+  <field name="opts"/>
+</struct>
+            </feature>
+            <feature name="lnkOpts" type="gnu.targets.ITarget.Options" value="%7Bprefix%3A%20%2C%20suffix%3A%20-lstdc++%20-L%24%28rootDir%29/%24%28GCCTARG%29/lib%7D"><struct id="gnu.targets.arm.GCArmv5T/lnkOpts">
+  <field name="prefix"/>
+  <field name="suffix">-lstdc++ -L$(rootDir)/$(GCCTARG)/lib</field>
+</struct>
+            </feature>
+            <feature name="cc" type="gnu.targets.ITarget.Command" value="%7Bcmd%3A%20%24%28rootDir%29/%24%28LONGNAME%29%20-c%20-MD%20-MF%20%24@.dep%2C%20opts%3A%20-march%3Darmv5t%7D"><struct id="gnu.targets.arm.GCArmv5T/cc">
+  <field name="cmd">$(rootDir)/$(LONGNAME) -c -MD -MF $@.dep</field>
+  <field name="opts">-march=armv5t</field>
+</struct>
+            </feature>
+            <feature name="ccOpts" type="gnu.targets.ITarget.Options" value="%7Bprefix%3A%20-fPIC%20-Wunused%2C%20suffix%3A%20-Dfar%3D%20%7D"><struct id="gnu.targets.arm.GCArmv5T/ccOpts">
+  <field name="prefix">-fPIC -Wunused</field>
+  <field name="suffix">-Dfar=</field>
+</struct>
+            </feature>
+            <feature name="asm" type="gnu.targets.ITarget.Command" value="%7Bcmd%3A%20%24%28rootDir%29/%24%28LONGNAME%29%20-c%20-x%20assembler%2C%20opts%3A%20-march%3Darmv5t%7D"><struct id="gnu.targets.arm.GCArmv5T/asm">
+  <field name="cmd">$(rootDir)/$(LONGNAME) -c -x assembler</field>
+  <field name="opts">-march=armv5t</field>
+</struct>
+            </feature>
+            <feature name="asmOpts" type="gnu.targets.ITarget.Options" value="%7Bprefix%3A%20%2C%20suffix%3A%20%7D"><struct id="gnu.targets.arm.GCArmv5T/asmOpts">
+  <field name="prefix"/>
+  <field name="suffix"/>
+</struct>
+            </feature>
+            <feature name="includeOpts" type="string" value=""/>
+        </module>
+        <module name="gnu.targets.arm.GCArmv6"
+                used="false"
+                uses="">
+        </module>
+        <module name="gnu.targets.arm.GCArmv7A"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.sdo.utils.trace" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-framework-components-tree/packages/">
+        <module name="ti.sdo.utils.trace.GT"
+                used="true"
+                uses="">
+            <feature name="PRINTFXN" type="string" value="GTConfig_tracePrintf"/>
+            <feature name="PIDFXN" type="object" value="null"/>
+            <feature name="TIDFXN" type="string" value="GTConfig_threadId"/>
+            <feature name="ERRORFXN" type="string" value="GTConfig_error"/>
+            <feature name="MALLOCFXN" type="string" value="GTConfig_libcMalloc"/>
+            <feature name="FREEFXN" type="string" value="GTConfig_libcFree"/>
+            <feature name="TIMEFXN" type="string" value="GTConfig_gettimeofday"/>
+            <feature name="LOCKFXN" type="string" value="GTConfig_pthreadLock"/>
+            <feature name="UNLOCKFXN" type="string" value="GTConfig_pthreadUnlock"/>
+            <feature name="INITFXN" type="string" value="GTConfig_posixInit"/>
+            <feature name="debug" type="boolean" value="false"/>
+        </module>
+    </package>
+    <package name="ti.xdais.dm" version="1, 0, 5" repository="/media/disk/OE/work/ti/ti-xdais-tree/packages/">
+    </package>
+    <package name="ti.xdais" version="1, 2.0, 1" repository="/media/disk/OE/work/ti/ti-xdais-tree/packages/">
+    </package>
+    <package name="ti.sdo.ce.node" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+        <module name="ti.sdo.ce.node.NODE"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.sdo.ce.utils.xdm" version="1, 0, 2" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+    </package>
+    <package name="ti.sdo.fc.global" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-framework-components-tree/packages/">
+        <module name="ti.sdo.fc.global.Settings"
+                used="true"
+                uses="">
+            <feature name="multiProcess" type="boolean" value="true"/>
+            <feature name="osalPackage" type="undefined" value="undefined"/>
+            <feature name="profile" type="string" value="release"/>
+        </module>
+    </package>
+    <package name="ti.sdo.fc.memutils" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-framework-components-tree/packages/">
+        <module name="ti.sdo.fc.memutils.MEMUTILS"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.sdo.fc.utils" version="1, 0, 2" repository="/media/disk/OE/work/ti/ti-framework-components-tree/packages/">
+        <module name="ti.sdo.fc.utils.SHM"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.sdo.fc.utils.RMM"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.sdo.fc.utils.SMGR"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.sdo.fc.utils.RMMP"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.sdo.fc.utils.SMGRMP"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.sdo.fc.dman3" version="1, 0, 4" repository="/media/disk/OE/work/ti/ti-framework-components-tree/packages/">
+        <module name="ti.sdo.fc.dman3.DMAN3"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.sdo.fc.acpy3" version="1, 0, 4" repository="/media/disk/OE/work/ti/ti-framework-components-tree/packages/">
+        <module name="ti.sdo.fc.acpy3.ACPY3"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.catalog.arm" version="1, 0, 1, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="ti.catalog.arm.LM3S9792"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S9790"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S5791"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S2793"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S9B96"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S9B95"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S9B92"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S5B91"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S9B90"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S2B93"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.LM3S8962"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS470R10"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320C5912"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320C1030"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320CDM6446"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320CDM6467"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320CDM355"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320DM357"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320DM365"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320CDM510"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP2430"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP2431"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP2530"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP2531"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP3403"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP3405"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP3503"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP3505"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP3515"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP3517"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP3425"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP3525"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320C3430"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAP3530"
+                used="true"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320DA828"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320DA830"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAPL137"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.CortexM3"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS570PSF762"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS570LS20216"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320DA840"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAPL108"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAPL118"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.OMAPL138"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320CDM730"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TMS320CDM740"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.arm.TNETV107X"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.catalog" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+    </package>
+    <package name="xdc.platform" version="1, 0, 1, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="xdc.platform.ExeContext"
+                used="true"
+                uses="">
+        </module>
+        <module name="xdc.platform.Utils"
+                used="true"
+                uses="">
+        </module>
+    </package>
+    <package name="xdc.cfg" version="1, 0, 2, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="xdc.cfg.Program"
+                used="true"
+                uses="">
+            <feature name="gen" type="xdc.cfg.Program.GenerationOptions" value="%7BdebuggerFiles%3A%20undefined%7D"><struct id="xdc.cfg.Program/gen">
+  <field name="debuggerFiles">undefined</field>
+</struct>
+            </feature>
+            <feature name="globalSection" type="object" value="null"/>
+            <feature name="sysStack" type="number" value="4096"/>
+            <feature name="stack" type="number" value="4096"/>
+            <feature name="heap" type="number" value="4096"/>
+            <feature name="argSize" type="number" value="512"/>
+            <feature name="execCmd" type="string" value="@%24%28ECHO%29%20ti.platforms.evm3530%20platform%20package%20cannot%20execute%20remote_ti_platforms_evm3530.xv5T%20on%20Linux%0A@%24%28ECHO%29%20Check%20for%20updates%20to%20this%20package%20at%3A%0A@%24%28ECHO%29%20https%3A//www-a.ti.com/downloads/sds_support/targetcontent/rtsc/index.html%0A%09%3A"/>
+            <feature name="linkTemplate" type="object" value="null"/>
+            <feature name="main" type="undefined" value="undefined"/>
+            <feature name="sectMap" type="object" value="%5B%0A%0A%5D">
+            </feature>
+            <feature name="system" type="undefined" value="undefined"/>
+            <feature name="name" type="string" value="remote_ti_platforms_evm3530.xv5T"/>
+            <feature name="buildPackage" type="string" value="remote_ti_platforms_evm3530"/>
+            <feature name="endian" type="string" value="little"/>
+            <feature name="codeModel" type="object" value="null"/>
+            <feature name="dataModel" type="object" value="null"/>
+            <feature name="build" type="object" value="%5Bobject%20Object%5D"/>
+            <feature name="cpu" type="xdc.platform.IExeContext.Instance" value="%7Bid%3A%201%2C%20catalogName%3A%20ti.catalog.arm%2C%20deviceName%3A%20OMAP3530%2C%20revision%3A%20%2C%20clockRate%3A%200x14a%2C%20board%3A%20%7Bid%3A%200%2C%20boardName%3A%20evm3530%2C%20boardFamily%3A%20evm3530%2C%20boardRevision%3A%20null%7D%2C%20attrs%3A%20xdc.services.intern.xsr.Value%24Obj@48f675%3A%3A%28xdc.platform.ICpuDataSheet.Instance%29ti.catalog.arm.OMAP3530.Instance%230%2C%20memoryMap%3A%20%5B%0A%5B%27SRAM%27%2C%20%7Bcomment%3A%20On-Chip%20SRAM%2C%20name%3A%20SRAM%2C%20space%3A%20code/data%2C%20page%3A%20undefined%2C%20base%3A%200x40200000%2C%20len%3A%200x10000%2C%20access%3A%20RWX%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Bcomment%3A%20undefined%2C%20name%3A%20DDR2%2C%20space%3A%20undefined%2C%20page%3A%20undefined%2C%20base%3A%200x80000000%2C%20len%3A%200x8000000%2C%20access%3A%20undefined%7D%5D%0A%5D%7D"/>
+            <feature name="platformName" type="string" value="ti.platforms.evm3530"/>
+            <feature name="platform" type="xdc.platform.IPlatform.Instance" value="%7BexternalMemoryMap%3A%20%5B%0A%5B%27DDR2%27%2C%20%7Bcomment%3A%20undefined%2C%20name%3A%20DDR2%2C%20space%3A%20undefined%2C%20page%3A%20undefined%2C%20base%3A%200x80000000%2C%20len%3A%200x8000000%2C%20access%3A%20undefined%7D%5D%0A%5D%2C%20customMemoryMap%3A%20%5B%0A%0A%5D%2C%20renameMap%3A%20%5B%0A%0A%5D%2C%20dataMemory%3A%20DDR2%2C%20codeMemory%3A%20DDR2%2C%20stackMemory%3A%20DDR2%2C%20sectMap%3A%20%5B%0A%0A%5D%7D"/>
+            <feature name="global" type="object" value="%5B%0A%0A%5D">
+            </feature>
+            <feature name="symbol" type="object" value="%5B%0A%5B%27xdc_runtime_Startup__EXECFXN__C%27%2C%200x0%5D%2C%0A%5B%27xdc_runtime_Startup__RESETFXN__C%27%2C%200x0%5D%2C%0A%5B%27xdc_runtime_Startup_exec__E%27%2C%200x0%5D%2C%0A%5B%27xdc_runtime_Startup_reset__I%27%2C%200x0%5D%0A%5D"><map id="xdc.cfg.Program/symbol" length="4">
+  <entry key="xdc_runtime_Startup__EXECFXN__C">0x0</entry>
+  <entry key="xdc_runtime_Startup__RESETFXN__C">0x0</entry>
+  <entry key="xdc_runtime_Startup_exec__E">0x0</entry>
+  <entry key="xdc_runtime_Startup_reset__I">0x0</entry>
+</map>
+            </feature>
+            <feature name="fixedCodeAddr" type="number" value="0"/>
+            <feature name="fixedDataAddr" type="number" value="0"/>
+            <feature name="loadFixedDataAddr" type="undefined" value="undefined"/>
+            <feature name="loadRom" type="boolean" value="false"/>
+        </module>
+        <module name="xdc.cfg.Main"
+                used="true"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.catalog.c6000" version="1, 0, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="ti.catalog.c6000.TMS320C6452"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM647"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM648"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CTNETV2685"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6428"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6711"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6711B"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6712"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6713"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6211"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6211B"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6410"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6411"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6412"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6413"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6414"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6415"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6416"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6418"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6421"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6424"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM640"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM641"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM642"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDA700"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDA705"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDA707"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDA710"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDA700SIM"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA442"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA444"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA446"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA447"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA457"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA459"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6722"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6726"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6727"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM415"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM420"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM421"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM425"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM426"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM6431"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM6433"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM6435"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM6437"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM6441"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM6443"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM6446"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320DM357"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM6467"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRI300"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CTCI6482"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CTCI6484"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CTCI6486"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320TCI6485"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CTCI6487"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CTCI6488"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320TCI6489"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CTCI6496"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CTCI6497"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CTCI6498"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6454"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6455"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C2430"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C3430"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6701"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6201"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6202"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6203"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6203B"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6204"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6205"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA406"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA402"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA404"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA414"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDRA416"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CF761990"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.OMAP2431"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.OMAP2530"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.OMAP2531"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.OMAP3425"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.OMAP3525"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.OMAP3530"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320DA805"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320DA807"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320DA808"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320DA810"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320DA828"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320DA830"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6472"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6474"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6747"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6745"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.OMAPL137"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.OMAPL138"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6457"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320DA840"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320DA850"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6742"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6746"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320C6748"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM740"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TMS320CDM730"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.catalog.c6000.TNETV107X"
+                used="false"
+                uses="">
+        </module>
+    </package>
+    <package name="ti.platforms.evm3530" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
+        <module name="ti.platforms.evm3530.Platform"
+                used="true"
+                uses="">
+            <feature name="BOARD" type="xdc.platform.IPlatform.Board" value="%7Bid%3A%200%2C%20boardName%3A%20evm3530%2C%20boardFamily%3A%20evm3530%2C%20boardRevision%3A%20null%7D"><struct id="ti.platforms.evm3530.Platform/BOARD">
+  <field name="id">0</field>
+  <field name="boardName">evm3530</field>
+  <field name="boardFamily">evm3530</field>
+  <field name="boardRevision">null</field>
+</struct>
+            </feature>
+            <feature name="DSP" type="xdc.platform.IExeContext.Cpu" value="%7Bid%3A%200%2C%20catalogName%3A%20ti.catalog.c6000%2C%20deviceName%3A%20OMAP3530%2C%20revision%3A%20%2C%20clockRate%3A%200x14a%7D"><struct id="ti.platforms.evm3530.Platform/DSP">
+  <field name="id">0</field>
+  <field name="catalogName">ti.catalog.c6000</field>
+  <field name="deviceName">OMAP3530</field>
+  <field name="revision"/>
+  <field name="clockRate">0x14a</field>
+</struct>
+            </feature>
+            <feature name="GPP" type="xdc.platform.IExeContext.Cpu" value="%7Bid%3A%201%2C%20catalogName%3A%20ti.catalog.arm%2C%20deviceName%3A%20OMAP3530%2C%20revision%3A%20%2C%20clockRate%3A%200x14a%7D"><struct id="ti.platforms.evm3530.Platform/GPP">
+  <field name="id">1</field>
+  <field name="catalogName">ti.catalog.arm</field>
+  <field name="deviceName">OMAP3530</field>
+  <field name="revision"/>
+  <field name="clockRate">0x14a</field>
+</struct>
+            </feature>
+        </module>
+    </package>
+    <package name="ti.sdo.ce.osal" version="2, 0, 2" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+        <module name="ti.sdo.ce.osal.Global"
+                used="true"
+                uses="">
+            <feature name="DEFAULT_ARMDSPLINKCONFIG" type="ti.sdo.ce.ipc.IIpc.ArmDspLinkConfig" value="%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x88000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x7a00000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x8fa00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x8fe00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x8ff00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x80%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20undefined%7D"/>
+            <feature name="os" type="ti.sdo.ce.osal.IOsal.Module" value="%7B%7D">
+            </feature>
+            <feature name="armDspLinkConfig" type="ti.sdo.ce.ipc.IIpc.ArmDspLinkConfig" value="%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x88000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x7a00000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x8fa00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x8fe00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x8ff00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x80%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20undefined%7D"/>
+            <feature name="runtimeEnv" type="object" value="ti.sdo.ce.osal.Global.DSPLINK_LINUX"/>
+            <feature name="defaultMemSegId" type="object" value="null"/>
+            <feature name="armCommMsgSize" type="number" value="4096"/>
+            <feature name="armCommNumMsgs" type="number" value="64"/>
+            <feature name="dspCommNumMsgQueues" type="number" value="64"/>
+            <feature name="dspCommUseExactMatch" type="boolean" value="true"/>
+            <feature name="dspConfigureMsgqAndPool" type="boolean" value="true"/>
+            <feature name="dspUseMsgqAndPool" type="boolean" value="true"/>
+            <feature name="dspCommMsgSize" type="number" value="1024"/>
+            <feature name="dspCommNumMsgs" type="number" value="64"/>
+            <feature name="usePowerManagement" type="undefined" value="undefined"/>
+            <feature name="powerSaveMemoryBlockName" type="object" value="null"/>
+            <feature name="useLinkArbiter" type="boolean" value="false"/>
+            <feature name="commLocateRetries" type="number" value="20"/>
+            <feature name="traceBufferSize" type="number" value="32768"/>
+            <feature name="enableLogging" type="boolean" value="true"/>
+            <feature name="logName" type="string" value="ti_sdo_ce_osal_LOG_Buffer"/>
+            <feature name="logSize" type="number" value="256"/>
+            <feature name="logType" type="string" value="circular"/>
+            <feature name="logSeg" type="object" value="null"/>
+            <feature name="skipVirtualAddressTranslation" type="boolean" value="false"/>
+            <feature name="embedBuildInfo" type="boolean" value="true"/>
+        </module>
+    </package>
+    <package name="ti.sdo.ce.osal.linux" version="2, 0, 1" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+        <module name="ti.sdo.ce.osal.linux.Settings"
+                used="true"
+                uses="">
+            <feature name="ipcKeyBase" type="number" value="1279349583"/>
+            <feature name="maxCbListSize" type="number" value="100"/>
+            <feature name="debug" type="boolean" value="false"/>
+        </module>
+    </package>
+    <package name="ti.sdo.ce.ipc" version="2, 0, 1" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+        <module name="ti.sdo.ce.ipc.Settings"
+                used="true"
+                uses="">
+            <feature name="ipc" type="ti.sdo.ce.ipc.IIpc.Module" value="%7BlinkConfigs%3A%20%5B%0A%5B%27cvDFT_unitserver_evm3530.x64P%27%2C%20%7BserverName%3A%20cvDFT_unitserver_evm3530.x64P%2C%20linkCfg%3A%20%7BmemTable%3A%20%5B%0A%5B%27L4PER%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x87a00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27IRAM%27%2C%20%7Baddr%3A%200x107f8000%2C%20gppAddr%3A%200x5c7f8000%2C%20size%3A%200x8000%2C%20type%3A%20code%7D%5D%2C%0A%5B%27L1DSRAM%27%2C%20%7Baddr%3A%200x10f04000%2C%20gppAddr%3A%200x5cf04000%2C%20size%3A%200x10000%2C%20type%3A%20code%7D%5D%2C%0A%5B%27RESET_VECTOR%27%2C%20%7Baddr%3A%200x87f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x86800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1200000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x87e00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x0%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x0%2C%20type%3A%20other%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%7D%5D%0A%5D%7D"/>
+            <feature name="commType" type="undefined" value="undefined"/>
+            <feature name="usesServer" type="boolean" value="false"/>
+            <feature name="armCommMsgSize" type="number" value="4096"/>
+            <feature name="armCommNumMsgs" type="number" value="64"/>
+            <feature name="commLocateRetries" type="number" value="20"/>
+            <feature name="useLinkArbiter" type="boolean" value="false"/>
+            <feature name="dspConfigureMsgqAndPool" type="boolean" value="true"/>
+            <feature name="dspUseMsgqAndPool" type="boolean" value="true"/>
+            <feature name="dspCommNumMsgQueues" type="number" value="64"/>
+            <feature name="dspCommUseExactMatch" type="boolean" value="true"/>
+            <feature name="dspCommMsgSize" type="number" value="1024"/>
+            <feature name="dspCommNumMsgs" type="number" value="64"/>
+            <feature name="usePowerManagement" type="undefined" value="undefined"/>
+            <feature name="powerSaveMemoryBlockName" type="object" value="null"/>
+            <feature name="debug" type="boolean" value="false"/>
+        </module>
+    </package>
+    <package name="ti.sdo.ce.ipc.dsplink" version="2, 0, 1" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+        <module name="ti.sdo.ce.ipc.dsplink.Ipc"
+                used="true"
+                uses="">
+            <feature name="linkConfigs" type="object" value="%5B%0A%5B%27cvDFT_unitserver_evm3530.x64P%27%2C%20%7BserverName%3A%20cvDFT_unitserver_evm3530.x64P%2C%20linkCfg%3A%20%7BmemTable%3A%20%5B%0A%5B%27L4PER%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x87a00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27IRAM%27%2C%20%7Baddr%3A%200x107f8000%2C%20gppAddr%3A%200x5c7f8000%2C%20size%3A%200x8000%2C%20type%3A%20code%7D%5D%2C%0A%5B%27L1DSRAM%27%2C%20%7Baddr%3A%200x10f04000%2C%20gppAddr%3A%200x5cf04000%2C%20size%3A%200x10000%2C%20type%3A%20code%7D%5D%2C%0A%5B%27RESET_VECTOR%27%2C%20%7Baddr%3A%200x87f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x86800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1200000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x87e00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x0%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x0%2C%20type%3A%20other%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%7D%5D%0A%5D"/>
+            <feature name="maxTimeout" type="number" value="4294967295"/>
+            <feature name="dspLinkCfg" type="ti.sdo.ce.ipc.dsplink.IDspLinkCfg.Module" value="%7BDEFAULT_ARMDSPLINKCONFIG%3A%20%5B%0A%5B%27TMS320CDM6446%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x88000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x7a00000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x8fa00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x8fe00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x8ff00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x80%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27TMS320DM357%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x88000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x7a00000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x8fa00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x8fe00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x8ff00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x80%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27TMS320CDM6467%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x88000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x7a00000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x8fa00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x8fe00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x8ff00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x80%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27TMS320C3430%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4PER%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x85000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x86000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x87800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x600000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x87e00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x87f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27OMAP3530%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4PER%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x85000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x86000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x87800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x600000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x87e00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x87f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27OMAP2530%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4WAKEUP%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x82400000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x82c00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x300000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x82f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200xff000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x82fff000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x83000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27TMS320C2430%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4WAKEUP%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x85800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x86000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x87800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x600000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x87e00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x87f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27OMAPL137%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200xc3000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200xc2c00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x300000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200xc2f01000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200xc2f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20true%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27OMAPL138%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200xc3000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200xc2c00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x300000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200xc2f01000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200xc2f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20true%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%0A%5D%7D"/>
+            <feature name="armCommMsgSize" type="number" value="4096"/>
+            <feature name="armCommNumMsgs" type="number" value="64"/>
+            <feature name="commLocateRetries" type="number" value="20"/>
+            <feature name="useLinkArbiter" type="boolean" value="false"/>
+            <feature name="usePowerManagement" type="boolean" value="true"/>
+            <feature name="debug" type="boolean" value="false"/>
+        </module>
+        <module name="ti.sdo.ce.ipc.dsplink.DspLinkCfg"
+                used="true"
+                uses="">
+            <feature name="DEFAULT_ARMDSPLINKCONFIG" type="object" value="%5B%0A%5B%27TMS320CDM6446%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x88000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x7a00000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x8fa00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x8fe00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x8ff00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x80%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27TMS320DM357%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x88000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x7a00000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x8fa00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x8fe00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x8ff00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x80%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27TMS320CDM6467%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x88000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x7a00000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x8fa00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x400000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x8fe00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x8ff00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x80%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27TMS320C3430%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4PER%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x85000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x86000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x87800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x600000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x87e00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x87f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27OMAP3530%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4PER%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x85000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x86000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x87800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x600000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x87e00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x87f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27OMAP2530%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4WAKEUP%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x82400000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x82c00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x300000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x82f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200xff000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x82fff000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x83000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27TMS320C2430%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27L4CORE%27%2C%20%7Baddr%3A%200x48000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27L4WAKEUP%27%2C%20%7Baddr%3A%200x49000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27CMEM%27%2C%20%7Baddr%3A%200x85800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200x86000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1800000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200x87800000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x600000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200x87e00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200x87f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20false%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27OMAPL137%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200xc3000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200xc2c00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x300000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200xc2f01000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200xc2f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20true%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%2C%0A%5B%27OMAPL138%27%2C%20%7BmemTable%3A%20%5B%0A%5B%27DDRALGHEAP%27%2C%20%7Baddr%3A%200xc3000000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000000%2C%20type%3A%20other%7D%5D%2C%0A%5B%27DDR2%27%2C%20%7Baddr%3A%200xc2c00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x300000%2C%20type%3A%20main%7D%5D%2C%0A%5B%27DSPLINKMEM%27%2C%20%7Baddr%3A%200xc2f01000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x100000%2C%20type%3A%20link%7D%5D%2C%0A%5B%27RESETCTRL%27%2C%20%7Baddr%3A%200xc2f00000%2C%20gppAddr%3A%20undefined%2C%20size%3A%200x1000%2C%20type%3A%20reset%7D%5D%0A%5D%2C%20doPowerControl%3A%20true%2C%20dspManagement%3A%20BootAndLoadDsp%7D%5D%0A%5D"/>
+        </module>
+    </package>
+    <package name="ti.sdo.ce.alg" version="1, 0, 1" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+        <module name="ti.sdo.ce.alg.Settings"
+                used="true"
+                uses="">
+            <feature name="MAXGROUPID" type="number" value="20"/>
+            <feature name="useIdma3" type="boolean" value="false"/>
+            <feature name="useIres" type="boolean" value="false"/>
+            <feature name="useHeap" type="boolean" value="false"/>
+            <feature name="useCache" type="boolean" value="false"/>
+            <feature name="ipcKeyBase" type="number" value="1330072641"/>
+            <feature name="groupUsed" type="object" value="%5Bfalse%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%2C%20false%5D"><vector id="ti.sdo.ce.alg.Settings/groupUsed" length="20">
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+  <elem>false</elem>
+</vector>
+            </feature>
+        </module>
+    </package>
+    <package name="ti.sdo.ce" version="1, 0, 6" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+        <module name="ti.sdo.ce.Engine"
+                used="true"
+                uses="">
+            <feature name="MAXGROUPID" type="number" value="20"/>
+            <feature name="local" type="ti.sdo.ce.Engine.Instance" value="%7BMAXGROUPID%3A%200x14%2C%20name%3A%20local%2C%20algs%3A%20%5B%5D%2C%20server%3A%20undefined%2C%20armDspLinkConfig%3A%20%7BmemTable%3A%20%5B%0A%0A%5D%2C%20doPowerControl%3A%20undefined%2C%20dspManagement%3A%20undefined%7D%2C%20linkCfg%3A%20undefined%7D"><instance id="ti.sdo.ce.Engine.Instance#1">
+  <field name="MAXGROUPID">0x14</field>
+  <field name="name">local</field>
+  <field name="algs"/>
+  <field name="server">undefined</field>
+  <field name="armDspLinkConfig">
+    <struct id="ti.sdo.ce.Engine.Instance#1/armDspLinkConfig">
+      <field name="memTable"/>
+      <field name="doPowerControl">undefined</field>
+      <field name="dspManagement">undefined</field>
+    </struct>
+  </field>
+  <field name="linkCfg">undefined</field>
+</instance>
+            </feature>
+            <feature name="noCommName" type="boolean" value="false"/>
+        </module>
+        <module name="ti.sdo.ce.Server"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.sdo.ce.VISA"
+                used="false"
+                uses="">
+        </module>
+        <module name="ti.sdo.ce.CERuntime"
+                used="true"
+                uses="">
+        </module>
+        <module name="ti.sdo.ce.Settings"
+                used="true"
+                uses="">
+            <feature name="checked" type="boolean" value="false"/>
+        </module>
+    </package>
+    <package name="ti.sdo.ce.universal" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
+    </package>
+    <package name="gsoc.algos.cvDFT.ce" version="1, 0, 0" repository="/media/disk/OE/work/ti/my_fir_test/">
+        <module name="gsoc.algos.cvDFT.ce.CVDFT"
+                used="true"
+                uses="">
+            <feature name="isLocal" type="boolean" value="true"/>
+            <feature name="ialgFxns" type="string" value="CVDFT_GSOC_IALG"/>
+            <feature name="idma3Fxns" type="undefined" value="undefined"/>
+            <feature name="iresFxns" type="undefined" value="undefined"/>
+            <feature name="serverFxns" type="string" value="UNIVERSAL_SKEL"/>
+            <feature name="stubFxns" type="string" value="UNIVERSAL_STUBS"/>
+            <feature name="rpcProtocolVersion" type="number" value="1"/>
+            <feature name="uuid" type="number" value="2548591481"/>
+            <feature name="frameRate" type="undefined" value="undefined"/>
+            <feature name="codecClassConfigurable" type="undefined" value="undefined"/>
+            <feature name="alg" type="gsoc.algos.cvDFT.CVDFT.Module" value="%7Bwatermark%3A%20true%2C%20codeSection%3A%20DDR2%2C%20udataSection%3A%20undefined%2C%20dataSection%3A%20undefined%7D"><module id="gsoc.algos.cvDFT.CVDFT">
+  <field name="watermark">true</field>
+  <field name="codeSection">DDR2</field>
+  <field name="udataSection">undefined</field>
+  <field name="dataSection">undefined</field>
+</module>
+            </feature>
+        </module>
+    </package>
+    <package name="remote_ti_platforms_evm3530" version="" repository="/media/disk/OE/work/ti/my_fir_test/gsoc/apps/cvDFT/cfg/linux/">
+    </package>
+</imports>
+</configuration>
