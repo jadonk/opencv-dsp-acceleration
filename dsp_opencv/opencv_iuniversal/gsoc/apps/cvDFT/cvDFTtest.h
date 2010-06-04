@@ -7,20 +7,30 @@
  *
  */
 
+
 /*
  *  ======== cvDFTtest.h ========
  *  
  */
 
+
 #ifndef _CVDFTTEST_H
 #define _CVDFTTEST_H
 
 
+#include <gsoc/algos/cvDFT/icvDFT.h>
+
+
+typedef ICVDFT_Operation  	  CVDFT_Operation;
+
+
+typedef ICVDFT_OperationTypes    CVDFT_OperationTypes;
 /*
  *  ======== CVDFTTEST_main ========
  *  
  *  Test Routines Entry Point
  */
 Int CVDFTTEST_main(Fxn quitFxn, Bool askTestNumber, char *engineName);
+
 
 #endif // _CVDFTTEST_H
