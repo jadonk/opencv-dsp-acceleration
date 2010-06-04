@@ -1,0 +1,6 @@
+/* THIS IS A GENERATED FILE -- DO NOT EDIT */
+/* configuro was passed a config.bld file */
+xdc.includeFile("/media/disk/OE/work/ti/my_fir_test/config.bld");
+/* configuro was passed the target's name explicitly */
+var target  = xdc.module('gnu.targets.arm.GCArmv5T');
+Build.targets = [target];

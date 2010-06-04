@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="gsoc.algos.cvDFT.ce" version="1, 0, 0" producerId="undefined">
+    <units>
+        <module name="CVDFT"/>
+    </units>
+    <sources>
+    </sources>
+    <configurations>
+    </configurations>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="package/rel/gsoc_algos_cvDFT_ce.tar.dep" src="package/rel/gsoc_algos_cvDFT_ce.xdc.inc"/>
+    </makefiles>
+    <targets>
+    </targets>
+    <libraries>
+    </libraries>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="gsoc_algos_cvDFT_ce"
+        pname="gsoc_algos_cvDFT_ce.tar"
+        label="default"
+    >
+        <file name="package/build.cfg"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="package/package.ext.xml"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package/package.bld.xml"/>
+        <file name="package/package.rel.dot"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

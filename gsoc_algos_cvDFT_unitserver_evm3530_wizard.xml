@@ -1,0 +1,8 @@
+<?xml version="1.0"?><rtsc_server_package_wizard>
+  <version>0.2.4</version>
+  <packageName>gsoc.algos.cvDFT</packageName>
+  <serverName>gsoc.algos.cvDFT_unitserver_evm3530</serverName>
+  <outputRepository>/media/disk/OE/work/ti/my_fir_test/</outputRepository>
+  <platform>ti.platforms.evm3530</platform>
+  <module>CVDFT</module>
+</rtsc_server_package_wizard>

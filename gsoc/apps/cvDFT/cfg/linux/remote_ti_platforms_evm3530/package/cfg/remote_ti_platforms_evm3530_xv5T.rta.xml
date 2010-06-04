@@ -1,0 +1,11 @@
+<xdc.runtime.Types.RtaDecoderData>
+  <targetName>gnu.targets.arm.GCArmv5T</targetName>
+  <binaryParser>undefined</binaryParser>
+  <endian>little</endian>
+  <bitsPerChar>8</bitsPerChar>
+  <argSize>4</argSize>
+  <eventSize>48</eventSize>
+  <loggers-length>0</loggers-length>
+  <modMap-length>0</modMap-length>
+  <evtMap-length>0</evtMap-length>
+</xdc.runtime.Types.RtaDecoderData>
