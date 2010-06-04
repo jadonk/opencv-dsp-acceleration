@@ -5,7 +5,7 @@ digraph configuration {
     concentrate=true;
     compound=true;
     label="\nConfiguration for remote_ti_platforms_evm3530/remote_ti_platforms_evm3530.xv5T"
-  node [font=Helvetica, fontsize=14, fontcolor=black];  subgraph cluster0 {label=""; __cfg [label="/media/disk/OE/work/ti/my_fir_test/gsoc/apps/cvDFT/linux/remote_ti_platforms_evm3530.cfg", color=white, fontcolor=blue];
+  node [font=Helvetica, fontsize=14, fontcolor=black];  subgraph cluster0 {label=""; __cfg [label="/media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/gsoc/apps/cvDFT/linux/remote_ti_platforms_evm3530.cfg", color=white, fontcolor=blue];
     node [font=Helvetica, fontsize=10];    subgraph cluster1 {
         label="";
         xdc_services_global__top [shape=box,label="xdc.services.global\n1, 0, 0", color=white];

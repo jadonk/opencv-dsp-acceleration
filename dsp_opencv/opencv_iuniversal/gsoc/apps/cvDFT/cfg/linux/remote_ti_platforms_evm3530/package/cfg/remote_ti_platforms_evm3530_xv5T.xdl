@@ -2,7 +2,7 @@
  * package
  */
 INPUT(
-    /media/disk/OE/work/ti/my_fir_test/gsoc/apps/cvDFT/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
+    /media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/gsoc/apps/cvDFT/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
     /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T
     /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T
     /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T

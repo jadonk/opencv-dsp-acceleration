@@ -49,7 +49,7 @@
  *  ======== __ASM__ ========
  *  Define absolute path to program's assembly directory
  */
-xdc__META(__ASM__, "@(#)__ASM__ = /media/disk/OE/work/ti/my_fir_test/gsoc/apps/cvDFT/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T");
+xdc__META(__ASM__, "@(#)__ASM__ = /media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/gsoc/apps/cvDFT/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T");
 
 /*
  *  ======== __ISA__ ========
@@ -99,7 +99,7 @@ Bool Memory_skipVirtualAddressTranslation = FALSE;
 /* List of all packages and their versions and paths, for diagnostics */
 String Global_buildInfo[] = {
     "    package gnu.targets.arm.rtsv5T (/media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/arm/rtsv5T/) [1, 0, 0, 0]",
-    "    package gsoc.algos.cvDFT (/media/disk/OE/work/ti/my_fir_test/gsoc/algos/cvDFT/) [1, 0, 0]",
+    "    package gsoc.algos.cvDFT (/media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/gsoc/algos/cvDFT/) [1, 0, 0]",
     "    package ti.sdo.ce.global (/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/global/) [1, 0, 0]",
     "    package dsplink.gpp (/media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/) [5, 0, 0]",
     "    package ti.sdo.linuxutils.cmem (/media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/) [2, 2, 0]",
@@ -127,8 +127,8 @@ String Global_buildInfo[] = {
     "    package ti.sdo.ce.alg (/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/) [1, 0, 1]",
     "    package ti.sdo.ce (/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/) [1, 0, 6]",
     "    package ti.sdo.ce.universal (/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/) [1, 0, 0]",
-    "    package gsoc.algos.cvDFT.ce (/media/disk/OE/work/ti/my_fir_test/gsoc/algos/cvDFT/ce/) [1, 0, 0]",
-    "    package remote_ti_platforms_evm3530 (/media/disk/OE/work/ti/my_fir_test/gsoc/apps/cvDFT/cfg/linux/remote_ti_platforms_evm3530/) []",
+    "    package gsoc.algos.cvDFT.ce (/media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/gsoc/algos/cvDFT/ce/) [1, 0, 0]",
+    "    package remote_ti_platforms_evm3530 (/media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/gsoc/apps/cvDFT/cfg/linux/remote_ti_platforms_evm3530/) []",
     NULL
 };
 
@@ -150,8 +150,8 @@ String Global_buildInfo[] = {
 #include <ti/xdais/ires.h>
 
 /* type tables for algorithms */
-extern IALG_Fxns CVDFT_GSOC_IALG;
-static String typeTab_CVDFT_GSOC_IALG[] = {
+extern IALG_Fxns CVDFT_GSOC_ICVDFT;
+static String typeTab_CVDFT_GSOC_ICVDFT[] = {
     "ti.sdo.ce.universal.IUNIVERSAL",
     NULL
 };
@@ -168,7 +168,7 @@ static Engine_AlgDesc engineAlgs0[] = {
         {2548591481U},   /* uuid */
         &UNIVERSAL_STUBS,             /* fxns */
         NULL,        /* idma3Fxns */
-        typeTab_CVDFT_GSOC_IALG,              /* typeTab */
+        typeTab_CVDFT_GSOC_ICVDFT,              /* typeTab */
         FALSE,          /* isLocal */
         0,        /* groupId */
         1,      /* protocol */

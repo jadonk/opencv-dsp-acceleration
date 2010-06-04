@@ -202,7 +202,7 @@
     </package>
     <package name="gnu.targets.arm.rtsv5T" version="1, 0, 0, 0" repository="/media/disk/OE/work/ti/ti-xdctools-tree/packages/">
     </package>
-    <package name="gsoc.algos.cvDFT" version="1, 0, 0" repository="/media/disk/OE/work/ti/my_fir_test/">
+    <package name="gsoc.algos.cvDFT" version="1, 0, 0" repository="/media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/">
         <module name="gsoc.algos.cvDFT.CVDFT"
                 used="false"
                 uses="">
@@ -1503,12 +1503,12 @@
     </package>
     <package name="ti.sdo.ce.universal" version="1, 0, 0" repository="/media/disk/OE/work/ti/ti-codec-engine-tree/packages/">
     </package>
-    <package name="gsoc.algos.cvDFT.ce" version="1, 0, 0" repository="/media/disk/OE/work/ti/my_fir_test/">
+    <package name="gsoc.algos.cvDFT.ce" version="1, 0, 0" repository="/media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/">
         <module name="gsoc.algos.cvDFT.ce.CVDFT"
                 used="true"
                 uses="">
             <feature name="isLocal" type="boolean" value="true"/>
-            <feature name="ialgFxns" type="string" value="CVDFT_GSOC_IALG"/>
+            <feature name="ialgFxns" type="string" value="CVDFT_GSOC_ICVDFT"/>
             <feature name="idma3Fxns" type="undefined" value="undefined"/>
             <feature name="iresFxns" type="undefined" value="undefined"/>
             <feature name="serverFxns" type="string" value="UNIVERSAL_SKEL"/>
@@ -1526,7 +1526,7 @@
             </feature>
         </module>
     </package>
-    <package name="remote_ti_platforms_evm3530" version="" repository="/media/disk/OE/work/ti/my_fir_test/gsoc/apps/cvDFT/cfg/linux/">
+    <package name="remote_ti_platforms_evm3530" version="" repository="/media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/gsoc/apps/cvDFT/cfg/linux/">
     </package>
 </imports>
 </configuration>

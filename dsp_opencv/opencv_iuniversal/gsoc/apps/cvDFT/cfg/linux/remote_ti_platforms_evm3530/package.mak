@@ -18,8 +18,11 @@ ifneq (clean,$(MAKECMDGOALS))
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/package.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/ITarget.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/ITarget.xs
+/media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/config.bld:
+package.mak: /media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/opencv_iuniversal/config.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/PackageContents.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/PackageContents.xs
+package.mak: package.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/package.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/package.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/MSP430_large_data.xs:
@@ -34,13 +37,13 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/BuildEnvir
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xmlgen.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/UCArm9.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/UCArm9.xs
-package.mak: config.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/include/utils.tci:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/include/utils.tci
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Repository.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Repository.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/tools/configuro/template/custom.mak.exe.xdt:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/tools/configuro/template/custom.mak.exe.xdt
+package.mak: config.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Script.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Script.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/ITargetFilter.xs:
@@ -51,7 +54,6 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/Linux8
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/_gen.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/Mingw.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/Mingw.xs
-package.mak: package.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/MSP430.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/MSP430.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Utils.xs:
@@ -88,8 +90,6 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/template.xs
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/global/Trace.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Library.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Library.xs
-/media/disk/OE/work/ti/my_fir_test/config.bld:
-package.mak: /media/disk/OE/work/ti/my_fir_test/config.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xmlgen2.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xmlgen2.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/ITarget.xs:
