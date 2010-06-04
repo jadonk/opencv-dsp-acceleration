@@ -1,9 +1,0 @@
-; Code Composer Project File, Version 2.0 (do not modify or remove this line)
-[Project Settings]
-ProjectName="gsoc.algos.cvDFT_unitserver_evm3530"
-ProjectType=External
-CPUFamily=TMS320C64XX
-Tool="CustomBuilder"
-Config="Package"
-[Source Files]
-Source="../main.c"
