@@ -93,21 +93,24 @@ servers:
 
 apps: cvDFT
 
-cvDFT: $(if $(wildcard gsoc/apps/cvDFT/linux/remote_ti_platforms_$(PLATFORM_SHORT).cfg), cvDFT_remote) $(if $(wildcard gsoc/apps/cvDFT/linux/local_ti_platforms_$(PLATFORM_SHORT).cfg), cvDFT_local)
+
+#cvDFT: $(if $(wildcard gsoc/apps/cvDFT/linux/remote_ti_platforms_$(PLATFORM_SHORT).cfg), cvDFT_remote) $(if $(wildcard gsoc/apps/cvDFT/linux/local_ti_platforms_$(PLATFORM_SHORT).cfg), cvDFT_local)
 
 cvDFT_remote:
 	make -C gsoc/apps/cvDFT -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/remote_ti_platforms_$(PLATFORM_SHORT) APP_NAME=cvDFT
 
-cvDFT_local:
-	make -C gsoc/apps/cvDFT -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/local_ti_platforms_$(PLATFORM_SHORT) APP_NAME=cvDFT
+
+#cvDFT_local:
+
+#	make -C gsoc/apps/cvDFT -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/local_ti_platforms_$(PLATFORM_SHORT) APP_NAME=cvDFT
 
 install: install_cvDFT 
 
 install_cvDFT: $(if $(wildcard gsoc/apps/cvDFT/linux/local_ti_platforms_$(PLATFORM_SHORT)_cvDFT.x$(APP_EXT)), install_cvDFT_local) $(if $(wildcard gsoc/apps/cvDFT/linux/remote_ti_platforms_$(PLATFORM_SHORT)_cvDFT.x$(APP_EXT)), install_cvDFT_remote)
 
-install_cvDFT_local:
-	@install -d $(EXEC_DIR)
-	@install -m 777 gsoc/apps/cvDFT/linux/local_ti_platforms_$(PLATFORM_SHORT)_fir.x$(APP_EXT) $(EXEC_DIR)
+#install_cvDFT_local:
+#	@install -d $(EXEC_DIR)
+#	@install -m 777 gsoc/apps/cvDFT/linux/local_ti_platforms_$(PLATFORM_SHORT)_fir.x$(APP_EXT) $(EXEC_DIR)
 
 install_cvDFT_remote:
 	@install -d $(EXEC_DIR)
