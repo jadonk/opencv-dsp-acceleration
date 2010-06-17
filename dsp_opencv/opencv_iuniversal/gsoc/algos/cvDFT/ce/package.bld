@@ -1,6 +1,0 @@
-/*
- *  ======== package.bld ========
- */
-
-
-Pkg.attrs.exportAll = true;
