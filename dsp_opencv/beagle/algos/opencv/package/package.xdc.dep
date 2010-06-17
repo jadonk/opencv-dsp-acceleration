@@ -1,0 +1,62 @@
+clean::
+	$(RM) package/beagle.algos.opencv.sch
+	$(RM) package/.vers_g160
+	$(RM) package/.vers_r170
+	$(RM) package/.vers_b150
+	$(RM) package/.vers_c150
+	$(RM) package/.xdc-u14
+	$(RM) package/beagle_algos_opencv.java
+	$(RM) package/beagle_algos_opencv.class
+	$(RM) package/package_beagle.algos.opencv.c
+	$(RM) package/package.defs.h
+	$(RM) package/package.doc.xml
+	$(RM) package/beagle.algos.opencv.ccs
+
+.interfaces: package/beagle.algos.opencv.sch package/.vers_g160 package/.vers_r170 package/.vers_b150 package/.vers_c150 package/.xdc-u14 package/beagle_algos_opencv.java package/beagle_algos_opencv.class package/package_beagle.algos.opencv.c package/package.defs.h package/package.doc.xml package/beagle.algos.opencv.ccs 
+package/package.xdc.inc: package/.vers_g160
+package/.vers_g160:
+package/package.xdc.inc: package/.vers_r170
+package/.vers_r170:
+package/package.xdc.inc: package/.vers_b150
+package/.vers_b150:
+package/package.xdc.inc: package/.vers_c150
+package/.vers_c150:
+
+.interfaces: OPENCV.xdc 
+
+# schema include file dependencies
+package.xs:
+package/package.xdc.inc: package.xs
+
+# schema update dependencies
+package/package.xdc.inc: OPENCV.xdc
+package/package.xdc.inc: xdc/IPackage.xdc
+xdc/IPackage.xdc:
+vpath xdc/IPackage.xdc $(XPKGVPATH)
+
+ifneq (clean,$(MAKECMDGOALS))
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/intern/xsr/java/package.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/intern/xsr/java/package.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/js.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/js.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/spec/java/package.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/spec/java/package.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/jsr173_api.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/jsr173_api.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/antlr.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/antlr.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/intern/cmd/java/package.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/intern/cmd/java/package.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/tar.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/tar.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/ecj.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/ecj.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/xbean.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/shelf/java/xbean.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/global/java/package.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/global/java/package.jar
+/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/intern/gen/java/package.jar:
+package/package.xdc.inc: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/intern/gen/java/package.jar
+endif
+# goals for files generated during schema generation but unspecified by schema's pattern rule
+

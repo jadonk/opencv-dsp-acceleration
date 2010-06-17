@@ -1,0 +1,215 @@
+/*
+ * Do not modify this file; it is automatically generated from the template
+ * linkcmd.xdt in the ti.targets package and will be overwritten.
+ */
+
+/*
+ * put '"'s around paths because, without this, the linker
+ * considers '-' as minus operator, not a file name character.
+ */
+
+
+
+-l"/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.a64P"
+-l"/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/bioslog/lib/release/bioslog.a64P"
+-l"/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.a64P"
+-l"/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_BIOS.a64P"
+-l"/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/bios/lib/release/ipc_bios.a64P"
+-l"/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/bios/lib/osal_bios.a64P"
+-l"/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/bios/lib/osal_bios_pwrm.a64P"
+-l"/media/disk/OE/work/ti/ti-biosutils-tree/packages/ti/bios/utils/lib/utils.a64P"
+-l"/media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/dsp/export/BIN/DspBios/OMAP3530/OMAP3530_0/RELEASE/dsplink.lib"
+-l"/media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/dsp/export/BIN/DspBios/OMAP3530/OMAP3530_0/RELEASE/dsplinkmsg.lib"
+-l"/media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/dsp/export/BIN/DspBios/OMAP3530/OMAP3530_0/RELEASE/dsplinkdata.lib"
+-l"/media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/dsp/export/BIN/DspBios/OMAP3530/OMAP3530_0/RELEASE/dsplinknotify.lib"
+-l"/media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/dsp/export/BIN/DspBios/OMAP3530/OMAP3530_0/RELEASE/dsplinkmpcs.lib"
+-l"/media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/dsp/export/BIN/DspBios/OMAP3530/OMAP3530_0/RELEASE/dsplinkmplist.lib"
+-l"/media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/dsp/export/BIN/DspBios/OMAP3530/OMAP3530_0/RELEASE/dsplinkpool.lib"
+-l"/media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/dsp/export/BIN/DspBios/OMAP3530/OMAP3530_0/RELEASE/dsplinkringio.lib"
+-l"/media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/fc/acpy3/lib/release/acpy3.a64P"
+-l"/media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/fc/memutils/lib/release/memutils.a64P"
+-l"/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.a64P"
+-l"/media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/node/lib/release/node.a64P"
+-l"/media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/fc/dman3/lib/release/dman3Cfg.a64P"
+-l"/media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/fc/dskt2/lib/release/dskt2.a64P"
+-l"/media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.a64P"
+-l"/media/disk/OE/work/ti/dsp_opencv/beagle/algos/opencv/lib/opencv_beagle.l64P"
+-l"/media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/rts6000/lib/ti.targets.rts6000.a64P"
+
+
+/* function aliases */
+/* ignore error about def and ref in the same file */
+--diag_remark=10268
+
+
+/* Elf symbols */
+--symbol_map ___TI_STACK_BASE=__stack
+--symbol_map ___TI_STACK_SIZE=__STACK_SIZE
+--symbol_map ___TI_STATIC_BASE=___bss__
+--symbol_map __c_int00=_c_int00
+
+
+
+
+/*
+ * Linker command file contributions from all loaded packages:
+ */
+
+/* Content from xdc.services.global (null): */
+
+/* Content from xdc (null): */
+
+/* Content from xdc.corevers (null): */
+
+/* Content from xdc.shelf (null): */
+
+/* Content from xdc.services.spec (null): */
+
+/* Content from xdc.services.intern.xsr (null): */
+
+/* Content from xdc.services.intern.gen (null): */
+
+/* Content from xdc.services.intern.cmd (null): */
+
+/* Content from xdc.rov (null): */
+
+/* Content from xdc.runtime (null): */
+
+/* Content from ti.targets.rts6000 (null): */
+
+/* Content from beagle.algos.opencv (beagle/algos/opencv/link.xdt): */
+SECTIONS
+{
+    .text:generatetwiddle  > DDR2
+    .text:sobel  > DDR2
+    .text:algNumAlloc  > DDR2
+    .text:algMoved  > DDR2
+    .text:algInit  > DDR2
+    .text:algAlloc  > DDR2
+    .text:algFree  > DDR2
+    .text:algDeactivate  > DDR2
+    .text:algActivate  > DDR2
+    .text:algProcess  > DDR2
+    .text:init  > DDR2
+    .text:exit  > DDR2
+    .text:finddft  > DDR2
+}
+
+/* Content from ti.sdo.fc.global (null): */
+
+/* Content from ti.sdo.utils.trace (null): */
+
+/* Content from xdc.bld (null): */
+
+/* Content from ti.xdais (null): */
+
+/* Content from ti.rtdx (ti/rtdx/rtdx.xdt): */
+
+/* define the library search paths */
+-i"/media/disk/OE/work/ti/ti-dspbios-tree/packages/ti/rtdx/lib/c6000"
+
+/* Content from ti.psl (ti/psl/psl.xdt): */
+
+/* define the library search paths */
+-i"/media/disk/OE/work/ti/ti-dspbios-tree/packages/ti/psl/lib/"
+
+/* Content from ti.pmi (ti/pmi/pmi.xdt): */
+
+/* define the library search paths */
+-i"/media/disk/OE/work/ti/ti-dspbios-tree/packages/ti/pmi/lib/"
+
+/* Content from ti.pscl (ti/pscl/pscl.xdt): */
+
+/* define the library search paths */
+-i"/media/disk/OE/work/ti/ti-dspbios-tree/packages/ti/pscl/lib/"
+
+/* Content from ti.bios (ti/bios/bios.xdt): */
+/* define the library search paths */
+-i"/media/disk/OE/work/ti/ti-dspbios-tree/packages/ti/bios/lib"
+-i"/media/disk/OE/work/ti/ti-cgt6x-tree/lib"
+
+/* include the bios generated linker command file */
+"package/cfg/opencv_unitserver_evm3530_x64Pcfg.cmd"
+
+/* Content from ti.sdo.fc.dskt2 (ti/sdo/fc/dskt2/DSKT2.link.xdt): */
+
+
+
+__DSKT_DARAM0 = _L1DHEAP;
+__DSKT_DARAM1 = _L1DHEAP;
+__DSKT_DARAM2 = _L1DHEAP;
+__DSKT_SARAM0 = _L1DHEAP;
+__DSKT_SARAM1 = _L1DHEAP;
+__DSKT_SARAM2 = _L1DHEAP;
+__DSKT_ESDATA = _DDRALGHEAP;
+__DSKT_IPROG  = _L1DHEAP;
+__DSKT_EPROG  = _DDRALGHEAP;
+__DSKT2_HEAP  = _DDR2;
+
+/* Content from ti.sdo.fc.dman3 (null): */
+
+/* Content from ti.sdo.ce.global (null): */
+
+/* Content from ti.xdais.dm (null): */
+
+/* Content from ti.sdo.ce.node (null): */
+
+/* Content from ti.sdo.ce.ipc.dsplink.dsp (null): */
+
+/* Content from ti.sdo.ce.utils.xdm (null): */
+
+/* Content from ti.sdo.fc.memutils (null): */
+
+/* Content from ti.sdo.fc.acpy3 (null): */
+
+/* Content from dsplink.dsp (null): */
+
+/* Content from ti.bios.utils (null): */
+
+/* Content from ti.catalog.c6000 (null): */
+
+/* Content from ti.catalog (null): */
+
+/* Content from xdc.platform (null): */
+
+/* Content from xdc.cfg (null): */
+
+/* Content from ti.catalog.arm (null): */
+
+/* Content from ti.platforms.evm3530 (null): */
+
+/* Content from ti.sdo.ce.osal (null): */
+
+/* Content from ti.sdo.ce.osal.bios (ti/sdo/ce/osal/bios/link.xdt): */
+/*
+ *  ======== Module-wide Config ========
+ *  Do not modify this file; it is automatically generated from the template
+ *  link.xdt in the ti.sdo.ce.osal.bios package and will be overwritten next
+ *  time the executable is configured
+ */
+/* default memory segment for Memory_alloc */
+_Memory_SEGID = DDR2;
+
+
+_DDR = _DDR2;
+
+/* Content from ti.sdo.ce.ipc (null): */
+
+/* Content from ti.sdo.ce.ipc.bios (ti/sdo/ce/ipc/bios/link.xdt): */
+
+
+/* Content from ti.sdo.ce.alg (null): */
+
+/* Content from ti.sdo.ce (null): */
+
+/* Content from ti.sdo.ce.bioslog (null): */
+
+/* Content from ti.sdo.ce.universal (null): */
+
+/* Content from beagle.algos.opencv.ce (null): */
+
+/* Content from beagle.server.opencv_unitserver_evm3530 (null): */
+SECTIONS {
+    xdc.meta:  type = COPY
+}
+

@@ -1,0 +1,24 @@
+/*
+ *  ======== package.bld ========
+ */
+
+
+Pkg.attrs.exportAll = true;
+
+
+var SRCS = [
+        "opencv_beagle.c",
+        "opencv_beagle_ialg.c",
+        "opencv_beagle_vt.c",
+        "opencv_beagle_xdm.c",
+        "opencv_beagle_Twiddle.c",
+        "opencv_beagle_findDFT.c",
+        "opencv_beagle_gen_twiddle_fft16x16.c",
+	"opencv_beagle_sobel.c",
+];
+
+for (var i = 0; i < Build.targets.length; i++) {
+    var targ = Build.targets[i];
+    Pkg.addLibrary("lib/opencv_beagle",targ, {
+        suffix: ".l" + targ.suffix}).addObjects(SRCS);
+}

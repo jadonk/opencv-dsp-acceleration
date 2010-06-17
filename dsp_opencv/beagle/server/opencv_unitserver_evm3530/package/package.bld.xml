@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="beagle.server.opencv_unitserver_evm3530" version="1, 0, 0" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/cfg/opencv_unitserver_evm3530_x64P.c"/>
+        <srcFile name="main.c"/>
+        <srcFile name="package/cfg/opencv_unitserver_evm3530_x64Pcfg_c.c"/>
+        <srcFile name="package/cfg/opencv_unitserver_evm3530_x64Pcfg.s62"/>
+    </sources>
+    <configurations>
+        <srcFile name="server.tcf"/>
+    </configurations>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/cfg/opencv_unitserver_evm3530_x64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/opencv_unitserver_evm3530/main.o64P.dep" src="main.c"/>
+        <srcFile name="package/cfg/opencv_unitserver_evm3530_x64Pcfg.o64P.dep" src="package/cfg/opencv_unitserver_evm3530_x64Pcfg.s62"/>
+        <srcFile name="package/cfg/opencv_unitserver_evm3530_x64P.o64P.dep" src="package/cfg/opencv_unitserver_evm3530_x64P.c"/>
+        <srcFile name="package/cfg/opencv_unitserver_evm3530_x64Pcfg_c.o64P.dep" src="package/cfg/opencv_unitserver_evm3530_x64Pcfg_c.c"/>
+        <srcFile name="package/cfg/opencv_unitserver_evm3530_x64P.dep" src="package/cfg/opencv_unitserver_evm3530_x64P.cfg"/>
+        <srcFile name="package/rel/beagle_server_opencv_unitserver_evm3530.tar.dep" src="package/rel/beagle_server_opencv_unitserver_evm3530.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,6.1,9"
+            platform="ti.platforms.evm3530"
+            isa="64P"
+            suffix="64P"
+            rootDir="/media/disk/OE/work/ti/ti-cgt6x-tree"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    </libraries>
+    <executables>
+    <executable name="opencv_unitserver_evm3530"
+        pname="opencv_unitserver_evm3530.x64P"
+        target="ti.targets.C64P"
+        platform="ti.platforms.evm3530"
+        profile="release"
+        xCfgScript="package/cfg/opencv_unitserver_evm3530_x64P.cfg"
+        xCfgPrefix="package/cfg/opencv_unitserver_evm3530_x64P"
+        cfgScript="server.tcf"
+        />
+    </executables>
+    <tests>
+    <test exeName="opencv_unitserver_evm3530.x64P"
+        args=""
+        groupName="opencv_unitserver_evm3530.x64P"
+        refOutput="undefined"
+        refExitCode="0"
+        execArgs=""
+        />
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="beagle_server_opencv_unitserver_evm3530"
+        pname="beagle_server_opencv_unitserver_evm3530.tar"
+        label="default"
+    >
+        <file name="package/build.cfg"/>
+        <file name="package/info"/>
+        <file name="opencv_unitserver_evm3530.x64P"/>
+        <file name="package/package.ext.xml"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package/package.bld.xml"/>
+        <file name="package/package.rel.dot"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

@@ -1,0 +1,62 @@
+/*
+ *  ======== config.bld ========
+ * User note: YOU MUST MODIFY THIS FILE TO SPECIFY THE COMPILER TOOL PATH.
+ *
+ * Edit this file to specify compiler toolchain paths and platform.
+ */
+
+var codegen = "" + java.lang.System.getenv("CODEGEN_INSTALL_DIR");
+var dsptarget = "" + java.lang.System.getenv("XDC_DSP_TARGET");
+var xdcplat = "" + java.lang.System.getenv("XDC_PLATFORM");
+
+var C6X = xdc.useModule( dsptarget );
+C6X.rootDir = codegen;
+C6X.platform = xdcplat;
+
+
+var C64P = xdc.useModule('ti.targets.C64P');
+
+/* location of your C6000 codegen tools */
+C64P.rootDir="/media/disk/OE/work/ti/ti-cgt6x-tree";
+
+/* replace with your platform (same as the one you picked in the server */
+/*    package wizard */
+C64P.platform = "ti.platforms.evm3530"; 
+
+
+
+/* Search CROSS_COMPILE for bin/ If only 1 bin/ is found, set the tooldir to 
+   the path prior to bin/ and the prefix to "bin/" + remainder of path, 
+   else leave the tooldir as "" and set the LONGNAME to the full CROSS_COMPILE
+   path 
+*/
+
+var crosscompile = "" + java.lang.System.getenv("CROSS_COMPILE");
+
+var regex = new RegExp("bin/");
+var find = crosscompile.split( regex );
+
+if (find[0]!=crosscompile && find.length==2) {
+    tooldir = find[0];
+    longName = "bin/" + find[1] + "gcc";
+} else {
+    longName = crosscompile + "gcc";
+}
+
+/* location of the GCC Arm9 tools */
+var GCArmv5T = xdc.useModule('gnu.targets.arm.GCArmv5T');
+GCArmv5T.LONGNAME = longName;
+GCArmv5T.platform = java.lang.System.getenv("XDC_PLATFORM");
+GCArmv5T.rootDir = tooldir;
+
+
+
+/*
+ *  ======== Build.targets ========
+ * list of targets (ISAs + compilers) to build for
+ */
+Build.targets = [
+    C64P,
+];
+
+

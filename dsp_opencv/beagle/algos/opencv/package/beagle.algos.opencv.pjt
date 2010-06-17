@@ -1,0 +1,17 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+[Project Settings]
+ProjectName="beagle.algos.opencv"
+ProjectType=External
+CPUFamily=TMS320C64XX
+Tool="CustomBuilder"
+Config="Package"
+[Source Files]
+Source="../opencv_beagle_ialg.c"
+Source="../opencv_beagle_xdm.c"
+Source="../opencv_beagle.c"
+Source="../opencv_beagle_sobel.c"
+Source="../opencv_beagle_findDFT.c"
+Source="../opencv_beagle_Twiddle.c"
+Source="../opencv_beagle_vt.c"
+Source="../opencv_beagle_gen_twiddle_fft16x16.c"
+Source="../package/package_beagle.algos.opencv.c"
