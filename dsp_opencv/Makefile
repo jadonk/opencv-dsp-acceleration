@@ -1,5 +1,5 @@
 # Includes your Rules.make from the DVSDK directory
-include ../Rules.make
+include Rules.make
 
 # Location of TI Code Generation Tools if not provided in Rules.make
 ifndef CODEGEN_INSTALL_DIR
