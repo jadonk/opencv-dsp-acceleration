@@ -1,7 +1,0 @@
-package/lib/lib/opencv_beagle/opencv_beagle.o64P: opencv_beagle.c /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/std.h /media/disk/OE/work/ti/ti-cgt6x-tree/include/stdarg.h /media/disk/OE/work/ti/ti-cgt6x-tree/include/stddef.h /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/std.h /media/disk/OE/work/ti/ti-cgt6x-tree/include/stdint.h 
-opencv_beagle.c:
-/media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/std.h:
-/media/disk/OE/work/ti/ti-cgt6x-tree/include/stdarg.h:
-/media/disk/OE/work/ti/ti-cgt6x-tree/include/stddef.h:
-/media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/std.h:
-/media/disk/OE/work/ti/ti-cgt6x-tree/include/stdint.h:
