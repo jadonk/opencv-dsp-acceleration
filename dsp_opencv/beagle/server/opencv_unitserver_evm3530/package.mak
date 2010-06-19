@@ -53,8 +53,6 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/_gen.xs
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/Mingw.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/MSP430.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/MSP430.xs
-/media/disk/OE/work/ti/dsp_opencv/config.bld:
-package.mak: /media/disk/OE/work/ti/dsp_opencv/config.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Utils.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Utils.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/global/Clock.xs:
@@ -67,6 +65,8 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/ITarge
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/package.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/package.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/package.xs
+/media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/config.bld:
+package.mak: /media/disk/OE/dspacceleration/opencv-dsp-acceleration/dsp_opencv/config.bld
 package.mak: package.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xdc.tci:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xdc.tci
