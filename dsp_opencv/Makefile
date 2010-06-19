@@ -14,8 +14,8 @@ ifeq ($(PLATFORM),omap3530)
     XDC_PLATFORM = ti.platforms.evm3530
     XDC_TARGETS = "gnu.targets.arm.GCArmv5T ti.targets.C64P"
 #     XDC_TARGETS = "ti.targets.C64P"
-    CROSS_COMPILE = /media/disk/OE/build/tmp-angstrom_2008_1/cross/armv7a/bin/arm-angstrom-linux-gnueabi-
-
+#    CROSS_COMPILE = /media/disk/OE/build/tmp-angstrom_2008_1/cross/armv7a/bin/arm-angstrom-linux-gnueabi-
+    CROSS_COMPILE = /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/bin/arm-angstrom-linux-gnueabi-
 endif
 
 # Location of IUNIVERSAL Examples
@@ -82,9 +82,9 @@ endif
 help:
 	@echo 
 	@echo "You must specify a build target. Available targets are: "
-	@echo "    all, codec, server, app, install, clean"
+	@echo "    all, codec, server, app_lib, app, install, clean"
 
-all: codec server app
+all: codec server app_lib app
 
 codec:
 	@echo "$(XDCPATH)"
@@ -92,6 +92,9 @@ codec:
 
 server:
 	$(XDC) XDCBUILDCFG=$(PACKAGE_DIR)/config.bld -P $(SERVER_PATH)
+
+app_lib:
+	make -C beagle/apps/opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/remote_ti_platforms_$(PLATFORM_SHORT) APP_NAME=opencv opencv_lib
 
 app: opencv
 
