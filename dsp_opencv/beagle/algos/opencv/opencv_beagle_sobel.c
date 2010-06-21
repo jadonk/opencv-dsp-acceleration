@@ -36,13 +36,13 @@
 Void OPENCV_BEAGLE_sobel(IUNIVERSAL_Handle handle, IOPENCV_Operation operation, XDAS_Int8 *in, XDAS_Int8 *out)
 {
      OPENCV_BEAGLE_Obj *sobel = (Void *)handle;
-     XDAS_Int16 cols = sobel->width;
-     XDAS_Int16 rows = sobel->height;
+     XDAS_Int32 cols = sobel->s_cols;
+     XDAS_Int32 rows = sobel->s_rows;
      XDAS_Int16 *input = (XDAS_Int16 *)in;
      XDAS_Int16 *output = (XDAS_Int16 *)out;
      switch (operation) {
 	    case OPENCV_OPERATION_SOBEL3x3 :
-		 IMG_sobel_3x3_8( in, out, cols, rows);
+		 IMG_sobel_3x3_8(in, out, cols, rows);
 		 break;
 
 	    case OPENCV_OPERATION_SOBEL5x5 :

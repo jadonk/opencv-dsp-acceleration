@@ -12,8 +12,6 @@
 
 extern Void OPENCV_BEAGLE_activate(IALG_Handle handle);
 extern Int OPENCV_BEAGLE_alloc(const IALG_Params *, IALG_Fxns **, IALG_MemRec *);
-//extern Int OPENCV_BEAGLE_xdmControl(IUNIVERSAL_Handle, IUNIVERSAL_Cmd, IUNIVERSAL_DynamicParams *, IUNIVERSAL_Status *);
-//extern Int OPENCV_BEAGLE_control(IUNIVERSAL_Handle, IUNIVERSAL_Cmd, IUNIVERSAL_Status *);
 extern Void OPENCV_BEAGLE_deactivate(IALG_Handle handle);
 extern Int  OPENCV_BEAGLE_free(IALG_Handle, IALG_MemRec *);
 extern Int OPENCV_BEAGLE_initObj(IALG_Handle, const IALG_MemRec *, IALG_Handle, const IALG_Params *);
@@ -25,7 +23,7 @@ extern Int  OPENCV_BEAGLE_numAlloc(Void);
     &OPENCV_BEAGLE_IALG,       /* module ID */                          \
     OPENCV_BEAGLE_activate,    /* activate */                           \
     OPENCV_BEAGLE_alloc,       /* algAlloc */                           \
-    NULL,               /* control (NULL => no control ops) */   \
+    NULL,                      /* control (NULL => no control ops) */   \
     OPENCV_BEAGLE_deactivate,  /* deactivate */                         \
     OPENCV_BEAGLE_free,        /* free */                               \
     OPENCV_BEAGLE_initObj,     /* init */                               \
@@ -41,7 +39,7 @@ extern Int  OPENCV_BEAGLE_numAlloc(Void);
 IUNIVERSAL_Fxns OPENCV_BEAGLE_IOPENCV = { /* module_vendor_interface */
     {IALGFXNS},                 /* IALG functions */
     (XDAS_Int32(*)(IUNIVERSAL_Handle, XDM1_BufDesc *, XDM1_BufDesc *, XDM1_BufDesc *, IUNIVERSAL_InArgs *, IUNIVERSAL_OutArgs *))OPENCV_BEAGLE_process,             /* Process function */
-//    (XDAS_Int32(*)(IUNIVERSAL_Handle, IUNIVERSAL_Cmd, IUNIVERSAL_DynamicParams *, IUNIVERSAL_Status *))OPENCV_BEAGLE_xdmControl,             /* Control function */
+
 };
 
 /*

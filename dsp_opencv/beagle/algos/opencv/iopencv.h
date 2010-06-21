@@ -27,17 +27,21 @@ typedef enum IOPENCV_OperationTypes {
 /* Extend IUNIVERSAL_Params to include filterLen and frameLen */
 typedef struct IOPENCV_Params {
     XDAS_Int32 size;
-    XDAS_Int32 dftSize;
-    XDAS_Int32 frameLen;
-    XDAS_Int32 type;
-    XDAS_Int32 nchannel;
-    XDAS_Int32 depth;
-    XDAS_Int32 step;
-    XDAS_Int16 width;    /* width of image */
-    XDAS_Int16 height;   /* height of image */
-    XDAS_Int16 *data;
-    XDAS_Int16 *output;
-    
+
+    XDAS_Int32 s_type;
+    XDAS_Int32 s_step;
+    XDAS_Int8 *s_ptr;
+    XDAS_Int32 s_rows;
+    XDAS_Int32 s_cols;
+    XDAS_Int32 s_channels;
+	
+    XDAS_Int32 d_type;
+    XDAS_Int32 d_step;
+    XDAS_Int8 *d_ptr;
+    XDAS_Int32 d_rows;
+    XDAS_Int32 d_cols;
+    XDAS_Int32 d_channels;
+            
 } IOPENCV_Params;
 
 

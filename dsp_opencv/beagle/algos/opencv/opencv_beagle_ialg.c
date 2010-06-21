@@ -30,16 +30,19 @@
 /* Added default PARAMS within the codec */
 static IOPENCV_Params IOPENCV_PARAMS = {
     sizeof(IOPENCV_Params), /* size */
-    512,                 /* dftSize */
-    512,                 /* frameLen */
-    0,		         /* CV_<bit_depth>(S|U|F)C<number_of_channels> */// This is just a bogus. Need to define it dspserver as I cannot use types_c.h
-    1,			 /* nchannel */
-    0,                   /* image pixel type */  // This is also a bogus. Need to define only for dspserver as I cannot use types_c.h
-    512,		 /* step-width from row to row */
-    512,		 /* image width */
-    512,		 /* image height */
-    NULL,                /* Data Pointer */
-    NULL,                /* Output Pointer */
+    1,                   /* s_type */
+    640,                 /* s_step */
+    NULL,	         /* s_ptr */
+    640,		 /* s_cols */
+    480,		 /* s_rows */
+    1,                   /* s_channels */
+
+    1,                   /* d_type */
+    640,                 /* d_step */
+    NULL,	         /* d_ptr */
+    640,		 /* d_cols */
+    480,		 /* d_rows */
+    1,                   /* d_channels */
 };
 
 /*
@@ -77,7 +80,7 @@ Int OPENCV_BEAGLE_alloc(const IALG_Params *opencvParams, IALG_Fxns **fxns, IALG_
 
     /* Request memory for shared working buffer */
 
-    memTab[WORKBUF].size        = params->frameLen;
+    memTab[WORKBUF].size        = ( (params->s_cols * params->s_rows) > (params->d_cols * params->d_rows) ) ? (params->s_cols * params->s_rows) : 													    (params->d_cols * params->d_rows) ;
     memTab[WORKBUF].alignment   = 8;
     memTab[WORKBUF].space       = IALG_DARAM0;
     memTab[WORKBUF].attrs       = IALG_SCRATCH;
@@ -111,7 +114,7 @@ Int OPENCV_BEAGLE_free(IALG_Handle handle, IALG_MemRec memTab[])
       
     memTab[OBJECT].base         = opencv;
     
-    memTab[WORKBUF].size        = opencv->frameLen;
+    memTab[WORKBUF].size        = ( (opencv->s_cols * opencv->s_rows) > (opencv->d_cols * opencv->d_rows) ) ? (opencv->s_cols * opencv->s_rows) : 													     	      (opencv->d_cols * opencv->d_rows) ;
     memTab[WORKBUF].base        = opencv->workBuf;
     
     return (NUMBUFS);
@@ -131,15 +134,20 @@ Int OPENCV_BEAGLE_initObj(IALG_Handle handle, const IALG_MemRec memTab[], IALG_H
     }
 
     opencv->workBuf = memTab[WORKBUF].base;
-    opencv->dftSize = params->dftSize;
-    opencv->frameLen = params->frameLen;
-    opencv->type = params->type;
-    opencv->nchannel = params->nchannel;
-    opencv->depth = params->depth;
-    opencv->step = params->step;
-    opencv->width = params->width;
-    opencv->height = params->height;
-/* Note: As no address translation takes place for the params, we don't need to assign data and output pointer */
+
+    opencv->s_type	= params->s_type;
+    opencv->s_step 	= params->s_step;
+    opencv->s_rows    	= params->s_rows;
+    opencv->s_cols   	= params->s_cols;
+    opencv->s_channels	= params->s_channels;
+
+    opencv->d_type	= params->d_type;
+    opencv->d_step 	= params->d_step;
+    opencv->d_rows    	= params->d_rows;
+    opencv->d_cols   	= params->d_cols;
+    opencv->d_channels	= params->d_channels;
+
+/* Note: As no address translation takes place for the params, we don't need to assign source and destination data pointer */
 
 
     return (IALG_EOK);

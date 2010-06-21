@@ -42,23 +42,21 @@ Int OPENCV_BEAGLE_process(IUNIVERSAL_Handle handle,
 		break;
  
 	   case OPENCV_OPERATION_DFT :
-		OPENCV_BEAGLE_findDFT( handle, inArgs->dftSize, inBufs->descs[1].buf, inBufs->descs[2].buf, outBufs->descs[0].buf);
+		OPENCV_BEAGLE_findDFT( handle, inArgs->dftSize, inputBuf, twiddleBuf, outBufs->descs[0].buf);
 	        break; 
+
 	   case OPENCV_OPERATION_SOBEL3x3 :
 
 	   case OPENCV_OPERATION_SOBEL5x5 :
 
  	   case OPENCV_OPERATION_SOBEL7x7 :
-		OPENCV_BEAGLE_sobel( handle, *(operation), inBufs->descs[1].buf,outBufs->descs[0].buf);
+		OPENCV_BEAGLE_sobel( handle, *(operation), inputBuf, outBufs->descs[0].buf);
   		break;
  
 	   default:
 		return (IUNIVERSAL_EFAIL);
     }
 
-
-//    /* Filter the data using the xDAIS OPENCV_BEAGLE_filter function */
-//    OPENCV_BEAGLE_filter(handle,(Short *) inBufs->descs[0].buf, (Short *) outBufs->descs[0].buf);
 
     /* report how we accessed the input buffer */
     inBufs->descs[0].accessMask = 0;

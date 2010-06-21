@@ -29,15 +29,18 @@ extern "C" {
 typedef struct OPENCV_BEAGLE_Obj {
     IALG_Obj           alg;            /* MUST be first field of all OPENCV objs */
     XDAS_Int16        *workBuf;       /* on-chip scratch history */
-//    Short             *history;       /* off chip presistant history */
-    XDAS_Int32         dftSize;
-    XDAS_Int32         frameLen;
-    XDAS_Int32         type;
-    XDAS_Int32         nchannel;
-    XDAS_Int32         depth;
-    XDAS_Int32         step; 
-    XDAS_Int16         width;    /* width of image */
-    XDAS_Int16         height;   /* height of image */
+    
+    XDAS_Int32 s_type;
+    XDAS_Int32 s_step;
+    XDAS_Int32 s_rows;
+    XDAS_Int32 s_cols;
+    XDAS_Int32 s_channels;
+	
+    XDAS_Int32 d_type;
+    XDAS_Int32 d_step;
+    XDAS_Int32 d_rows;
+    XDAS_Int32 d_cols;
+    XDAS_Int32 d_channels;
 
 } OPENCV_BEAGLE_Obj;
 
