@@ -22,7 +22,7 @@ endif
 PACKAGE_DIR = $(shell pwd)
 
 
-XDCPATH = ^;$(CURDIR)/packages;$(PACKAGE_DIR);$(CE_INSTALL_DIR)/packages;$(BIOS_INSTALL_DIR)/packages;$(CODEC_INSTALL_DIR);$(FC_INSTALL_DIR)/packages;$(LINK_INSTALL_DIR);$(XDAIS_INSTALL_DIR)/packages;$(CMEM_INSTALL_DIR)/packages;$(BIOSUTILS_INSTALL_DIR)/packages;$(LPM_INSTALL_DIR)/packages;$(DSPLIB_PATH);$(IMGLIB_PATH)
+XDCPATH = ^;$(CURDIR);$(PACKAGE_DIR);$(CE_INSTALL_DIR)/packages;$(BIOS_INSTALL_DIR)/packages;$(CODEC_INSTALL_DIR);$(FC_INSTALL_DIR)/packages;$(LINK_INSTALL_DIR);$(XDAIS_INSTALL_DIR)/packages;$(CMEM_INSTALL_DIR)/packages;$(BIOSUTILS_INSTALL_DIR)/packages;$(LPM_INSTALL_DIR)/packages;$(DSPLIB_PATH);$(IMGLIB_PATH)
 
 # Set the number of concurrent build threads (i.e. jobs)
 JOBS = 1
@@ -77,45 +77,83 @@ ifeq ($(SERVER_PATH),"")
 $(error No servers found with $(SERVER_EXTENSION) extension)
 endif
 
-.PHONY: clean clean_apps codecs servers apps opencv install all
+# Vars needed to build ARM Linux library
+HEADERS = $(wildcard beagle/library/opencv/*.h)
+SOURCES = $(wildcard beagle/library/opencv/*.c)
+OBJFILES = $(SOURCES:%.c=%.ov5T)
+TARGET = beagle/library/opencv/lib/libopencv.a
+GNU_C_FLAGS = $(C_FLAGS) -Wall -Dxdc_target_name__=MVArm9 -I$(XDC_INSTALL_DIR)/packages -I$(CE_INSTALL_DIR)/packages -I$(XDAIS_INSTALL_DIR)/packages -I$(BIOS_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(LINK_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(BIOSUTILS_INSTALL_DIR)/packages -I$(LPM_INSTAL_DIR)/packages -I$(LINUXKERNEL_INSTALL_DIR)/include -I$(BIOS_INSTALL_DIR)/packages/ti/bios/include -I$(DMAI_INSTALL_DIR)/packages -I$(CURDIR) -Dxdc_target_types__=gnu/targets/std.h -D_$(PLATFORM)
+GNU_AR_FLAGS = $(AR_FLAGS)
+COMPILE = $(PRE) $(CROSS_COMPILE)gcc $(GNU_C_FLAGS) $(GNU_CPP_FLAGS) -c
+AR = $(PRE) $(CROSS_COMPILE)ar rc $(GNU_AR_FLAGS)
+
+.PHONY: clean clean_app clean_lib codec server library app install all
 
 help:
 	@echo 
 	@echo "You must specify a build target. Available targets are: "
-	@echo "    all, codec, server, app_lib, app, install, clean"
+	@echo "    all, codec, server, library, app, install, clean"
 
-all: codec server app_lib app
+all: codec server library app
 
 codec:
 	@echo "$(XDCPATH)"
 	$(XDC) XDCBUILDCFG=$(PACKAGE_DIR)/config.bld -PR beagle/algos/opencv
 
 server:
+	@echo "$(SERVER_PATH)"
 	$(XDC) XDCBUILDCFG=$(PACKAGE_DIR)/config.bld -P $(SERVER_PATH)
 
-app_lib:
-	make -C beagle/apps/opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/remote_ti_platforms_$(PLATFORM_SHORT) APP_NAME=opencv opencv_lib
+$(OBJFILES):	%.ov5T: %.c $(HEADERS)
+	@echo $(shell pwd)
+	@echo Compiling $@ from $<
+	@mkdir -p $(dir $@)
+	$(COMPILE) $(CPP_FLAGS) -o $@ $<
+
+$(TARGET):	$(OBJFILES)
+	@echo
+	@echo Archiving $@ from $^..
+	@mkdir -p $(dir $@)
+	$(AR) $@ $^
+
+package/package.defs.h:beagle/library/opencv/package.xdc beagle/library/opencv/package.xs beagle/library/opencv/package.bld
+	@echo
+	@echo Building package interface for $(TARGET)
+	$(XDC) XDCBUILDCFG=$(PACKAGE_DIR)/config.bld -PR beagle/library
+
+library:	$(TARGET) package/package.defs.h
 
 app: opencv
 
 opencv: $(if $(wildcard beagle/apps/opencv/linux/remote_ti_platforms_$(PLATFORM_SHORT).cfg), opencv_remote)
 
 opencv_remote:
-	make -C beagle/apps/opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/remote_ti_platforms_$(PLATFORM_SHORT) APP_NAME=opencv
+	make -C beagle/apps/opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/remote_ti_platforms_$(PLATFORM_SHORT) APP_NAME=opencv PLATFORM=$(PLATFORM) PACKAGE_DIR=$(PACKAGE_DIR) SERVER_PATH=$(SERVER_PATH)
 
 install: install_opencv 
 
 install_opencv: $(if $(wildcard beagle/apps/opencv/linux/remote_ti_platforms_$(PLATFORM_SHORT)_opencv.x$(APP_EXT)), install_opencv_remote)
 
 install_opencv_remote:
+	@echo "Installing at $(EXEC_DIR)"
 	@install -d $(EXEC_DIR)
 	@install -m 777 beagle/apps/opencv/linux/remote_ti_platforms_$(PLATFORM_SHORT)_opencv.x$(APP_EXT) $(EXEC_DIR)
 	@install -m 777 $(wildcard $(SERVER_PATH_SHORT)/../opencv_unitserver_$(PLATFORM_SHORT_LC)/opencv_unitserver_$(PLATFORM_SHORT_LC).x*) $(EXEC_DIR)
+	@install -d $(EXEC_DIR)/test_Data
+	@install -m 777 beagle/apps/opencv/test_data/* $(EXEC_DIR)/test_Data
+	@chmod -x $(EXEC_DIR)/*.x64P
+	@echo done
+	@echo
 
 clean_app:
 	make -C beagle/apps/opencv APP_NAME=opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/remote_ti_platforms_$(PLATFORM_SHORT) clean
 	make -C beagle/apps/opencv APP_NAME=opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/local_ti_platforms_$(PLATFORM_SHORT) clean
+
+clean_lib:
+	$(XDC) clean -PR beagle/library
+	rm -rf beagle/library/opencv/*.ov5T
+	rm -rf beagle/library/opencv/lib/*
 	
 
-clean: clean_app
+clean: clean_app clean_lib
 	$(XDC) clean -PR beagle
