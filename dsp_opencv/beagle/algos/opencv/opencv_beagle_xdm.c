@@ -24,19 +24,18 @@ Int OPENCV_BEAGLE_process(IUNIVERSAL_Handle handle,
         XDM1_BufDesc *inBufs, XDM1_BufDesc *outBufs, XDM1_BufDesc *inOutBufs,
         IOPENCV_InArgs *inArgs, IUNIVERSAL_OutArgs *outArgs)
 {
-    XDAS_Int8 *isNull = inBufs->descs[3].buf;
+    XDAS_Int8 *isNull = inBufs->descs[2].buf;
     XDAS_Int8 *twiddleBuf;
     XDAS_Int8 *inputBuf;
-    IOPENCV_Operation *operation = (IOPENCV_Operation *)(inBufs->descs[0].buf); 
-    
+        
     if (!(isNull[0])) {
-        inputBuf = (XDAS_Int8 *) inBufs->descs[1].buf;
+        inputBuf = (XDAS_Int8 *) inBufs->descs[0].buf;
     }
     if (!(isNull[1])) {
-        twiddleBuf = (XDAS_Int8 *) inBufs->descs[2].buf;
+        twiddleBuf = (XDAS_Int8 *) inBufs->descs[1].buf;
     }
 
-    switch ( *(operation)) {
+    switch ( inArgs->operation) {
 	   case OPENCV_OPERATION_GEN_TWIDDLE :
 		OPENCV_BEAGLE_generateTwiddle(handle, inArgs->dftSize, outBufs->descs[0].buf);
 		break;
@@ -50,7 +49,7 @@ Int OPENCV_BEAGLE_process(IUNIVERSAL_Handle handle,
 	   case OPENCV_OPERATION_SOBEL5x5 :
 
  	   case OPENCV_OPERATION_SOBEL7x7 :
-		OPENCV_BEAGLE_sobel( handle, *(operation), inputBuf, outBufs->descs[0].buf);
+		OPENCV_BEAGLE_sobel( handle, inArgs->operation, inputBuf, outBufs->descs[0].buf);
   		break;
  
 	   default:
@@ -61,17 +60,15 @@ Int OPENCV_BEAGLE_process(IUNIVERSAL_Handle handle,
     /* report how we accessed the input buffer */
     inBufs->descs[0].accessMask = 0;
     XDM_SETACCESSMODE_READ(inBufs->descs[0].accessMask);
-
-    /* report how we accessed the output buffer */
+    
     inBufs->descs[1].accessMask = 0;
     XDM_SETACCESSMODE_READ(inBufs->descs[1].accessMask);
 
     inBufs->descs[2].accessMask = 0;
     XDM_SETACCESSMODE_READ(inBufs->descs[2].accessMask);
 
-    inBufs->descs[3].accessMask = 0;
-    XDM_SETACCESSMODE_READ(inBufs->descs[3].accessMask);
-
+    
+    /* report how we accessed the output buffer */
     outBufs->descs[0].accessMask = 0;
     XDM_SETACCESSMODE_WRITE(outBufs->descs[0].accessMask);
 

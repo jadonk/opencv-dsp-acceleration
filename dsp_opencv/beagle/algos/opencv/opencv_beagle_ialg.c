@@ -160,8 +160,6 @@ Void OPENCV_BEAGLE_moved(IALG_Handle handle, const IALG_MemRec memTab[], IALG_Ha
 {
     OPENCV_BEAGLE_Obj *opencv = (Void *)handle;
 
-
-
     opencv->workBuf = memTab[WORKBUF].base;
 
 }

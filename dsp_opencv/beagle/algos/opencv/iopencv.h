@@ -47,32 +47,12 @@ typedef struct IOPENCV_Params {
 
 typedef struct IOPENCV_InArgs {
     IUNIVERSAL_InArgs universalInArgs;
-    XDAS_UInt32 frameLen;
+    IOPENCV_OperationTypes operation;
     XDAS_UInt32 dftSize;
 } IOPENCV_InArgs;
 
 
 
-/* IOPENCV_Status should not have a pointer since it will not be address translated - instead, IUNIVERSAL_Status.data is used (which will be address translated */
-/*
-typedef struct IOPENCV_Status {
-    Int size;
-    Int *coeffPtr;
-    Int padding;
-} IOPENCV_Status;
-*/
-
-/*
- *  ======== IOPENCV_Cmd ========
- *  The Cmd enumeration defines the control commands for the OPENCV
- *  control method.
- */
-/*
-typedef enum IOPENCV_Cmd {
-    IOPENCV_GETSTATUS,
-    IOPENCV_SETSTATUS
-} IOPENCV_Cmd;
-*/
 
 #ifdef __cplusplus
 }
