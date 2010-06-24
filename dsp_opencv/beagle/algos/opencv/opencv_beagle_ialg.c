@@ -80,7 +80,7 @@ Int OPENCV_BEAGLE_alloc(const IALG_Params *opencvParams, IALG_Fxns **fxns, IALG_
 
     /* Request memory for shared working buffer */
 
-    memTab[WORKBUF].size        = ( (params->s_cols * params->s_rows) > (params->d_cols * params->d_rows) ) ? (params->s_cols * params->s_rows) : 													    (params->d_cols * params->d_rows) ;
+    memTab[WORKBUF].size        = ( (params->s_cols * params->s_rows) > (params->d_cols * params->d_rows) ) ? (4 * params->s_cols * params->s_rows) : 													    ( 4 * params->d_cols * params->d_rows) ;
     memTab[WORKBUF].alignment   = 8;
     memTab[WORKBUF].space       = IALG_DARAM0;
     memTab[WORKBUF].attrs       = IALG_SCRATCH;
@@ -114,7 +114,7 @@ Int OPENCV_BEAGLE_free(IALG_Handle handle, IALG_MemRec memTab[])
       
     memTab[OBJECT].base         = opencv;
     
-    memTab[WORKBUF].size        = ( (opencv->s_cols * opencv->s_rows) > (opencv->d_cols * opencv->d_rows) ) ? (opencv->s_cols * opencv->s_rows) : 													     	      (opencv->d_cols * opencv->d_rows) ;
+    memTab[WORKBUF].size        = ( (opencv->s_cols * opencv->s_rows) > (opencv->d_cols * opencv->d_rows) ) ? ( 4 * opencv->s_cols * opencv->s_rows) : 													     	      ( 4 * opencv->d_cols * opencv->d_rows) ;
     memTab[WORKBUF].base        = opencv->workBuf;
     
     return (NUMBUFS);

@@ -1,5 +1,3 @@
-
-
 /*
  *  ======== beagle_opencv_API.h ========
  *  
@@ -11,9 +9,6 @@
 
 
 #include <beagle/algos/opencv/iopencv.h>
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
-#include <opencv/cxcore.h>
 
 
 typedef IOPENCV_Operation  	  OPENCV_Operation;
@@ -25,7 +20,9 @@ typedef IOPENCV_OperationTypes    OPENCV_OperationTypes;
  *  
  *  Test Routines Entry Point
  */
-void OPENCVTEST_main( int , int , char *, int , int , int , int , int , char *, int , int , int , OPENCV_Operation );
+void sobelDsp( int , int , char *, int , int , int , int , int , char *, int , int , int , int );
+
+void dftDsp( int , int , char *, int , int , int , int , int , char *, int , int , int );
 
 
 #endif // _BEAGLE_OPENCV_API_H
