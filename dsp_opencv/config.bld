@@ -5,34 +5,59 @@
  * Edit this file to specify compiler toolchain paths and platform.
  */
 
-var codegen = "" + java.lang.System.getenv("CODEGEN_INSTALL_DIR");
+/* location of your C6000 codegen tools */
 var dsptarget = "" + java.lang.System.getenv("XDC_DSP_TARGET");
+var codegen = "" + java.lang.System.getenv("CODEGEN_INSTALL_DIR");
+
+/* Verify that XDC_TARGETS was set correctly as an environment variable */
+if (dsptarget=="null" || dsptarget=="") {
+    print("Warning: XDC_DSP_TARGET  not found. Verify that "
+        + "XDC_TARGETS is set correctly in the Makefile.");
+}
+
+/* Verify that CODEGEN_INSTALL_DIR was set as an environment variable */
+if (codegen=="null" || codegen=="") {
+    print("Warning: TI Code Generation Tools not found. Verify that "
+        + "CODEGEN_INSTALL_DIR is set correctly in the Makefile.");
+} else if ( !java.io.File( codegen ).isDirectory() ) {
+    print("Warning: CODEGEN_INSTALL_DIR is not set to a valid directory.");
+}
+
+/* Verify that XDC_PLATFORM was set as an environment variable */
 var xdcplat = "" + java.lang.System.getenv("XDC_PLATFORM");
+if (xdcplat=="null" || xdcplat==""){
+    print("Warning: XDC_PLATFORM not found. Verify that XDC_PLATFORM "
+        + "is set correctly in the Makefile.");
+}
 
 var C6X = xdc.useModule( dsptarget );
 C6X.rootDir = codegen;
 C6X.platform = xdcplat;
 
+/* User passes in $(CROSS_COMPILE) where $(CROSS_COMPILE)gcc is their compiler
+   Then the TOOLDIR and LONGNAME are derived based on a regex of CROSS_COMPILE
+*/
+var crosscompile = "" + java.lang.System.getenv("CROSS_COMPILE");
 
-var C64P = xdc.useModule('ti.targets.C64P');
+/* Verify that CROSS_COMPILE was set as an environment variable and that 
+   $(CROSS_COMPILE)gcc is a valid file */
+if (crosscompile=="null" || crosscompile=="") {
+    print("Warning: ARM toolchain not found. CROSS_COMPILE is currently set "
+        + "to " + crosscompile + ". Verify that CROSS_COMPILE has been set "
+        + "correctly in the Makefile.");
+} else if ( !java.io.File( crosscompile + "gcc" ).exists() ) {
+    print("Warning: GCC compiler " + crosscompile + "gcc does not exist. "
+        + "Verify that CROSS_COMPILE has been set correctly in the Makefile");
+}
 
-/* location of your C6000 codegen tools */
-C64P.rootDir="/media/disk/OE/work/ti/ti-cgt6x-tree";
-
-/* replace with your platform (same as the one you picked in the server */
-/*    package wizard */
-C64P.platform = "ti.platforms.evm3530"; 
-
-
+var tooldir = "";
+var longName = "";
 
 /* Search CROSS_COMPILE for bin/ If only 1 bin/ is found, set the tooldir to 
    the path prior to bin/ and the prefix to "bin/" + remainder of path, 
    else leave the tooldir as "" and set the LONGNAME to the full CROSS_COMPILE
    path 
 */
-
-var crosscompile = "" + java.lang.System.getenv("CROSS_COMPILE");
-
 var regex = new RegExp("bin/");
 var find = crosscompile.split( regex );
 
@@ -49,14 +74,5 @@ GCArmv5T.LONGNAME = longName;
 GCArmv5T.platform = java.lang.System.getenv("XDC_PLATFORM");
 GCArmv5T.rootDir = tooldir;
 
-
-
-/*
- *  ======== Build.targets ========
- * list of targets (ISAs + compilers) to build for
- */
 Build.targets = [
-    C64P,
 ];
-
-
