@@ -84,6 +84,7 @@ OBJFILES = $(SOURCES:%.c=%.ov5T)
 TARGET = beagle/library/opencv/lib/libopencvdsp.so
 GNU_C_FLAGS = $(C_FLAGS) -Wall -Dxdc_target_name__=MVArm9 -I$(XDC_INSTALL_DIR)/packages -I$(CE_INSTALL_DIR)/packages -I$(XDAIS_INSTALL_DIR)/packages -I$(BIOS_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(LINK_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(BIOSUTILS_INSTALL_DIR)/packages -I$(LPM_INSTAL_DIR)/packages -I$(LINUXKERNEL_INSTALL_DIR)/include -I$(BIOS_INSTALL_DIR)/packages/ti/bios/include -I$(DMAI_INSTALL_DIR)/packages -I$(CURDIR) -Dxdc_target_types__=gnu/targets/std.h -D_$(PLATFORM)
 GNU_AR_FLAGS = $(AR_FLAGS)
+GNU_LD_FLAGS = $(LD_FLAGS)
 COMPILE = $(PRE) $(CROSS_COMPILE)gcc $(GNU_C_FLAGS) $(GNU_CPP_FLAGS) -c
 AR = $(PRE) $(CROSS_COMPILE)ar rc $(GNU_AR_FLAGS)
 LD = $(PRE) $(CROSS_COMPILE)gcc $(GNU_LD_FLAGS)
