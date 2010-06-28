@@ -108,6 +108,7 @@ all,64P: .executables,64P
 	@$(ECHO) xdc .libraries,64P
 	@$(ECHO) xdc .dlls,64P
 
+all,v5T .libraries,v5T .dlls,v5T .executables,v5T test,v5T:;
 
 all: .executables 
 .executables: .libraries .dlls

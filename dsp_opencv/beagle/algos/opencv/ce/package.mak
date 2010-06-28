@@ -87,6 +87,7 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xmlgen2.xs
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/ITarget.xs
 endif
 
+all,v5T .libraries,v5T .dlls,v5T .executables,v5T test,v5T:;
 all,64P .libraries,64P .dlls,64P .executables,64P test,64P:;
 
 all: .executables 

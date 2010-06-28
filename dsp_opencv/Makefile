@@ -81,11 +81,12 @@ endif
 HEADERS = $(wildcard beagle/library/opencv/*.h)
 SOURCES = $(wildcard beagle/library/opencv/*.c)
 OBJFILES = $(SOURCES:%.c=%.ov5T)
-TARGET = beagle/library/opencv/lib/libopencv.a
+TARGET = beagle/library/opencv/lib/libopencvdsp.so
 GNU_C_FLAGS = $(C_FLAGS) -Wall -Dxdc_target_name__=MVArm9 -I$(XDC_INSTALL_DIR)/packages -I$(CE_INSTALL_DIR)/packages -I$(XDAIS_INSTALL_DIR)/packages -I$(BIOS_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(LINK_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(BIOSUTILS_INSTALL_DIR)/packages -I$(LPM_INSTAL_DIR)/packages -I$(LINUXKERNEL_INSTALL_DIR)/include -I$(BIOS_INSTALL_DIR)/packages/ti/bios/include -I$(DMAI_INSTALL_DIR)/packages -I$(CURDIR) -Dxdc_target_types__=gnu/targets/std.h -D_$(PLATFORM)
 GNU_AR_FLAGS = $(AR_FLAGS)
 COMPILE = $(PRE) $(CROSS_COMPILE)gcc $(GNU_C_FLAGS) $(GNU_CPP_FLAGS) -c
 AR = $(PRE) $(CROSS_COMPILE)ar rc $(GNU_AR_FLAGS)
+LD = $(PRE) $(CROSS_COMPILE)gcc $(GNU_LD_FLAGS)
 
 .PHONY: clean clean_app clean_lib codec server library app install all
 
@@ -112,9 +113,10 @@ $(OBJFILES):	%.ov5T: %.c $(HEADERS)
 
 $(TARGET):	$(OBJFILES)
 	@echo
-	@echo Archiving $@ from $^..
+	@echo Building Shared Library $@ from $^..
 	@mkdir -p $(dir $@)
-	$(AR) $@ $^
+	$(LD) -shared  -o $@ $^
+	@cp $(TARGET) beagle/apps/opencv/lib
 
 package/package.defs.h:beagle/library/opencv/package.xdc beagle/library/opencv/package.xs beagle/library/opencv/package.bld
 	@echo
@@ -139,6 +141,8 @@ install_opencv_remote:
 	@install -d $(EXEC_DIR)
 	@install -m 777 beagle/apps/opencv/linux/remote_ti_platforms_$(PLATFORM_SHORT)_opencv.x$(APP_EXT) $(EXEC_DIR)
 	@install -m 777 $(wildcard $(SERVER_PATH_SHORT)/../opencv_unitserver_$(PLATFORM_SHORT_LC)/opencv_unitserver_$(PLATFORM_SHORT_LC).x*) $(EXEC_DIR)
+	@install -d $(EXEC_DIR)/lib
+	@install -m 777 beagle/library/opencv/lib/* $(EXEC_DIR)/lib
 	@install -d $(EXEC_DIR)/test_Data
 	@install -m 777 beagle/apps/opencv/test_data/* $(EXEC_DIR)/test_Data
 	@chmod -x $(EXEC_DIR)/*.x64P
@@ -153,6 +157,7 @@ clean_lib:
 	$(XDC) clean -PR beagle/library
 	rm -rf beagle/library/opencv/*.ov5T
 	rm -rf beagle/library/opencv/lib/*
+	rm -rf beagle/apps/opencv/lib/*
 	
 
 clean: clean_app clean_lib

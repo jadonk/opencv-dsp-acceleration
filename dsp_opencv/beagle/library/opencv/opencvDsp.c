@@ -51,18 +51,7 @@ static void opencvIuniversal(XDAS_Int8 *, XDAS_Int8 *, XDAS_Int8 *);
 /* Universal  Codec Handle */
 static UNIVERSAL_Handle codec = NULL;
 
-/* Global flag used to signal when it is time to exit test loop */
-int OPENCVTEST_gfxExitThread = 0;
 
-/* Global Quit Function to call */
-static Fxn OPENCVTEST_getQuitFxn = NULL;
-
-
-static int myGetQuitFunction(void)
-{
-	
-	return (0);
-}
 
 
 
@@ -234,27 +223,19 @@ void opencvDspCeInit( OPENCV_Operation operationFxn )
 
 
     operation = operationFxn;
-     printf("inBufLen = %d \t outBufLen = %d \t operation=%d\n", inBufLen, outBufLen, operation);
+     
 
     /* Inatilaize codec-engine */    
 
     CERuntime_init();
 
-    GT_create(&curMask, "ZZ");
-
-    /* Enable all trace for this "ZZ" module */
-    GT_set("ZZ=01234567");
-
-    GT_0trace(curMask, GT_2CLASS, "main> Welcome to app's main().\n");
-   
+       
 
     Engine_Handle ce = NULL;
 
-    printf("App-> Application started.\n");
+//    printf("App-> Application started.\n");
 
-    /* Init the global quit function */
-    OPENCVTEST_getQuitFxn = myGetQuitFunction;
-    
+        
     /* reset, load, and start DSP Engine */
     if ((ce = Engine_open(engineName, NULL, NULL)) == NULL) {
         printf("%s: error: can't open engine %s\n", progName, engineName);
@@ -267,12 +248,12 @@ void opencvDspCeInit( OPENCV_Operation operationFxn )
         printf( "App-> ERROR: can't open codec %s\n", opencvName);
         goto endFailOpenCodec;
     }
-    printf("App-> Codec created.\n");
+//    printf("App-> Codec created.\n");
 
     /* Enter test app */
     opencvDspOperations( ); 
 
-    printf( "App-> Completed Successfully\n");
+//    printf( "App-> Completed Successfully\n");
 
     /* teardown the codec */
     if (codec) {
@@ -286,7 +267,7 @@ endFailOpenCodec:
     }
 
 endFailOpenEngine:
-    printf("app ended.\n");
+    printf("Processed Frame.\n");
     
 }
 

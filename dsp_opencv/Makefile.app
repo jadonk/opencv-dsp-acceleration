@@ -17,8 +17,8 @@ XDC_LFILE               = $(XDC_CFG)/linker.cmd
 XDC_CFGFILE             = $(TARGET).cfg
 
 # Path to ARM Linux application library
-AL_LIBS = $(PACKAGE_DIR)/$(SERVER_PATH)/../../library/opencv/lib/libopencv.a
-
+#AL_LIBS = $(PACKAGE_DIR)/$(SERVER_PATH)/../../library/opencv/lib/libopencvdsp.so
+AL_LIBS = lib/libopencvdsp.so
 # Path of OpenCV Header files
 OPENCV_PATH             = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/include
 

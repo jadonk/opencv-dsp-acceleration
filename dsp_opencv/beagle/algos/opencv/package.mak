@@ -87,8 +87,26 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xmlgen2.xs
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/ITarget.xs
 endif
 
+gnu.targets.arm.GCArmv5T.rootDir ?= /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/
+gnu.targets.arm.packageBase ?= /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/arm/
 ti.targets.C64P.rootDir ?= /media/disk/OE/work/ti/ti-cgt6x-tree
 ti.targets.packageBase ?= /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/
+.PRECIOUS: $(XDCCFGDIR)/%.ov5T
+.PHONY: all,v5T .dlls,v5T .executables,v5T test,v5T
+all,v5T: .executables,v5T
+.executables,v5T: .libraries,v5T
+.executables,v5T: .dlls,v5T
+.dlls,v5T: .libraries,v5T
+.libraries,v5T: .interfaces
+	@$(RM) $@
+	@$(TOUCH) "$@"
+
+.help::
+	@$(ECHO) xdc test,v5T
+	@$(ECHO) xdc .executables,v5T
+	@$(ECHO) xdc .libraries,v5T
+	@$(ECHO) xdc .dlls,v5T
+
 .PRECIOUS: $(XDCCFGDIR)/%.o64P
 .PHONY: all,64P .dlls,64P .executables,64P test,64P
 all,64P: .executables,64P
@@ -139,30 +157,59 @@ lib/opencv_beagle.l64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
 
 clean,64P clean::
 	-$(RM) lib/opencv_beagle.l64P
+.libraries,v5T .libraries: lib/opencv_beagle.lv5T
+
+-include lib/opencv_beagle.lv5T.mak
+lib/opencv_beagle.lv5T: 
+	$(RM) $@
+	@$(MSG) archiving package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.ov5T package/lib/lib/opencv_beagle/opencv_beagle_ialg.ov5T package/lib/lib/opencv_beagle/opencv_beagle_xdm.ov5T package/lib/lib/opencv_beagle/opencv_beagle.ov5T package/lib/lib/opencv_beagle/opencv_beagle_findDFT.ov5T package/lib/lib/opencv_beagle/opencv_beagle_sobel.ov5T package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.ov5T package/lib/lib/opencv_beagle/opencv_beagle_vt.ov5T package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.ov5T  into $@ ...
+	$(gnu.targets.arm.GCArmv5T.rootDir)/arm-angstrom-linux-gnueabi/bin/ar  cr $@   package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.ov5T package/lib/lib/opencv_beagle/opencv_beagle_ialg.ov5T package/lib/lib/opencv_beagle/opencv_beagle_xdm.ov5T package/lib/lib/opencv_beagle/opencv_beagle.ov5T package/lib/lib/opencv_beagle/opencv_beagle_findDFT.ov5T package/lib/lib/opencv_beagle/opencv_beagle_sobel.ov5T package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.ov5T package/lib/lib/opencv_beagle/opencv_beagle_vt.ov5T package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.ov5T 
+lib/opencv_beagle.lv5T:LD_LIBRARY_PATH=
+
+clean,v5T clean::
+	-$(RM) lib/opencv_beagle.lv5T
 test:;
 %,copy:
 	@$(if $<,,$(MSG) don\'t know how to build $*; exit 1)
 	@$(MSG) cp $< $@
 	$(RM) $@
 	$(CP) $< $@
-opencv_beagle_gen_twiddle_fft16x16.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.s64P
+opencv_beagle_vt.sv5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_vt.sv5T
 opencv_beagle_Twiddle.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.o64P
-opencv_beagle_ialg.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_ialg.o64P
-opencv_beagle_findDFT.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P
+opencv_beagle_ialg.ov5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_ialg.ov5T
+package_beagle.algos.opencv.sv5T,copy : package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.sv5T
 opencv_beagle_xdm.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_xdm.s64P
-package_beagle.algos.opencv.s64P,copy : package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.s64P
-opencv_beagle.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle.s64P
-opencv_beagle_vt.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_vt.o64P
-opencv_beagle_Twiddle.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.s64P
-opencv_beagle_sobel.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_sobel.o64P
-opencv_beagle_ialg.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_ialg.s64P
-opencv_beagle_gen_twiddle_fft16x16.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.o64P
-opencv_beagle_findDFT.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P
-opencv_beagle_vt.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_vt.s64P
-opencv_beagle_xdm.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_xdm.o64P
-opencv_beagle_sobel.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_sobel.s64P
-package_beagle.algos.opencv.o64P,copy : package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.o64P
+opencv_beagle_findDFT.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P
+opencv_beagle_Twiddle.sv5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.sv5T
 opencv_beagle.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle.o64P
+opencv_beagle_gen_twiddle_fft16x16.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.o64P
+opencv_beagle_vt.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_vt.s64P
+opencv_beagle_sobel.ov5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_sobel.ov5T
+opencv_beagle_ialg.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_ialg.o64P
+opencv_beagle.sv5T,copy : package/lib/lib/opencv_beagle/opencv_beagle.sv5T
+package_beagle.algos.opencv.s64P,copy : package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.s64P
+opencv_beagle_gen_twiddle_fft16x16.sv5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.sv5T
+opencv_beagle_Twiddle.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.s64P
+opencv_beagle_ialg.sv5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_ialg.sv5T
+opencv_beagle_sobel.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_sobel.o64P
+opencv_beagle_xdm.ov5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_xdm.ov5T
+opencv_beagle_findDFT.ov5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_findDFT.ov5T
+opencv_beagle.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle.s64P
+opencv_beagle_gen_twiddle_fft16x16.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.s64P
+opencv_beagle_ialg.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_ialg.s64P
+opencv_beagle_sobel.sv5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_sobel.sv5T
+opencv_beagle_vt.ov5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_vt.ov5T
+opencv_beagle_xdm.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_xdm.o64P
+package_beagle.algos.opencv.ov5T,copy : package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.ov5T
+opencv_beagle_findDFT.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P
+opencv_beagle_Twiddle.ov5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.ov5T
+opencv_beagle_sobel.s64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_sobel.s64P
+opencv_beagle_vt.o64P,copy : package/lib/lib/opencv_beagle/opencv_beagle_vt.o64P
+opencv_beagle_xdm.sv5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_xdm.sv5T
+opencv_beagle_findDFT.sv5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_findDFT.sv5T
+package_beagle.algos.opencv.o64P,copy : package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.o64P
+opencv_beagle.ov5T,copy : package/lib/lib/opencv_beagle/opencv_beagle.ov5T
+opencv_beagle_gen_twiddle_fft16x16.ov5T,copy : package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.ov5T
 
 $(XDCCFGDIR)%.c $(XDCCFGDIR)%.h $(XDCCFGDIR)%.xdl: $(XDCCFGDIR)%.cfg .interfaces $(XDCROOT)/packages/xdc/cfg/Main.xs
 	@$(MSG) "configuring $(_PROG_NAME) from $< ..."
@@ -176,6 +223,7 @@ beagle_algos_opencv.tar: lib/opencv_beagle.l64P
 beagle_algos_opencv.tar: package/package.xdc.inc
 beagle_algos_opencv.tar: package/package.bld.xml
 beagle_algos_opencv.tar: package/package.rel.dot
+beagle_algos_opencv.tar: lib/opencv_beagle.lv5T
 ifneq (clean,$(MAKECMDGOALS))
 -include package/rel/beagle_algos_opencv.tar.dep
 endif
