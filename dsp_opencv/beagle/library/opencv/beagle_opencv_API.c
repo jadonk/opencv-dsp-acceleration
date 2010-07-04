@@ -20,13 +20,15 @@
 /*
  *  ======== sobelDsp3x3 ========
  */
-void sobelDsp( int s_type, int s_step, char *s_data, int s_rows, int s_cols, int s_channels, int d_type, int d_step, char *d_data, int d_rows, int d_cols, int d_channels, int apertureSize )
+int sobelDsp( int s_type, int s_step, char *s_data, int s_rows, int s_cols, int s_channels, int d_type, int d_step, char *d_data, int d_rows, int d_cols, int d_channels, int apertureSize )
 {
     OPENCV_Operation operation;
+//    int i;
+    int status;
 
     if (apertureSize < 3 || apertureSize > 7 || (apertureSize % 2 == 0) ) {
 	printf( "\n Error: Aperture Size %d not supported.\n",apertureSize);
-	return;
+	return 0;
     }
 
     if (apertureSize == 3) {
@@ -41,13 +43,23 @@ void sobelDsp( int s_type, int s_step, char *s_data, int s_rows, int s_cols, int
 
     if (s_type != CV_8UC1 && s_type != CV_8SC1) {
         printf ("Error: Currently only image type of CV_8UC1 and CV_8SC1 are supported.\n");
-        return;
+        return 0;
     }
 
+//    XDAS_Int16 *tempBuf = (XDAS_Int16 *)malloc(s_rows*s_cols*2);
+//    for (i=0; i<(s_cols*s_rows); i++) {
+// 	tempBuf[i] = (XDAS_Int16)s_data[i];
+// 	}
     /* Set parameters to be passed to DSP */
     opencvDspSetParams( s_type, s_step, s_data, s_rows, s_cols, s_channels, d_type, d_step, d_data, d_rows, d_cols, d_channels );
+//    opencvDspSetParams( s_type, s_step, tempBuf, s_rows, s_cols, s_channels, d_type, d_step, d_data, d_rows, d_cols, d_channels );
 
-    opencvDspCeInit(operation);
+    status = cvCreateEngine(operation);
+    if (!status) 
+        return 0;
+    else
+        return (-1);
+ 
 }
 
 
@@ -56,18 +68,48 @@ void sobelDsp( int s_type, int s_step, char *s_data, int s_rows, int s_cols, int
 /*
  *  ======== dftDsp ========
  */
-void dftDsp( int s_type, int s_step, char *s_data, int s_rows, int s_cols, int s_channels, int d_type, int d_step, char *d_data, int d_rows, int d_cols, int d_channels )
+int dftDsp( int s_type, int s_step, char *s_data, int s_rows, int s_cols, int s_channels, int d_type, int d_step, char *d_data, int d_rows, int d_cols, int d_channels )
 {
     OPENCV_Operation operation = OPENCV_OPERATION_DFT;
 
     if (s_type != CV_8UC1 && s_type != CV_8SC1) {
         printf ("Error: Currently only image type of CV_8UC1 and CV_8SC1 are supported.\n");
-        return;
+        return 0;
     }
 
     /* Set parameters to be passed to DSP */
     opencvDspSetParams( s_type, s_step, s_data, s_rows, s_cols, s_channels, d_type, d_step, d_data, d_rows, d_cols, d_channels );
 
-    opencvDspCeInit(operation);
+//    opencvDspCeInit(operation);
+//    opencvDspOperations(operation);
+
+    cvCreateEngine(operation);
+    return (-1);
+}
+
+/*
+ *  ======== dftDsp ========
+ */
+int integralDsp( int s_type, int s_step, char *s_data, int s_rows, int s_cols, int s_channels, int d_type, int d_step, char *d_data, int d_rows, int d_cols, int d_channels )
+{
+    OPENCV_Operation operation = OPENCV_OPERATION_INTEGRAL;
+
+    if ((s_type & 07) > 07 || (s_type & 07) == 2 || (s_type & 07) == 3) {
+        printf ("Error: Image Type not supported supported.\n");
+        return 0;
+    }
+
+    if (d_rows != s_rows + 1 || d_cols != s_cols + 1 ) {
+	printf ("Error: Destination matrix or image size must be 1 unit larger in both dimension than source matrix or image.\n");
+	return 0;
+    }
+    /* Set parameters to be passed to DSP */
+    opencvDspSetParams( s_type, s_step, s_data, s_rows, s_cols, s_channels, d_type, d_step, d_data, d_rows, d_cols, d_channels );
+
+//    opencvDspCeInit(operation);
+//    opencvDspOperations(operation);
+
+    cvCreateEngine(operation);
+    return (-1);
 }
 

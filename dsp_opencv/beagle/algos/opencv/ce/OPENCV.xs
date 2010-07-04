@@ -20,5 +20,38 @@ function getStackSize(prog)
       + ", running on platform " +  prog.platformName);
     }
 
-    return (154);
+    return (1024);
 }
+
+/*
+ *  ======== getDaramScratchSize ========
+ */
+
+
+function getDaramScratchSize(prog)
+{
+    if (verbose) {
+        print("getting DARAM scratch size for " + this.$name
+            + " built for the target " + prog.build.target.$name
+            + ", running on platform " +  prog.platformName);
+    }
+
+    return (2097152);
+}
+
+/*
+ *  ======== getSaramScratchSize ========
+ */
+/*
+function getSaramScratchSize(prog)
+{
+    if (verbose) {
+        print("getting SARAM scratch size for " + this.$name
+            + " built for the target " + prog.build.target.$name
+            + ", running on platform " +  prog.platformName);
+    }
+
+    return (2097152);
+}
+*/
+

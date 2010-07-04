@@ -51,6 +51,9 @@ Int OPENCV_BEAGLE_process(IUNIVERSAL_Handle handle,
  	   case OPENCV_OPERATION_SOBEL7x7 :
 		OPENCV_BEAGLE_sobel( handle, inArgs->operation, inputBuf, outBufs->descs[0].buf);
   		break;
+	   case OPENCV_OPERATION_INTEGRAL :
+		OPENCV_BEAGLE_integral( handle, inputBuf, outBufs->descs[0].buf);
+  		break;
  
 	   default:
 		return (IUNIVERSAL_EFAIL);

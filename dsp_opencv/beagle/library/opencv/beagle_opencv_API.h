@@ -16,13 +16,14 @@ typedef IOPENCV_Operation  	  OPENCV_Operation;
 
 typedef IOPENCV_OperationTypes    OPENCV_OperationTypes;
 /*
- *  ======== OPENCVTEST_main ========
- *  
- *  Test Routines Entry Point
+ *  ======== API ========
+ *  API prototypes.
  */
-void sobelDsp( int , int , char *, int , int , int , int , int , char *, int , int , int , int );
+int sobelDsp( int , int , char *, int , int , int , int , int , char *, int , int , int , int );
 
-void dftDsp( int , int , char *, int , int , int , int , int , char *, int , int , int );
+int dftDsp( int , int , char *, int , int , int , int , int , char *, int , int , int );
+
+int integralDsp( int , int , char *, int , int , int , int , int , char *, int , int , int );
 
 
 #endif // _BEAGLE_OPENCV_API_H

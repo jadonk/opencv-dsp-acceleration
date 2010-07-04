@@ -146,6 +146,7 @@ install_opencv_remote:
 	@install -m 777 beagle/library/opencv/lib/* $(EXEC_DIR)/lib
 	@install -d $(EXEC_DIR)/test_Data
 	@install -m 777 beagle/apps/opencv/test_data/* $(EXEC_DIR)/test_Data
+	@install -m 777 beagle/apps/opencv/test_data/* $(EXEC_DIR)
 	@chmod -x $(EXEC_DIR)/*.x64P
 	@echo done
 	@echo

@@ -4,13 +4,7 @@
  
 metaonly module OPENCV
 {
-    /*!
-     *  ======== watermark ========
-     *  This config param allows the user to indicate whether to include
-     *  a watermark or not.    
-     */
-    config Bool watermark = true;
-
+    
     /*!
      *  ======== Code Section ========
      */

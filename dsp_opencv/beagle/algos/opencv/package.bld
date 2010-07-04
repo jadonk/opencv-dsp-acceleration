@@ -15,10 +15,17 @@ var SRCS = [
         "opencv_beagle_findDFT.c",
         "opencv_beagle_gen_twiddle_fft16x16.c",
 	"opencv_beagle_sobel.c",
+	"opencv_beagle_integral.c",
 ];
 
 for (var i = 0; i < Build.targets.length; i++) {
     var targ = Build.targets[i];
+
+    /* only build for DSP targets */ 
+    if (targ.os == "Linux" || (targ.name != "C64P" && targ.name != "C674") ) {
+        continue;
+    }
+
     Pkg.addLibrary("lib/opencv_beagle",targ, {
-        suffix: ".l" + targ.suffix}).addObjects(SRCS);
+        suffix: ".l" + targ.suffix}).addObjects(SRCS, {copts: "-k -o3 -mw"});
 }

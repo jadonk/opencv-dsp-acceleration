@@ -21,6 +21,7 @@
 #include <stdlib.h>
 
 #include "beagle_opencv_API.h"
+#include "opencvDsp.h"
 
 
 
@@ -30,11 +31,11 @@
 #endif
 
     
-static IOPENCV_Params *opencvParams;
+
 static OPENCV_Operation operation;
 static XDAS_Int32 inBufLen;
 static XDAS_Int32 outBufLen;
-
+static IOPENCV_Params *opencvParams;
 
 /* trace info: module name, mask */
 GT_Mask curMask = {0,0};
@@ -44,14 +45,14 @@ static String progName     = "app";
 static String opencvName  = "opencv";
 
 
-static void opencvDspOperations( );
+
 static void opencvIuniversal(XDAS_Int8 *, XDAS_Int8 *, XDAS_Int8 *);
 
 
 /* Universal  Codec Handle */
 static UNIVERSAL_Handle codec = NULL;
 
-
+static  Engine_Handle ce = NULL;
 
 
 
@@ -79,7 +80,7 @@ void opencvDspSetParams(int s_type, int s_step , char *s_data, int s_rows , int 
     inBufLen			= (opencvParams->s_cols * opencvParams->s_rows * opencvParams->s_channels * ( (07 & opencvParams->s_type) < 2 ? sizeof(XDAS_Int8) : (07 & opencvParams->s_type) < 4 ? sizeof(XDAS_Int16) : sizeof(XDAS_Int32) ));
     outBufLen			= (opencvParams->d_cols * opencvParams->d_rows * opencvParams->d_channels * ( (07 & opencvParams->d_type) < 2 ? sizeof(XDAS_Int8) : (07 & opencvParams->d_type) < 4 ? sizeof(XDAS_Int16) : sizeof(XDAS_Int32) ) );
 
-   
+    
 
 }
 
@@ -90,8 +91,11 @@ void opencvDspSetParams(int s_type, int s_step , char *s_data, int s_rows , int 
  *
  */
 
-static void opencvDspOperations(  )
+
+void opencvDspOperations()
 {
+
+
     
     /*
      * Format for -> Void OPENCVTEST_runTests(XDAS_Int16 *inbuf_1, XDAS_Int16 *inbuf_2, XDAS_Int16 *outbuf, OPENCV_Operation opencvOperation);
@@ -113,6 +117,11 @@ static void opencvDspOperations(  )
  	   case OPENCV_OPERATION_SOBEL7x7 :
 		opencvIuniversal(opencvParams->s_ptr, NULL, opencvParams->d_ptr); 
 		break;
+
+	   case OPENCV_OPERATION_INTEGRAL :
+		opencvIuniversal(opencvParams->s_ptr, NULL, opencvParams->d_ptr); 
+		break;
+
 	   default :
 		return;
     }
@@ -193,16 +202,16 @@ static void opencvIuniversal(XDAS_Int8 *inbuf_1, XDAS_Int8 *inbuf_2, XDAS_Int8 *
 
    
 
-
+    
     status = UNIVERSAL_process(codec, &universalInBufDesc, &universalOutBufDesc, NULL, (IUNIVERSAL_InArgs *) &inArgs, &outArgs);
-
+    
     if (status != UNIVERSAL_EOK) {
         printf("Error calling OPENCV module:%x\n",status);
         goto exit;
     }
-
+    
     memcpy( opencvParams->d_ptr, outputBuf, outBufLen);
-
+    
 
     exit:
     
@@ -210,64 +219,68 @@ static void opencvIuniversal(XDAS_Int8 *inbuf_1, XDAS_Int8 *inbuf_2, XDAS_Int8 *
     Memory_contigFree(inputBuf2,  inBufLen);
     Memory_contigFree(outputBuf, outBufLen );
     Memory_contigFree(isNull, sizeof(XDAS_Int8) * 2);
+    
 }
 
 
 /*
  *  ======== OPENCVTEST_main ========
  */
-void opencvDspCeInit( OPENCV_Operation operationFxn )
+int cvDspInit( )
 {
     char engine_Name[] = "opencvEngine";
     char *engineName = engine_Name;
 
 
-    operation = operationFxn;
-     
-
     /* Inatilaize codec-engine */    
 
     CERuntime_init();
 
-       
-
-    Engine_Handle ce = NULL;
-
-//    printf("App-> Application started.\n");
+    printf("App-> Application started.\n");
 
         
     /* reset, load, and start DSP Engine */
     if ((ce = Engine_open(engineName, NULL, NULL)) == NULL) {
         printf("%s: error: can't open engine %s\n", progName, engineName);
-        goto endFailOpenEngine;
+        return (0);
     }
 
+    return -1;
+}
+
+
+int cvCreateEngine(OPENCV_Operation operationFxn)
+{
+
+    operation = operationFxn;
     /* allocate and initialize opencv algo on the engine */
     codec = UNIVERSAL_create(ce, opencvName, (IUNIVERSAL_Params *)opencvParams);
     if (codec == NULL) {
         printf( "App-> ERROR: can't open codec %s\n", opencvName);
-        goto endFailOpenCodec;
+        cvEndDsp();
+        return (0);
     }
-//    printf("App-> Codec created.\n");
 
-    /* Enter test app */
+    /* Enter app */
     opencvDspOperations( ); 
 
-//    printf( "App-> Completed Successfully\n");
 
     /* teardown the codec */
     if (codec) {
         UNIVERSAL_delete(codec);
     }
+    return -1;
+}
 
-endFailOpenCodec:
+
+void cvEndDsp()
+{
     /* close the engine */
     if (ce) {
         Engine_close(ce);
     }
 
-endFailOpenEngine:
-    printf("Processed Frame.\n");
+    printf("app ended.\n");
     
 }
 

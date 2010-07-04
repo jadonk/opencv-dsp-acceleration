@@ -117,7 +117,8 @@ if (platform == "ti.platforms.evm3530") {
     };
 
     var params = {
-        clockRate: 360,
+//        clockRate: 360,
+	clockRate: 520,
         catalogName: "ti.catalog.c6000",
         deviceName: "3530",
         regs: device_regs,

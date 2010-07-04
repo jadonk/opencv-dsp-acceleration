@@ -14,5 +14,6 @@ SECTIONS
     .text:init  > `this.OPENCV.codeSection`
     .text:exit  > `this.OPENCV.codeSection`
     .text:finddft  > `this.OPENCV.codeSection`
+    .text:integral  > `this.OPENCV.codeSection`
 %}
 }

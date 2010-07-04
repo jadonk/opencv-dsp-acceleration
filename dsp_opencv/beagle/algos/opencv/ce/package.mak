@@ -34,9 +34,6 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/BuildEnvir
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xmlgen.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/UCArm9.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/UCArm9.xs
-/media/disk/OE/dspacceleration/opencv_dsp_acceleration/dsp_opencv/config.bld:
-package.mak: /media/disk/OE/dspacceleration/opencv_dsp_acceleration/dsp_opencv/config.bld
-package.mak: package.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/include/utils.tci:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/include/utils.tci
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Repository.xs:
@@ -55,6 +52,8 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/gnu/targets/Mingw.
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/MSP430.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Utils.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Utils.xs
+/media/disk/test/opencv-dsp-acceleration/dsp_opencv/config.bld:
+package.mak: /media/disk/test/opencv-dsp-acceleration/dsp_opencv/config.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/global/Clock.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/global/Clock.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/IPackage.xs:
@@ -81,6 +80,7 @@ package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/template.xs
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/services/global/Trace.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Library.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/bld/Library.xs
+package.mak: package.bld
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xmlgen2.xs:
 package.mak: /media/disk/OE/work/ti/ti-xdctools-tree/packages/xdc/xmlgen2.xs
 /media/disk/OE/work/ti/ti-xdctools-tree/packages/ti/targets/ITarget.xs:

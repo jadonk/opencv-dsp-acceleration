@@ -6,6 +6,34 @@
 #  target compatibility key = ti.targets.C64P{1,0,6.1,9
 #
 ifneq (clean,$(MAKECMDGOALS))
+-include package/lib/lib/opencv_beagle/opencv_beagle_integral.o64P.dep
+endif
+
+package/lib/lib/opencv_beagle/opencv_beagle_integral.o64P: | .interfaces
+package/lib/lib/opencv_beagle/opencv_beagle_integral.o64P: opencv_beagle_integral.c lib/opencv_beagle.l64P.mak
+	@$(RM) $@.dep
+	$(RM) $@
+	@$(MSG) cl64P $< ...
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	-@$(FIXDEP) $@.dep $@.dep
+	
+package/lib/lib/opencv_beagle/opencv_beagle_integral.o64P:C_DIR=
+package/lib/lib/opencv_beagle/opencv_beagle_integral.o64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
+
+package/lib/lib/opencv_beagle/opencv_beagle_integral.s64P: | .interfaces
+package/lib/lib/opencv_beagle/opencv_beagle_integral.s64P: opencv_beagle_integral.c lib/opencv_beagle.l64P.mak
+	@$(RM) $@.dep
+	$(RM) $@
+	@$(MSG) cl64P -n $< ...
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	-@$(FIXDEP) $@.dep $@.dep
+	
+package/lib/lib/opencv_beagle/opencv_beagle_integral.s64P:C_DIR=
+package/lib/lib/opencv_beagle/opencv_beagle_integral.s64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
+
+ifneq (clean,$(MAKECMDGOALS))
 -include package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.o64P.dep
 endif
 
@@ -42,8 +70,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_ialg.o64P: opencv_beagle_ialg.c lib/
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_ialg.o64P:C_DIR=
@@ -54,8 +82,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_ialg.s64P: opencv_beagle_ialg.c lib/
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P -n $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_ialg.s64P:C_DIR=
@@ -70,8 +98,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_xdm.o64P: opencv_beagle_xdm.c lib/op
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_xdm.o64P:C_DIR=
@@ -82,8 +110,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_xdm.s64P: opencv_beagle_xdm.c lib/op
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P -n $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_xdm.s64P:C_DIR=
@@ -98,8 +126,8 @@ package/lib/lib/opencv_beagle/opencv_beagle.o64P: opencv_beagle.c lib/opencv_bea
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle.o64P:C_DIR=
@@ -110,40 +138,12 @@ package/lib/lib/opencv_beagle/opencv_beagle.s64P: opencv_beagle.c lib/opencv_bea
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P -n $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle.s64P:C_DIR=
 package/lib/lib/opencv_beagle/opencv_beagle.s64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
-
-ifneq (clean,$(MAKECMDGOALS))
--include package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P.dep
-endif
-
-package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P: | .interfaces
-package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P: opencv_beagle_findDFT.c lib/opencv_beagle.l64P.mak
-	@$(RM) $@.dep
-	$(RM) $@
-	@$(MSG) cl64P $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
-	-@$(FIXDEP) $@.dep $@.dep
-	
-package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P:C_DIR=
-package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
-
-package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P: | .interfaces
-package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P: opencv_beagle_findDFT.c lib/opencv_beagle.l64P.mak
-	@$(RM) $@.dep
-	$(RM) $@
-	@$(MSG) cl64P -n $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
-	-@$(FIXDEP) $@.dep $@.dep
-	
-package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P:C_DIR=
-package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
 
 ifneq (clean,$(MAKECMDGOALS))
 -include package/lib/lib/opencv_beagle/opencv_beagle_sobel.o64P.dep
@@ -154,8 +154,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_sobel.o64P: opencv_beagle_sobel.c li
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_sobel.o64P:C_DIR=
@@ -166,12 +166,40 @@ package/lib/lib/opencv_beagle/opencv_beagle_sobel.s64P: opencv_beagle_sobel.c li
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P -n $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_sobel.s64P:C_DIR=
 package/lib/lib/opencv_beagle/opencv_beagle_sobel.s64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
+
+ifneq (clean,$(MAKECMDGOALS))
+-include package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P.dep
+endif
+
+package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P: | .interfaces
+package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P: opencv_beagle_findDFT.c lib/opencv_beagle.l64P.mak
+	@$(RM) $@.dep
+	$(RM) $@
+	@$(MSG) cl64P $< ...
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	-@$(FIXDEP) $@.dep $@.dep
+	
+package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P:C_DIR=
+package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
+
+package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P: | .interfaces
+package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P: opencv_beagle_findDFT.c lib/opencv_beagle.l64P.mak
+	@$(RM) $@.dep
+	$(RM) $@
+	@$(MSG) cl64P -n $< ...
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	-@$(FIXDEP) $@.dep $@.dep
+	
+package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P:C_DIR=
+package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
 
 ifneq (clean,$(MAKECMDGOALS))
 -include package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.o64P.dep
@@ -182,8 +210,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.o64P: opencv_beagle_Twiddle.
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.o64P:C_DIR=
@@ -194,8 +222,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.s64P: opencv_beagle_Twiddle.
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P -n $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.s64P:C_DIR=
@@ -210,8 +238,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_vt.o64P: opencv_beagle_vt.c lib/open
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_vt.o64P:C_DIR=
@@ -222,8 +250,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_vt.s64P: opencv_beagle_vt.c lib/open
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P -n $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_vt.s64P:C_DIR=
@@ -238,8 +266,8 @@ package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.o64P: opencv_be
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c  -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C   -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.o64P:C_DIR=
@@ -250,34 +278,36 @@ package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.s64P: opencv_be
 	@$(RM) $@.dep
 	$(RM) $@
 	@$(MSG) cl64P -n $< ...
-	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
-	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
+	$(ti.targets.C64P.rootDir)/bin/cl6x -c -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle -fc $<
+	$(MKDEP) -a $@.dep -p package/lib/lib/opencv_beagle -s o64P $< -C  -n -s --symdebug:none -qq -pdsw225 -mv64p -eo.o64P -ea.s64P  -Dxdc_target_name__=C64P -Dxdc_target_types__=ti/targets/std.h -Dxdc_bld__profile_release -Dxdc_bld__vers_1_0_6_1_9 -O2 -k -o3 -mw  $(XDCINCS) -I$(ti.targets.C64P.rootDir)/include -fs=./package/lib/lib/opencv_beagle -fr=./package/lib/lib/opencv_beagle
 	-@$(FIXDEP) $@.dep $@.dep
 	
 package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.s64P:C_DIR=
 package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.s64P: PATH:=$(ti.targets.C64P.rootDir)/bin/:$(PATH)
 
 clean,64P ::
+	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_integral.o64P
 	-$(RM) package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.o64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_ialg.o64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_xdm.o64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle.o64P
-	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_sobel.o64P
+	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.o64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_vt.o64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.o64P
+	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_integral.s64P
 	-$(RM) package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.s64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_ialg.s64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_xdm.s64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle.s64P
-	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_sobel.s64P
+	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_findDFT.s64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.s64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_vt.s64P
 	-$(RM) package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.s64P
 
-lib/opencv_beagle.l64P: package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.o64P package/lib/lib/opencv_beagle/opencv_beagle_ialg.o64P package/lib/lib/opencv_beagle/opencv_beagle_xdm.o64P package/lib/lib/opencv_beagle/opencv_beagle.o64P package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P package/lib/lib/opencv_beagle/opencv_beagle_sobel.o64P package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.o64P package/lib/lib/opencv_beagle/opencv_beagle_vt.o64P package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.o64P lib/opencv_beagle.l64P.mak
+lib/opencv_beagle.l64P: package/lib/lib/opencv_beagle/opencv_beagle_integral.o64P package/lib/lib/opencv_beagle/package/package_beagle.algos.opencv.o64P package/lib/lib/opencv_beagle/opencv_beagle_ialg.o64P package/lib/lib/opencv_beagle/opencv_beagle_xdm.o64P package/lib/lib/opencv_beagle/opencv_beagle.o64P package/lib/lib/opencv_beagle/opencv_beagle_sobel.o64P package/lib/lib/opencv_beagle/opencv_beagle_findDFT.o64P package/lib/lib/opencv_beagle/opencv_beagle_Twiddle.o64P package/lib/lib/opencv_beagle/opencv_beagle_vt.o64P package/lib/lib/opencv_beagle/opencv_beagle_gen_twiddle_fft16x16.o64P lib/opencv_beagle.l64P.mak
 
 clean::
 	-$(RM) lib/opencv_beagle.l64P.mak

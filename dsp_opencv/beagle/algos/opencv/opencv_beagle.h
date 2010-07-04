@@ -41,6 +41,8 @@ extern Void OPENCV_BEAGLE_init(Void);
 extern Void OPENCV_BEAGLE_findDFT(IUNIVERSAL_Handle, XDAS_Int32, XDAS_Int8 *, XDAS_Int8 *, XDAS_Int8 *);
 extern Void OPENCV_BEAGLE_generateTwiddle(IUNIVERSAL_Handle, XDAS_Int32, XDAS_Int8 *);
 extern Void OPENCV_BEAGLE_sobel(IUNIVERSAL_Handle, IOPENCV_Operation, XDAS_Int8 *, XDAS_Int8 *);
+extern Void OPENCV_BEAGLE_integral(IUNIVERSAL_Handle, XDAS_Int8 *, XDAS_Int8 *);
+
 
 //extern Int OPENCV_BEAGLE_control(IUNIVERSAL_Handle, IUNIVERSAL_Cmd, IUNIVERSAL_Status *);
 

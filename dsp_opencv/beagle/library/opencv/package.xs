@@ -4,7 +4,7 @@
  */
 function getLibs(prog)
 {
-    var lib = "lib/libopencvdsp.so";
+    var lib = "lib/libopencvdsp.l";
     print("    will link with " + this.$name + ":" + lib);
     return (lib);
 }
