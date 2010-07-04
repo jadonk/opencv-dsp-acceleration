@@ -36,13 +36,13 @@ function getDaramScratchSize(prog)
             + ", running on platform " +  prog.platformName);
     }
 
-    return (2097152);
+    return (3145728);
 }
 
 /*
  *  ======== getSaramScratchSize ========
  */
-/*
+
 function getSaramScratchSize(prog)
 {
     if (verbose) {
@@ -51,7 +51,7 @@ function getSaramScratchSize(prog)
             + ", running on platform " +  prog.platformName);
     }
 
-    return (2097152);
+    return (0);
 }
-*/
+
 

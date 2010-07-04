@@ -517,942 +517,942 @@ LOAD /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom
                 0x0000b40c                sched_yield@@GLIBC_2.4
                 0x0000b418                cvAvgSdv
 
-.text           0x0000b428    0x2c664
+.text           0x0000b428    0x2c654
  *(.text .stub .text.* .gnu.linkonce.t.*)
  .text          0x0000b428       0x38 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
                 0x0000b428                _start
  .text          0x0000b460       0x24 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
  .text          0x0000b484       0x54 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtbegin.o
- .text          0x0000b4d8     0x4f80 linux/app.evm3530.ov5T
+ .text          0x0000b4d8     0x4f70 linux/app.evm3530.ov5T
                 0x0000fdb0                main
- .text          0x00010458      0x248 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
-                0x000104ac                RMAN_deactivateAllResources
-                0x0001048c                DMAN3_grantDmaChannels
-                0x000104d0                CERuntime_init
-                0x0001045c                LAD_connect
-                0x00010464                LAD_disconnect
-                0x00010474                LAD_releaseDsp
-                0x0001046c                LAD_getDspStatus
-                0x00010494                DMAN3_releaseDmaChannels
-                0x0001069c                ti_sdo_ce_CERuntime_init__F
-                0x00010488                DMAN3_CE_exit
-                0x000104bc                RMAN_init
-                0x0001047c                LAD_startupDsp
-                0x0001049c                RMAN_activateAllResources
-                0x000104b4                RMAN_freeResources
-                0x00010458                IPC_generatedInit
-                0x00010484                DMAN3_CE_init
-                0x000104c4                RMAN_exit
-                0x000104cc                CERuntime_exit
-                0x000104a4                RMAN_assignResources
- .text          0x000106a0      0xc64 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
-                0x00010f2c                UNIVERSAL_processWait
-                0x00011164                UNIVERSAL_processAsync
- .text          0x00011304      0x7f4 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
-                0x00011304                UNIVERSAL_control
-                0x00011614                UNIVERSAL_delete
-                0x000116b0                UNIVERSAL_create
-                0x000117b8                UNIVERSAL_process
- .text          0x00011af8      0xa80 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
-                0x00011fc4                Server_getNumMemSegs
-                0x00012340                Server_disconnectTrace
-                0x00011d8c                Server_redefineHeap
-                0x00012454                Server_connectTrace
-                0x000121e0                Server_getCpuLoad
-                0x00011bcc                Server_setTrace
-                0x00012280                Server_fwriteTrace
-                0x00011edc                Server_init
-                0x00011c88                Server_restoreHeap
-                0x000120d8                Server_getMemStat
- .text          0x00012578     0x2ef8 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
-                0x0001262c                Engine_getServer
-                0x00012580                Engine_getLastError
-                0x000132e8                Engine_getMemStat
-                0x000151b4                Engine_getLocalEngine
-                0x00012b70                Engine_requestTraceToken
-                0x00013fb0                Engine_createNode2
-                0x00012ec4                Engine_getAlgNumRecs
-                0x00012c50                Engine_redefineHeap
-                0x000131e4                Engine_getNumMemSegs
-                0x000125f4                Engine_getNodeQueues
-                0x00012620                Engine_hasServer
-                0x00012ffc                Engine_getAlgMemRecs
-                0x000136a4                Engine_init
-                0x00012594                Engine_getRemoteVisa
-                0x00015288                Engine_getMemId
-                0x000146d8                Engine_createNode
-                0x00013e38                Engine_deleteNode
-                0x00013d1c                Engine_callAsync
-                0x00014920                Engine_open
-                0x00012578                Engine_getEngine
-                0x00012588                Engine_getName
-                0x00013560                Engine_getAlgInfo
-                0x0001278c                Engine_setTrace
-                0x000134a4                Engine_getNumAlgs
-                0x0001539c                Engine_getConstName
-                0x00012dd8                Engine_getCpuLoad
-                0x000152a8                Engine_getFxns
-                0x00012be8                Engine_releaseTraceToken
-                0x0001477c                Engine_close
-                0x00012a00                Engine_restoreHeap
-                0x000126a8                Engine_ctrlNode
-                0x00013d84                Engine_call
-                0x000138ac                Engine_fwriteTrace
-                0x00015208                Engine_getCodecClassConfig
-                0x0001291c                Engine_getUsedMem
-                0x00013cc4                Engine_callWait
- .text          0x00015470     0x10cc /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
-                0x00015c4c                VISA_callAsync
-                0x00015470                VISA_getAlgFxns
-                0x00015630                VISA_getAlgMemRecs
-                0x00015478                VISA_getAlgorithmHandle
-                0x00015b0c                VISA_wait
-                0x0001647c                VISA_create
-                0x00015870                VISA_enter
-                0x00015494                VISA_getCodecClassConfig
-                0x0001549c                VISA_isLocal
-                0x00015480                VISA_getContext
-                0x00015df0                VISA_create2
-                0x000157a0                VISA_exit
-                0x00015508                VISA_allocMsg
-                0x00015d1c                VISA_call
-                0x00015698                VISA_freeMsg
-                0x0001567c                VISA_getAlgHandle
-                0x0001548c                VISA_setContext
-                0x000154a4                VISA_getMaxMsgSize
-                0x00015948                VISA_delete
-                0x000155e8                VISA_getAlgNumRecs
- .text          0x0001653c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
- .text          0x0001653c      0x800 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
-                0x00016544                Algorithm_getMemRecs
-                0x00016ae4                Algorithm_activate
-                0x0001654c                Algorithm_getNumRecs
-                0x00016648                Algorithm_delete
-                0x0001653c                Algorithm_getAlgHandle
-                0x00016b98                Algorithm_releaseLock
-                0x00016854                Algorithm_create
-                0x000165b8                Algorithm_exit
-                0x0001675c                Algorithm_deactivate
-                0x00016554                Algorithm_init
-                0x00016c8c                Algorithm_acquireLock
- .text          0x00016d3c      0x388 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
-                0x00016dac                ALG_create
-                0x00016d3c                ALG_delete
- .text          0x000170c4      0x628 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
-                0x000173f0                ALG_exit
-                0x00017524                ALG_releaseLock
-                0x0001747c                ALG_deactivate
-                0x0001765c                ALG_acquireLock
-                0x00017170                _ALG_allocMemory
-                0x000170c4                _ALG_freeMemory
-                0x000175b0                ALG_activate
-                0x0001724c                ALG_init
- .text          0x000176ec     0x3770 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
-                0x000176f4                dumpLinkCfgObj
-                0x0001ac70                Processor_create
-                0x0001970c                Processor_init
-                0x0001ab44                Processor_delete
-                0x000176ec                Processor_wait
- .text          0x0001ae5c      0x5a4 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
-                0x0001ae5c                Power_disconnect
-                0x0001b374                Power_init
-                0x0001af60                Power_connect
-                0x0001b1d4                Power_on
-                0x0001b064                Power_off
- .text          0x0001b400      0xe10 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
-                0x0001b6bc                Comm_locate
-                0x0001b400                Comm_getMsgSize
-                0x0001b4f4                Comm_release
-                0x0001ba28                Comm_get
-                0x0001b470                Comm_setSrcQueue
-                0x0001bbf4                Comm_free
-                0x0001bccc                Comm_exit
-                0x0001bec4                Comm_create
-                0x0001b9a8                Comm_getSrcQueue
-                0x0001bd64                Comm_delete
-                0x0001b89c                Comm_init
-                0x0001c090                Comm_alloc
-                0x0001b5cc                Comm_put
- .text          0x0001c210        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
- .text          0x0001c210        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
- .text          0x0001c210      0x548 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
-                0x0001c628                LockMP_acquire
-                0x0001c4f4                LockMP_create
-                0x0001c444                LockMP_getRefCount
-                0x0001c210                LockMP_getCount
-                0x0001c280                LockMP_release
-                0x0001c3ec                LockMP_init
-                0x0001c44c                LockMP_delete
- .text          0x0001c758       0xe8 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
-                0x0001c7ac                Queue_put
-                0x0001c764                Queue_extract
-                0x0001c7f8                Queue_get
-                0x0001c75c                Queue_init
-                0x0001c758                Queue_exit
- .text          0x0001c840       0xec /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
-                0x0001c848                GTConfig_error
-                0x0001c928                GTConfig_libcMalloc
-                0x0001c8d0                GTConfig_vprintf
-                0x0001c924                GTConfig_libcFree
-                0x0001c840                GTConfig_nop
- .text          0x0001c92c       0x2c /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
-                0x0001c930                File_stat
-                0x0001c92c                File_init
- .text          0x0001c958     0x14a0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
-                0x0001c994                Memory_exit
-                0x0001cec4                Memory_free
-                0x0001c9a4                Memory_dumpKnownContigBufsList
-                0x0001cadc                Memory_cacheWb
-                0x0001d24c                Memory_contigFree
-                0x0001cad8                Memory_cacheWbInv
-                0x0001cfd4                Memory_segFree
-                0x0001d124                Memory_unregisterContigBuf
-                0x0001cae4                Memory_getBufferVirtualAddress
-                0x0001ddec                Memory_contigAlloc
-                0x0001cd20                Memory_init
-                0x0001c98c                Memory_restoreHeap
-                0x0001c998                Memory_contigStat
-                0x0001c974                Memory_getHeapId
-                0x0001cae0                Memory_cacheInv
-                0x0001d788                Memory_registerContigBuf
-                0x0001c984                Memory_redefine
-                0x0001d2cc                Memory_alloc
-                0x0001d78c                Memory_getBufferPhysicalAddress
-                0x0001ca5c                Memory_segStat
-                0x0001d2c4                Memory_segAlloc
-                0x0001c97c                Memory_getNumHeaps
- .text          0x0001ddf8      0x2dc /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
-                0x0001dfcc                Global_atexit
-                0x0001ddf8                Global_getCpuLoad
-                0x0001e080                Global_abort
-                0x0001defc                Global_getenv
-                0x0001de00                Global_setSpecialTrace
-                0x0001def8                Global_getProcessId
-                0x0001de04                Global_init
-                0x0001df00                Global_exit
- .text          0x0001e0d4      0x920 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
-                0x0001e0d4                Thread_getenv
-                0x0001e4fc                Thread_init
-                0x0001e598                Thread_exit
-                0x0001e42c                Thread_join
-                0x0001e280                Thread_stat
-                0x0001e218                Thread_yield
-                0x0001e140                Thread_getname
-                0x0001e3bc                Thread_self
-                0x0001e798                Thread_create
-                0x0001e314                Thread_setpri
-                0x0001e628                Thread_delete
-                0x0001e1ac                Thread_getpri
- .text          0x0001e9f4       0x14 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
-                0x0001e9f4                Log_init
-                0x0001e9fc                Log_printf
-                0x0001e9f8                Log_event
- .text          0x0001ea08      0x13c /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
-                0x0001ea98                Lock_create
-                0x0001ea08                Lock_release
-                0x0001eb40                Lock_acquire
-                0x0001eaec                Lock_init
-                0x0001ea0c                Lock_delete
- .text          0x0001eb44      0x3bc /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
-                0x0001eb94                GTConfig_gettimeofday
-                0x0001ec94                GT_config_setOutTrace
-                0x0001eb6c                GTConfig_pthreadLock
-                0x0001ec24                GTConfig_tracePrintf
-                0x0001ec20                GTConfig_threadId
-                0x0001eb44                GTConfig_pthreadUnlock
-                0x0001ecc8                GTConfig_posixInit
- .text          0x0001ef00      0xbb4 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
-                0x0001f49c                SemMP_delete
-                0x0001f35c                SemMP_getRefCount
-                0x0001ef78                SemMP_post
-                0x0001f1d4                SemMP_init
-                0x0001f36c                SemMP_getCount
-                0x0001f71c                SemMP_create
-                0x0001f064                SemMP_pend
- .text          0x0001fab4      0x47c /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
-                0x0001fe0c                Sem_create
-                0x0001fca8                Sem_init
-                0x0001fd70                Sem_delete
-                0x0001fbc8                Sem_pend
-                0x0001fb28                Sem_post
-                0x0001fd00                Sem_getCount
- .text          0x0001ff30      0x828 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
-                0x0001ff30                XdmUtils_validateVideo1BufDesc
-                0x000205e8                XdmUtils_validateExtendedStruct
-                0x00020718                XdmUtils_init
-                0x00020494                XdmUtils_validateSparseBufDesc
-                0x00020338                XdmUtils_validateSparseBufDesc1
-                0x00020134                XdmUtils_validateVideoBufDesc
- .text          0x00020758      0xf5c /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
-                0x00020794                GT_disable
-                0x0002164c                _GT_create
-                0x000207d4                GT_enable
-                0x00020758                GT_curTime
-                0x00021194                GT_getModNameFlags
-                0x000208ec                _GT_trace
-                0x00021404                _GT_set
-                0x000207f4                GT_init
- .text          0x000216b4      0x218 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
-                0x000216b8                LPM_init
-                0x000216c4                LPM_regExtPowerOn
-                0x00021808                LPM_clear
-                0x000216cc                LPM_setPowerState
-                0x00021790                LPM_off
-                0x000218ac                LPM_close
-                0x0002170c                LPM_resume
-                0x00021734                LPM_on
-                0x000216ec                LPM_set
-                0x00021828                LPM_open
-                0x000217b8                LPM_disconnect
-                0x000216b4                LPM_exit
-                0x000217e0                LPM_connect
-                0x000216bc                LPM_regExtPowerOff
- .text          0x000218cc      0xa78 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
-                0x00021f80                CMEM_allocPool2
-                0x000221d4                CMEM_alloc2
-                0x00021d5c                CMEM_getPool
-                0x000221e8                CMEM_init
-                0x0002195c                CMEM_exit
-                0x00021f84                CMEM_allocPool
-                0x00021e34                CMEM_unregister
-                0x00021d58                CMEM_getPool2
-                0x00021f94                CMEM_registerAlloc
-                0x00021a54                CMEM_getBlock
-                0x00021a64                CMEM_getVersion
-                0x00021b58                CMEM_cacheWbInv
-                0x00021ad4                CMEM_cacheInv
-                0x00021c60                CMEM_getPhys
-                0x00021bdc                CMEM_cacheWb
-                0x00021d68                CMEM_free
-                0x000221d8                CMEM_alloc
-                0x00021a4c                CMEM_getBlockAttrs
- .text          0x00022344    0x14640 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
-                0x00022ac0                _MPCS_open
-                0x00034c44                RingIO_cancel
-                0x0002239c                _IDM_USR_exit
-                0x0002d4fc                MPLIST_isEmpty
-                0x00030560                PROC_setup
-                0x00022fcc                _MPLIST_moduleInit
-                0x000233cc                _MPLIST_init
-                0x0002ece8                MSGQ_locate
-                0x00029014                CHNL_issue
-                0x0002b198                DRV_ProtectInit
-                0x000291f4                CHNL_idle
-                0x0002ec60                MSGQ_close
-                0x0002f800                NOTIFY_notify
-                0x00031f1c                PROC_stop
-                0x0002789c                _RingIO_releaseAttribute
-                0x00036098                RingIO_sendNotify
-                0x00023958                _NOTIFY_exit
-                0x00025138                _RingIO_writerRelease
-                0x0002cef8                MPLIST_open
-                0x00029458                DRV_Initialize
-                0x00035674                RingIO_flush
-                0x0002910c                CHNL_reclaim
-                0x00022930                _MPCS_exit
-                0x00025fb4                _RingIO_writerFlush
-                0x00027548                _RingIO_getFirstAcquiredAttr
-                0x00032e10                RingIO_delete
-                0x000284d4                _SYNC_USR_createCS
-                0x00030978                PROC_destroy
-                0x00030d64                PROC_attach
-                0x00028170                _RingIO_releaseLock
-                0x0002f98c                POOL_open
-                0x0002caf0                MPLIST_delete
-                0x000225f8                _MEM_USR_init
-                0x00027e00                _RingIO_updateAttributes
-                0x00032374                RingIO_create
-                0x00028128                _RingIO_acquireLock
-                0x0003224c                PROC_resetCurStatus
-                0x0002f660                NOTIFY_unregister
-                0x00032104                PROC_GetSymbolAddress
-                0x00026fd4                _RingIO_callNotifier
-                0x00027aa8                _RingIO_getContiguousDataSize
-                0x0002f3c8                NOTIFY_register
-                0x00031950                PROC_load
-                0x0002728c                _RingIO_checkNotifier
-                0x00028a8c                _SYNC_USR_sleep
-                0x0002dc70                MPLIST_removeElement
-                0x00022624                _MEM_USR_exit
-                0x0002424c                _RingIO_moduleExit
-                0x0002df70                MPLIST_first
-                0x0002ff24                POOL_translateAddr
-                0x000226e0                _MEM_USR_calloc
-                0x0002c254                MPCS_enter
-                0x00022650                _MEM_USR_alloc
-                0x00022344                _IDM_USR_init
-                0x00036348                RingIO_getEmptySize
-                0x00026ed4                _RingIO_readerCancel
-                0x0002f114                MSGQ_get
-                0x0002f074                MSGQ_put
-                0x0003234c                PROC_Setup
-                0x0002b49c                DRV_ProtectLeave
-                0x00028d3c                CHNL_delete
-                0x00028bd0                CHNL_create
-                0x000312e0                PROC_detach
-                0x0002c0d4                MPCS_close
-                0x00027d54                RingIO_notifyCallback
-                0x00022588                _IDM_USR_releaseId
-                0x0003453c                RingIO_acquire
-                0x0002c63c                MPLIST_create
-                0x00022480                _IDM_USR_delete
-                0x00025644                _RingIO_writerSetvAttribute
-                0x0002bc44                MPCS_delete
-                0x00031c34                PROC_write
-                0x000227dc                _MPCS_init
-                0x0002b7b8                MPCS_create
-                0x00022e4c                _MPCS_OS_open
-                0x00035370                RingIO_setvAttribute
-                0x0002e170                MPLIST_next
-                0x00023d90                _POOL_xltBuf
-                0x0002f200                MSGQ_getSrcQueue
-                0x000298e4                DRV_Invoke
-                0x000224e4                _IDM_USR_acquireId
-                0x0002d2dc                MPLIST_close
-                0x00035aac                RingIO_setNotifier
-                0x000292b8                CHNL_flush
-                0x00033f2c                RingIO_close
-                0x00023cb0                _POOL_exit
-                0x00028e00                CHNL_allocateBuffer
-                0x0002d60c                MPLIST_insertBefore
-                0x00028b50                _SYNC_USR_stateObjInit
-                0x00023228                _MPLIST_moduleExit
-                0x00030260                POOL_writeback
-                0x0002e74c                MSGQ_transportOpen
-                0x00023fb4                _RingIO_moduleInit
-                0x000223f4                _IDM_USR_create
-                0x0002477c                _RingIO_writerAcquire
-                0x0002f354                MSGQ_setErrorHandler
-                0x00028868                _SYNC_USR_enterCS
-                0x0002b37c                DRV_ProtectEnter
-                0x0002ee94                MSGQ_release
-                0x0002fe6c                POOL_free
-                0x0002eff4                MSGQ_free
-                0x0002353c                _MPLIST_exit
-                0x0002661c                _RingIO_readerFlush
-                0x00036134                RingIO_getValidSize
-                0x0003505c                RingIO_getvAttribute
-                0x0002c4b4                MPCS_leave
-                0x0002442c                _RingIO_init
-                0x00034fcc                RingIO_setAttribute
-                0x00036770                RingIO_getEmptyAttrSize
-                0x0002eb78                MSGQ_open
-                0x00033670                RingIO_open
-                0x00034880                RingIO_release
-                0x000321b4                PROC_control
-                0x00029768                DRV_Finalize
-                0x0003004c                POOL_getPoolId
-                0x0002f2a4                MSGQ_count
-                0x000281b8                _SYNC_USR_init
-                0x00034f48                RingIO_getAttribute
-                0x0002ef1c                MSGQ_alloc
-                0x000253b4                _RingIO_readerRelease
-                0x0002876c                _SYNC_USR_deleteCS
-                0x00031b34                PROC_loadSection
-                0x00028f14                CHNL_freeBuffer
-                0x00025ad0                _RingIO_readerGetvAttribute
-                0x0002bfb4                MPCS_open
-                0x00031b78                PROC_read
-                0x0002937c                CHNL_control
-                0x0002fbcc                POOL_close
-                0x0002d944                MPLIST_putTail
-                0x0002e990                MSGQ_transportClose
-                0x00031740                PROC_getState
-                0x0002e408                MPLIST_getHead
-                0x00031cf0                PROC_start
-                0x00027c74                _RingIO_isOffsetInBetween
-                0x000273e4                _RingIO_initInstance
-                0x0002b2e0                DRV_ProtectExit
-                0x000276cc                _RingIO_getFirstAttr
-                0x0003655c                RingIO_getValidAttrSize
-                0x00022f18                _MPCS_OS_close
-                0x000236c0                _NOTIFY_init
-                0x0002fdb4                POOL_alloc
-                0x0002edb4                MSGQ_locateAsync
-                0x000245bc                _RingIO_exit
-                0x00028984                _SYNC_USR_leaveCS
-                0x000303e0                POOL_invalidate
-                0x00023bd0                _POOL_init
-                0x00022774                _MEM_USR_free
-                0x0002835c                _SYNC_USR_exit
-                0x00026bf4                _RingIO_writerCancel
-                0x00024af4                _RingIO_readerAcquire
- .text          0x00036984       0xc4 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
-                0x00036984                __udivsi3
-                0x00036a30                __aeabi_uidivmod
-                0x00036984                __aeabi_uidiv
- .text          0x00036a48      0x3b8 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
-                0x00036d00                __aeabi_ui2d
-                0x00036d8c                __aeabi_ul2d
-                0x00036d24                __floatsidf
-                0x00036a50                __subdf3
-                0x00036d00                __floatunsidf
-                0x00036a54                __adddf3
-                0x00036da0                __floatdidf
-                0x00036a50                __aeabi_dsub
-                0x00036d4c                __extendsfdf2
-                0x00036da0                __aeabi_l2d
-                0x00036d4c                __aeabi_f2d
-                0x00036d8c                __floatundidf
-                0x00036a54                __aeabi_dadd
-                0x00036d24                __aeabi_i2d
-                0x00036a48                __aeabi_drsub
- .text          0x00036e00      0x470 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
-                0x00036e00                __muldf3
-                0x0003706c                __aeabi_ddiv
-                0x00036e00                __aeabi_dmul
-                0x0003706c                __divdf3
- .text          0x00037270      0x128 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
-                0x00037304                __aeabi_cdrcmple
-                0x00037384                __aeabi_dcmpgt
-                0x00037278                __ltdf2
-                0x00037270                __gedf2
-                0x0003735c                __aeabi_dcmple
-                0x00037320                __aeabi_cdcmple
-                0x00037320                __aeabi_cdcmpeq
-                0x00037370                __aeabi_dcmpge
-                0x00037270                __gtdf2
-                0x00037348                __aeabi_dcmplt
-                0x00037280                __eqdf2
-                0x00037334                __aeabi_dcmpeq
-                0x00037278                __ledf2
-                0x00037280                __cmpdf2
-                0x00037280                __nedf2
- .text          0x00037398       0x5c /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
-                0x00037398                __aeabi_d2iz
-                0x00037398                __fixdfsi
- .text          0x000373f4       0xa0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
-                0x000373f4                __truncdfsf2
-                0x000373f4                __aeabi_d2f
- .text          0x00037494      0x250 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
-                0x00037638                __floatsisf
-                0x0003749c                __subsf3
-                0x00037630                __aeabi_ui2f
-                0x00037494                __aeabi_frsub
-                0x0003749c                __aeabi_fsub
-                0x00037658                __floatundisf
-                0x00037668                __floatdisf
-                0x00037638                __aeabi_i2f
-                0x000374a0                __addsf3
-                0x000374a0                __aeabi_fadd
-                0x00037668                __aeabi_l2f
-                0x00037658                __aeabi_ul2f
-                0x00037630                __floatunsisf
- .text          0x000376e4      0x2f8 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
-                0x0003787c                __divsf3
-                0x000376e4                __mulsf3
-                0x0003787c                __aeabi_fdiv
-                0x000376e4                __aeabi_fmul
- .text          0x000379dc       0x10 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
-                0x000379dc                __div0
- .text          0x000379ec       0x78 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
-                0x000379f0                __libc_csu_init
-                0x000379ec                __libc_csu_fini
- .text          0x00037a64       0x28 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
-                0x00037a64                atexit
- .text          0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
- .text          0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
+ .text          0x00010448      0x248 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
+                0x0001049c                RMAN_deactivateAllResources
+                0x0001047c                DMAN3_grantDmaChannels
+                0x000104c0                CERuntime_init
+                0x0001044c                LAD_connect
+                0x00010454                LAD_disconnect
+                0x00010464                LAD_releaseDsp
+                0x0001045c                LAD_getDspStatus
+                0x00010484                DMAN3_releaseDmaChannels
+                0x0001068c                ti_sdo_ce_CERuntime_init__F
+                0x00010478                DMAN3_CE_exit
+                0x000104ac                RMAN_init
+                0x0001046c                LAD_startupDsp
+                0x0001048c                RMAN_activateAllResources
+                0x000104a4                RMAN_freeResources
+                0x00010448                IPC_generatedInit
+                0x00010474                DMAN3_CE_init
+                0x000104b4                RMAN_exit
+                0x000104bc                CERuntime_exit
+                0x00010494                RMAN_assignResources
+ .text          0x00010690      0xc64 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
+                0x00010f1c                UNIVERSAL_processWait
+                0x00011154                UNIVERSAL_processAsync
+ .text          0x000112f4      0x7f4 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
+                0x000112f4                UNIVERSAL_control
+                0x00011604                UNIVERSAL_delete
+                0x000116a0                UNIVERSAL_create
+                0x000117a8                UNIVERSAL_process
+ .text          0x00011ae8      0xa80 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
+                0x00011fb4                Server_getNumMemSegs
+                0x00012330                Server_disconnectTrace
+                0x00011d7c                Server_redefineHeap
+                0x00012444                Server_connectTrace
+                0x000121d0                Server_getCpuLoad
+                0x00011bbc                Server_setTrace
+                0x00012270                Server_fwriteTrace
+                0x00011ecc                Server_init
+                0x00011c78                Server_restoreHeap
+                0x000120c8                Server_getMemStat
+ .text          0x00012568     0x2ef8 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
+                0x0001261c                Engine_getServer
+                0x00012570                Engine_getLastError
+                0x000132d8                Engine_getMemStat
+                0x000151a4                Engine_getLocalEngine
+                0x00012b60                Engine_requestTraceToken
+                0x00013fa0                Engine_createNode2
+                0x00012eb4                Engine_getAlgNumRecs
+                0x00012c40                Engine_redefineHeap
+                0x000131d4                Engine_getNumMemSegs
+                0x000125e4                Engine_getNodeQueues
+                0x00012610                Engine_hasServer
+                0x00012fec                Engine_getAlgMemRecs
+                0x00013694                Engine_init
+                0x00012584                Engine_getRemoteVisa
+                0x00015278                Engine_getMemId
+                0x000146c8                Engine_createNode
+                0x00013e28                Engine_deleteNode
+                0x00013d0c                Engine_callAsync
+                0x00014910                Engine_open
+                0x00012568                Engine_getEngine
+                0x00012578                Engine_getName
+                0x00013550                Engine_getAlgInfo
+                0x0001277c                Engine_setTrace
+                0x00013494                Engine_getNumAlgs
+                0x0001538c                Engine_getConstName
+                0x00012dc8                Engine_getCpuLoad
+                0x00015298                Engine_getFxns
+                0x00012bd8                Engine_releaseTraceToken
+                0x0001476c                Engine_close
+                0x000129f0                Engine_restoreHeap
+                0x00012698                Engine_ctrlNode
+                0x00013d74                Engine_call
+                0x0001389c                Engine_fwriteTrace
+                0x000151f8                Engine_getCodecClassConfig
+                0x0001290c                Engine_getUsedMem
+                0x00013cb4                Engine_callWait
+ .text          0x00015460     0x10cc /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
+                0x00015c3c                VISA_callAsync
+                0x00015460                VISA_getAlgFxns
+                0x00015620                VISA_getAlgMemRecs
+                0x00015468                VISA_getAlgorithmHandle
+                0x00015afc                VISA_wait
+                0x0001646c                VISA_create
+                0x00015860                VISA_enter
+                0x00015484                VISA_getCodecClassConfig
+                0x0001548c                VISA_isLocal
+                0x00015470                VISA_getContext
+                0x00015de0                VISA_create2
+                0x00015790                VISA_exit
+                0x000154f8                VISA_allocMsg
+                0x00015d0c                VISA_call
+                0x00015688                VISA_freeMsg
+                0x0001566c                VISA_getAlgHandle
+                0x0001547c                VISA_setContext
+                0x00015494                VISA_getMaxMsgSize
+                0x00015938                VISA_delete
+                0x000155d8                VISA_getAlgNumRecs
+ .text          0x0001652c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
+ .text          0x0001652c      0x800 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
+                0x00016534                Algorithm_getMemRecs
+                0x00016ad4                Algorithm_activate
+                0x0001653c                Algorithm_getNumRecs
+                0x00016638                Algorithm_delete
+                0x0001652c                Algorithm_getAlgHandle
+                0x00016b88                Algorithm_releaseLock
+                0x00016844                Algorithm_create
+                0x000165a8                Algorithm_exit
+                0x0001674c                Algorithm_deactivate
+                0x00016544                Algorithm_init
+                0x00016c7c                Algorithm_acquireLock
+ .text          0x00016d2c      0x388 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
+                0x00016d9c                ALG_create
+                0x00016d2c                ALG_delete
+ .text          0x000170b4      0x628 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
+                0x000173e0                ALG_exit
+                0x00017514                ALG_releaseLock
+                0x0001746c                ALG_deactivate
+                0x0001764c                ALG_acquireLock
+                0x00017160                _ALG_allocMemory
+                0x000170b4                _ALG_freeMemory
+                0x000175a0                ALG_activate
+                0x0001723c                ALG_init
+ .text          0x000176dc     0x3770 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
+                0x000176e4                dumpLinkCfgObj
+                0x0001ac60                Processor_create
+                0x000196fc                Processor_init
+                0x0001ab34                Processor_delete
+                0x000176dc                Processor_wait
+ .text          0x0001ae4c      0x5a4 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
+                0x0001ae4c                Power_disconnect
+                0x0001b364                Power_init
+                0x0001af50                Power_connect
+                0x0001b1c4                Power_on
+                0x0001b054                Power_off
+ .text          0x0001b3f0      0xe10 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
+                0x0001b6ac                Comm_locate
+                0x0001b3f0                Comm_getMsgSize
+                0x0001b4e4                Comm_release
+                0x0001ba18                Comm_get
+                0x0001b460                Comm_setSrcQueue
+                0x0001bbe4                Comm_free
+                0x0001bcbc                Comm_exit
+                0x0001beb4                Comm_create
+                0x0001b998                Comm_getSrcQueue
+                0x0001bd54                Comm_delete
+                0x0001b88c                Comm_init
+                0x0001c080                Comm_alloc
+                0x0001b5bc                Comm_put
+ .text          0x0001c200        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
+ .text          0x0001c200        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
+ .text          0x0001c200      0x548 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
+                0x0001c618                LockMP_acquire
+                0x0001c4e4                LockMP_create
+                0x0001c434                LockMP_getRefCount
+                0x0001c200                LockMP_getCount
+                0x0001c270                LockMP_release
+                0x0001c3dc                LockMP_init
+                0x0001c43c                LockMP_delete
+ .text          0x0001c748       0xe8 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
+                0x0001c79c                Queue_put
+                0x0001c754                Queue_extract
+                0x0001c7e8                Queue_get
+                0x0001c74c                Queue_init
+                0x0001c748                Queue_exit
+ .text          0x0001c830       0xec /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
+                0x0001c838                GTConfig_error
+                0x0001c918                GTConfig_libcMalloc
+                0x0001c8c0                GTConfig_vprintf
+                0x0001c914                GTConfig_libcFree
+                0x0001c830                GTConfig_nop
+ .text          0x0001c91c       0x2c /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
+                0x0001c920                File_stat
+                0x0001c91c                File_init
+ .text          0x0001c948     0x14a0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
+                0x0001c984                Memory_exit
+                0x0001ceb4                Memory_free
+                0x0001c994                Memory_dumpKnownContigBufsList
+                0x0001cacc                Memory_cacheWb
+                0x0001d23c                Memory_contigFree
+                0x0001cac8                Memory_cacheWbInv
+                0x0001cfc4                Memory_segFree
+                0x0001d114                Memory_unregisterContigBuf
+                0x0001cad4                Memory_getBufferVirtualAddress
+                0x0001dddc                Memory_contigAlloc
+                0x0001cd10                Memory_init
+                0x0001c97c                Memory_restoreHeap
+                0x0001c988                Memory_contigStat
+                0x0001c964                Memory_getHeapId
+                0x0001cad0                Memory_cacheInv
+                0x0001d778                Memory_registerContigBuf
+                0x0001c974                Memory_redefine
+                0x0001d2bc                Memory_alloc
+                0x0001d77c                Memory_getBufferPhysicalAddress
+                0x0001ca4c                Memory_segStat
+                0x0001d2b4                Memory_segAlloc
+                0x0001c96c                Memory_getNumHeaps
+ .text          0x0001dde8      0x2dc /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
+                0x0001dfbc                Global_atexit
+                0x0001dde8                Global_getCpuLoad
+                0x0001e070                Global_abort
+                0x0001deec                Global_getenv
+                0x0001ddf0                Global_setSpecialTrace
+                0x0001dee8                Global_getProcessId
+                0x0001ddf4                Global_init
+                0x0001def0                Global_exit
+ .text          0x0001e0c4      0x920 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
+                0x0001e0c4                Thread_getenv
+                0x0001e4ec                Thread_init
+                0x0001e588                Thread_exit
+                0x0001e41c                Thread_join
+                0x0001e270                Thread_stat
+                0x0001e208                Thread_yield
+                0x0001e130                Thread_getname
+                0x0001e3ac                Thread_self
+                0x0001e788                Thread_create
+                0x0001e304                Thread_setpri
+                0x0001e618                Thread_delete
+                0x0001e19c                Thread_getpri
+ .text          0x0001e9e4       0x14 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
+                0x0001e9e4                Log_init
+                0x0001e9ec                Log_printf
+                0x0001e9e8                Log_event
+ .text          0x0001e9f8      0x13c /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
+                0x0001ea88                Lock_create
+                0x0001e9f8                Lock_release
+                0x0001eb30                Lock_acquire
+                0x0001eadc                Lock_init
+                0x0001e9fc                Lock_delete
+ .text          0x0001eb34      0x3bc /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
+                0x0001eb84                GTConfig_gettimeofday
+                0x0001ec84                GT_config_setOutTrace
+                0x0001eb5c                GTConfig_pthreadLock
+                0x0001ec14                GTConfig_tracePrintf
+                0x0001ec10                GTConfig_threadId
+                0x0001eb34                GTConfig_pthreadUnlock
+                0x0001ecb8                GTConfig_posixInit
+ .text          0x0001eef0      0xbb4 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
+                0x0001f48c                SemMP_delete
+                0x0001f34c                SemMP_getRefCount
+                0x0001ef68                SemMP_post
+                0x0001f1c4                SemMP_init
+                0x0001f35c                SemMP_getCount
+                0x0001f70c                SemMP_create
+                0x0001f054                SemMP_pend
+ .text          0x0001faa4      0x47c /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
+                0x0001fdfc                Sem_create
+                0x0001fc98                Sem_init
+                0x0001fd60                Sem_delete
+                0x0001fbb8                Sem_pend
+                0x0001fb18                Sem_post
+                0x0001fcf0                Sem_getCount
+ .text          0x0001ff20      0x828 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
+                0x0001ff20                XdmUtils_validateVideo1BufDesc
+                0x000205d8                XdmUtils_validateExtendedStruct
+                0x00020708                XdmUtils_init
+                0x00020484                XdmUtils_validateSparseBufDesc
+                0x00020328                XdmUtils_validateSparseBufDesc1
+                0x00020124                XdmUtils_validateVideoBufDesc
+ .text          0x00020748      0xf5c /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
+                0x00020784                GT_disable
+                0x0002163c                _GT_create
+                0x000207c4                GT_enable
+                0x00020748                GT_curTime
+                0x00021184                GT_getModNameFlags
+                0x000208dc                _GT_trace
+                0x000213f4                _GT_set
+                0x000207e4                GT_init
+ .text          0x000216a4      0x218 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
+                0x000216a8                LPM_init
+                0x000216b4                LPM_regExtPowerOn
+                0x000217f8                LPM_clear
+                0x000216bc                LPM_setPowerState
+                0x00021780                LPM_off
+                0x0002189c                LPM_close
+                0x000216fc                LPM_resume
+                0x00021724                LPM_on
+                0x000216dc                LPM_set
+                0x00021818                LPM_open
+                0x000217a8                LPM_disconnect
+                0x000216a4                LPM_exit
+                0x000217d0                LPM_connect
+                0x000216ac                LPM_regExtPowerOff
+ .text          0x000218bc      0xa78 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
+                0x00021f70                CMEM_allocPool2
+                0x000221c4                CMEM_alloc2
+                0x00021d4c                CMEM_getPool
+                0x000221d8                CMEM_init
+                0x0002194c                CMEM_exit
+                0x00021f74                CMEM_allocPool
+                0x00021e24                CMEM_unregister
+                0x00021d48                CMEM_getPool2
+                0x00021f84                CMEM_registerAlloc
+                0x00021a44                CMEM_getBlock
+                0x00021a54                CMEM_getVersion
+                0x00021b48                CMEM_cacheWbInv
+                0x00021ac4                CMEM_cacheInv
+                0x00021c50                CMEM_getPhys
+                0x00021bcc                CMEM_cacheWb
+                0x00021d58                CMEM_free
+                0x000221c8                CMEM_alloc
+                0x00021a3c                CMEM_getBlockAttrs
+ .text          0x00022334    0x14640 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
+                0x00022ab0                _MPCS_open
+                0x00034c34                RingIO_cancel
+                0x0002238c                _IDM_USR_exit
+                0x0002d4ec                MPLIST_isEmpty
+                0x00030550                PROC_setup
+                0x00022fbc                _MPLIST_moduleInit
+                0x000233bc                _MPLIST_init
+                0x0002ecd8                MSGQ_locate
+                0x00029004                CHNL_issue
+                0x0002b188                DRV_ProtectInit
+                0x000291e4                CHNL_idle
+                0x0002ec50                MSGQ_close
+                0x0002f7f0                NOTIFY_notify
+                0x00031f0c                PROC_stop
+                0x0002788c                _RingIO_releaseAttribute
+                0x00036088                RingIO_sendNotify
+                0x00023948                _NOTIFY_exit
+                0x00025128                _RingIO_writerRelease
+                0x0002cee8                MPLIST_open
+                0x00029448                DRV_Initialize
+                0x00035664                RingIO_flush
+                0x000290fc                CHNL_reclaim
+                0x00022920                _MPCS_exit
+                0x00025fa4                _RingIO_writerFlush
+                0x00027538                _RingIO_getFirstAcquiredAttr
+                0x00032e00                RingIO_delete
+                0x000284c4                _SYNC_USR_createCS
+                0x00030968                PROC_destroy
+                0x00030d54                PROC_attach
+                0x00028160                _RingIO_releaseLock
+                0x0002f97c                POOL_open
+                0x0002cae0                MPLIST_delete
+                0x000225e8                _MEM_USR_init
+                0x00027df0                _RingIO_updateAttributes
+                0x00032364                RingIO_create
+                0x00028118                _RingIO_acquireLock
+                0x0003223c                PROC_resetCurStatus
+                0x0002f650                NOTIFY_unregister
+                0x000320f4                PROC_GetSymbolAddress
+                0x00026fc4                _RingIO_callNotifier
+                0x00027a98                _RingIO_getContiguousDataSize
+                0x0002f3b8                NOTIFY_register
+                0x00031940                PROC_load
+                0x0002727c                _RingIO_checkNotifier
+                0x00028a7c                _SYNC_USR_sleep
+                0x0002dc60                MPLIST_removeElement
+                0x00022614                _MEM_USR_exit
+                0x0002423c                _RingIO_moduleExit
+                0x0002df60                MPLIST_first
+                0x0002ff14                POOL_translateAddr
+                0x000226d0                _MEM_USR_calloc
+                0x0002c244                MPCS_enter
+                0x00022640                _MEM_USR_alloc
+                0x00022334                _IDM_USR_init
+                0x00036338                RingIO_getEmptySize
+                0x00026ec4                _RingIO_readerCancel
+                0x0002f104                MSGQ_get
+                0x0002f064                MSGQ_put
+                0x0003233c                PROC_Setup
+                0x0002b48c                DRV_ProtectLeave
+                0x00028d2c                CHNL_delete
+                0x00028bc0                CHNL_create
+                0x000312d0                PROC_detach
+                0x0002c0c4                MPCS_close
+                0x00027d44                RingIO_notifyCallback
+                0x00022578                _IDM_USR_releaseId
+                0x0003452c                RingIO_acquire
+                0x0002c62c                MPLIST_create
+                0x00022470                _IDM_USR_delete
+                0x00025634                _RingIO_writerSetvAttribute
+                0x0002bc34                MPCS_delete
+                0x00031c24                PROC_write
+                0x000227cc                _MPCS_init
+                0x0002b7a8                MPCS_create
+                0x00022e3c                _MPCS_OS_open
+                0x00035360                RingIO_setvAttribute
+                0x0002e160                MPLIST_next
+                0x00023d80                _POOL_xltBuf
+                0x0002f1f0                MSGQ_getSrcQueue
+                0x000298d4                DRV_Invoke
+                0x000224d4                _IDM_USR_acquireId
+                0x0002d2cc                MPLIST_close
+                0x00035a9c                RingIO_setNotifier
+                0x000292a8                CHNL_flush
+                0x00033f1c                RingIO_close
+                0x00023ca0                _POOL_exit
+                0x00028df0                CHNL_allocateBuffer
+                0x0002d5fc                MPLIST_insertBefore
+                0x00028b40                _SYNC_USR_stateObjInit
+                0x00023218                _MPLIST_moduleExit
+                0x00030250                POOL_writeback
+                0x0002e73c                MSGQ_transportOpen
+                0x00023fa4                _RingIO_moduleInit
+                0x000223e4                _IDM_USR_create
+                0x0002476c                _RingIO_writerAcquire
+                0x0002f344                MSGQ_setErrorHandler
+                0x00028858                _SYNC_USR_enterCS
+                0x0002b36c                DRV_ProtectEnter
+                0x0002ee84                MSGQ_release
+                0x0002fe5c                POOL_free
+                0x0002efe4                MSGQ_free
+                0x0002352c                _MPLIST_exit
+                0x0002660c                _RingIO_readerFlush
+                0x00036124                RingIO_getValidSize
+                0x0003504c                RingIO_getvAttribute
+                0x0002c4a4                MPCS_leave
+                0x0002441c                _RingIO_init
+                0x00034fbc                RingIO_setAttribute
+                0x00036760                RingIO_getEmptyAttrSize
+                0x0002eb68                MSGQ_open
+                0x00033660                RingIO_open
+                0x00034870                RingIO_release
+                0x000321a4                PROC_control
+                0x00029758                DRV_Finalize
+                0x0003003c                POOL_getPoolId
+                0x0002f294                MSGQ_count
+                0x000281a8                _SYNC_USR_init
+                0x00034f38                RingIO_getAttribute
+                0x0002ef0c                MSGQ_alloc
+                0x000253a4                _RingIO_readerRelease
+                0x0002875c                _SYNC_USR_deleteCS
+                0x00031b24                PROC_loadSection
+                0x00028f04                CHNL_freeBuffer
+                0x00025ac0                _RingIO_readerGetvAttribute
+                0x0002bfa4                MPCS_open
+                0x00031b68                PROC_read
+                0x0002936c                CHNL_control
+                0x0002fbbc                POOL_close
+                0x0002d934                MPLIST_putTail
+                0x0002e980                MSGQ_transportClose
+                0x00031730                PROC_getState
+                0x0002e3f8                MPLIST_getHead
+                0x00031ce0                PROC_start
+                0x00027c64                _RingIO_isOffsetInBetween
+                0x000273d4                _RingIO_initInstance
+                0x0002b2d0                DRV_ProtectExit
+                0x000276bc                _RingIO_getFirstAttr
+                0x0003654c                RingIO_getValidAttrSize
+                0x00022f08                _MPCS_OS_close
+                0x000236b0                _NOTIFY_init
+                0x0002fda4                POOL_alloc
+                0x0002eda4                MSGQ_locateAsync
+                0x000245ac                _RingIO_exit
+                0x00028974                _SYNC_USR_leaveCS
+                0x000303d0                POOL_invalidate
+                0x00023bc0                _POOL_init
+                0x00022764                _MEM_USR_free
+                0x0002834c                _SYNC_USR_exit
+                0x00026be4                _RingIO_writerCancel
+                0x00024ae4                _RingIO_readerAcquire
+ .text          0x00036974       0xc4 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
+                0x00036974                __udivsi3
+                0x00036a20                __aeabi_uidivmod
+                0x00036974                __aeabi_uidiv
+ .text          0x00036a38      0x3b8 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
+                0x00036cf0                __aeabi_ui2d
+                0x00036d7c                __aeabi_ul2d
+                0x00036d14                __floatsidf
+                0x00036a40                __subdf3
+                0x00036cf0                __floatunsidf
+                0x00036a44                __adddf3
+                0x00036d90                __floatdidf
+                0x00036a40                __aeabi_dsub
+                0x00036d3c                __extendsfdf2
+                0x00036d90                __aeabi_l2d
+                0x00036d3c                __aeabi_f2d
+                0x00036d7c                __floatundidf
+                0x00036a44                __aeabi_dadd
+                0x00036d14                __aeabi_i2d
+                0x00036a38                __aeabi_drsub
+ .text          0x00036df0      0x470 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
+                0x00036df0                __muldf3
+                0x0003705c                __aeabi_ddiv
+                0x00036df0                __aeabi_dmul
+                0x0003705c                __divdf3
+ .text          0x00037260      0x128 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
+                0x000372f4                __aeabi_cdrcmple
+                0x00037374                __aeabi_dcmpgt
+                0x00037268                __ltdf2
+                0x00037260                __gedf2
+                0x0003734c                __aeabi_dcmple
+                0x00037310                __aeabi_cdcmple
+                0x00037310                __aeabi_cdcmpeq
+                0x00037360                __aeabi_dcmpge
+                0x00037260                __gtdf2
+                0x00037338                __aeabi_dcmplt
+                0x00037270                __eqdf2
+                0x00037324                __aeabi_dcmpeq
+                0x00037268                __ledf2
+                0x00037270                __cmpdf2
+                0x00037270                __nedf2
+ .text          0x00037388       0x5c /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
+                0x00037388                __aeabi_d2iz
+                0x00037388                __fixdfsi
+ .text          0x000373e4       0xa0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
+                0x000373e4                __truncdfsf2
+                0x000373e4                __aeabi_d2f
+ .text          0x00037484      0x250 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
+                0x00037628                __floatsisf
+                0x0003748c                __subsf3
+                0x00037620                __aeabi_ui2f
+                0x00037484                __aeabi_frsub
+                0x0003748c                __aeabi_fsub
+                0x00037648                __floatundisf
+                0x00037658                __floatdisf
+                0x00037628                __aeabi_i2f
+                0x00037490                __addsf3
+                0x00037490                __aeabi_fadd
+                0x00037658                __aeabi_l2f
+                0x00037648                __aeabi_ul2f
+                0x00037620                __floatunsisf
+ .text          0x000376d4      0x2f8 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
+                0x0003786c                __divsf3
+                0x000376d4                __mulsf3
+                0x0003786c                __aeabi_fdiv
+                0x000376d4                __aeabi_fmul
+ .text          0x000379cc       0x10 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
+                0x000379cc                __div0
+ .text          0x000379dc       0x78 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
+                0x000379e0                __libc_csu_init
+                0x000379dc                __libc_csu_fini
+ .text          0x00037a54       0x28 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
+                0x00037a54                atexit
+ .text          0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
+ .text          0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtbegin.o
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libpthread.so.0
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libm.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_ml.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_highgui.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_core.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_calib3d.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_contrib.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_features2d.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_imgproc.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_legacy.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_objdetect.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_video.so
- .glue_7t       0x00037a8c        0x0 linux/app.evm3530.ov5T
- .glue_7t       0x00037a8c        0x0 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
- .glue_7t       0x00037a8c        0x0 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
- .glue_7t       0x00037a8c        0x0 lib/libopencvdsp.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libc.so.6
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/ld-linux.so.3
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
- .glue_7t       0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtbegin.o
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libpthread.so.0
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libm.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_ml.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_highgui.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_core.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_calib3d.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_contrib.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_features2d.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_imgproc.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_legacy.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_objdetect.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_video.so
+ .glue_7t       0x00037a7c        0x0 linux/app.evm3530.ov5T
+ .glue_7t       0x00037a7c        0x0 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
+ .glue_7t       0x00037a7c        0x0 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
+ .glue_7t       0x00037a7c        0x0 lib/libopencvdsp.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libc.so.6
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/ld-linux.so.3
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
+ .glue_7t       0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
  *(.glue_7)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtbegin.o
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libpthread.so.0
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libm.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_ml.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_highgui.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_core.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_calib3d.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_contrib.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_features2d.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_imgproc.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_legacy.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_objdetect.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_video.so
- .glue_7        0x00037a8c        0x0 linux/app.evm3530.ov5T
- .glue_7        0x00037a8c        0x0 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
- .glue_7        0x00037a8c        0x0 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
- .glue_7        0x00037a8c        0x0 lib/libopencvdsp.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libc.so.6
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/ld-linux.so.3
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
- .glue_7        0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtbegin.o
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libpthread.so.0
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libm.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_ml.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_highgui.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_core.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_calib3d.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_contrib.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_features2d.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_imgproc.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_legacy.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_objdetect.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_video.so
+ .glue_7        0x00037a7c        0x0 linux/app.evm3530.ov5T
+ .glue_7        0x00037a7c        0x0 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
+ .glue_7        0x00037a7c        0x0 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
+ .glue_7        0x00037a7c        0x0 lib/libopencvdsp.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libc.so.6
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/ld-linux.so.3
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
+ .glue_7        0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
  *(.vfp11_veneer)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtbegin.o
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libpthread.so.0
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libm.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_ml.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_highgui.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_core.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_calib3d.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_contrib.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_features2d.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_imgproc.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_legacy.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_objdetect.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_video.so
- .vfp11_veneer  0x00037a8c        0x0 linux/app.evm3530.ov5T
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
- .vfp11_veneer  0x00037a8c        0x0 lib/libopencvdsp.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libc.so.6
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/ld-linux.so.3
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
- .vfp11_veneer  0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtbegin.o
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libpthread.so.0
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libm.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_ml.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_highgui.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_core.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_calib3d.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_contrib.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_features2d.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_imgproc.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_legacy.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_objdetect.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_video.so
+ .vfp11_veneer  0x00037a7c        0x0 linux/app.evm3530.ov5T
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
+ .vfp11_veneer  0x00037a7c        0x0 lib/libopencvdsp.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libc.so.6
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/ld-linux.so.3
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
+ .vfp11_veneer  0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
  *(.v4_bx)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtbegin.o
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libpthread.so.0
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libm.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_ml.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_highgui.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_core.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_calib3d.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_contrib.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_features2d.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_imgproc.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_legacy.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_objdetect.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_video.so
- .v4_bx         0x00037a8c        0x0 linux/app.evm3530.ov5T
- .v4_bx         0x00037a8c        0x0 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
- .v4_bx         0x00037a8c        0x0 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
- .v4_bx         0x00037a8c        0x0 lib/libopencvdsp.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libc.so.6
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/ld-linux.so.3
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
- .v4_bx         0x00037a8c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtbegin.o
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libpthread.so.0
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libm.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_ml.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_highgui.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_core.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_calib3d.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_contrib.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_features2d.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_imgproc.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_legacy.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_objdetect.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libopencv_video.so
+ .v4_bx         0x00037a7c        0x0 linux/app.evm3530.ov5T
+ .v4_bx         0x00037a7c        0x0 /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OMAP3530.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink_linkcfg_OS.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Queue_posix.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(File_posix.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Log_noOS.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Lock_posix.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-local-power-manager-tree/packages/ti/bios/power/lib/release/lpm_linux.av5T(lpm_api.ov5T)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
+ .v4_bx         0x00037a7c        0x0 /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
+ .v4_bx         0x00037a7c        0x0 lib/libopencvdsp.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/libc.so.6
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(elf-init.oS)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/libc_nonshared.a(atexit.oS)
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/lib/ld-linux.so.3
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/../../../../arm-angstrom-linux-gnueabi/lib/libgcc_s.so
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
+ .v4_bx         0x00037a7c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
 
-.fini           0x00037a8c       0x10
+.fini           0x00037a7c       0x10
  *(.fini)
- .fini          0x00037a8c        0x8 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
-                0x00037a8c                _fini
- .fini          0x00037a94        0x8 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
-                0x00037a9c                PROVIDE (__etext, .)
-                0x00037a9c                PROVIDE (_etext, .)
-                0x00037a9c                PROVIDE (etext, .)
+ .fini          0x00037a7c        0x8 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
+                0x00037a7c                _fini
+ .fini          0x00037a84        0x8 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
+                0x00037a8c                PROVIDE (__etext, .)
+                0x00037a8c                PROVIDE (_etext, .)
+                0x00037a8c                PROVIDE (etext, .)
 
-.rodata         0x00037a9c     0x7bc0
+.rodata         0x00037a8c     0x7bb8
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata.cst4   0x00037a9c        0x4 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
-                0x00037a9c                _IO_stdin_used
- .rodata        0x00037aa0      0x604 linux/app.evm3530.ov5T
+ .rodata.cst4   0x00037a8c        0x4 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
+                0x00037a8c                _IO_stdin_used
+ .rodata        0x00037a90      0x5fc linux/app.evm3530.ov5T
  .rodata.str1.4
-                0x000380a4      0xfff /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
+                0x0003808c      0xfff /media/disk/test/opencv-dsp-acceleration/dsp_opencv/beagle/apps/opencv/cfg/linux/remote_ti_platforms_evm3530/package/cfg/remote_ti_platforms_evm3530_xv5T.ov5T
                                0x1000 (size before relaxing)
- *fill*         0x000390a3        0x1 00
+ *fill*         0x0003908b        0x1 00
  .rodata.str1.4
-                0x000390a4      0x225 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
+                0x0003908c      0x225 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal_stubs.ov5T)
                                 0x228 (size before relaxing)
- *fill*         0x000392c9        0x3 00
+ *fill*         0x000392b1        0x3 00
  .rodata.str1.4
-                0x000392cc      0x314 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
+                0x000392b4      0x314 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/universal/lib/release/universal.av5T(universal.ov5T)
                                 0x390 (size before relaxing)
  .rodata.str1.4
-                0x000395e0      0x1e8 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
+                0x000395c8      0x1e8 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Server.ov5T)
                                 0x20c (size before relaxing)
- .rodata        0x000397c8       0x44 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
+ .rodata        0x000397b0       0x44 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
  .rodata.str1.4
-                0x0003980c      0xe51 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
+                0x000397f4      0xe51 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(Engine.ov5T)
                                 0xe88 (size before relaxing)
- *fill*         0x0003a65d        0x3 00
- .rodata        0x0003a660       0x10 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
+ *fill*         0x0003a645        0x3 00
+ .rodata        0x0003a648       0x10 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
  .rodata.str1.4
-                0x0003a670      0x7cb /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
+                0x0003a658      0x7cb /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(visa.ov5T)
                                 0x7d0 (size before relaxing)
- *fill*         0x0003ae3b        0x1 00
+ *fill*         0x0003ae23        0x1 00
  .rodata.str1.4
-                0x0003ae3c       0x67 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
+                0x0003ae24       0x67 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/lib/release/ce.av5T(package_ti.sdo.ce.ov5T)
                                  0x68 (size before relaxing)
- *fill*         0x0003aea3        0x1 00
+ *fill*         0x0003ae8b        0x1 00
  .rodata.str1.4
-                0x0003aea4      0x3ed /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
+                0x0003ae8c      0x3ed /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/Algorithm_noOS.av5T(Algorithm_noOS.ov5T)
                                 0x414 (size before relaxing)
- *fill*         0x0003b291        0x3 00
+ *fill*         0x0003b279        0x3 00
  .rodata.str1.4
-                0x0003b294      0x1d7 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
+                0x0003b27c      0x1d7 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_create.ov5T)
                                 0x1d8 (size before relaxing)
- *fill*         0x0003b46b        0x1 00
+ *fill*         0x0003b453        0x1 00
  .rodata.str1.4
-                0x0003b46c       0x41 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
+                0x0003b454       0x41 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/alg/lib/release/alg.av5T(alg_malloc.ov5T)
                                  0x68 (size before relaxing)
- *fill*         0x0003b4ad        0x3 00
- .rodata        0x0003b4b0       0x1c /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
+ *fill*         0x0003b495        0x3 00
+ .rodata        0x0003b498       0x1c /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
  .rodata.str1.4
-                0x0003b4cc     0x14c1 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
+                0x0003b4b4     0x14c1 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Processor_dsplink.ov5T)
                                0x14f8 (size before relaxing)
- *fill*         0x0003c98d        0x3 00
+ *fill*         0x0003c975        0x3 00
  .rodata.str1.4
-                0x0003c990      0x3e4 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
- .rodata        0x0003cd74       0x18 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
+                0x0003c978      0x3e4 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Power_dsplink.ov5T)
+ .rodata        0x0003cd5c       0x18 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
  .rodata.str1.4
-                0x0003cd8c      0x552 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
+                0x0003cd74      0x552 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/ipc/dsplink/lib/release/ipc_dsplink_3530.av5T(Comm_dsplink.ov5T)
                                 0x580 (size before relaxing)
- *fill*         0x0003d2de        0x2 00
+ *fill*         0x0003d2c6        0x2 00
  .rodata.str1.4
-                0x0003d2e0      0x190 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
+                0x0003d2c8      0x190 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(LockMP_posix.ov5T)
                                 0x1b4 (size before relaxing)
  .rodata.str1.4
-                0x0003d470        0x8 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
- .rodata        0x0003d478        0xc /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
+                0x0003d458        0x8 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_libC.ov5T)
+ .rodata        0x0003d460        0xc /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
  .rodata.str1.4
-                0x0003d484      0xad7 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
+                0x0003d46c      0xad7 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Memory_cmem.ov5T)
                                 0xaec (size before relaxing)
- *fill*         0x0003df5b        0x1 00
+ *fill*         0x0003df43        0x1 00
  .rodata.str1.4
-                0x0003df5c       0xd1 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
+                0x0003df44       0xd1 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Global_noOS.ov5T)
                                  0xd8 (size before relaxing)
- *fill*         0x0003e02d        0x3 00
+ *fill*         0x0003e015        0x3 00
  .rodata.str1.4
-                0x0003e030      0x149 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
+                0x0003e018      0x149 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Thread_posix.ov5T)
                                 0x170 (size before relaxing)
- *fill*         0x0003e179        0x3 00
+ *fill*         0x0003e161        0x3 00
  .rodata.str1.4
-                0x0003e17c       0x6b /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
+                0x0003e164       0x6b /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(GT_config_posix.ov5T)
                                  0x6c (size before relaxing)
- *fill*         0x0003e1e7        0x1 00
+ *fill*         0x0003e1cf        0x1 00
  .rodata.str1.4
-                0x0003e1e8      0x479 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
+                0x0003e1d0      0x479 /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(SemMP_posix.ov5T)
                                 0x4a0 (size before relaxing)
- *fill*         0x0003e661        0x3 00
+ *fill*         0x0003e649        0x3 00
  .rodata.str1.4
-                0x0003e664      0x18f /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
+                0x0003e64c      0x18f /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/osal/linux/lib/release/osal_linux_470.av5T(Sem_posix.ov5T)
                                 0x1b4 (size before relaxing)
- *fill*         0x0003e7f3        0x1 00
+ *fill*         0x0003e7db        0x1 00
  .rodata.str1.4
-                0x0003e7f4      0x46f /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
+                0x0003e7dc      0x46f /media/disk/OE/work/ti/ti-codec-engine-tree/packages/ti/sdo/ce/utils/xdm/lib/release/XdmUtils.av5T(XdmUtils.ov5T)
                                 0x470 (size before relaxing)
- *fill*         0x0003ec63        0x1 00
+ *fill*         0x0003ec4b        0x1 00
  .rodata.str1.4
-                0x0003ec64      0x215 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
+                0x0003ec4c      0x215 /media/disk/OE/work/ti/ti-framework-components-tree/packages/ti/sdo/utils/trace/lib/release/gt.av5T(gt.ov5T)
                                 0x224 (size before relaxing)
- *fill*         0x0003ee79        0x3 00
+ *fill*         0x0003ee61        0x3 00
  .rodata.str1.4
-                0x0003ee7c      0x694 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
- .rodata        0x0003f510      0x14c /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
+                0x0003ee64      0x694 /media/disk/OE/work/ti/ti-linuxutils-tree/packages/ti/sdo/linuxutils/cmem/lib/cmem.a470MV(cmem.o470MV)
+ .rodata        0x0003f4f8      0x14c /media/disk/OE/work/ti/ti-dsplink-tree/packages/dsplink/gpp/export/BIN/Linux/OMAP3530/RELEASE/dsplink.lib
 
 .rodata1
  *(.rodata1)
 
-.ARM.extab      0x0003f65c        0x0
+.ARM.extab      0x0003f644        0x0
  *(.ARM.extab* .gnu.linkonce.armextab.*)
- .ARM.extab     0x0003f65c        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
-                0x0003f65c                __exidx_start = .
+ .ARM.extab     0x0003f644        0x0 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
+                0x0003f644                __exidx_start = .
 
-.ARM.exidx      0x0003f65c        0x8
+.ARM.exidx      0x0003f644        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0003f65c        0x8 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
-                0x0003f664                __exidx_end = .
+ .ARM.exidx     0x0003f644        0x8 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crt1.o
+                0x0003f64c                __exidx_end = .
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x0003f664        0x4
+.eh_frame       0x0003f64c        0x4
  *(.eh_frame)
- .eh_frame      0x0003f664        0x4 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
+ .eh_frame      0x0003f64c        0x4 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/crtend.o
 
 .gcc_except_table
  *(.gcc_except_table .gcc_except_table.*)
-                0x0003f668                . = (ALIGN (0x8000) - ((0x8000 - .) & 0x7fff))
+                0x0003f650                . = (ALIGN (0x8000) - ((0x8000 - .) & 0x7fff))
                 0x00040000                . = (0x8000 DATA_SEGMENT_ALIGN 0x1000)
 
 .eh_frame
@@ -1878,20 +1878,20 @@ LOAD /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom
  .debug_abbrev  0x00000351       0x14 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
  .debug_abbrev  0x00000365       0x12 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
 
-.debug_line     0x00000000     0x16ed
+.debug_line     0x00000000     0x16f0
  *(.debug_line)
  .debug_line    0x00000000       0xe9 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crti.o
- .debug_line    0x000000e9      0x88d linux/app.evm3530.ov5T
- .debug_line    0x00000976       0xf4 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
- .debug_line    0x00000a6a      0x248 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
- .debug_line    0x00000cb2      0x269 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
- .debug_line    0x00000f1b      0x15f /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
- .debug_line    0x0000107a       0xe2 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
- .debug_line    0x0000115c       0xf3 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
- .debug_line    0x0000124f      0x16c /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
- .debug_line    0x000013bb      0x18d /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
- .debug_line    0x00001548       0xd3 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
- .debug_line    0x0000161b       0xd2 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
+ .debug_line    0x000000e9      0x890 linux/app.evm3530.ov5T
+ .debug_line    0x00000979       0xf4 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_udivsi3.o)
+ .debug_line    0x00000a6d      0x248 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubdf3.o)
+ .debug_line    0x00000cb5      0x269 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivdf3.o)
+ .debug_line    0x00000f1e      0x15f /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_cmpdf2.o)
+ .debug_line    0x0000107d       0xe2 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_fixdfsi.o)
+ .debug_line    0x0000115f       0xf3 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_truncdfsf2.o)
+ .debug_line    0x00001252      0x16c /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_addsubsf3.o)
+ .debug_line    0x000013be      0x18d /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_muldivsf3.o)
+ .debug_line    0x0000154b       0xd3 /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/lib/gcc/arm-angstrom-linux-gnueabi/4.3.3/libgcc.a(_dvmd_lnx.o)
+ .debug_line    0x0000161e       0xd2 /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib/crtn.o
 
 .debug_frame    0x00000000      0xed8
  *(.debug_frame)

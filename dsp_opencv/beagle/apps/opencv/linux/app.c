@@ -86,8 +86,7 @@ int main(int argc, char *argv[])
 
     		if (!status)
            	   printf("Error:\n");
-    		else printf("Success\n");
-
+    		
     		ptr = (int *)integralImage->imageData;
     		printf(" The integral image is:\n");
     		for (i=0;i<8;i++){
@@ -182,13 +181,14 @@ int main(int argc, char *argv[])
 	default:
 	      return (-1);
     }
-exit:
+
     cvEndDsp();
     cvDestroyWindow("video");
     cvReleaseImage(&videoFrame);
     cvReleaseImage(&convFrame);
     cvReleaseImage(&convOpencvFrame);
-
+exit:
+    
     return 0;
 
 }    

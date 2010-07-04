@@ -258,7 +258,7 @@ int cvCreateEngine(OPENCV_Operation operationFxn)
     if (codec == NULL) {
         printf( "App-> ERROR: can't open codec %s\n", opencvName);
         cvEndDsp();
-        return (0);
+        return;
     }
 
     /* Enter app */

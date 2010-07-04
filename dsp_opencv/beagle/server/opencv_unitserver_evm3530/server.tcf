@@ -75,20 +75,20 @@ var mem_ext = [
     comment:    "DDR2: off-chip memory for application code and data",
     name:       "DDR2",
     base:       0x8AA00000,
-    len:        0x00400000,
+    len:        0x00500000,
     space:      "code/data"
 },
 {
     comment:    "DSPLINK: off-chip memory reserved for DSPLINK code and data",
     name:       "DSPLINKMEM",
-    base:       0x8AE00000,
+    base:       0x8AF00000,
     len:        0x00100000,
     space:      "code/data"
 },
 {
     comment:    "RESET_VECTOR: off-chip memory for the reset vector table",
     name:       "RESET_VECTOR",
-    base:       0x8AF00000,
+    base:       0x8B000000,
     len:        0x00001000,
     space:      "code/data"
 },
@@ -117,8 +117,8 @@ if (platform == "ti.platforms.evm3530") {
     };
 
     var params = {
-//        clockRate: 360,
-	clockRate: 520,
+        clockRate: 360,
+//	clockRate: 520,
         catalogName: "ti.catalog.c6000",
         deviceName: "3530",
         regs: device_regs,
