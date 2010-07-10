@@ -30,6 +30,7 @@ typedef struct OPENCV_BEAGLE_Obj {
     IALG_Obj           alg;            /* MUST be first field of all OPENCV objs */
     XDAS_Int8        *workBuf;       /*  scratch memory */
     XDAS_Int8	     *workBuf2;
+    XDAS_Int8	     *workBuf3;
     
     XDAS_Int32 s_type;
     XDAS_Int32 s_step;

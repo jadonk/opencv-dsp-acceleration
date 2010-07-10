@@ -41,16 +41,18 @@ Int OPENCV_BEAGLE_process(IUNIVERSAL_Handle handle,
 		break;
  
 	   case OPENCV_OPERATION_DFT :
-		OPENCV_BEAGLE_findDFT( handle, inArgs->dftSize, inputBuf, twiddleBuf, outBufs->descs[0].buf);
+	   case OPENCV_OPERATION_IDFT :
+	   case OPENCV_OPERATION_DFTROWS :
+	   case OPENCV_OPERATION_IDFTROWS :
+		OPENCV_BEAGLE_findDFT( handle, inArgs->operation, inputBuf, outBufs->descs[0].buf);
 	        break; 
 
 	   case OPENCV_OPERATION_SOBEL3x3 :
-
 	   case OPENCV_OPERATION_SOBEL5x5 :
-
  	   case OPENCV_OPERATION_SOBEL7x7 :
 		OPENCV_BEAGLE_sobel( handle, inArgs->operation, inputBuf, outBufs->descs[0].buf);
   		break;
+
 	   case OPENCV_OPERATION_INTEGRAL :
 		OPENCV_BEAGLE_integral( handle, inputBuf, outBufs->descs[0].buf);
   		break;
@@ -61,18 +63,18 @@ Int OPENCV_BEAGLE_process(IUNIVERSAL_Handle handle,
 
 
     /* report how we accessed the input buffer */
-    inBufs->descs[0].accessMask = 0;
+//    inBufs->descs[0].accessMask = 0;
     XDM_SETACCESSMODE_READ(inBufs->descs[0].accessMask);
     
-    inBufs->descs[1].accessMask = 0;
+//    inBufs->descs[1].accessMask = 0;
     XDM_SETACCESSMODE_READ(inBufs->descs[1].accessMask);
 
-    inBufs->descs[2].accessMask = 0;
+//    inBufs->descs[2].accessMask = 0;
     XDM_SETACCESSMODE_READ(inBufs->descs[2].accessMask);
 
     
     /* report how we accessed the output buffer */
-    outBufs->descs[0].accessMask = 0;
+//    outBufs->descs[0].accessMask = 0;
     XDM_SETACCESSMODE_WRITE(outBufs->descs[0].accessMask);
 
     return (IUNIVERSAL_EOK);

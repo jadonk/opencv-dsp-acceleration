@@ -5,7 +5,7 @@
 #ifndef IOPENCV_
 #define IOPENCV_
 
-#include <ti/xdais/ialg.h>
+//#include <ti/xdais/ialg.h>
 #include <ti/xdais/xdas.h>
 #include <ti/xdais/dm/iuniversal.h>
 
@@ -21,7 +21,11 @@ typedef enum IOPENCV_OperationTypes {
 	OPENCV_OPERATION_SOBEL3x3 = (1 << 2),
 	OPENCV_OPERATION_SOBEL5x5 = (1 << 3),
 	OPENCV_OPERATION_SOBEL7x7 = (1 << 4),
-	OPENCV_OPERATION_INTEGRAL = (1 << 5)
+	OPENCV_OPERATION_INTEGRAL = (1 << 5),
+        OPENCV_OPERATION_IDFT = (1 << 6),
+	OPENCV_OPERATION_DFTROWS = (1 << 7),
+	OPENCV_OPERATION_IDFTROWS = (1 << 8),
+	OPENCV_OPERATION_SCALE = (1 << 9)
 } IOPENCV_OperationTypes;
 
 

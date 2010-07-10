@@ -15,8 +15,8 @@ ifeq ($(PLATFORM),omap3530)
     XDC_TARGETS = "gnu.targets.arm.GCArmv5T ti.targets.C64P"
 #     XDC_TARGETS = "ti.targets.C64P"
 #    CROSS_COMPILE = /media/disk/OE/build/tmp-angstrom_2008_1/cross/armv7a/bin/arm-angstrom-linux-gnueabi-
-    CROSS_COMPILE = /media/disk/openembedded/build/tmp-angstrom_2008_1/cross/armv7a/bin/arm-angstrom-linux-gnueabi-
-endif
+    CROSS_COMPILE = /media/disk/OE/build/tmp-angstrom_2008_1/cross/armv7a/bin/arm-angstrom-linux-gnueabi-
+endif 
 
 # Location of IUNIVERSAL Examples
 PACKAGE_DIR = $(shell pwd)
@@ -82,12 +82,13 @@ HEADERS = $(wildcard beagle/library/opencv/*.h)
 SOURCES = $(wildcard beagle/library/opencv/*.c)
 OBJFILES = $(SOURCES:%.c=%.ov5T)
 TARGET = beagle/library/opencv/lib/libopencvdsp.so
-GNU_C_FLAGS = $(C_FLAGS) -Wall -Dxdc_target_name__=MVArm9 -I$(XDC_INSTALL_DIR)/packages -I$(CE_INSTALL_DIR)/packages -I$(XDAIS_INSTALL_DIR)/packages -I$(BIOS_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(LINK_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(BIOSUTILS_INSTALL_DIR)/packages -I$(LPM_INSTAL_DIR)/packages -I$(LINUXKERNEL_INSTALL_DIR)/include -I$(BIOS_INSTALL_DIR)/packages/ti/bios/include -I$(DMAI_INSTALL_DIR)/packages -I$(CURDIR) -Dxdc_target_types__=gnu/targets/std.h -D_$(PLATFORM)
+GNU_C_FLAGS = $(C_FLAGS) $(CFLAGS) -Wall -Dxdc_target_name__=MVArm9 -I$(XDC_INSTALL_DIR)/packages -I$(CE_INSTALL_DIR)/packages -I$(XDAIS_INSTALL_DIR)/packages -I$(BIOS_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(LINK_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(BIOSUTILS_INSTALL_DIR)/packages -I$(LPM_INSTAL_DIR)/packages -I$(LINUXKERNEL_INSTALL_DIR)/include -I$(BIOS_INSTALL_DIR)/packages/ti/bios/include -I$(DMAI_INSTALL_DIR)/packages -I$(CURDIR) -Dxdc_target_types__=gnu/targets/std.h -D_$(PLATFORM)
 GNU_AR_FLAGS = $(AR_FLAGS)
-GNU_LD_FLAGS = $(LD_FLAGS)
+GNU_LD_FLAGS = $(LD_FLAGS) $(LDFLAGS)
 COMPILE = $(PRE) $(CROSS_COMPILE)gcc $(GNU_C_FLAGS) $(GNU_CPP_FLAGS) -c
 AR = $(PRE) $(CROSS_COMPILE)ar rc $(GNU_AR_FLAGS)
 LD = $(PRE) $(CROSS_COMPILE)gcc $(GNU_LD_FLAGS)
+LD_DIR = /media/disk/OE/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib
 
 .PHONY: clean clean_app clean_lib codec server library app install all
 
@@ -117,7 +118,8 @@ $(TARGET):	$(OBJFILES)
 	@echo Building Shared Library $@ from $^..
 	@mkdir -p $(dir $@)
 	$(LD) -shared  -o $@ $^
-	@cp $(TARGET) beagle/apps/opencv/lib
+#	@cp $(TARGET) beagle/apps/opencv/lib
+	@cp $(TARGET) $(LD_DIR)
 
 package/package.defs.h:beagle/library/opencv/package.xdc beagle/library/opencv/package.xs beagle/library/opencv/package.bld
 	@echo
@@ -160,6 +162,7 @@ clean_lib:
 	rm -rf beagle/library/opencv/*.ov5T
 	rm -rf beagle/library/opencv/lib/*
 	rm -rf beagle/apps/opencv/lib/*
+	rm $(LD_DIR)/libopencvdsp.*
 	
 
 clean: clean_app clean_lib

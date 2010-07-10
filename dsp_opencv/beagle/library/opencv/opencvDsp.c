@@ -14,13 +14,13 @@
 
 #include <ti/sdo/ce/universal/universal.h>
 #include <beagle/algos/opencv/iopencv.h>
-#include <beagle/algos/opencv/opencv_beagle.h>
+//#include <beagle/algos/opencv/opencv_beagle.h>
 
 /* Standard Linux headers */
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "beagle_opencv_API.h"
+//#include "beagle_opencv_API.h"
 #include "opencvDsp.h"
 
 
@@ -81,7 +81,6 @@ void opencvDspSetParams(int s_type, int s_step , char *s_data, int s_rows , int 
     outBufLen			= (opencvParams->d_cols * opencvParams->d_rows * opencvParams->d_channels * ( (07 & opencvParams->d_type) < 2 ? sizeof(XDAS_Int8) : (07 & opencvParams->d_type) < 4 ? sizeof(XDAS_Int16) : sizeof(XDAS_Int32) ) );
 
     
-
 }
 
 /*
@@ -102,23 +101,26 @@ void opencvDspOperations()
      */
     switch ( operation ) {
 
-	   case OPENCV_OPERATION_GEN_TWIDDLE :
+	   case OPERATION_GEN_TWIDDLE :
     	   	opencvIuniversal(NULL, NULL, opencvParams->d_ptr);
 		break;
            
-           case OPENCV_OPERATION_DFT :
- 		opencvIuniversal(NULL, NULL, opencvParams->d_ptr);
-		printf("Twiddle-factors Generated....Starting DFT");
-		opencvIuniversal(opencvParams->s_ptr, opencvParams->d_ptr, opencvParams->d_ptr); 
-		break;
-
-	   case OPENCV_OPERATION_SOBEL3x3 :
-	   case OPENCV_OPERATION_SOBEL5x5 :
- 	   case OPENCV_OPERATION_SOBEL7x7 :
+           case OPERATION_DFT :
+	   case OPERATION_IDFT :
+	   case OPERATION_DFTROWS :
+	   case OPERATION_IDFTROWS :
+// 		opencvIuniversal(NULL, NULL, opencvParams->d_ptr);
+//		printf("Twiddle-factors Generated....Starting DFT\n");
 		opencvIuniversal(opencvParams->s_ptr, NULL, opencvParams->d_ptr); 
 		break;
 
-	   case OPENCV_OPERATION_INTEGRAL :
+	   case OPERATION_SOBEL3x3 :
+	   case OPERATION_SOBEL5x5 :
+ 	   case OPERATION_SOBEL7x7 :
+		opencvIuniversal(opencvParams->s_ptr, NULL, opencvParams->d_ptr); 
+		break;
+
+	   case OPERATION_INTEGRAL :
 		opencvIuniversal(opencvParams->s_ptr, NULL, opencvParams->d_ptr); 
 		break;
 
@@ -257,13 +259,11 @@ int cvCreateEngine(OPENCV_Operation operationFxn)
     codec = UNIVERSAL_create(ce, opencvName, (IUNIVERSAL_Params *)opencvParams);
     if (codec == NULL) {
         printf( "App-> ERROR: can't open codec %s\n", opencvName);
-        cvEndDsp();
-        return;
+        return 0;
     }
 
     /* Enter app */
     opencvDspOperations( ); 
-
 
     /* teardown the codec */
     if (codec) {
@@ -273,7 +273,7 @@ int cvCreateEngine(OPENCV_Operation operationFxn)
 }
 
 
-void cvEndDsp()
+void cvEndDSP()
 {
     /* close the engine */
     if (ce) {

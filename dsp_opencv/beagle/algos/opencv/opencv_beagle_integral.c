@@ -60,7 +60,7 @@ Void OPENCV_BEAGLE_integral(IUNIVERSAL_Handle handle, XDAS_Int8 *in, XDAS_Int8 *
 
 
      OutputBuf output;//, output2;
-     OutputBuf intImage, sqIntImage;
+     OutputBuf intImage/*, sqIntImage*/;
      InputBuf  input;
           
      
@@ -195,7 +195,7 @@ Void OPENCV_BEAGLE_integral(IUNIVERSAL_Handle handle, XDAS_Int8 *in, XDAS_Int8 *
     }   
 
     /* if input image is 8 bit output image is float*/
-    if ( s_type == 0 && d_type == 5) {    /* it implies d_type is float */
+    if ( s_type == 0 && d_type == 5) {    
        
            	        
         tempVal = (cols + 1) * channels;

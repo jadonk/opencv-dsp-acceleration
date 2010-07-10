@@ -14,6 +14,7 @@ var SRCS = [
         "opencv_beagle_Twiddle.c",
         "opencv_beagle_findDFT.c",
         "opencv_beagle_gen_twiddle_fft16x16.c",
+	"opencv_beagle_gen_twiddle_ifft16x16.c",
 	"opencv_beagle_sobel.c",
 	"opencv_beagle_integral.c",
 ];
