@@ -25,7 +25,7 @@
 int main(int argc, char *argv[])
 {
     CvCapture * capture;
-    IplImage *videoFrame, *convFrame, *convOpencvFrame;
+    IplImage *videoFrame, *convFrame, *convOpencvFrame, *unsignedFrame;
     IplImage *dataImage, *integralImage;
     int key;
     int status;
@@ -67,6 +67,8 @@ int main(int argc, char *argv[])
 
     if (*argv[1] == 's' && argc < 3) {
        printf( "Usage: ./remote_ti_platforms_evm3530_opencv.xv5T s tree.avi \n");
+       printf( "Usage: ./remote_ti_platforms_evm3530_opencv.xv5T s webcam \n");
+
        return (-1);
     }
 
@@ -102,60 +104,130 @@ int main(int argc, char *argv[])
 
     	
     	case 's': /* Start of sobel test */
+		switch (*argv[2]) {
+		    
+                    case 't':
 
-    		cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
+    			cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
     
     
-    		capture = cvCreateFileCapture(argv[2]);
+    			capture = cvCreateFileCapture(argv[2]);
 
-    		if ( !capture) {
-      	   	   printf("Error: Video not found\n");
-      	   	   break;
-    		}
-        	videoFrame = cvQueryFrame ( capture );
-     		if ( !videoFrame) {
-      	   	   printf("**Error reading video\n");
-      		   break;
-    		}
+    			if ( !capture) {
+      	   	   	   printf("Error: Video not found\n");
+      	   	   	   break;
+    			}
+        		videoFrame = cvQueryFrame ( capture );
+     			if ( !videoFrame) {
+      	   	   	   printf("**Error reading video\n");
+      		   	break;
+    			}
 
-    		/* Printing Image characteristic */
-    		printf("Image width = %d \t", videoFrame->width );
-    		printf("Image height = %d \t", videoFrame->height );
-    		printf("Image widthstep = %d \t", videoFrame->widthStep );
-    		printf("Image imageSize = %d \t", videoFrame->imageSize );
-    		printf("Image nChannels = %d \t", videoFrame->nChannels );
-    		printf("Image nSize = %d \t", videoFrame->nSize );
-    		printf("Image align = %d \n",videoFrame->align );
+    			/* Printing Image characteristic */
+    			printf("Image width = %d \t", videoFrame->width );
+    			printf("Image height = %d \t", videoFrame->height );
+    			printf("Image widthstep = %d \t", videoFrame->widthStep );
+    			printf("Image imageSize = %d \t", videoFrame->imageSize );
+    			printf("Image nChannels = %d \t", videoFrame->nChannels );
+    			printf("Image nSize = %d \t", videoFrame->nSize );
+    			printf("Image align = %d \n",videoFrame->align );
 
-    		/* create new image for the grayscale version */
-    		convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
+    			/* create new image for the grayscale version */
+    			convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
 
-    		/* create sobel filtered image */
-    		convOpencvFrame = cvCreateImage( cvSize( convFrame->width, convFrame->height ), IPL_DEPTH_16S, 1 );
+    			/* create sobel filtered image */
+    			convOpencvFrame = cvCreateImage( cvSize( convFrame->width, convFrame->height ), IPL_DEPTH_16S, 1 );
     		
-    		while ( key != 'q') { 
+    			while ( key != 'q') { 
           
-	      	      cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+	      	      	      cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
 
-	              cvSobel(convFrame,convOpencvFrame,1,1,7);	  
+	                      cvSobel(convFrame,convOpencvFrame,1,1,7);	  
              	      
 	  
-	      	      /* display filtered image */
-	      	      cvShowImage("video", convOpencvFrame);
+	      	              /* display filtered image */
+	      	              cvShowImage("video", convOpencvFrame);
 
-               	      videoFrame = cvQueryFrame( capture);
-	      	      if ( !videoFrame) {
-	         	 printf("***The End***\n");
-	           	 break;
-      	      	      }
+               	              videoFrame = cvQueryFrame( capture);
+	      	              if ( !videoFrame) {
+	         	         printf("***The End***\n");
+	           	         break;
+      	      	              }
 
-	      	      key = cvWaitKey( 50 );
-       	       }
-	       cvDestroyWindow("video");
-    	       cvReleaseImage(&videoFrame);
-    	       cvReleaseImage(&convFrame);
-               cvReleaseImage(&convOpencvFrame);
-       	       break; /* End of sobel test */
+	      	              key = cvWaitKey( 50 );
+       	       		}
+	       		cvDestroyWindow("video");
+    	       		cvReleaseImage(&videoFrame);
+    	       		cvReleaseImage(&convFrame);
+               		cvReleaseImage(&convOpencvFrame);
+       	       		break; /* End of sobel test */
+
+		    case 'w':
+
+    			cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
+    
+    
+    			capture = cvCaptureFromCAM(-1);
+
+    			if ( !capture) {
+      	   	   	   printf("Error: Video capture initialization failed.\n");
+      	   	   	   break;
+    			}
+        		videoFrame = cvQueryFrame ( capture );
+     			if ( !videoFrame) {
+      	   	   	   printf("**Error reading from webcam\n");
+      		   	break;
+    			}
+
+    			/* Printing Image characteristic */
+    			printf("Image width = %d \t", videoFrame->width );
+    			printf("Image height = %d \t", videoFrame->height );
+    			printf("Image widthstep = %d \t", videoFrame->widthStep );
+    			printf("Image imageSize = %d \t", videoFrame->imageSize );
+    			printf("Image nChannels = %d \t", videoFrame->nChannels );
+    			printf("Image nSize = %d \t", videoFrame->nSize );
+    			printf("Image align = %d \n",videoFrame->align );
+
+    			/* create new image for the grayscale version */
+    			convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
+		
+
+    			/* create sobel filtered image */
+    			convOpencvFrame = cvCreateImage( cvSize( convFrame->width, convFrame->height ), IPL_DEPTH_16S, 1 );
+			unsignedFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
+    		
+    			while ( key != 'q') { 
+          
+	      	      	      cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+
+	                      cvSobel(convFrame,convOpencvFrame,1,1,3);	
+			  
+			      /* convert singed image to unsigned image for better clarity of image */             	      
+	  		      cvConvert(convOpencvFrame,unsignedFrame);
+
+	      	              /* display filtered image */
+	      	              cvShowImage("video", unsignedFrame);
+
+               	              videoFrame = cvQueryFrame( capture);
+	      	              if ( !videoFrame) {
+	         	         printf("***The End***\n");
+	           	         break;
+      	      	              }
+
+	      	              key = cvWaitKey( 50 );
+       	       		}
+	       		cvDestroyWindow("video");
+    	       		cvReleaseImage(&videoFrame);
+    	       		cvReleaseImage(&convFrame);
+               		cvReleaseImage(&convOpencvFrame);
+       	       		break; /* End of sobel test */
+
+		    default:
+			printf("Operation not supported.\n");
+			break;
+		}
+		break;			
+		
 
 	case 'd':
 	        
