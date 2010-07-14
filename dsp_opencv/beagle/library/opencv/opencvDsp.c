@@ -238,7 +238,7 @@ int cvDspInit( )
 
     CERuntime_init();
 
-    printf("App-> Application started.\n");
+//    printf("App-> Application started.\n");
 
         
     /* reset, load, and start DSP Engine */
@@ -280,7 +280,7 @@ void cvEndDSP()
         Engine_close(ce);
     }
 
-    printf("app ended.\n");
+//    printf("app ended.\n");
     
 }
 

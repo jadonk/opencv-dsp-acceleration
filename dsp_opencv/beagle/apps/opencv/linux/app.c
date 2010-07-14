@@ -1,6 +1,6 @@
 /*
  *  ======== app.c ========
- *  Test application for OPENCVTEST algorithm.
+ *  Test application for OPENCVTEST algorithm. 
  */
 
 #include <xdc/std.h>
@@ -22,7 +22,7 @@
 /*
  *  ======== main ========
  */
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) 
 {
     CvCapture * capture;
     IplImage *videoFrame, *convFrame, *convOpencvFrame, *unsignedFrame;
