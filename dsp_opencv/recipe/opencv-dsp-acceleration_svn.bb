@@ -21,10 +21,10 @@ export CROSS_COMPILE = "${TOOLCHAIN_PATH}/bin/${TARGET_PREFIX}"
 export LINUXKERNEL_INSTALL_DIR = "${STAGING_KERNEL_DIR}"
 export OPENCV_PATH = "${STAGING_INCDIR}"
 #export DSPLIB_PATH = "${DSPLIB_INSTALL_DIR}"
-export DSPLIB_PATH = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/dsplib_v210
+export DSPLIB_PATH = ${OE_BASE}/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/dsplib_v210
 
 # You need to extract the imglib from the .exe manually and place it in /OE/tmp (or somewhere else and change the patch below)
-export IMGLIB_PATH = "/media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/imglib_v201"
+export IMGLIB_PATH = "${OE_BASE}/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/imglib_v201"
 
 TARGET_CC_ARCH += "${LDFLAGS}"
 
