@@ -34,7 +34,7 @@ OPENCV_CPP_FLAGS	= $(GNU_CPP_FLAGS) -I$(OPENCV_PATH)
 C64P_CPP_FLAGS          = $(CPP_FLAGS) -pdse225 -I$(TI6X_CGTOOL_DIR)/include -mv6400+ 
 
 GNU_LD_FLAGS            = $(LD_FLAGS) -lpthread -lm 
-OPENCV_LD_FLAGS		= $(GNU_LD_FLAGS) -lopencv_ml -lopencv_highgui -lopencv_core -lopencv_calib3d -lopencv_contrib -lopencv_features2d -lopencv_imgproc -lopencv_legacy -lopencv_objdetect -lopencv_video -lopencvdsp
+OPENCV_LD_FLAGS		= $(GNU_LD_FLAGS) -lopencv_ml -lopencv_highgui -lopencv_core -lopencv_calib3d -lopencv_contrib -lopencv_features2d -lopencv_imgproc -lopencv_legacy -lopencv_objdetect -lopencv_video -lopencvdsp -L../../library/opencv/lib
 C64P_LD_FLAGS           = $(LD_FLAGS) -z -w -x -c -i$(RTDX_INSTALL_DIR)/packages/ti/rtdx/iom/lib/debug -i$(RTDX_INSTALL_DIR)/packages/ti/rtdx/cio/lib/release -i$(RTDX_INSTALL_DIR)/packages/ti/rtdx/lib/c6000 
 
 SOURCES                 = $(wildcard *.c)
