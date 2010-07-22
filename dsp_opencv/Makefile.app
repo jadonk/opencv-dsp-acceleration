@@ -21,12 +21,12 @@ XDC_CFGFILE             = $(TARGET).cfg
 #AL_LIBS = lib/libopencvdsp.so
 #AL_LIBS = -lopencvdsp
 # Path of OpenCV Header files
-OPENCV_PATH             = /media/disk/OE/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/include
+#OPENCV_PATH             = /media/disk/OE/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/include
 
 # The XDC configuration tool command line
 CONFIGURO               = $(XDC_INSTALL_DIR)/xs xdc.tools.configuro
 
-GNU_C_FLAGS             = $(C_FLAGS) -Wall -g -I$(OPENCV_PATH)
+GNU_C_FLAGS             = $(C_FLAGS) $(CFLAGS) -Wall -g
 OPENCV_C_FLAGS		= $(GNU_C_FLAGS) -I$(OPENCV_PATH)
 C64P_C_FLAGS            = $(C_FLAGS) -g 
 GNU_CPP_FLAGS           = $(CPP_FLAGS) -I$(LINUXKERNEL_INSTALL_DIR)/include 
@@ -34,7 +34,7 @@ OPENCV_CPP_FLAGS	= $(GNU_CPP_FLAGS) -I$(OPENCV_PATH)
 C64P_CPP_FLAGS          = $(CPP_FLAGS) -pdse225 -I$(TI6X_CGTOOL_DIR)/include -mv6400+ 
 
 GNU_LD_FLAGS            = $(LD_FLAGS) -lpthread -lm 
-OPENCV_LD_FLAGS		= $(GNU_LD_FLAGS) -lopencv_ml -lopencv_highgui -lopencv_core -lopencv_calib3d -lopencv_contrib -lopencv_features2d -lopencv_imgproc -lopencv_legacy -lopencv_objdetect -lopencv_video -lopencvdsp -L../../library/opencv/lib
+OPENCV_LD_FLAGS		= $(GNU_LD_FLAGS) $(LDFLAGS) -lopencv_ml -lopencv_highgui -lopencv_core -lopencv_calib3d -lopencv_contrib -lopencv_features2d -lopencv_imgproc -lopencv_legacy -lopencv_objdetect -lopencv_video -lopencvdsp -L../../library/opencv/lib
 C64P_LD_FLAGS           = $(LD_FLAGS) -z -w -x -c -i$(RTDX_INSTALL_DIR)/packages/ti/rtdx/iom/lib/debug -i$(RTDX_INSTALL_DIR)/packages/ti/rtdx/cio/lib/release -i$(RTDX_INSTALL_DIR)/packages/ti/rtdx/lib/c6000 
 
 SOURCES                 = $(wildcard *.c)
