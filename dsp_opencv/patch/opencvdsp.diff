@@ -1,152 +1,60 @@
-Index: modules/core/src/dxt.cpp
+Index: opencv/modules/core/src/alloc.cpp
 ===================================================================
---- modules/core/src/dxt.cpp	(revision 1)
-+++ modules/core/src/dxt.cpp	(revision 2)
-@@ -40,6 +40,7 @@
+--- opencv/modules/core/src/alloc.cpp	(revision 1)
++++ opencv/modules/core/src/alloc.cpp	(revision 3)
+@@ -41,9 +41,12 @@
  //M*/
  
  #include "precomp.hpp"
-+#include <beagle/library/opencv/beagle_opencv_API.h>
++#include <cmem.h>
  
+ #define CV_USE_SYSTEM_MALLOC 1
++#define ALIGN 8
+ 
++CMEM_AllocParams CMEM_DEFAULT_PARAMS = {CMEM_HEAP , CMEM_CACHED , ALIGN };
  namespace cv
  {
-@@ -117,7 +118,7 @@
-            ((unsigned)bitrevTab[((i)>>16)&255] <<  8)+ \
-            ((unsigned)bitrevTab[((i)>>24)])) >> (shift)))
  
--static int
-+static int 
- DFTFactorize( int n, int* factors )
+@@ -59,22 +62,39 @@
+ 
+ void* fastMalloc( size_t size )
  {
-     int nf = 0, f, i, j;
-@@ -2583,7 +2584,7 @@
-     int _flags = ((flags & CV_DXT_INVERSE) ? cv::DFT_INVERSE : 0) |
-         ((flags & CV_DXT_SCALE) ? cv::DFT_SCALE : 0) |
-         ((flags & CV_DXT_ROWS) ? cv::DFT_ROWS : 0);
--
-+    OPENCV_Operation operation = (OPENCV_Operation)0;
-     CV_Assert( src.size() == dst.size() );
- 
-     if( src.type() != dst.type() )
-@@ -2594,7 +2595,31 @@
-             _flags |= cv::DFT_REAL_OUTPUT;
-     }
- 
--    cv::dft( src, dst, _flags, nonzero_rows );
-+    if(getenv("OPENCVDSP") != NULL) {
-+	if( *getenv("OPENCVDSP") == '1' ) {
-+	    
-+	    if(flags == CV_DXT_FORWARD) 
-+	    	operation = OPERATION_DFT;
-+	    else if(flags == CV_DXT_INVERSE) 
-+		operation = OPERATION_IDFT;
-+	    else if(flags == CV_DXT_ROWS) 
-+		operation = OPERATION_DFTROWS; 
-+	    else if(flags == CV_DXT_INV_SCALE || flags == CV_DXT_INVERSE_SCALE) 
-+		operation = OPERATION_IDFT;
-+	    else if(flags == CV_DXT_SCALE)
-+		operation = OPERATION_SCALE;
-+	    if(operation != 0) {
-+    	       dftDsp( src.type(), src.step, (char *)src.datastart, src.rows, src.cols, src.channels(),dst0.type(), dst0.step, (char *)dst0.datastart, 		    			dst0.rows, dst0.cols, dst0.channels(),operation );
-+	    }
-+	}
-+	else {
-+	    cv::dft( src, dst, _flags, nonzero_rows );
-+	}
-+    }
-+    else {
-+    	cv::dft( src, dst, _flags, nonzero_rows );
-+    }
-+    
-     CV_Assert( dst.data == dst0.data ); // otherwise it means that the destination size or type was incorrect
+-    uchar* udata = (uchar*)malloc(size + sizeof(void*) + CV_MALLOC_ALIGN);
++/*
++    uchar* udata = (uchar*)malloc(size + sizeof(void*) + CV_MALLOC_ALIGN); 
+     if(!udata)
+         return OutOfMemoryError(size);
+     uchar** adata = alignPtr((uchar**)udata + 1, CV_MALLOC_ALIGN);
+     adata[-1] = udata;
+     return adata;
++*/  
++    CMEM_init();
++    uchar *udata = (uchar*)CMEM_alloc(size + sizeof(void*) + CV_MALLOC_ALIGN, &CMEM_DEFAULT_PARAMS);
++    if(!udata)
++        return OutOfMemoryError(size);
++    uchar** adata = alignPtr((uchar**)udata + 1, CV_MALLOC_ALIGN);
++    adata[-1] = udata;
++    return adata;
++ 
  }
- 
-Index: modules/imgproc/src/deriv.cpp
-===================================================================
---- modules/imgproc/src/deriv.cpp	(revision 1)
-+++ modules/imgproc/src/deriv.cpp	(revision 2)
-@@ -40,6 +40,7 @@
- //M*/
- 
- #include "precomp.hpp"
-+#include <beagle/library/opencv/beagle_opencv_API.h>
- 
- /****************************************************************************************/
- 
-@@ -340,13 +341,36 @@
- CV_IMPL void
- cvSobel( const void* srcarr, void* dstarr, int dx, int dy, int aperture_size )
+     
+-void fastFree(void* ptr)
++void fastFree(void* ptr) 
  {
-+    
-     cv::Mat src = cv::cvarrToMat(srcarr), dst = cv::cvarrToMat(dstarr);
- 
-+
-     CV_Assert( src.size() == dst.size() && src.channels() == dst.channels() &&
-         ((src.depth() == CV_8U && (dst.depth() == CV_16S || dst.depth() == CV_32F)) ||
-         (src.depth() == CV_32F && dst.depth() == CV_32F)));
-+    if(getenv("OPENCVDSP") != NULL) {
-+	if( *getenv("OPENCVDSP") == '1' ) {
-+	    
-+	    if(dx != dy && dx != 1) {
-+	       printf("Error: Only 1st order sobel operator is supported. Set dx=1 and dy=1.\n");
-+	       return;
-+	    }
-+	    if(aperture_size == CV_SCHARR) {
-+	       printf("Error: Scharr Filter: Not supported.\n");
-+	       return;
-+	    } 
- 
--    cv::Sobel( src, dst, dst.depth(), dx, dy, aperture_size, 1, 0, cv::BORDER_REPLICATE );
-+
-+    	    sobelDsp( src.type(), src.step, (char *)src.datastart, src.rows, src.cols, src.channels(),dst.type(), dst.step, (char *)dst.datastart, 					dst.rows, dst.cols, dst.channels(),aperture_size );
-+
-+	}
-+	else {
-+	    cv::Sobel( src, dst, dst.depth(), dx, dy, aperture_size, 1, 0, cv::BORDER_REPLICATE );
-+	}
-+    }
-+    else {
-+    	cv::Sobel( src, dst, dst.depth(), dx, dy, aperture_size, 1, 0, cv::BORDER_REPLICATE );
-+    }
-     if( CV_IS_IMAGE(srcarr) && ((IplImage*)srcarr)->origin && dy % 2 != 0 )
-         dst *= -1;
- }
-Index: modules/imgproc/src/sumpixels.cpp
-===================================================================
---- modules/imgproc/src/sumpixels.cpp	(revision 1)
-+++ modules/imgproc/src/sumpixels.cpp	(revision 2)
-@@ -41,6 +41,7 @@
- //M*/
- 
- #include "precomp.hpp"
-+#include <beagle/library/opencv/beagle_opencv_API.h> 
- 
- namespace cv
- {
-@@ -281,8 +282,25 @@
-         tilted0 = tilted = cv::cvarrToMat(tiltedSumImage);
-         ptilted = &tilted;
+-    if(ptr)
++   if(ptr)
+     {
++/*
+         uchar* udata = ((uchar**)ptr)[-1];
+         CV_DbgAssert(udata < (uchar*)ptr &&
+                ((uchar*)ptr - udata) <= (ptrdiff_t)(sizeof(void*)+CV_MALLOC_ALIGN)); 
+         free(udata);
++*/
++	uchar* udata = ((uchar**)ptr)[-1];
++        CV_DbgAssert(udata < (uchar*)ptr &&
++               ((uchar*)ptr - udata) <= (ptrdiff_t)(sizeof(void*)+CV_MALLOC_ALIGN)); 
++        CMEM_free(udata, &CMEM_DEFAULT_PARAMS);
++	
      }
--    cv::integral( src, sum, psqsum, ptilted, sum.depth() );
- 
-+    if(getenv("OPENCVDSP") != NULL) {
-+	if( *getenv("OPENCVDSP") == '1' ) {
-+
-+	    if(sumSqImage || tiltedSumImage) {
-+	       printf("Error: square sum and tilted sum: Not supported");
-+	       return;
-+	    }
-+		    
-+    	    integralDsp( src.type(), src.step, (char *)src.datastart, src.rows, src.cols, src.channels(),sum.type(), sum.step, (char *)sum.datastart, 					sum.rows, sum.cols, sum.channels());
-+	}
-+	else {
-+	    cv::integral( src, sum, psqsum, ptilted, sum.depth() );
-+	}
-+    }
-+    else {
-+    	cv::integral( src, sum, psqsum, ptilted, sum.depth() );
-+    }
-+   
-     CV_Assert( sum.data == sum0.data && sqsum.data == sqsum0.data && tilted.data == tilted0.data );
  }
  

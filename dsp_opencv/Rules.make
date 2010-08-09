@@ -1,5 +1,6 @@
 PLATFORM = omap3530
 #DVSDK_INSTALL_DIR = /home/user/OMAPL137_arm_1_00_00_07
+CODEGEN_INSTALL_DIR = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/ti-cgt6x-tree
 XDC_INSTALL_DIR = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/ti-xdctools-tree
 BIOS_INSTALL_DIR = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/ti-dspbios-tree
 #LINUXKERNEL_INSTALL_DIR = /media/disk/OE/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/kernel
@@ -14,5 +15,4 @@ CODEC_INSTALL_DIR = /media/disk/openembedded/opencv-dsp-acceleration/c6accel_1_0
 LPM_INSTALL_DIR = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/ti-local-power-manager-tree
 EDMA3_LLD_ROOT = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/ti-edma3lld-tree
 EXEC_DIR = /home/jars/beagleboard/dsplink
-DSPLIB_PATH = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/dsplib_v210
-IMGLIB_PATH = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/imglib_v201
+

@@ -25,7 +25,7 @@ SERVER_DIR = $(PACKAGE_DIR)/beagle/c6accel_1_00_00_04_async/soc/packages
 export SERVER_DIR
 
 
-XDCPATH = ^;$(CURDIR);$(PACKAGE_DIR);$(SERVER_DIR);$(CE_INSTALL_DIR)/packages;$(BIOS_INSTALL_DIR)/packages;$(CODEC_INSTALL_DIR);$(FC_INSTALL_DIR)/packages;$(LINK_INSTALL_DIR);$(XDAIS_INSTALL_DIR)/packages;$(CMEM_INSTALL_DIR)/packages;$(BIOSUTILS_INSTALL_DIR)/packages;$(LPM_INSTALL_DIR)/packages;$(DSPLIB_PATH);$(IMGLIB_PATH)
+XDCPATH = ^;$(CURDIR);$(PACKAGE_DIR);$(SERVER_DIR);$(CE_INSTALL_DIR)/packages;$(BIOS_INSTALL_DIR)/packages;$(CODEC_INSTALL_DIR);$(FC_INSTALL_DIR)/packages;$(LINK_INSTALL_DIR);$(XDAIS_INSTALL_DIR)/packages;$(CMEM_INSTALL_DIR)/packages;$(BIOSUTILS_INSTALL_DIR)/packages;$(LPM_INSTALL_DIR)/packages
 
 
 # Set the number of concurrent build threads (i.e. jobs)
@@ -59,8 +59,7 @@ export CROSS_COMPILE
 export XDC_ARM_TARGET
 export XDC_DSP_TARGET
 export APP_EXT
-export DSPLIB_PATH
-export IMGLIB_PATH
+
 
 # Set the location of the xdc executable
 XDC = $(XDC_INSTALL_DIR)/xdc XDCOPTIONS=$(XDCOPTIONS) XDCTARGETS=$(XDC_TARGETS)
@@ -76,6 +75,8 @@ endif
 PLATFORM_SHORT_LC = $(shell echo $(PLATFORM_SHORT) | tr [:upper:] [:lower:])
 SERVER_PATH = $(wildcard beagle/server/*$(PLATFORM_SHORT_LC))
 SERVER_PATH_SHORT  = $(shell echo $(SERVER_PATH) | cut -d' ' -f1)
+
+C6ACCEL_PATH = beagle/c6accel_1_00_00_04_async
 
 ifeq ($(SERVER_PATH),"")
 $(error No servers found with $(SERVER_EXTENSION) extension)
@@ -94,22 +95,20 @@ AR = $(PRE) $(CROSS_COMPILE)ar rc $(GNU_AR_FLAGS)
 LD = $(PRE) $(CROSS_COMPILE)g++ $(GNU_LD_FLAGS)
 LD_DIR = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib
 
-.PHONY: clean clean_app clean_lib codec server library app install all
+.PHONY: clean clean_app clean_lib clean_c6accel library c6accel app install all
 
 help:
 	@echo 
 	@echo "You must specify a build target. Available targets are: "
-	@echo "    all, codec, server, library, app, install, clean"
+	@echo "    all, c6accel, library, app, install, clean"
 
-all: codec server library app
+all: c6accel library app
 
-codec:
-	@echo "$(XDCPATH)"
-	$(XDC) XDCBUILDCFG=$(PACKAGE_DIR)/config.bld -PR beagle/algos/opencv
 
-server:
-	@echo "$(SERVER_PATH)"
-	$(XDC) XDCBUILDCFG=$(PACKAGE_DIR)/config.bld -P $(SERVER_PATH)
+
+c6accel:
+	@echo "$(C6ACCEL_PATH)"
+	make -C $(C6ACCEL_PATH) all
 
 $(OBJFILES):	%.ov5T: %.c $(HEADERS)
 	@echo $(shell pwd)
@@ -146,6 +145,7 @@ install_opencv: $(if $(wildcard beagle/apps/opencv/linux/remote_ti_platforms_$(P
 install_opencv_remote:
 	@echo "Installing at $(EXEC_DIR)"
 	@install -d $(EXEC_DIR)
+	@install -m 777 $(SERVER_DIR)/ti/c6accel_unitservers/omap3530/c6accel_omap3530.x64P $(EXEC_DIR)
 	@install -m 777 beagle/apps/opencv/linux/remote_ti_platforms_$(PLATFORM_SHORT)_opencv.x$(APP_EXT) $(EXEC_DIR)
 #	@install -m 777 $(wildcard $(SERVER_PATH_SHORT)/../opencv_unitserver_$(PLATFORM_SHORT_LC)/opencv_unitserver_$(PLATFORM_SHORT_LC).x*) $(EXEC_DIR)
 	@install -d $(EXEC_DIR)/lib
@@ -161,13 +161,14 @@ clean_app:
 	make -C beagle/apps/opencv APP_NAME=opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/remote_ti_platforms_$(PLATFORM_SHORT) clean
 	make -C beagle/apps/opencv APP_NAME=opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/local_ti_platforms_$(PLATFORM_SHORT) clean
 
+clean_c6accel:
+	make -C $(C6ACCEL_PATH) clean
+
 clean_lib:
-	$(XDC) clean -PR beagle/library
 	rm -rf beagle/library/opencv/*.ov5T
 	rm -rf beagle/library/opencv/lib/*
 	rm -rf beagle/apps/opencv/lib/*
 	rm $(LD_DIR)/libopencvdsp.*
 	
 
-clean: clean_app clean_lib
-	$(XDC) clean -PR beagle
+clean: clean_c6accel clean_app clean_lib

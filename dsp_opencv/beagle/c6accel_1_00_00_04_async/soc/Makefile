@@ -8,7 +8,7 @@ XDCPATH = $(CURDIR);packages;$(XDAIS_INSTALL_DIR)/packages;$(FC_INSTALL_DIR)/pac
 
 XDC = $(XDC_INSTALL_DIR)/xdc
 
-CROSS_COMPILE = $(CSTOOL_PREFIX)
+#CROSS_COMPILE = $(CSTOOL_PREFIX)
 XDCTARGETS = ti.targets.C$(DSP_ISA)
 XDCBUILDCFG=../config.bld
 
@@ -22,7 +22,7 @@ export XDCARGS
 export CODEGEN_INSTALL_DIR
 export XDCBUILDCFG
 export PLATFORM_XDC
-export CROSS_COMPILE
+#export CROSS_COMPILE
 export XDCTARGETS
 
 .PHONY: c6accelw codec_packages server c6accel_app release_packages clean clean_packages
