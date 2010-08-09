@@ -1,0 +1,6 @@
+/* THIS IS A GENERATED FILE -- DO NOT EDIT */
+/* configuro was passed a config.bld file */
+xdc.includeFile("/usr/devel/a0272049/dvsdk_3_00_02_44/c6accel/soc/config.bld");
+/* configuro was passed the target's name explicitly */
+var target  = xdc.module('gnu.targets.arm.GCArmv5T');
+Build.targets = [target];

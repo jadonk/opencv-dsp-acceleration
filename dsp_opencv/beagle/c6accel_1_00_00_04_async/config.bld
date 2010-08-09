@@ -1,0 +1,81 @@
+/* --COPYRIGHT--,BSD
+ * Copyright (c) 2010, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * --/COPYRIGHT--*/
+
+/* location of your C6000 codegen tools */
+var codegen = "" + java.lang.System.getenv("CODEGEN_INSTALL_DIR");
+
+/* Verify that PLATFORM_XDC was set as an environment variable */
+var xdcplat = "" + java.lang.System.getenv("PLATFORM_XDC");
+if (xdcplat=="null" || xdcplat==""){
+    print("Warning: XDC_PLATFORM not found. Verify that PLATFORM_XDC "
+        + "is set correctly in Platform.xdc.");
+}
+
+var C64P = xdc.useModule('ti.targets.C64P');
+C64P.rootDir = codegen;
+C64P.platform = xdcplat;
+
+var C674 = xdc.useModule('ti.targets.C674');
+C674.rootDir = codegen;
+C674.platform = xdcplat;
+
+/* User passes in $(CROSS_COMPILE) where $(CROSS_COMPILE)gcc is their compiler
+   Then the TOOLDIR and LONGNAME are derived based on a regex of CROSS_COMPILE
+*/
+var crosscompile = "" + java.lang.System.getenv("CROSS_COMPILE");
+
+var tooldir = "";
+var longName = "";
+
+/* Search CROSS_COMPILE for bin/ If only 1 bin/ is found, set the tooldir to
+   the path prior to bin/ and the prefix to "bin/" + remainder of path,
+   else leave the tooldir as "" and set the LONGNAME to the full CROSS_COMPILE
+   path
+*/
+var regex = new RegExp("bin/");
+var find = crosscompile.split( regex );
+
+if (find[0]!=crosscompile && find.length==2) {
+    tooldir = find[0];
+    longName = "bin/" + find[1] + "gcc";
+} else {
+    longName = crosscompile + "gcc";
+}
+
+/* location of the GCC Arm9 tools */
+var GCArmv5T = xdc.useModule('gnu.targets.arm.GCArmv5T');
+GCArmv5T.LONGNAME = longName;
+GCArmv5T.platform = java.lang.System.getenv("PLATFORM_XDC");
+GCArmv5T.rootDir = tooldir;
+
+Build.targets = [
+];

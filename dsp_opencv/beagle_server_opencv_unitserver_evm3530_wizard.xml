@@ -1,8 +1,0 @@
-<?xml version="1.0"?><rtsc_server_package_wizard>
-  <version>0.2.4</version>
-  <packageName>beagle.algos.opencv</packageName>
-  <serverName>beagle.server.opencv_unitserver_evm3530</serverName>
-  <outputRepository>/media/disk/OE/work/ti/dsp_opencv/</outputRepository>
-  <platform>ti.platforms.evm3530</platform>
-  <module>OPENCV</module>
-</rtsc_server_package_wizard>

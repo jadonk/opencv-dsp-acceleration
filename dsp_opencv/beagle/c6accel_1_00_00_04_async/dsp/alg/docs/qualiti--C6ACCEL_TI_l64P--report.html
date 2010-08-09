@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD><TITLE>Compliance and Performance Test Report</TITLE></HEAD>
+<BODY>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 25pt;
+   padding-right: 25pt;
+   }
+-->
+</STYLE>
+
+<a name="Top of Page"></a>
+
+<TABLE BORDER="1" WIDTH="100%">
+  <TR>
+    <TD COLSPAN="2">
+      <CENTER><FONT SIZE="+2"><B>TMS320 DSP Algorithm Interoperability Standard</B></FONT></CENTER><BR>
+      <CENTER><FONT SIZE="+1"><B>QualiTI <a href="#compliance">Compliance</a> and <a href="#performance">Performance</a> Testing</B></font></CENTER><BR>
+    </TD>
+  </TR>
+  <TR>
+    <TD><B>Date</B></TD><TD>Mon Jul 19 2010 16:12:34 GMT-0500 (CDT)</TD>
+  </TR>
+
+  <TR>
+    <TD><B>Vendor</B></TD><TD>TI</TD>
+  </TR>
+
+  <TR>
+    <TD><B>Algorithm</B></TD><TD>C6ACCEL</TD>
+  </TR>
+
+  <TR>
+    <TD><B>Architecture</B></TD><TD>C6x</TD>
+  </TR>
+
+  <TR>
+    <TD><B>TI Compiler</B></TD><TD>true</TD>
+  </TR>
+  
+  <TR>
+    <TD><B>Library Format</B></TD><TD>COFF</TD>
+  </TR>
+  
+  <TR>
+    <TD><B>Compiler Version</B></TD><TD>TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated</TD>
+  </TR>
+  <TR>
+    <TD><B>Test Execution Log</B></TD><TD><a href="#Compiler Info">Test execution log for compiler info</a></TD>
+  </TR>
+  <TR>
+    <TD COLSPAN="2">
+
+      <B>Algorithm Base Directory:</B><BR>
+
+      &nbsp;&nbsp;&nbsp;C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release<BR>
+
+<BR>
+      <B>Algorithm Archive(s):</B><BR>
+
+      &nbsp;&nbsp;&nbsp;C6Accel.l64P<BR>
+<BR>
+      <B>Header File(s):</B><BR>
+<BR>
+    </TD>
+
+  </TR>
+
+
+      <TR>
+        <TD COLSPAN="2">
+        <a name=compliance>
+          <FONT SIZE="+1"><BR><br><CENTER><B>Compliance Test Report</B></CENTER><BR><br></font>
+        </a>
+        </TD>
+      </TR>
+
+      <TR>
+        <TD><B>Test Results</B></TD>
+        <td>
+        <font color="#00A000">PASS: 5</font><br>
+        <font color="#FF0000"><B>FAIL: 0</b></font>
+        &nbsp;&nbsp;&nbsp; 
+        
+        <br>
+        Skipped: 0<br>
+        Not apply: 0<br>
+        <b>Total: 5</b><br>
+        </td>
+      </TR>
+      <TR>
+
+        <TD COLSPAN="2">
+            <B>Test Notes</B><BR>
+            &nbsp;&nbsp;&nbsp;This report has been generated with QualiTI Version 6.23 - the XDAIS compliance and performance test suite. <BR><BR>
+
+
+        </TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rules 8, 9 and 10">XDAIS Rules 8, 9, 10: Namespace compliance</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">(Rule 8) All external definitions must be either API identifiers or API and vendor prefixed.<br><br>(Rule 9) All undefined references must refer either to the operations specified in Appendix B (a subset of C runtime support library functions and a subset of the DSP/BIOS HWI API functions), or TI's DSPLIB or IMGLIB functions or other XDAIS-compliant modules.<br><br>(Rule 10) All modules must follow the eXpressDSP naming conventions for those external declarations disclosed to the client.</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Test passed.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rules 8, 9 and 10">XDAIS Rules 8, 9 and 10 execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 12">XDAIS Rule 12: IALG interface implementation</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All algorithms must implement the IALG interface.</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Test passed.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 12">XDAIS Rule 12 execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 13+">XDAIS Rule 13+: correct linker section names</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">Each of the IALG methods implemented by an algorithm must be independently relocatable.<br><br>Additional rule: there should be no non-standard linker sections. (Standard linker sections are: ".cinit", ".switch", ".far", ".text", ".const", ".bss", ".pinit".)</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Test passed.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 13+">XDAIS Rule 13+ execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 25">XDAIS Rule 25: All C6x algorithms must be supplied in little-endian format</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All C6x algorithms must be supplied in little-endian format.</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Test passed.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 25">XDAIS Rule 25 execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 26">XDAIS Rule 26: All static/global data must be far on c6x</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All C6x algorithms must access all static and global data as far data.</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Test passed.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 26">XDAIS Rule 26 execution log</a><br>
+        </TD>
+      </TR>
+      <TR>
+        <TD COLSPAN="2">
+        <a name=performance>
+          <FONT SIZE="+1"><BR><br><CENTER><B>Performance Test Report</B></CENTER><BR><br></font>
+        </a>
+        </TD>
+      </TR>
+
+      <TR>
+        <TD><B>Test Results</B></TD>
+        <td>
+        <font color="#00A000">PASS: 2</font><br>
+        <font color="#FF0000"><B>FAIL: 0</b></font>
+        &nbsp;&nbsp;&nbsp; 
+        
+        <br>
+        Skipped: 0<br>
+        Not apply: 0<br>
+        <b>Total: 2</b><br>
+        </td>
+      </TR>
+      <TR>
+
+        <TD COLSPAN="2">
+            <B>Test Notes</B><BR>
+            &nbsp;&nbsp;&nbsp;This report has been generated with QualiTI Version 6.23 - the XDAIS compliance and performance test suite. <BR><BR>
+
+
+        </TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rule 20">XDAIS Rule 20: must declare worst-case stack requirements</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All algorithms must characterize their worst-case stack space memory requirements (including alignment).</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Performance test completed. Calculated Worst Case Stack is 264 bytes.<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rule 20">XDAIS Rule 20 execution log</a><br>
+        </TD>
+      <TR>
+        <TD COLSPAN="2">
+          <b><a name="XDAIS Rules 21, 22">XDAIS Rules 21, 22: must characterize static data & program memory requirements</a></b><br><br>
+
+          <B>Report: </B> <font color="#008080"><B>Passed</B></font><BR><BR>
+
+          <B>Test Description: </B><P CLASS="indented">All algorithms must characterize their static data & program memory requirements</p>
+          <B>Test Status Details: </B>
+          <P CLASS="indented">Performance test completed. CODE, DATA & UDATA sections characterized<BR></p>
+          <B>Test Execution Log: </b><a href="#log XDAIS Rules 21, 22">XDAIS Rules 21, 22 execution log</a><br>
+        </TD>
+      </TR>
+</TABLE>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<a name="Compiler Info">Test execution log for <b>Compiler Info:</b></a><br>
+<PRE>
+Determining compiler info.
+
+Chcking if this library was created with a TI compiler...
+ Running command:&gt; "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P" | "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" "&lt;ti_coff&gt;"
+                   (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16810.sh"
+  &lt;ti_coff&gt;
+This library was  created with a TI compiler.
+
+Attempting to determine library format...
+ Running command:&gt; "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P" | "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" -E "&lt;.*coff&gt;|&lt;.*elf&gt;"
+                   (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16811.sh"
+  &lt;ti_coff&gt;
+  &lt;/ti_coff&gt;
+The library is in COFF format.
+
+Attempting to determine the compiler version...
+ Running command:&gt; "find.exe" "Texas Instruments" "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P"|"C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" "Texas Instruments"
+                   (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16812.sh"
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+  TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated
+The compiler is TI TMS320C6x Linker PC v6.1.10 Copyright (c) 1996-2009 Texas Instruments Incorporated.
+
+</PRE>
+<a href="#Top of Page">back</a><br>
+<hr>
+<a name="log XDAIS Rules 8, 9 and 10">Test execution log for <b>XDAIS Rules 8, 9 and 10:</b></a><br>
+<PRE>
+Running test 'XDAIS Rules 8, 9 and 10'
+Extracting names of global symbols defined by the algorithm...
+ Running command:&gt; "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\nm6x.exe" -g "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P" | "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" " [TBCU] "
+                   (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16783.sh"
+  0000c668 B _C6ACCEL_TI_IALG
+  0000c668 B _C6ACCEL_TI_IC6ACCEL
+  0000c694 B _UNIVERSAL_TI_PARAMS
+  00000000 U __cmpf
+  00000000 U __divi
+  00000000 U __eqlf
+  00000000 U __geqf
+  00000000 U __gtrf
+  00000000 U __llshl
+  00000000 U __llshr
+  00000000 U __lssf
+  00000000 U _errno
+  00000000 U _pow
+Verifying that all global symbols are named XXX_TI_xxx ...
+and that no blacklisted external references are made
+
+</PRE>
+<a href="#XDAIS Rules 8, 9 and 10">back</a>
+<hr>
+<a name="log XDAIS Rule 12">Test execution log for <b>XDAIS Rule 12:</b></a><br>
+<PRE>
+Running test 'XDAIS Rule 12'
+Extracting names of global BSS data symbols...
+ Running command:&gt; "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\nm6x.exe" -g "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P" | "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" " [BD] "
+                   (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16788.sh"
+  0000c668 B _C6ACCEL_TI_IALG
+  0000c668 B _C6ACCEL_TI_IC6ACCEL
+  0000c694 B _UNIVERSAL_TI_PARAMS
+Verifying that objects 'C6ACCEL_TI_IALG' and 'C6ACCEL_TI_IC6ACCEL' are defined...
+Data object 'C6ACCEL_TI_IALG' found.
+Data object 'C6ACCEL_TI_IC6ACCEL' found.
+
+</PRE>
+<a href="#XDAIS Rule 12">back</a>
+<hr>
+<a name="log XDAIS Rule 13+">Test execution log for <b>XDAIS Rule 13+:</b></a><br>
+<PRE>
+Running test 'XDAIS Rule 13+'
+Extracting names of all sections in which all algorithms' symbols are...
+ Running command:&gt; "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none,sections,header "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P" | "C:\Program Files\Texas Instruments\cg_xml\bin\sectti.exe" --csv
+                   (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16793.sh"
+  Reading from stdin ...
+  Library,Filename,Section,Type,Size
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algProcess,CODE,22016
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algControl,CODE,256
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algAlloc,CODE,32
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algFree,CODE,32
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algInit,CODE,32
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQatan2HalfPITable,DATA,124
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:IMG_median_3x3_16,CODE,448
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQatan2Table,DATA,780
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:IMG_sobel_3x3_16,CODE,992
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:IMG_yc_demux_le16_16,CODE,288
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:psa,CODE,3328
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQisqrtTable,DATA,516
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.switch,DATA,644
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:intrinsic,CODE,9344
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQsinTable,DATA,2564
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text,CODE,8224
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:_IsPowOfTwo,CODE,64
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQdivTable,DATA,1028
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.far,UDATA,408
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQasinTable,DATA,340
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.cinit,DATA,460
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQsininverseMinMax,DATA,232
+  C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:.string,DATA,11
+Verifying that IALG functions are in separate sections,
+i.e. that there exist sections that match regexp /\.text:.*[aA]lloc.*/,
+and also that there are no non-standard sections.
+
+</PRE>
+<a href="#XDAIS Rule 13+">back</a>
+<hr>
+<a name="log XDAIS Rule 20">Test execution log for <b>XDAIS Rule 20:</b></a><br>
+<PRE>
+Running test 'XDAIS Rule 20'
+Using call_graph on ofd output to find out worst case stack...
+ Running command:&gt; "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -xg --xml_indent=0 --obj_display=none,header,optheader,symbols --dwarf_display=none,dinfo  "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P" | "C:\Program Files\Texas Instruments\cg_xml\bin\call_graph.exe" --stack_max
+                   (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16798.sh"
+  Reading from stdin ...
+  _C6ACCEL_TI_process : wcs = 264
+Extracting worst case stack from a stdout line that ends with ': wcs = &lt;num&gt;'
+Calculated worst case stack is 264 bytes.
+
+</PRE>
+<a href="#XDAIS Rule 20">back</a>
+<hr>
+<a name="log XDAIS Rules 21, 22">Test execution log for <b>XDAIS Rules 21, 22:</b></a><br>
+<PRE>
+Running test 'XDAIS Rules 21, 22'
+Using sectti on ofd output to find static data & program memory requirements...
+ Running command:&gt; "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none,sections,header "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P" | "C:\Program Files\Texas Instruments\cg_xml\bin\sectti.exe"
+                   (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16803.sh"
+  Reading from stdin ...
+  ====================================================================
+  REPORT FOR LIBRARY: C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P
+  ====================================================================
+  
+  
+  ************************************************************
+  REPORT FOR FILE: c6accel_c64p_release.o64P
+  ************************************************************
+                            Name : Size (dec)  Size (hex)  Type
+  ------------------------------ : ----------  ----------  ----
+                .text:algProcess :      22016  0x00005600  CODE 
+                .text:algControl :        256  0x00000100  CODE 
+                  .text:algAlloc :         32  0x00000020  CODE 
+                   .text:algFree :         32  0x00000020  CODE 
+                   .text:algInit :         32  0x00000020  CODE 
+      .const:_IQatan2HalfPITable :        124  0x0000007c  DATA 
+         .text:IMG_median_3x3_16 :        448  0x000001c0  CODE 
+            .const:_IQatan2Table :        780  0x0000030c  DATA 
+          .text:IMG_sobel_3x3_16 :        992  0x000003e0  CODE 
+      .text:IMG_yc_demux_le16_16 :        288  0x00000120  CODE 
+                       .text:psa :       3328  0x00000d00  CODE 
+            .const:_IQisqrtTable :        516  0x00000204  DATA 
+                         .switch :        644  0x00000284  DATA 
+                 .text:intrinsic :       9344  0x00002480  CODE 
+              .const:_IQsinTable :       2564  0x00000a04  DATA 
+                           .text :       8224  0x00002020  CODE 
+               .text:_IsPowOfTwo :         64  0x00000040  CODE 
+              .const:_IQdivTable :       1028  0x00000404  DATA 
+                            .far :        408  0x00000198  UDATA
+             .const:_IQasinTable :        340  0x00000154  DATA 
+                          .cinit :        460  0x000001cc  DATA 
+      .const:_IQsininverseMinMax :        232  0x000000e8  DATA 
+                  .const:.string :         11  0x0000000b  DATA 
+  
+  ------------------------------------------------------------
+  Totals by section type
+  ------------------------------------------------------------
+    Uninitialized Data :        408  0x00000198
+      Initialized Data :       6699  0x00001a2b
+                  Code :      45056  0x0000b000
+
+</PRE>
+<a href="#XDAIS Rules 21, 22">back</a>
+<hr>
+<a name="log XDAIS Rule 25">Test execution log for <b>XDAIS Rule 25:</b></a><br>
+<PRE>
+Running test 'XDAIS Rule 25'
+Using ofd output to parse for endianness attribute...
+ Running command:&gt; "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none,header "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P" | "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\bin\grep\grep.exe" "&lt;endian&gt;"
+                   (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16808.sh"
+  &lt;endian&gt;little&lt;/endian&gt;
+
+</PRE>
+<a href="#XDAIS Rule 25">back</a>
+<hr>
+<a name="log XDAIS Rule 26">Test execution log for <b>XDAIS Rule 26:</b></a><br>
+<PRE>
+Running test 'XDAIS Rule 26'
+Extracting names of all used sections to see if there is a '.bss' in there.
+[Using output generated by the command from test 'XDAIS Rule 13+"]:
+Running command:&gt; "C:\dvsdk_1_11_00_00\xdais_6_23\packages\ti\xdais\qualiti\cgtools\bin\ofd6x.exe" -x --xml_indent=0 --obj_display=none,sections,header "C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\lib\C6accel_c64p\Release\C6Accel.l64P" | "C:\Program Files\Texas Instruments\cg_xml\bin\sectti.exe" --csv
+                  (from "C:\Documents and Settings\a0272049\Local Settings\Temp\qualiti_runcmd_16793.sh"
+Reading from stdin ...
+Library,Filename,Section,Type,Size
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algProcess,CODE,22016
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algControl,CODE,256
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algAlloc,CODE,32
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algFree,CODE,32
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:algInit,CODE,32
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQatan2HalfPITable,DATA,124
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:IMG_median_3x3_16,CODE,448
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQatan2Table,DATA,780
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:IMG_sobel_3x3_16,CODE,992
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:IMG_yc_demux_le16_16,CODE,288
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:psa,CODE,3328
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQisqrtTable,DATA,516
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.switch,DATA,644
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:intrinsic,CODE,9344
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQsinTable,DATA,2564
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text,CODE,8224
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.text:_IsPowOfTwo,CODE,64
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQdivTable,DATA,1028
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.far,UDATA,408
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQasinTable,DATA,340
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.cinit,DATA,460
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:_IQsininverseMinMax,DATA,232
+C:/dvsdk_1_11_00_00/dsplib4arm_working/trunks/c6accel/dsp/alg/lib/C6accel_c64p/Release/C6Accel.l64P,c6accel_c64p_release.o64P,.const:.string,DATA,11
+[end of reused output]
+
+Verifying that there are no '.bss' sections in the output
+
+</PRE>
+<a href="#XDAIS Rule 26">back</a>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</BODY>
+</HTML>
+
+
+
+

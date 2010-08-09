@@ -1,0 +1,66 @@
+/*
+ *  ======== package.bld ========
+ */
+
+Pkg.attrs.exportAll = true;
+Pkg.attrs.exportExe = true;
+try {
+// Different behaviors in Windows vs Linux require "/" 
+// to indicate directory (see SDSCM00023249)
+    if (Build.hostOSName=="Windows") {
+        Pkg.otherFiles = ["package/info"];
+    } else { Pkg.otherFiles = ["package/info/"]; }
+} catch(e) {}
+
+if (arguments[1]) { var serverName = arguments[1]; }
+else { 
+    var fullName = Pkg.name; 
+    var serverName = "c6accel_" + fullName.substring(fullName.lastIndexOf('.')+ 1); 
+}
+
+Pkg.uses = ["ti/bios/include"];
+
+var targ = null;
+
+for (var i = 0; i < Build.targets.length; i++) {
+    var btarg = Build.targets[i];
+
+    /* only build for DSP targets */
+    if (btarg.os == "Linux") {
+        continue;
+    }
+
+    if (btarg.name == 'C674') {
+        targ = btarg;
+        break;
+    }
+}
+if (targ != null) {
+
+    print("building for target " + targ.name + " ...");
+
+    Pkg.addExecutable( serverName, targ, "ti.platforms.evmOMAPL138",
+        {
+            tcopts: "-Dxdc.cfg.check.fatal=false",
+            cfgScript: "server.tcf",
+            lopts: "-l link.cmd",
+        }).
+        addObjects( [
+            "main.c",
+        ] );
+}
+else {
+    print("Could not find C674 target in build targets. " +
+          "Please check your user.bld and config.bld files.");
+}
+
+
+/*
+ * If using >= CE 2.0 include info.js createFromServer support to allow client
+ * Engine to automatically get the right memory map and codec package info.
+ * If using <= CE 1.20 create an empty directory so avoid build errors.
+ */  
+try{
+    var createDirectory = new java.io.File("package/info").mkdirs();
+}catch(e) {};
+

@@ -1,0 +1,38 @@
+/*
+ *  ======== memmap.tci ========
+ *
+ * Setup platform-specific memory map:
+ *
+ */
+
+var mem_ext = [
+{
+    comment:    "DDR2: off-chip memory for application code and data",
+    name:       "DDR2",
+    base:       0xC3C00000,
+    len:        0x00300000,
+    space:      "code/data"
+},
+{
+    comment:    "RESET_VECTOR: off-chip memory for the reset vector table",
+    name:       "RESET_VECTOR",
+    base:       0xC3F00000,
+    len:        0x00000080,
+    space:      "code/data"
+},
+{
+    comment:    "DSPLINK: off-chip memory reserved for DSPLINK code and data",
+    name:       "DSPLINKMEM",
+    base:       0xC3F01000,
+    len:        0x000FF000,
+    space:      "code/data"
+},
+{
+    comment:    "DDRALGHEAP: off-chip memory for dynamic algmem allocation",
+    name:       "DDRALGHEAP",
+    base:       0xC3200000,
+    len:        0x00A00000,
+    space:      "code/data"
+},
+];
+

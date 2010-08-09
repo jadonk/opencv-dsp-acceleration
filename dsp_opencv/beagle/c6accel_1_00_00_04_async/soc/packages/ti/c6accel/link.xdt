@@ -1,0 +1,27 @@
+SECTIONS
+{
+% if (this.C6ACCEL.dataSection) { 
+    .const:.string  > `this.C6ACCEL.dataSection`
+    .const:_IQisqrtTable  > `this.C6ACCEL.dataSection`
+    .const:_IQdivTable  > `this.C6ACCEL.dataSection`
+    .const:_IQsinTable  > `this.C6ACCEL.dataSection`
+    .const:_IQsininverseMinMax  > `this.C6ACCEL.dataSection`
+    .const:_IQatan2HalfPITable  > `this.C6ACCEL.dataSection`
+    .const:_IQatan2Table  > `this.C6ACCEL.dataSection`
+    .const:_IQasinTable  > `this.C6ACCEL.dataSection`
+%}
+% if (this.C6ACCEL.codeSection) { 
+    .text:algProcess  > `this.C6ACCEL.codeSection`
+    .text:algControl  > `this.C6ACCEL.codeSection`
+    .text:algAlloc  > `this.C6ACCEL.codeSection`
+    .text:algFree  > `this.C6ACCEL.codeSection`
+    .text:algInit  > `this.C6ACCEL.codeSection`
+    .text:intrinsic  > `this.C6ACCEL.codeSection`
+    .text:IMG_sobel_3x3_16  > `this.C6ACCEL.codeSection`
+    .text:IMG_yc_demux_le16_16  > `this.C6ACCEL.codeSection`
+    .text:DSPF_sp_ifftSPxSP  > `this.C6ACCEL.codeSection`
+    .text:psa  > `this.C6ACCEL.codeSection`
+    .text:DSPF_sp_fftSPxSP  > `this.C6ACCEL.codeSection`
+    .text:IMG_median_3x3_16  > `this.C6ACCEL.codeSection`
+%}
+}

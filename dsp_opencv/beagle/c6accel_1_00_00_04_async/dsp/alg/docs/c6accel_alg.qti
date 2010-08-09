@@ -1,0 +1,9 @@
+algoParams = {
+  vendor: "TI",
+  headers: [
+  ],
+  interfaceName: "IC6ACCEL",
+  baseDir: "C:\\dvsdk_1_11_00_00\\C6Accel\\trunks\\C6Accel_alg",
+  moduleName: "C6ACCEL",
+  library: "lib\\C64P_release\\C6Accel.a64P",
+}

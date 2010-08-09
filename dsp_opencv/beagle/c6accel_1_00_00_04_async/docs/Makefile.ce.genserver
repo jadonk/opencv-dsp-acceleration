@@ -1,0 +1,33 @@
+#
+#  ======== Makefile.ce.genserver ========
+#  This makefile is optional - you can use all of it or none of it.
+#  Its purpose is to save time/typing when used from the context of the DVSDK.
+#  All of the paths are preset in the $(DVSDK_INSTALL_DIR)/Rules.make. The 
+#  Codec Engine genserver requires many of these paths hence by setting 
+#  the XDCPATH here we save the user some typing and package-path setup.
+#  Commands (make goals): -
+#  - Start the server wizard
+#  [>] make -f Makefile.ce.genserver genserver 
+ 
+# Import Tools Path from Rules.make
+include ../Rules.make
+ 
+# Set location of xdc executable
+XDC = $(XDC_INSTALL_DIR)/xdc
+ 
+# Set XDCPATH to contain necessary repositories.
+# Note that we put specify both CODEC_INSTALL_DIR and CODEC_INSTALL_DIR/packages
+# since our config.bld is typically in CODEC_INSTALL_DIR.
+ 
+XDCPATH = $(CODEC_INSTALL_DIR);$(CODEC_INSTALL_DIR)/packages;$(CE_INSTALL_DIR)/packages;$(CE_INSTALL_DIR)/cetools/packages;$(BIOS_INSTALL_DIR)/packages;$(LINK_INSTALL_DIR)/packages
+ 
+# Conditionally, you can create verbose build output
+XDCOPTIONS=v
+ 
+export XDCOPTIONS
+export XDCPATH
+ 
+all: .all-packages
+ 
+.all-packages:
+	$(XDC_INSTALL_DIR)/xs ti.sdo.ce.wizards.genserver

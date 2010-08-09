@@ -1,0 +1,59 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\dvsdk_1_11_00_00\dsplib4arm_working\trunks\c6accel\dsp\alg\pjt\"
+ProjectType=Library
+CPUFamily=TMS320C64XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="XDC"
+Config="c6accel_c64p_debug"
+Config="c6accel_c64p_release"
+Config="c6accel_c674_debug"
+Config="c6accel_c674_release"
+
+[Source Files]
+Source="..\src\C6Accel.c"
+
+["c6accel_c64p_debug" Settings]
+FinalBuildCmd=cl6x -z -l lnk.cmd -r -h -g _C6ACCEL_TI_IALG -g _UNIVERSAL_TI_PARAMS -g _C6ACCEL_TI_IC6ACCEL c6accel_c64p_debug\*.obj -o c6accel_c64p_debug\c6accel_c64p_debug.o64P -l"..\..\libs\dsplib64plus.lib" -l="..\..\libs\C64P_LIBPLUS.lib" -l="..\..\libs\fastrts64x.lib" -l"..\..\libs\imglib2.l64P" -l"..\..\libs\IQmath_c64x+.lib" -l"..\..\libs\IQmath_RAM_c64x+.lib" -l"..\..\libs\fastrts64x.lib" -l"../../libs/vlib.l64p";Run=Always
+FinalBuildCmd=ar6x -rq "..\lib\C6accel_c64p\Debug\C6Accel.l64P" c6accel_c64p_debug\c6accel_c64p_debug.o64P;Run=Always
+
+["c6accel_c64p_release" Settings]
+FinalBuildCmd=cl6x -z -l lnk.cmd -r -h -g _C6ACCEL_TI_IALG -g _UNIVERSAL_TI_PARAMS -g _C6ACCEL_TI_IC6ACCEL c6accel_c64p_release\*.obj -o c6accel_c64p_release\c6accel_c64p_release.o64P -l"..\..\libs\dsplib64plus.lib" -l="..\..\libs\C64P_LIBPLUS.lib" -l="..\..\libs\fastrts64x.lib" -l"..\..\libs\imglib2.l64P" -l"..\..\libs\IQmath_c64x+.lib" -l"..\..\libs\IQmath_RAM_c64x+.lib" -l"..\..\libs\fastrts64x.lib" -l"../../libs/vlib.l64p";Run=Always
+FinalBuildCmd=ar6x -rq "..\lib\C6accel_c64p\Release\C6Accel.l64P" c6accel_c64p_release\c6accel_c64p_release.o64P;Run=Always
+
+["c6accel_c674_debug" Settings]
+FinalBuildCmd=cl6x -z -l lnk.cmd -r -h -g _C6ACCEL_TI_IALG -g _UNIVERSAL_TI_PARAMS -g _C6ACCEL_TI_IC6ACCEL c6accel_c674_debug\*.obj -o c6accel_c674_debug\c6accel_c674_debug.o674 -l"..\..\libs\dsplib64plus.lib" -l="..\..\libs\C64P_LIBPLUS.lib" -l="..\..\libs\fastrts64x.lib" -l"..\..\libs\imglib2.l64P" -l"..\..\libs\IQmath_c64x+.lib" -l"..\..\libs\IQmath_RAM_c64x+.lib" -l"..\..\libs\fastrts67x.lib" -l"..\..\libs\dsplib674x.lib" -l"../../libs/vlib.l64p";Run=Always
+FinalBuildCmd=ar6x -rq "..\lib\C6accel_c674\Debug\C6Accel.l674" c6accel_c674_debug\c6accel_c674_debug.o674;Run=Always
+
+["c6accel_c674_release" Settings]
+FinalBuildCmd=cl6x -z -l lnk.cmd -r -h -g _C6ACCEL_TI_IALG -g _UNIVERSAL_TI_PARAMS -g _C6ACCEL_TI_IC6ACCEL c6accel_c674_release\*.obj -o c6accel_c674_release\c6accel_c674_release.o674 -l"..\..\libs\dsplib64plus.lib" -l="..\..\libs\C64P_LIBPLUS.lib" -l="..\..\libs\fastrts64x.lib" -l"..\..\libs\imglib2.l64P" -l"..\..\libs\IQmath_c64x+.lib" -l"..\..\libs\IQmath_RAM_c64x+.lib" -l"..\..\libs\fastrts67x.lib" -l"..\..\libs\dsplib674x.lib" -l"../../libs/vlib.l64p";Run=Always
+FinalBuildCmd=ar6x -rq "..\lib\C6accel_c674\Release\C6Accel.l674" c6accel_c674_release\c6accel_c674_release.o674;Run=Always
+
+["Archiver" Settings: "c6accel_c64p_debug"]
+Options=-r -o"..\lib\C6accel_c64p\Debug\C6Accel.a64P"  
+
+["Archiver" Settings: "c6accel_c64p_release"]
+Options=-r -o"..\lib\C6accel_c64p\Release\C6Accel.a64P"
+
+["Archiver" Settings: "c6accel_c674_debug"]
+Options=-r -o"..\lib\C6accel_c674\Debug\C6Accel.a674"
+
+["Archiver" Settings: "c6accel_c674_release"]
+Options=-r -o"..\lib\C6Accel_c674\Release\C6Accel.a674"
+
+["Compiler" Settings: "c6accel_c64p_debug"]
+Options=-g -fr"$(Proj_dir)\c6accel_c64p_debug" -i"..\..\..\..\..\..\xdctools_3_10_03\packages" -i"..\..\..\..\..\..\codec_engine_2_21\cetools\packages" -i"..\..\..\..\..\..\codec_engine_2_21\packages" -i"..\include" -i"..\..\libs\include" -d"_DEBUG" -d"xdc_target__=<ti/targets/std.h>" -mo -mv6400+ --mem_model:data=far
+
+["Compiler" Settings: "c6accel_c64p_release"]
+Options=-o3 -fr"$(Proj_dir)\c6accel_c64p_release" -i"..\..\..\..\..\..\xdctools_3_10_03\packages" -i"..\..\..\..\..\..\codec_engine_2_21\cetools\packages" -i"..\..\..\..\..\..\codec_engine_2_21\packages" -i"..\include" -i"..\..\libs\include" -d"_RELEASE" -d"xdc_target__=<ti/targets/std.h>" -mo -mv6400+ --mem_model:data=far
+
+["Compiler" Settings: "c6accel_c674_debug"]
+Options=-g -fr"$(Proj_dir)\c6accel_c674_debug" -i"..\..\..\..\..\..\xdctools_3_10_03\packages" -i"..\..\..\..\..\..\codec_engine_2_21\cetools\packages" -i"..\..\..\..\..\..\codec_engine_2_21\packages" -i"..\include" -i"..\..\libs\include" -d"DEVICE_FLOAT" -d"_DEBUG" -d"xdc_target__=<ti/targets/std.h>" -mo -mv6740 --mem_model:data=far
+
+["Compiler" Settings: "c6accel_c674_release"]
+Options=-o3 -fr"$(Proj_dir)\c6accel_c674_release" -i"..\..\..\..\..\..\xdctools_3_10_03\packages" -i"..\..\..\..\..\..\codec_engine_2_21\cetools\packages" -i"..\..\..\..\..\..\codec_engine_2_21\packages" -i"..\include" -i"..\..\libs\include" -d"DEVICE_FLOAT" -d"xdc_target__=<ti/targets/std.h>" -mo -mv6740 --mem_model:data=far
+

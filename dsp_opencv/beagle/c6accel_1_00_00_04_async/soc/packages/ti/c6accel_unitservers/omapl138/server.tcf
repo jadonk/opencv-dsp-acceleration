@@ -1,0 +1,104 @@
+/*
+ *  ======== server.tcf ========
+ */
+
+var platform = environment["config.platform"];
+print("platform   = " + platform);
+
+utils.importFile('./memmap.tci');
+
+var device_regs = {
+    l1PMode: "32k",
+    l1DMode: "32k",
+    l2Mode: "128k",
+};
+
+
+var params = {
+    clockRate: 300,
+    catalogName: "ti.catalog.c6000",
+    deviceName: "L138",
+    regs: device_regs,
+    mem: mem_ext
+};
+
+/* Now customize the generic platform with parameters specified above. */
+utils.loadPlatform("ti.platforms.generic", params);
+
+/* Enable heaps and tasks */
+bios.enableMemoryHeaps(prog);
+bios.enableTskManager(prog);
+
+
+/* Create heaps in memory segments that are to have heap */
+bios.DDR2.createHeap = true;
+bios.DDR2.heapSize   = 0x20000; // 128K
+
+bios.DDRALGHEAP.createHeap = true;
+bios.DDRALGHEAP.heapSize   = bios.DDRALGHEAP.len;
+
+/*
+ * The setting of L1DSRAM.len is to work around a problem in the BIOS 5
+ * bios_6747.tci file.  Remove when that (SDOCM00051331) is fixed.
+ * Please note that we are not using L1DSRAM settings and hence commented the 
+ * configuration settings
+ */
+/*
+bios.L1DSRAM.len       = 0x4000;
+
+bios.L1DSRAM.createHeap       = true;
+bios.L1DSRAM.enableHeapLabel  = true;
+bios.L1DSRAM["heapLabel"]     = prog.extern("L1DHEAP");
+bios.L1DSRAM.heapSize     = bios.L1DSRAM.len;  // all of L1DSRAM for this heap
+*/
+
+bios.IRAM.createHeap       = true;
+bios.IRAM.enableHeapLabel  = true;
+bios.IRAM["heapLabel"]     = prog.extern("L2HEAP");
+bios.IRAM.heapSize     = 0x20000;  // half of IRAM's 256K for this heap
+
+bios.L3_CBA_RAM.createHeap       = true;
+bios.L3_CBA_RAM.enableHeapLabel  = true;
+bios.L3_CBA_RAM["heapLabel"]     = prog.extern("L3_CBA_RAM_HEAP");
+bios.L3_CBA_RAM.heapSize     = 0x10000;  // half of L3's 128K for this heap
+
+/* GBL */
+/* set MAR register to cache shared internal memory 0x80000000-0x8001FFFF */
+bios.GBL.C64PLUSMAR128to159 = 0x00000001;
+
+/* set MAR register to cache external memory 0xC0000000-0xC3FFFFFF */
+bios.GBL.C64PLUSMAR192to223 = 0x0000000f;
+
+bios.GBL.ENABLEALLTRC    = false;
+bios.GBL.PROCID          = 0;
+
+/* MEM */
+bios.MEM.STACKSIZE = 0x1000;
+
+/* Global Settings */
+bios.MEM.ARGSSIZE = 256;
+
+/* Enable MSGQ and POOL Managers */
+bios.MSGQ.ENABLEMSGQ = true;
+bios.POOL.ENABLEPOOL = true;
+
+/* Set all code and data sections to use DDR2 */
+bios.setMemCodeSections (prog, bios.DDR2);
+bios.setMemDataNoHeapSections (prog, bios.DDR2);
+bios.setMemDataHeapSections (prog, bios.DDR2);
+
+/* MEM : Global */
+bios.MEM.BIOSOBJSEG = bios.DDR2;
+bios.MEM.MALLOCSEG  = bios.DDR2;
+
+/* TSK : Global */
+bios.TSK.STACKSEG = bios.DDR2;
+bios.TSK.STACKSIZE = 0x1000;
+
+//bios.GBL.CALLUSERINITFXN = true;
+//bios.GBL.USERINITFXN = prog.extern("CE_spinLock");
+
+/* Generate configuration files... */
+if (config.hasReportedError == false) {
+    prog.gen();
+}

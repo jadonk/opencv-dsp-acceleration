@@ -1,0 +1,101 @@
+IMGLib Functions
+640x480 8bit/pixel b/w Test Image 
+C6accel_IMG_histogram_8(),4033
+C6accel_IMG_histogram_16(),7116
+C6accel_IMG_median_3x3_8(),7254
+C6accel_IMG_median_3x3_16(),12381
+C6accel_IMG_median_3x3_16s(),12138
+C6accel_IMG_conv_3x3_i8_c8s(),7232
+C6accel_IMG_conv_3x3_i16s_c16s(),12990
+C6accel_IMG_corr_3x3_i8_c8(),15591
+C6accel_IMG_corr_3x3_i16s_c16s(),17601
+C6accel_IMG_sobel_3x3_8(),7092
+C6accel_IMG_sobel_3x3_16(),13135
+C6accel_IMG_muls_8(),11449
+C6accel_IMG_muls_16(),17252
+C6accel_IMG_adds_8(),4922
+C6accel_IMG_adds_16(),8591
+C6accel_IMG_subs_8(),5257
+C6accel_IMG_subs_16s(),8728
+
+800x600 YUYV Test Image 
+C6accel_IMG_yc_demux_le8_c(),18279
+C6accel_IMG_yuv422pl_to_rgb565(),17128
+C6accel_IMG_yuv420pl_to_rgb565(),15914
+C6accel_IMG_yc_demux_le16_16(),33094
+C6accel_IMG_yuv422pl16_to_rgb565(),24329
+C6accel_IMG_yuv420pl16_to_rgb565(),21097
+
+Test using test vectors from files 
+C6accel_IMG_ycbcr422pl_to_ycbcr422sp(),9182
+C6accel_IMG_ycbcr422pl_to_ycbcr422sp(),864
+C6accel_IMG_ycbcr422pl_to_ycbcr422sp(),898
+
+DSPLib Functions
+64k sample FFT 
+C6accel_DSP_fft16x16(),37606
+C6accel_DSP_fft32x32(),73076
+C6accel_DSP_ifft16x16(),37508
+C6accel_DSP_ifft32x32(),73503
+C6accel_DSP_autocor(),1019
+C6accel_DSP_dotprod(),912
+C6accel_DSP_DSP_dotp_sqr(),946
+C6accel_DSP_mat_mul(),901
+C6accel_DSP_fir_gen(),915
+C6accel_DSP_fir_r4(),933
+C6accel_DSP_fir_r4(),954
+C6accel_DSP_iir(),974
+
+Math library functions tested using 128/256 as size of vectors passed
+C6accel_MATH_addsp(),1089
+C6accel_MATH_subsp(),950
+C6accel_MATH_mpysp(),979
+C6accel_MATH_divsp(),990
+C6accel_MATH_recipsp(),991
+C6accel_MATH_sqrtsp(),1275
+C6accel_MATH_intsp(),959
+C6accel_MATH_uintsp(),928
+C6accel_MATH_spint(),934
+C6accel_MATH_spuint(),1125
+C6accel_MATH_cossp(),1057
+C6accel_MATH_sinsp(),1044
+C6accel_MATH_atansp(),1189
+C6accel_MATH_logsp(),983
+C6accel_MATH_expsp(),1020
+C6accel_MATH_exp2sp(),1022
+C6accel_MATH_exp10sp(),1030
+C6accel_MATH_recipsp(),901
+C6accel_MATH_sqrtsp(),970
+C6accel_MATH_rsqrtsp(),969
+C6accel_MATH_atan2sp(),1125
+C6accel_MATH_powsp(),1177
+C6accel_MATH_cosdp(),1001
+C6accel_MATH_sindp(),994
+C6accel_MATH_atandp(),1233
+C6accel_MATH_logdp(),1058
+C6accel_MATH_expdp(),1016
+C6accel_MATH_exp2dp(),1033
+C6accel_MATH_exp10dp(),1022
+C6accel_MATH_sqrtdp(),983
+C6accel_MATH_rsqrtdp(),976
+C6accel_MATH_atan2dp(),1146
+C6accel_MATH_powdp(),1318
+
+Floating point DSP library functions 
+8192 point FFT
+C6accel_DSPF_sp_fftSPxSP(),3645
+C6accel_DSPF_sp_vecmul(),972
+C6accel_DSPF_sp_vecrecip(),925
+C6accel_DSPF_sp_vecsum_sq(),935
+C6accel_DSPF_sp_w_vec(),938
+C6accel_DSPF_sp_dotprod(),990
+C6accel_DSPF_sp_mat_mul(),977
+C6accel_DSPF_sp_mat_mul_cplx(),945
+C6accel_DSPF_sp_trans(),1292
+C6accel_DSPF_autocor(),961
+C6accel_DSPF_convol(),935
+C6accel_DSPF_sp_iir(),991
+C6accel_DSPF_sp_fir_gen(),939
+8192 point IFFT
+C6accel_DSPF_sp_ifftSPxSP(),3857
+C6accel_DSPF_sp_biquad(),1008

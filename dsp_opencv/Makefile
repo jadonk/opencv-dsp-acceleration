@@ -4,7 +4,7 @@ include Rules.make
 # Location of TI Code Generation Tools if not provided in Rules.make
 ifndef CODEGEN_INSTALL_DIR
     #CODEGEN_INSTALL_DIR = /home/a0270555/c60_6_1_7
-    CODEGEN_INSTALL_DIR = /media/disk/OE/work/ti/ti-cgt6x-tree
+    CODEGEN_INSTALL_DIR = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/ti-cgt6x-tree
 endif
 
 
@@ -15,14 +15,18 @@ ifeq ($(PLATFORM),omap3530)
     XDC_TARGETS = "gnu.targets.arm.GCArmv5T ti.targets.C64P"
 #     XDC_TARGETS = "ti.targets.C64P"
 #    CROSS_COMPILE = /media/disk/OE/build/tmp-angstrom_2008_1/cross/armv7a/bin/arm-angstrom-linux-gnueabi-
-    CROSS_COMPILE = /media/disk/OE/build/tmp-angstrom_2008_1/cross/armv7a/bin/arm-angstrom-linux-gnueabi-
+    CROSS_COMPILE = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/i686-linux/usr/bin/arm-angstrom-linux-gnueabi-
 endif 
 
 # Location of IUNIVERSAL Examples
 PACKAGE_DIR = $(shell pwd)
+SERVER_DIR = $(PACKAGE_DIR)/beagle/c6accel_1_00_00_04_async/soc/packages
+
+export SERVER_DIR
 
 
-XDCPATH = ^;$(CURDIR);$(PACKAGE_DIR);$(CE_INSTALL_DIR)/packages;$(BIOS_INSTALL_DIR)/packages;$(CODEC_INSTALL_DIR);$(FC_INSTALL_DIR)/packages;$(LINK_INSTALL_DIR);$(XDAIS_INSTALL_DIR)/packages;$(CMEM_INSTALL_DIR)/packages;$(BIOSUTILS_INSTALL_DIR)/packages;$(LPM_INSTALL_DIR)/packages;$(DSPLIB_PATH);$(IMGLIB_PATH)
+XDCPATH = ^;$(CURDIR);$(PACKAGE_DIR);$(SERVER_DIR);$(CE_INSTALL_DIR)/packages;$(BIOS_INSTALL_DIR)/packages;$(CODEC_INSTALL_DIR);$(FC_INSTALL_DIR)/packages;$(LINK_INSTALL_DIR);$(XDAIS_INSTALL_DIR)/packages;$(CMEM_INSTALL_DIR)/packages;$(BIOSUTILS_INSTALL_DIR)/packages;$(LPM_INSTALL_DIR)/packages;$(DSPLIB_PATH);$(IMGLIB_PATH)
+
 
 # Set the number of concurrent build threads (i.e. jobs)
 JOBS = 1
@@ -82,13 +86,13 @@ HEADERS = $(wildcard beagle/library/opencv/*.h)
 SOURCES = $(wildcard beagle/library/opencv/*.c)
 OBJFILES = $(SOURCES:%.c=%.ov5T)
 TARGET = beagle/library/opencv/lib/libopencvdsp.so
-GNU_C_FLAGS = $(C_FLAGS) $(CFLAGS) -Wall -Dxdc_target_name__=MVArm9 -I$(XDC_INSTALL_DIR)/packages -I$(CE_INSTALL_DIR)/packages -I$(XDAIS_INSTALL_DIR)/packages -I$(BIOS_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(LINK_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(BIOSUTILS_INSTALL_DIR)/packages -I$(LPM_INSTAL_DIR)/packages -I$(LINUXKERNEL_INSTALL_DIR)/include -I$(BIOS_INSTALL_DIR)/packages/ti/bios/include -I$(DMAI_INSTALL_DIR)/packages -I$(CURDIR) -Dxdc_target_types__=gnu/targets/std.h -D_$(PLATFORM)
+GNU_C_FLAGS = $(C_FLAGS) $(CFLAGS) -Wall -Dxdc_target_name__=MVArm9 -I$(XDC_INSTALL_DIR)/packages -I$(CE_INSTALL_DIR)/packages -I$(XDAIS_INSTALL_DIR)/packages -I$(BIOS_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(LINK_INSTALL_DIR)/packages -I$(FC_INSTALL_DIR)/packages -I$(BIOSUTILS_INSTALL_DIR)/packages -I$(LPM_INSTAL_DIR)/packages -I$(LINUXKERNEL_INSTALL_DIR)/include -I$(BIOS_INSTALL_DIR)/packages/ti/bios/include -I$(DMAI_INSTALL_DIR)/packages -I$(CURDIR) -I$(SERVER_DIR) -Dxdc_target_types__=gnu/targets/std.h -D_$(PLATFORM)
 GNU_AR_FLAGS = $(AR_FLAGS)
 GNU_LD_FLAGS = $(LD_FLAGS) $(LDFLAGS)
-COMPILE = $(PRE) $(CROSS_COMPILE)gcc $(GNU_C_FLAGS) $(GNU_CPP_FLAGS) -c
+COMPILE = $(PRE) $(CROSS_COMPILE)g++ $(GNU_C_FLAGS) $(GNU_CPP_FLAGS) -c
 AR = $(PRE) $(CROSS_COMPILE)ar rc $(GNU_AR_FLAGS)
-LD = $(PRE) $(CROSS_COMPILE)gcc $(GNU_LD_FLAGS)
-LD_DIR = /media/disk/OE/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib
+LD = $(PRE) $(CROSS_COMPILE)g++ $(GNU_LD_FLAGS)
+LD_DIR = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib
 
 .PHONY: clean clean_app clean_lib codec server library app install all
 
@@ -143,11 +147,11 @@ install_opencv_remote:
 	@echo "Installing at $(EXEC_DIR)"
 	@install -d $(EXEC_DIR)
 	@install -m 777 beagle/apps/opencv/linux/remote_ti_platforms_$(PLATFORM_SHORT)_opencv.x$(APP_EXT) $(EXEC_DIR)
-	@install -m 777 $(wildcard $(SERVER_PATH_SHORT)/../opencv_unitserver_$(PLATFORM_SHORT_LC)/opencv_unitserver_$(PLATFORM_SHORT_LC).x*) $(EXEC_DIR)
+#	@install -m 777 $(wildcard $(SERVER_PATH_SHORT)/../opencv_unitserver_$(PLATFORM_SHORT_LC)/opencv_unitserver_$(PLATFORM_SHORT_LC).x*) $(EXEC_DIR)
 	@install -d $(EXEC_DIR)/lib
 	@install -m 777 beagle/library/opencv/lib/* $(EXEC_DIR)/lib
 	@install -d $(EXEC_DIR)/test_Data
-	@install -m 777 beagle/apps/opencv/test_data/* $(EXEC_DIR)/test_Data
+#	@install -m 777 beagle/apps/opencv/test_data/* $(EXEC_DIR)/test_Data
 	@install -m 777 beagle/apps/opencv/test_data/* $(EXEC_DIR)
 	@chmod -x $(EXEC_DIR)/*.x64P
 	@echo done

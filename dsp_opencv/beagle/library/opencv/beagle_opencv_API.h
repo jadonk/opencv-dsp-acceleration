@@ -7,37 +7,32 @@
 #ifndef _BEAGLE_OPENCV_API_H
 #define _BEAGLE_OPENCV_API_H
 
+#include <opencv/cv.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef enum OPENCV_Operation{
-        OPERATION_GEN_TWIDDLE = (1 << 0),
-        OPERATION_DFT = (1 << 1),
-	OPERATION_SOBEL3x3 = (1 << 2),
-	OPERATION_SOBEL5x5 = (1 << 3),
-	OPERATION_SOBEL7x7 = (1 << 4),
-	OPERATION_INTEGRAL = (1 << 5),
-        OPERATION_IDFT = (1 << 6),
-	OPERATION_DFTROWS = (1 << 7),
-	OPERATION_IDFTROWS = (1 << 8),
-	OPERATION_SCALE = (1 << 9)
-} OPENCV_Operation;
 
 /*
  *  ======== API ========
  *  API prototypes.
  */
+void DSP_cvStartDSP( void );
 
-void cvStartDSP();
+void DSP_cvSobel( const CvArr* srcarr, CvArr* dstarr, int dx, int dy, int aperture_size ); 
 
-int sobelDsp( int , int , char *, int , int , int , int , int , char *, int , int , int , int );
+void DSP_cvDFT( const CvArr* srcarr, CvArr* dstarr, int flags, int nonzero_rows );
 
-int dftDsp( int , int , char *, int , int , int , int , int , char *, int , int , int, OPENCV_Operation );
+void DSP_cvIntegral( const CvArr* image, CvArr* sumImage, CvArr* sumSqImage, CvArr* tiltedSumImage );
 
-int integralDsp( int , int , char *, int , int , int , int , int , char *, int , int , int );
+void DSP_cvCvtColor( const CvArr* srcarr, CvArr* dstarr, int code );
 
-void cvEndDSP();
+void DSP_cvCvtColor_cvSobel( const CvArr* srcarr, CvArr* dstarr, int code, const void* srcarr_s, void* dstarr_s, int dx, int dy, int aperture_size );
+
+void DSP_cvSyncDSP( void );
+
+void DSP_cvEndDSP(void);
 
 #ifdef __cplusplus
 }
