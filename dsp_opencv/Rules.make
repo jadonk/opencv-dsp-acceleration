@@ -4,6 +4,11 @@ PLATFORM = omap3530
 #define root path for all the tools
 ROOTPATH = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi
 
+#define path for your cross-compiler and tag for your cross-compiler. Verify if this path is correct
+#for you or not and edit accordingly. For all Angstrom Linux distrubuiton, the name of gcc corss-compiler
+#begin with arm-angstrom-linux-gnueabi-
+CROSS_COMPILE = $(ROOTPATH)/../i686-linux/usr/bin/arm-angstrom-linux-gnueabi-
+
 #define path to code generation tools
 CODEGEN_INSTALL_DIR = $(ROOTPATH)/usr/share/ti/ti-cgt6x-tree
 

@@ -3,20 +3,19 @@ include Rules.make
 
 # Location of TI Code Generation Tools if not provided in Rules.make
 ifndef CODEGEN_INSTALL_DIR
-    #CODEGEN_INSTALL_DIR = /home/a0270555/c60_6_1_7
     CODEGEN_INSTALL_DIR = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/beagleboard-angstrom-linux-gnueabi/usr/share/ti/ti-cgt6x-tree
 endif
 
 
 
+ifndef CROSS_COMPILE
+    CROSS_COMPILE = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/i686-linux/usr/bin/arm-angstrom-linux-gnueabi- 
+endif
 
 ifeq ($(PLATFORM),omap3530)
     XDC_PLATFORM = ti.platforms.evm3530
     XDC_TARGETS = "gnu.targets.arm.GCArmv5T ti.targets.C64P"
-#     XDC_TARGETS = "ti.targets.C64P"
-#    CROSS_COMPILE = /media/disk/OE/build/tmp-angstrom_2008_1/cross/armv7a/bin/arm-angstrom-linux-gnueabi-
-    CROSS_COMPILE = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/i686-linux/usr/bin/arm-angstrom-linux-gnueabi-
-endif 
+endif
 
 # Location of IUNIVERSAL Examples
 PACKAGE_DIR = $(shell pwd)
@@ -93,7 +92,6 @@ GNU_LD_FLAGS = $(LD_FLAGS) $(LDFLAGS)
 COMPILE = $(PRE) $(CROSS_COMPILE)g++ $(GNU_C_FLAGS) $(GNU_CPP_FLAGS) -c
 AR = $(PRE) $(CROSS_COMPILE)ar rc $(GNU_AR_FLAGS)
 LD = $(PRE) $(CROSS_COMPILE)g++ $(GNU_LD_FLAGS)
-LD_DIR = /media/disk/openembedded/build/tmp-angstrom_2008_1/sysroots/armv7a-angstrom-linux-gnueabi/usr/lib
 
 .PHONY: clean clean_app clean_lib clean_c6accel library c6accel app install all
 
@@ -102,9 +100,7 @@ help:
 	@echo "You must specify a build target. Available targets are: "
 	@echo "    all, c6accel, library, app, install, clean"
 
-all: c6accel library app
-
-
+all: c6accel library app install
 
 c6accel:
 	@echo "$(C6ACCEL_PATH)"
@@ -116,20 +112,18 @@ $(OBJFILES):	%.ov5T: %.c $(HEADERS)
 	@mkdir -p $(dir $@)
 	$(COMPILE) $(CPP_FLAGS) -o $@ $<
 
-$(TARGET):	$(OBJFILES)
+$(TARGET): $(OBJFILES)
 	@echo
 	@echo Building Shared Library $@ from $^..
 	@mkdir -p $(dir $@)
 	$(LD) -shared  -o $@ $^
-#	@cp $(TARGET) beagle/apps/opencv/lib
-	@cp $(TARGET) $(LD_DIR)
 
 package/package.defs.h:beagle/library/opencv/package.xdc beagle/library/opencv/package.xs beagle/library/opencv/package.bld
 	@echo
 	@echo Building package interface for $(TARGET)
 	$(XDC) XDCBUILDCFG=$(PACKAGE_DIR)/config.bld -PR beagle/library
 
-library:	$(TARGET) package/package.defs.h
+library: $(TARGET) package/package.defs.h
 
 app: opencv
 
@@ -138,20 +132,14 @@ opencv: $(if $(wildcard beagle/apps/opencv/linux/remote_ti_platforms_$(PLATFORM_
 opencv_remote:
 	make -C beagle/apps/opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/remote_ti_platforms_$(PLATFORM_SHORT) APP_NAME=opencv PLATFORM=$(PLATFORM) PACKAGE_DIR=$(PACKAGE_DIR) SERVER_PATH=$(SERVER_PATH)
 
-install: install_opencv 
-
-install_opencv: $(if $(wildcard beagle/apps/opencv/linux/remote_ti_platforms_$(PLATFORM_SHORT)_opencv.x$(APP_EXT)), install_opencv_remote)
-
-install_opencv_remote:
+install:
 	@echo "Installing at $(EXEC_DIR)"
 	@install -d $(EXEC_DIR)
 	@install -m 777 $(SERVER_DIR)/ti/c6accel_unitservers/omap3530/c6accel_omap3530.x64P $(EXEC_DIR)
 	@install -m 777 beagle/apps/opencv/linux/remote_ti_platforms_$(PLATFORM_SHORT)_opencv.x$(APP_EXT) $(EXEC_DIR)
-#	@install -m 777 $(wildcard $(SERVER_PATH_SHORT)/../opencv_unitserver_$(PLATFORM_SHORT_LC)/opencv_unitserver_$(PLATFORM_SHORT_LC).x*) $(EXEC_DIR)
 	@install -d $(EXEC_DIR)/lib
 	@install -m 777 beagle/library/opencv/lib/* $(EXEC_DIR)/lib
 	@install -d $(EXEC_DIR)/test_Data
-#	@install -m 777 beagle/apps/opencv/test_data/* $(EXEC_DIR)/test_Data
 	@install -m 777 beagle/apps/opencv/test_data/* $(EXEC_DIR)
 	@chmod -x $(EXEC_DIR)/*.x64P
 	@echo done
@@ -168,7 +156,5 @@ clean_lib:
 	rm -rf beagle/library/opencv/*.ov5T
 	rm -rf beagle/library/opencv/lib/*
 	rm -rf beagle/apps/opencv/lib/*
-	rm $(LD_DIR)/libopencvdsp.*
 	
-
 clean: clean_c6accel clean_app clean_lib
