@@ -1,9 +1,8 @@
 /*
  *  ======== app.c ========
- *  Test application for OPENCVTEST algorithm.  
+ *  Test application for OPENCV_DSP algorithm.  
  */
 
-//#include <xdc/std.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,21 +16,6 @@
 #include <beagle/library/opencv/beagle_opencv_API.h> 
 #include <beagle/library/opencv/benchmark_time.h>
 
-/*
-#include <beagle/library/opencv/opencvDsp.h> 
-#include <ti/sdo/ce/Engine.h>
-#include <ti/sdo/ce/osal/Memory.h>
-#include <ti/sdo/ce/CERuntime.h>
-#include "../c6accelw/c6accelw.h"
-
-#define ENGINENAME "omap3530"
-#define ALGNAME "c6accel"
-
-
-static String algName      = ALGNAME;
-static String engineName   = ENGINENAME;
-extern C6accel_Handle hC6accel;
-*/
 
 extern Time_Object sTime;extern unsigned int      time;
 
@@ -39,7 +23,7 @@ extern Time_Object sTime;extern unsigned int      time;
  *  ======== main ========
  */
 int main(int argc, char *argv[]) 
-{   //CERuntime_init();
+{   
     DSP_cvStartDSP();
     CvCapture * capture;
     IplImage *videoFrame, *convFrame, *convOpencvFrame, *unsignedFrame; 
@@ -64,6 +48,16 @@ int main(int argc, char *argv[])
     if ( argc < 2 ) {
        printf( "Usage: ./remote_ti_platforms_evm3530_opencv.xv5T [option] \n");
        printf("option:\ni. integral\ns. sobel\nd. dft\n");
+       printf("Following are the all usage:\n");
+       printf("./remote_ti_platforms_evm3530_opencv.xv5T i (To test integral-image algorithm using DSP). Note: You need to install VLIB to test this.\n");
+       
+       printf("./remote_ti_platforms_evm3530_opencv.xv5T d d (To test DFT algorithm using DSP) \n");
+       printf("./remote_ti_platforms_evm3530_opencv.xv5T d a (To test DFT algorithm using ARM) \n");
+       printf("./remote_ti_platforms_evm3530_opencv.xv5T s tree.avi d (To test sobel algorithm for movie clip tree.avi using DSP) \n");
+       printf("./remote_ti_platforms_evm3530_opencv.xv5T s tree.avi a (To test sobel algorithm for movie clip tree.avi using ARM) \n");
+       printf("./remote_ti_platforms_evm3530_opencv.xv5T s webcam d (To test sobel algorithm for image from webcam using DSP) \n");
+       printf("./remote_ti_platforms_evm3530_opencv.xv5T s webcam a (To test sobel algorithm for image from webcam using ARM) \n");
+       printf("./remote_ti_platforms_evm3530_opencv.xv5T r (To test RGB to Gray for image from webcam.) \n");
        return (-1);
     }
 
@@ -94,7 +88,7 @@ int main(int argc, char *argv[])
     		DSP_cvIntegral(dataImage,integralImage,NULL,NULL);
 		DSP_cvSyncDSP();
 		Time_delta(&sTime,&time);
-		printf("DSP_cvIntegral Total execution time = %dus\n",(unsigned int)time);  
+//		printf("DSP_cvIntegral Total execution time = %dus\n",(unsigned int)time);  
   		    		
     		ptr = (int *)integralImage->imageData;
     		printf(" The integral image is:\n");
@@ -109,7 +103,7 @@ int main(int argc, char *argv[])
 		Time_delta(&sTime,&time);
 		cvIntegral(dataImage, integralImage,NULL,NULL);
 		Time_delta(&sTime,&time);
-		printf("cvIntegral Total execution time = %dus\n",(unsigned int)time);
+//		printf("cvIntegral Total execution time = %dus\n",(unsigned int)time);
 
 		ptr = (int *)integralImage->imageData;
     		printf(" The integral image is:\n");
@@ -123,204 +117,331 @@ int main(int argc, char *argv[])
 		cvFree(&integralImage);
     		break;   /* End of integral image test */
 
+        /* Start RGB to Y test */
+	case 'r': {
+		cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
+    
+    
+    	 	capture = cvCaptureFromCAM(-1);
+
+    		if ( !capture) {
+      	   	   printf("Error: Video capture initialization failed.\n");
+      	   	   break;
+    		}
+        	videoFrame = cvQueryFrame ( capture );
+     		if ( !videoFrame) {
+      	   	   printf("**Error reading from webcam\n");
+      		   break;
+    		}
+    			
+    		/* create new image for the grayscale version */
+    		convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
+
+ 		unsignedFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
+		/* Process the first frame outside the loop*/			
+		    		
+    		while ( key != 'q') { 
+			                
+	      	    DSP_cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+		    DSP_cvSyncDSP();
+			      
+		    cvShowImage("video",convFrame);
+			      
+               	    videoFrame = cvQueryFrame( capture);
+			      
+	      	    if ( !videoFrame) {
+	               printf("***The End***\n");
+	               break;
+      	      	    }
+			      
+	      	    key = cvWaitKey( 15 );
+			      
+       	       	}
+			
+		
+	       	cvDestroyWindow("video");
+    	       	cvReleaseImage(&videoFrame);
+    	       	cvReleaseImage(&convFrame);
+               	}	
+       	       	break; 
+	        
     	
     	case 's': /* Start of sobel test */
 		switch (*argv[2]) {
 		    
                     case 't':
+		      switch(*argv[3]) {
+			case 'd': { //'d' dor DSP accelerated
 
-    			cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
+    			    cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
     
     
-    			capture = cvCreateFileCapture(argv[2]);
+    			    capture = cvCreateFileCapture(argv[2]);
 
-    			if ( !capture) {
-      	   	   	   printf("Error: Video not found\n");
-      	   	   	   break;
-    			}
-        		videoFrame = cvQueryFrame ( capture );
-     			if ( !videoFrame) {
-      	   	   	   printf("**Error reading video\n");
-      		   	break;
-    			}
+    			    if ( !capture) {
+      	   	   	       printf("Error: Video not found\n");
+      	   	   	       break;
+    			    }
+        		    videoFrame = cvQueryFrame ( capture );
+     			    if ( !videoFrame) {
+      	   	   	       printf("**Error reading video\n");
+      		   	    break;
+    			    }
+    			
+    			    /* create new image for the grayscale version */
+    			    convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
 
-    			/* Printing Image characteristic */
-    			printf("Image width = %d \t", videoFrame->width );
-    			printf("Image height = %d \t", videoFrame->height );
-    			printf("Image widthstep = %d \t", videoFrame->widthStep );
-    			printf("Image imageSize = %d \t", videoFrame->imageSize );
-    			printf("Image nChannels = %d \t", videoFrame->nChannels );
-    			printf("Image nSize = %d \t", videoFrame->nSize );
-    			printf("Image align = %d \n",videoFrame->align ); 
-
-    			/* create new image for the grayscale version */
-    			convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
-
-    			/* create sobel filtered image */
-    			convOpencvFrame = cvCreateImage( cvSize( convFrame->width, convFrame->height ), IPL_DEPTH_16S, 1 );
+    			    /* create sobel filtered image */
+    			    convOpencvFrame = cvCreateImage( cvSize( convFrame->width, convFrame->height ), IPL_DEPTH_16S, 1 );
 			
-			//Time_delta(&sTime,&time);    		
-    			while ( key != 'q') { 
-			      /* Restet Time for benchmarking */
-			      Time_reset(&sTime);
-			      Time_delta(&sTime,&time); 
-			      /* RGB to Greyscal using native OpenCV */         
-	      	      	      cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
-			      Time_delta(&sTime,&time);
-			      printf("cvCvtColor Total execution time = %dus\n",(unsigned int)time);
-			      
-			      /* Apply sobel filter using native OpenCV library function */
-			      Time_delta(&sTime,&time);
-			      cvSobel(convFrame,convOpencvFrame,1,1,3);
-			      Time_delta(&sTime,&time);
-			      printf("cvSobel Total execution time = %dus\n",(unsigned int)time);
-			 
-	 		      /* Time to test and benchmark DSP based sobel filter */
-			      Time_delta(&sTime,&time);
-			      DSP_cvSobel(convFrame,convOpencvFrame,1,1,3);	  
-			      Time_delta(&sTime,&time);
-			      printf("DSP_cvSobel Total execution time = %dus\n",(unsigned int)time); 
-			      /* It is important to synch DSP with ARM before the output from DSP is accessed */
-			      Time_delta(&sTime,&time);           	      	  
-			      DSP_cvSyncDSP();
-			      Time_delta(&sTime,&time);
-			      printf("DSP_cvSyncDSP Total execution time = %dus\n",(unsigned int)time);
+			    DSP_cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+			    DSP_cvSyncDSP();    		
+    			    while ( key != 'q') { 
+			          			 
+	 		          /* Time to test and benchmark DSP based sobel filter */
+			          Time_reset(&sTime);
+			          Time_delta(&sTime,&time);
+				  DSP_cvSobel(convFrame,convOpencvFrame,1,1,3);	
 
-	      	              /* display filtered image */
-			      Time_delta(&sTime,&time);
-	      	              cvShowImage("video", convOpencvFrame);
-			      Time_delta(&sTime,&time);
-			      printf("cvShowImage Total execution time = %dus\n",(unsigned int)time);
-				
-			      /* get next frame */
-			      Time_delta(&sTime,&time);
-               	              videoFrame = cvQueryFrame( capture); 
-			      Time_delta(&sTime,&time);
-			      printf("cvQueryFrame Total execution time = %dus\n",(unsigned int)time);	
-	      	              if ( !videoFrame) {
-	         	         printf("***The End***\n");
-	           	         break;
-      	      	              }
+				  /* get next frame */
+			          videoFrame = cvQueryFrame( capture); 
+			          if ( !videoFrame) {
+	         	             printf("***The End***\n");
+	           	             break;
+      	      	                  }
+				  /* Sync with DSP*/		       	      	  
+			          DSP_cvSyncDSP();
+				  /* Start RGB To Y conversion of next frame */
+			          DSP_cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+				  
+				  /* Display Filtered Image */
+				  cvShowImage("video", convOpencvFrame);
+ 				  /* Sync DSP */	      	       
+			          DSP_cvSyncDSP();
+				        	                  
+			          Time_delta(&sTime,&time);
+			          printf("Total execution time = %dus\n",(unsigned int)time);			          
 
-	      	              key = cvWaitKey( 50 );
-       	       		}
+	      	                  key = cvWaitKey( 15 );
+       	       		    }
 			
 	       		cvDestroyWindow("video");
     	       		cvReleaseImage(&videoFrame);
     	       		cvReleaseImage(&convFrame);
                		cvReleaseImage(&convOpencvFrame); 
+			}
        	       		break; /* End of sobel test */
 
-		    case 'w':
+			case 'a': { // 'a' for ARM side
 
-    			cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
+    			    cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
     
     
-    			capture = cvCaptureFromCAM(-1);
+    			    capture = cvCreateFileCapture(argv[2]);
 
-    			if ( !capture) {
-      	   	   	   printf("Error: Video capture initialization failed.\n");
-      	   	   	   break;
-    			}
-        		videoFrame = cvQueryFrame ( capture );
-     			if ( !videoFrame) {
-      	   	   	   printf("**Error reading from webcam\n");
-      		   	break;
-    			}
+    			    if ( !capture) {
+      	   	   	       printf("Error: Video not found\n");
+      	   	   	       break;
+    			    }
+        		    videoFrame = cvQueryFrame ( capture );
+     			    if ( !videoFrame) {
+      	   	   	       printf("**Error reading video\n");
+      		   	    break;
+    			    }
 
-    			/* Printing Image characteristic */
-    			printf("Image width = %d \t", videoFrame->width );
-    			printf("Image height = %d \t", videoFrame->height );
-    			printf("Image widthstep = %d \t", videoFrame->widthStep ); 
-    			printf("Image imageSize = %d \t", videoFrame->imageSize );
-    			printf("Image nChannels = %d \t", videoFrame->nChannels );
-    			printf("Image nSize = %d \t", videoFrame->nSize );
-    			printf("Image align = %d \n",videoFrame->align );
+    			
+    			    /* create new image for the grayscale version */
+    			    convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
 
-    			/* create new image for the grayscale version */
-    			convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
-		
-
-    			/* create sobel filtered image */
-    			convOpencvFrame = cvCreateImage( cvSize( convFrame->width, convFrame->height ), IPL_DEPTH_16S, 1 );
-			unsignedFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
-    		
-    			while ( key != 'q') { 
-
-			      Time_reset(&sTime);
-			      Time_delta(&sTime,&time);
-          
-//	      	      	      DSP_cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
-//			      DSP_cvSyncDSP();
-			      DSP_cvCvtColor_cvSobel(videoFrame,convFrame,CV_RGB2GRAY, convFrame,convOpencvFrame,1,1,3);
-			      Time_delta(&sTime,&time);
-			      printf("DSP_cvCvtColor_cvSobel Total execution time = %dus\n",(unsigned int)time);
-			      DSP_cvSyncDSP();
-
-
-			      Time_delta(&sTime,&time);
-//			      cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
-
-			      Time_delta(&sTime,&time);
-			      printf("cvCvtColor Total execution time = %dus\n",(unsigned int)time); 
-			      Time_delta(&sTime,&time);
-//			      cvSobel(convFrame,convOpencvFrame,1,1,3);
-			      Time_delta(&sTime,&time);
-			      printf("cvSobel Total execution time = %dus\n",(unsigned int)time);
-			      Time_delta(&sTime,&time);
-//	                      DSP_cvSobel(convFrame,convOpencvFrame,1,1,3);	 
-			      Time_delta(&sTime,&time);
-			      printf("DSP_cvSobel Total execution time = %dus\n",(unsigned int)time);
-
-			      Time_delta(&sTime,&time);           	      	  
-//			      DSP_cvSyncDSP();
-			      Time_delta(&sTime,&time);
-			      printf("DSP_cvSyncDSP Total execution time = %dus\n",(unsigned int)time); 
- 			  
-			      // convert singed image to unsigned image for better clarity of image   
-			      
-			      Time_delta(&sTime,&time);          	      
-	  		      cvConvert(convOpencvFrame,unsignedFrame);
-			      Time_delta(&sTime,&time);
-			      printf("cvConvert Total execution time = %dus\n",(unsigned int)time);
-	      	              // display filtered image 
-
-			      Time_delta(&sTime,&time);
-			      cvConvert(convOpencvFrame,unsignedFrame);
-	      	              cvShowImage("video", unsignedFrame);
-//			      cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
-//			      cvShowImage("video",convFrame);
-			      Time_delta(&sTime,&time);
-			      printf("cvShowImage Total execution time = %dus\n",(unsigned int)time);
-			      Time_delta(&sTime,&time);
-               	              videoFrame = cvQueryFrame( capture);
-			      Time_delta(&sTime,&time);
-			      printf("cvQueryFrame Total execution time = %dus\n",(unsigned int)time);
-	      	              if ( !videoFrame) {
-	         	         printf("***The End***\n");
-	           	         break;
-      	      	              }
-			      Time_delta(&sTime,&time);
-	      	              key = cvWaitKey( 50 );
-			      Time_delta(&sTime,&time);
-			      printf("cvWaitKey Total execution time = %dus\n",(unsigned int)time);
-       	       		}
+    			    /* create sobel filtered image */
+    			    convOpencvFrame = cvCreateImage( cvSize( convFrame->width, convFrame->height ), IPL_DEPTH_16S, 1 );
 			
-			cvSaveImage("DSP_RGB_Y.jpg",convFrame,0);
+			    cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);   		
+    			    while ( key != 'q') { 
+			          /* Time to test and benchmark DSP based sobel filter */
+			          Time_reset(&sTime);
+			          Time_delta(&sTime,&time);
+				  cvSobel(convFrame,convOpencvFrame,1,1,3);	
+
+				  /* get next frame */
+			          videoFrame = cvQueryFrame( capture); 
+			          if ( !videoFrame) {
+	         	             printf("***The End***\n");
+	           	             break;
+      	      	                  }
+				  
+				  /* Start RGB To Y conversion of next frame */
+			          cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+				  
+				  /* Display Filtered Image */
+				  cvShowImage("video", convOpencvFrame);
+ 				  				        	                  
+			          Time_delta(&sTime,&time);
+			          printf("Total execution time = %dus\n",(unsigned int)time);			          
+
+	      	                  key = cvWaitKey( 15 );
+       	       		    }
+			
 	       		cvDestroyWindow("video");
     	       		cvReleaseImage(&videoFrame);
     	       		cvReleaseImage(&convFrame);
-               		cvReleaseImage(&convOpencvFrame);
+               		cvReleaseImage(&convOpencvFrame); 
+			}
        	       		break; /* End of sobel test */
 
+			default: 
+			    printf("Input argument Error:\n Usage :\n./remote_ti_platforms_evm3530_opencv.xv5T s tree.avi d \n./remote_ti_platforms_evm3530_opencv.xv5T s tree.avi a\n"); 
+		      }
+		      break;
+			
+		    case 'w':
+		      switch(*argv[3]) {
+			case 'd': { //'d' dor DSP accelerated
+
+    			    cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
+    
+    
+    			    capture = cvCaptureFromCAM(-1);
+
+    			    if ( !capture) {
+      	   	   	       printf("Error: Video capture initialization failed.\n");
+      	   	   	       break;
+    			    }
+        		    videoFrame = cvQueryFrame ( capture );
+     			    if ( !videoFrame) {
+      	   	   	       printf("**Error reading from webcam\n");
+      		   	       break;
+    			    }
+    			
+    			    /* create new image for the grayscale version */
+    			    convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
+
+    			    /* create sobel filtered image */
+    			    convOpencvFrame = cvCreateImage( cvSize( convFrame->width, convFrame->height ), IPL_DEPTH_16S, 1 );
+			    /* Create unsigned image */
+ 			    unsignedFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
+			
+			    /* Process the first frame outside the loop*/			
+			    DSP_cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+			    DSP_cvSyncDSP();    		
+    			    while ( key != 'q') { 
+			          			 
+	 		          /* Time to test and benchmark DSP based sobel filter */
+			          Time_reset(&sTime);
+			          Time_delta(&sTime,&time);
+				  DSP_cvSobel(convFrame,convOpencvFrame,1,1,3);	
+
+				  /* get next frame */
+			          videoFrame = cvQueryFrame( capture); 
+			          if ( !videoFrame) {
+	         	             printf("***The End***\n");
+	           	             break;
+      	      	                  }
+				  /* Sync with DSP*/		       	      	  
+			          DSP_cvSyncDSP();
+				  /* Start RGB To Y conversion of next frame */
+			          DSP_cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+				  
+				  /* Convert signed image to unsign image for better clarity */
+				  cvConvert(convOpencvFrame,unsignedFrame);
+				  /* Display Filtered Image */
+				  cvShowImage("video", unsignedFrame);
+
+ 				  /* Sync DSP */	      	       
+			          DSP_cvSyncDSP();
+				        	                  
+			          Time_delta(&sTime,&time);
+			          printf("Total execution time = %dus\n",(unsigned int)time);			          
+
+	      	                  key = cvWaitKey( 15 );
+       	       		    }
+			
+	       		cvDestroyWindow("video");
+    	       		cvReleaseImage(&videoFrame);
+    	       		cvReleaseImage(&convFrame);
+               		cvReleaseImage(&convOpencvFrame); 
+			}
+       	       		break; /* End of sobel test */
+
+			case 'a': { // 'a' for ARM side
+
+    			    cvNamedWindow( "video", CV_WINDOW_AUTOSIZE );
+    
+    
+    			    capture = cvCaptureFromCAM(-1);
+
+    			    if ( !capture) {
+      	   	   	       printf("Error: Video capture initialization failed.\n");
+      	   	   	       break;
+    			    }
+        		    videoFrame = cvQueryFrame ( capture );
+     			    if ( !videoFrame) {
+      	   	   	       printf("**Error reading from webcam\n");
+      		   	       break;
+    			    }
+
+    			
+    			    /* create new image for the grayscale version */
+    			    convFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
+
+    			    /* create sobel filtered image */
+    			    convOpencvFrame = cvCreateImage( cvSize( convFrame->width, convFrame->height ), IPL_DEPTH_16S, 1 );
+			    /* Create unsigned image */
+ 			    unsignedFrame = cvCreateImage( cvSize( videoFrame->width, videoFrame->height ), IPL_DEPTH_8U, 1 );
+			
+			    /* Process the first frame outside the loop*/
+			    cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+   		
+    			    while ( key != 'q') { 
+			          /* Time to test and benchmark DSP based sobel filter */
+			          Time_reset(&sTime);
+			          Time_delta(&sTime,&time);
+				  cvSobel(convFrame,convOpencvFrame,1,1,3);	
+
+				  /* get next frame */
+			          videoFrame = cvQueryFrame( capture); 
+			          if ( !videoFrame) {
+	         	             printf("***The End***\n");
+	           	             break;
+      	      	                  }
+				  
+				  /* Start RGB To Y conversion of next frame */
+			          cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
+				  
+				  /* Convert signed image to unsign image for better clarity */
+				  cvConvert(convOpencvFrame,unsignedFrame);
+
+				  /* Display Filtered Image */
+				  cvShowImage("video", unsignedFrame);
+ 				  				        	                  
+			          Time_delta(&sTime,&time);
+			          printf("Total execution time = %dus\n",(unsigned int)time);			          
+
+	      	                  key = cvWaitKey( 15 );
+       	       		    }
+			
+	       		cvDestroyWindow("video");
+    	       		cvReleaseImage(&videoFrame);
+    	       		cvReleaseImage(&convFrame);
+               		cvReleaseImage(&convOpencvFrame); 
+			}
+       	       		break; /* End of sobel test */
+
+			default: 
+			    printf("Input argument Error:\n Usage :\n./remote_ti_platforms_evm3530_opencv.xv5T s webcam d \n./remote_ti_platforms_evm3530_opencv.xv5T s webcam a\n"); 
+		      }
+		      break;
+  		    
 		    default:
-			printf("Operation not supported.\n");
-			break;
+		    printf("Input argument Error:\n Usage :\n./remote_ti_platforms_evm3530_opencv.xv5T s tree.avi \n./remote_ti_platforms_evm3530_opencv.xv5T s webcam\n"); 
+		    break;
 		}
-		break;			
+	        break;			
 		
 
 	case 'd':
+	  switch(*argv[2]) {
+	    case 'd': { //'d' dor DSP accelerated 
 	        floatDataPtr = (float *)cvAlloc(sizeof(float)*512);
 		floatOutPtr = (float *)cvAlloc(sizeof(float)*512),
 		dataImage = cvCreateImageHeader(cvSize(16, 16), IPL_DEPTH_32F, 2);
@@ -353,13 +474,15 @@ int main(int argc, char *argv[])
 		Time_reset(&sTime);
 		Time_delta(&sTime,&time);		
     		DSP_cvDFT(dataImage,integralImage,CV_DXT_FORWARD,0);
+		Time_delta(&sTime,&time);
 		DSP_cvSyncDSP();
+		
 		/* Unnormalize the data */
 		cvConvertScale(integralImage,integralImage,32767,0);
 		/* As output is scaled down by 4, bring it to unscaled form */
  		cvConvertScale(integralImage,integralImage,4,0);
-		Time_delta(&sTime,&time);
-		printf("DSP_cvDFT Total execution time = %dus\n",(unsigned int)time);    		  
+		
+				  
     		
 		/* Print the output data for DFT */ 		
     		flPtr = (float *)integralImage->imageData;
@@ -373,9 +496,66 @@ int main(int argc, char *argv[])
             	    }
             	    printf("\n");
     		}
+		printf("DSP_cvDFT Total execution time = %dus\n",(unsigned int)time);    
  		cvFree(&floatDataPtr);
 		cvFree(&floatOutPtr);
+		}
 		break;
+            case 'a': {
+		floatDataPtr = (float *)cvAlloc(sizeof(float)*512);
+		floatOutPtr = (float *)cvAlloc(sizeof(float)*512),
+		dataImage = cvCreateImageHeader(cvSize(16, 16), IPL_DEPTH_32F, 2);
+		dataImage->imageData = (char *)floatDataPtr;
+		integralImage = cvCreateImageHeader(cvSize(16, 16), IPL_DEPTH_32F, 2);
+		integralImage->imageData = (char *)floatOutPtr;
+                
+	
+		for (i=0; i< 256 * 2; i+=2) {
+		    tempFloat += 1.0;
+		    floatDataPtr[i] = tempFloat;
+		    floatDataPtr[i+1] = 0.0;
+	        } 
+		/* Print the input data for DFT */
+		flPtr = (float *)dataImage->imageData;
+    		printf(" The DFT input is:\n");
+    		for (i=0;i<dataImage->height;i++){ 
+		    key = 0;
+            	    for (j=0;j<dataImage->width * 2;j+=2){
+			key++;
+                        printf("%f + i%f\t", flPtr[(i*dataImage->width * 2)+j], flPtr[(i*dataImage->width * 2) + j + 1]);
+			if ((key % 5) == 0) printf("\n");
+            	    }
+            	    printf("\n");
+    		}
+		
+		Time_reset(&sTime);
+		Time_delta(&sTime,&time);		
+    		cvDFT(dataImage,integralImage,CV_DXT_FORWARD,0);
+				
+		Time_delta(&sTime,&time);
+				  
+    		
+		/* Print the output data for DFT */ 		
+    		flPtr = (float *)integralImage->imageData;
+    		printf(" The DFT output is:\n");
+    		for (i=0;i<integralImage->height;i++){
+		    key = 0;
+            	    for (j=0;j<integralImage->width * 2;j+=2){
+			key++;
+                        printf("%f + i%f\t", flPtr[(i*integralImage->width * 2)+j], flPtr[(i*integralImage->width * 2) + j + 1]);
+			if ((key % 5) == 0) printf("\n");
+            	    }
+            	    printf("\n");
+    		}
+		printf("cvDFT Total execution time = %dus\n",(unsigned int)time);    
+ 		cvFree(&floatDataPtr);
+		cvFree(&floatOutPtr);
+		}
+		break;
+	    default:
+	       printf("Input argument Error:\n Usage :\n./remote_ti_platforms_evm3530_opencv.xv5T d d \n./remote_ti_platforms_evm3530_opencv.xv5T d a\n");
+         } // end of latest switch(*argv[3])
+         break;
 	default:
 	      return -1;
     }
