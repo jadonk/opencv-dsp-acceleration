@@ -147,7 +147,6 @@ install:
 
 clean_app:
 	make -C beagle/apps/opencv APP_NAME=opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/remote_ti_platforms_$(PLATFORM_SHORT) clean
-	make -C beagle/apps/opencv APP_NAME=opencv -f $(PACKAGE_DIR)/Makefile.app TARGET=linux/local_ti_platforms_$(PLATFORM_SHORT) clean
 
 clean_c6accel:
 	make -C $(C6ACCEL_PATH) clean
