@@ -43,9 +43,9 @@ Int8 *pRefBuf=NULL;
 static Int8 *pWorkingBuf = NULL;
 static Int8 *pWorkingBuf2 = NULL;
 static Int8 *twiddleBuf = NULL;
-static size_t pWorkingBuf_Size = 0;
-static size_t pWorkingBuf2_Size = 0;
-static size_t twiddleBuf_Size = 0;
+static int pWorkingBuf_Size;
+static int pWorkingBuf2_Size;
+static int twiddleBuf_Size;
 
 /* Codec Engine engine and codec labels, defined in cfg file: */
 
@@ -111,18 +111,21 @@ int DSP_cvDFTProcess(DSP_Mat * src, DSP_Mat * dst, DSP_Flags * flags, int optimu
 
     status = C6accel_DSP_dft_f(hC6accel,src->data, dst->data, src->cols, src->rows, dftCols, dftRows, srcMatFlag, dstMatFlag, dxtType, nonZeroRows,
 					(unsigned char *)twiddleBuf, (unsigned char *)pWorkingBuf, (unsigned char *)pWorkingBuf2, ASYNC);
-    #ifndef SUPPORT_ASYNC
+    #ifdef SUPPORT_ASYNC
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    #else
     if(pWorkingBuf)
 	Memory_free(pWorkingBuf, pWorkingBuf_Size, &MemParams);
     if(pWorkingBuf2)
 	Memory_free(pWorkingBuf2, pWorkingBuf2_Size, &MemParams);
     if(twiddleBuf)
 	Memory_free(twiddleBuf, twiddleBuf_Size, &MemParams);
-    #endif
     if(status != 0)
 	return OPENCVDSP_ERR;
-
+    #endif
     return OPENCVDSP_OK;
+    
 
 }
 
@@ -131,18 +134,20 @@ int DSP_cvIntegralProcess( DSP_Mat * src, DSP_Mat * sum, DSP_Mat * sqsum, DSP_Ma
 {
     int status;
     pWorkingBuf = (Int8 *)Memory_alloc(src->cols * sizeof(int), &MemParams);
-    pWorkingBuf_Size = src->cols * sizeof(int);
+    pWorkingBuf_Size = (src->cols * sizeof(int));
 
-    memset(pWorkingBuf,0,src->cols * sizeof(int));
+    memset(pWorkingBuf,0,pWorkingBuf_Size);
 
     status = C6accel_VLIB_integralImage8(hC6accel, src->data, (unsigned short)src->cols, (unsigned short)src->rows, (unsigned int *)pWorkingBuf , 															(unsigned int *)sum->data, ASYNC);
-    #ifndef SUPPORT_ASYNC
-    if(pWorkingBuf)
-	Memory_free(pWorkingBuf, pWorkingBuf_Size, &MemParams);
-    #endif
+    #ifdef SUPPORT_ASYNC
     if(status != 0)
 	return OPENCVDSP_ERR;
-
+    #else
+    if(pWorkingBuf)
+	Memory_free(pWorkingBuf, (size_t)pWorkingBuf_Size, &MemParams);
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    #endif
     return OPENCVDSP_OK;
 
 }
@@ -178,12 +183,21 @@ void DSP_cvSyncDSPProcess()
 {
     C6accel_waitAsyncCall(hC6accel);
 #ifdef SUPPORT_ASYNC
-    if(pWorkingBuf)
-	Memory_free(pWorkingBuf, pWorkingBuf_Size, &MemParams);
-    if(pWorkingBuf2)
-	Memory_free(pWorkingBuf2, pWorkingBuf2_Size, &MemParams);
-    if(twiddleBuf)
-	Memory_free(twiddleBuf, twiddleBuf_Size, &MemParams);
+    if(pWorkingBuf) {
+	Memory_free(pWorkingBuf, (size_t)pWorkingBuf_Size, &MemParams);
+	pWorkingBuf = NULL;
+	pWorkingBuf_Size = 0;
+    }
+    if(pWorkingBuf2) {
+	Memory_free(pWorkingBuf2, (size_t)pWorkingBuf2_Size, &MemParams);
+	pWorkingBuf2 = NULL;
+	pWorkingBuf2_Size = 0;
+    }
+    if(twiddleBuf) {
+	Memory_free(twiddleBuf, (size_t)twiddleBuf_Size, &MemParams);
+	twiddleBuf = NULL;
+	twiddleBuf_Size = 0;
+    }
 #endif
 }
 
