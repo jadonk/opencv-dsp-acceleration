@@ -13,6 +13,7 @@
 #include "opencvDsp.h"
 
 #include <string.h>
+#include <opencv/cv.h>
 
 #ifndef SUPPORT_ASYNC
 #define SUPPORT_ASYNC
@@ -83,47 +84,17 @@ int DSP_cvSobelProcess(DSP_Mat * src, DSP_Mat * dst, DSP_Flags *flags)
 }
 
 /* Process DFT algorithm on the DSP */
-int DSP_cvDFTProcess(DSP_Mat * src, DSP_Mat * dst, DSP_Flags * flags, int optimumCols, int optimumRows)
+int DSP_cvDFTProcess(void * src, void * dst, DSP_Flags * flags)
 {
     int status;
     int dxtType = flags->flag1;
     int nonZeroRows = flags->flag2;
-    int srcMatFlag = src->flags;
-    int dstMatFlag = dst->flags;
-    int dftRows = optimumRows; // Get Optimum size of DSP. It should be power of 2.
-    int dftCols = optimumCols;
-    int highestSize = (dftRows > dftCols)?dftRows:dftCols;
-    if((dftRows == 0) || (dftCols == 0)) {
-	printf("Error: Invalid DFT size.(1024 >= size >= 16)\n");
-	return OPENCVDSP_ERR;
-    } 
-    /* Calculate size of working buffer needed. DSP expects interleaved real and imaginary data. That is why EXPECTED_CHANNEL=2. We are using*/
-    /* DSP_fft_16x16 kernel of DSPLib which expects input data(real and imaginary) to be 16 bit(2 bytes)                                     */
-    int tempBufSize = dftRows * dftCols * DFT_SIZE_IN_BYTES * DFT_EXPECTED_CHANNELS;
     
-    /* Allocate workBuf to be passed to DSP since C6accel doesnot provide any working Buffer. We need 2 buffer to take care of float to Q15 conversion */
-    pWorkingBuf = (Int8 *)Memory_alloc(tempBufSize, &MemParams);
-    pWorkingBuf_Size = tempBufSize;
-    pWorkingBuf2 = (Int8 *)Memory_alloc(tempBufSize, &MemParams);
-    pWorkingBuf2_Size = tempBufSize;
-    twiddleBuf = (Int8 *)Memory_alloc(highestSize*DFT_SIZE_IN_BYTES * DFT_EXPECTED_CHANNELS, &MemParams);
-    twiddleBuf_Size = highestSize*DFT_SIZE_IN_BYTES * DFT_EXPECTED_CHANNELS;
-
-    status = C6accel_DSP_dft_f(hC6accel,src->data, dst->data, src->cols, src->rows, dftCols, dftRows, srcMatFlag, dstMatFlag, dxtType, nonZeroRows,
-					(unsigned char *)twiddleBuf, (unsigned char *)pWorkingBuf, (unsigned char *)pWorkingBuf2, ASYNC);
-    #ifdef SUPPORT_ASYNC
+    status = C6accel_DSP_dft_f(hC6accel,src, dst, dxtType, nonZeroRows, ASYNC);
+        
     if(status != 0)
 	return OPENCVDSP_ERR;
-    #else
-    if(pWorkingBuf)
-	Memory_free(pWorkingBuf, pWorkingBuf_Size, &MemParams);
-    if(pWorkingBuf2)
-	Memory_free(pWorkingBuf2, pWorkingBuf2_Size, &MemParams);
-    if(twiddleBuf)
-	Memory_free(twiddleBuf, twiddleBuf_Size, &MemParams);
-    if(status != 0)
-	return OPENCVDSP_ERR;
-    #endif
+        
     return OPENCVDSP_OK;
     
 

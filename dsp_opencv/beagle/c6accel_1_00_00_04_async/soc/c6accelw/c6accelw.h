@@ -1038,17 +1038,12 @@ int C6accel_RGB_To_Y_IMG_sobel_3x3_8_16(C6accel_Handle hC6accel,
 /* 				This prototype is added by Pramod                                   */
 /* This function call performs various DFT/IDFT functions                                           */
 int C6accel_DSP_dft_f(C6accel_Handle hC6accel,
-                          unsigned char * restrict ptr_src,       /* Pointer to input array */
-                          unsigned char * restrict ptr_dst,       /* Pointer to output array    */
-			  int cols, int rows,                     /* Array dimensions   */
-			  int optimCols, int optimRows,          /* Optimum array dimension */
-			  int srcMatFlag,		          /* Flag encoding array type, channels and other stuff */
-			  int dstMatFlag,			  /* Flag encoding array type, channels and other stuff */
+                          void * restrict ptr_src,       /* Pointer to input array */
+                          void * restrict ptr_dst,       /* Pointer to output array    */
+			  
 			  int dxtType,				  /* Type of action to take */
-			  int nonZeroRows, 			  /* Count of non-zero rows */
-   			  unsigned char * twiddleBuf,     /* Buffer for twiddle factor */
-			  unsigned char * pWorkingBuf,    /* work data buffer   */
-                          unsigned char * pWorkingBuf1   /* work data buffer  */
+			  int nonZeroRows 			  /* Count of non-zero rows */
+   			  
 #ifdef SUPPORT_ASYNC
                           		,E_CALL_TYPE callType);
 #else 

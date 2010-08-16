@@ -11026,28 +11026,16 @@ int C6accel_RGB_To_Y_IMG_sobel_3x3_8_16(C6accel_Handle hC6accel,
 void C6Accel_DSP_dft_f(C6accel_Handle hC6accel,
                           unsigned char * restrict ptr_src,       
                           unsigned char * restrict ptr_dst,       
-			  int cols, int rows, 
-			  int optimCols, int optimRows,          
-			  int srcMatFlag,		         
-			  int dstMatFlag,			  
 			  int dxtType,				  
 			  int nonZeroRows, 
-			  unsigned char *restrict twiddleBuf,			 
-			  unsigned char *restrict pWorkingBuf,    
-                          unsigned char *restrict pWorkingBuf2)   
+			  )   
 Arguments
 * hC6accel C6accel 		Handle
 * ptr_src[]        		Pointer to input Array
 * ptr_dst[]        		Pointer to output arrary   
-* cols, rows       		Array dimensions 
-* optimCols, optimRows   	Optimum array dimension               
-* srcMatFlag	   		Flag encoding image type, channels and other stuff 
-* dstMatFlag       		Flag encoding image type, channels and other stuff 
 * dxtType	   		Type of action to take 
 * nonZeroRows      		Count of non-zero rows for finding DFT
-* twiddleBuf[]     		Buffer for twiddle factor
-* pWorkingBuf[]    		working buffer
-* pWorkingBuf2[]   		work buffer 
+
 
 Return value:  API returns status of the function call.
                ==0 Pass
@@ -11066,17 +11054,11 @@ The arrays for the complex input data x[ ], complex output data y[ ], and twiddl
 The input and output data are complex, with the real/imaginary components stored in adjacent locations in the array.
 */
 int C6accel_DSP_dft_f(C6accel_Handle hC6accel,
-                          unsigned char * restrict ptr_src,       /* Pointer to input image */
-                          unsigned char * restrict ptr_dst,       /* Pointer to Greyscale output image    */
-			  int cols, int rows,                     /* Image dimensions   */
-			  int optimCols, int optimRows,           /* Optimum Array Dimention */
-			  int srcMatFlag,		          /* Flag encoding image type, channels and other stuff */
-			  int dstMatFlag,			  /* Flag encoding image type, channels and other stuff */
+                          void * restrict ptr_src,       /* Pointer to input image */
+                          void * restrict ptr_dst,       /* Pointer to Greyscale output image    */
 			  int dxtType,				  /* Type of action to take */
-			  int nonZeroRows, 			  /* Count of non-zero rows */
-			  unsigned char *restrict twiddleBuf,     /* Buffer for twiddle factor */
-			  unsigned char *restrict pWorkingBuf,    /* Input image data   */
-                          unsigned char *restrict pWorkingBuf2   /* Output image data  */
+			  int nonZeroRows 			  /* Count of non-zero rows */
+			  
 #ifdef SUPPORT_ASYNC
                           		,E_CALL_TYPE callType)
 #else 
@@ -11089,6 +11071,7 @@ int C6accel_DSP_dft_f(C6accel_Handle hC6accel,
     IC6Accel_InArgs             *CInArgs;
     UNIVERSAL_OutArgs           uniOutArgs;
     int status;
+    IplImage *tempImage = (IplImage *) ptr_src;
     /* Define pointer to function parameter structure */
     DSP_dft_f_Params      *fp0;
     XDAS_Int8 *pAlloc;
@@ -11111,27 +11094,16 @@ int C6accel_DSP_dft_f(C6accel_Handle hC6accel,
 
     /* Set up buffers to pass buffers in and out to alg  */
     inBufDesc.numBufs = 1;
-    outBufDesc.numBufs = 4;
+    outBufDesc.numBufs = 1;
 
     /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
     /* See wrapper_c6accel_i.h for more details of operation                 */
-    int size = cols*rows*MAT_CN(srcMatFlag)*sizeof(float);
-    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(ptr_src,0,size);
-    size = cols * rows * MAT_CN(dstMatFlag)*sizeof(float);
-    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(ptr_dst,0,size);
-    /* since other buffer are temp buffer used only for temporarily we don't do cache inv or wb */
-/*    outBufDesc.descs[1].buf      = (XDAS_Int8 *) twiddleBuf;                  
-    outBufDesc.descs[1].bufSize  = (optimCols > optimRows ? optimCols:optimRows)* 2 * 2;   
-
-    outBufDesc.descs[2].buf      = (XDAS_Int8 *) pWorkingBuf;                  
-    outBufDesc.descs[2].bufSize  = optimCols * optimRows * 2 * 2; // 2 for 16 bit dft and othr 2 for two channels   real and imaginary.
-
-    outBufDesc.descs[3].buf      = (XDAS_Int8 *) pWorkingBuf2;                  
-    outBufDesc.descs[3].bufSize  = optimCols * optimRows * 2 * 2;   
-*/
-    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(twiddleBuf,1,(optimCols > optimRows ? optimCols:optimRows)* 2 * 2);
-    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(pWorkingBuf,2,optimCols * optimRows * 2 * 2);
-    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(pWorkingBuf2,3,optimCols * optimRows * 2 * 2);           
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+   
+    tempImage = (IplImage *)ptr_dst;
+    size = tempImage->widthStep * tempImage->height;
+    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
 
      /* Initialize the extended InArgs structure */
     CInArgs->Num_fxns=1;
@@ -11147,17 +11119,11 @@ int C6accel_DSP_dft_f(C6accel_Handle hC6accel,
     /* Fill in the fields in the parameter structure */
     fp0->src_InArrID1= INBUF0;
     fp0->dst_OutArrID1= OUTBUF0;
-    fp0->cols= cols;
-    fp0->rows= rows;
-    fp0->optimCols= optimCols;
-    fp0->optimRows= optimRows;
-    fp0->srcMatFlag= srcMatFlag;
-    fp0->dstMatFlag= dstMatFlag;
     fp0->dxtType= dxtType;
     fp0->nonZeroRows= nonZeroRows;
-    fp0->twiddleBuf_OutArrID2= OUTBUF1;
-    fp0->pWorkingBuf_OutArrID3= OUTBUF2;
-    fp0->pWorkingBuf1_OutArrID4= OUTBUF3;
+    memcpy(&(fp0->src),ptr_src,sizeof(IplImage));
+    memcpy(&(fp0->dst),ptr_dst,sizeof(IplImage));
+
 
 #ifdef SUPPORT_ASYNC
     /* Call the actual algorithm */

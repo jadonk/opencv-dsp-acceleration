@@ -6,6 +6,9 @@ include ../../../Rules.make
 # uncomment the lines below if you are using VLIB. The library file must be stored at [c6accel_Base_Dir]/dsp/libs
 #VLIB = -l"../../libs/vlib.l64p"
 
+# uncomment the lines below if you are using VLIB. The library file must be stored at [c6accel_Base_Dir]/dsp/libs
+#CXCORE = -l"../../libs/cxcore.lib"
+
 # Which compiler flags should be used?
 BUILD_TYPE=release
 
@@ -22,12 +25,18 @@ LD_LIBS = -l"../../libs/dsplib64plus.lib" -l="../../libs/C64P_LIBPLUS.lib" -l=".
 ifdef VLIB 
 LD_LIBS        += $(VLIB)
 endif
+ifdef CXCORE 
+LD_LIBS        += $(CXCORE)
+endif
 ifeq ($(BUILD_TYPE), release)
 LTARGET		= ../lib/C6accel_c64P/Release/C6Accel.l64P
 ATARGET		= ../lib/C6accel_c64P/Release/C6Accel.a64P
 C_FLAGS	       += -mv6400+ -o3 -eoo$(EXT)
 ifdef VLIB 
 C_FLAGS        += -DUSE_VLIB
+endif
+ifdef CXCORE 
+C_FLAGS        += -DUSE_CXCORE
 endif
 OBJDIR		= c6accel_c64P_release
 PARTIAL		= $(OBJDIR)/c6accel_c64p_release.o64P
@@ -37,6 +46,9 @@ ATARGET		= ../lib/C6accel_c64P/Debug/C6Accel.a64P
 C_FLAGS	       += -mv6400+ -g -eoo$(EXT)
 ifdef VLIB 
 C_FLAGS        += -DUSE_VLIB
+endif
+ifdef CXCORE 
+C_FLAGS        += -DUSE_CXCORE
 endif
 OBJDIR		= c6accel_c64P_debug
 PARTIAL		= $(OBJDIR)/c6accel_c64p_debug.o64P
@@ -51,12 +63,18 @@ LD_LIBS = -l"../../libs/dsplib64plus.lib" -l="../../libs/C64P_LIBPLUS.lib" -l=".
 ifdef VLIB 
 LD_LIBS        += $(VLIB)
 endif
+ifdef CXCORE 
+LD_LIBS        += $(CXCORE)
+endif
 ifeq ($(BUILD_TYPE), release)
 LTARGET		= ../lib/C6accel_c674/Release/C6Accel.l674
 ATARGET		= ../lib/C6accel_c674/Release/C6Accel.a674
 C_FLAGS	       += -mv6740 -o3 -eoo$(EXT)
 ifdef VLIB 
 C_FLAGS        += -DUSE_VLIB
+endif
+ifdef CXCORE 
+C_FLAGS        += -DUSE_CXCORE
 endif
 OBJDIR		= c6accel_c674_release
 PARTIAL		= $(OBJDIR)/c6accel_c674_release.o674
@@ -66,6 +84,9 @@ ATARGET		= ../lib/C6accel_c674/Debug/C6Accel.a674
 C_FLAGS	       += -mv6740 -g -eoo$(EXT)
 ifdef VLIB 
 C_FLAGS        += -DUSE_VLIB
+endif
+ifdef CXCORE 
+C_FLAGS        += -DUSE_CXCORE
 endif
 OBJDIR		= c6accel_c674_debug
 PARTIAL		= $(OBJDIR)/c6accel_c674_debug.o674

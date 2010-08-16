@@ -57,7 +57,7 @@ int DSP_cvStartDSPProcess();
 
 int DSP_cvSobelProcess(DSP_Mat *, DSP_Mat *, DSP_Flags *);
 
-int DSP_cvDFTProcess(DSP_Mat *, DSP_Mat *, DSP_Flags *, int , int);
+int DSP_cvDFTProcess(void *, void *, DSP_Flags *);
 
 int DSP_cvIntegralProcess(DSP_Mat *, DSP_Mat *, DSP_Mat *, DSP_Mat *);
 

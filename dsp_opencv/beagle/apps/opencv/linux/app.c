@@ -119,8 +119,12 @@ int main(int argc, char *argv[])
 			      DSP_cvSyncDSP();			      		      
 			      /* Do color conversion */
 			      DSP_cvCvtColor(videoFrame,convFrame,CV_RGB2GRAY);
-			      /* show Image */
+			      /* show Image */ //Since I am using VLIB for IntegralImage, its output image width and height is same as source image.
+			      convOpencvFrame->width -= 1; convOpencvFrame->height -= 1;
+			      convOpencvFrame->widthStep -= sizeof(int) * convOpencvFrame->nChannels;
 			      cvShowImage("video", convOpencvFrame);
+			      convOpencvFrame->width += 1; convOpencvFrame->height += 1;
+			      convOpencvFrame->widthStep += sizeof(int) * convOpencvFrame->nChannels;
 			      /* Sync with DSP */					  
 			      DSP_cvSyncDSP();
 			      Time_delta(&sTime,&time);         
@@ -574,50 +578,27 @@ int main(int argc, char *argv[])
 	case 'd':
 	  switch(*argv[2]) {
 	    case 'd': { //'d' dor DSP accelerated
-		int row =16;
-		int col =16; 
-	        floatDataPtr = (float *)cvAlloc(sizeof(float)*row*col);
-		floatOutPtr = (float *)cvAlloc(sizeof(float)*row*col);
+		int row =63;
+		int col =63; 
+	        floatDataPtr = (float *)cvAlloc(sizeof(float)*row*col* 2);
+		floatOutPtr = (float *)cvAlloc(sizeof(float)*row*col * 2);
 		dataImage = cvCreateImageHeader(cvSize(col, row), IPL_DEPTH_32F, 2);
 		dataImage->imageData = (char *)floatDataPtr;
 		integralImage = cvCreateImageHeader(cvSize(col, row), IPL_DEPTH_32F, 2);
 		integralImage->imageData = (char *)floatOutPtr;
-                
-	
+
 		for (i=0; i< row * col * 2; i+=2) {
 		    tempFloat += 1.0;
 		    floatDataPtr[i] = tempFloat;
 		    floatDataPtr[i+1] = 0.0;
 	        } 
-		/* Print the input data for DFT */
-		flPtr = (float *)dataImage->imageData;
-    		printf(" The DFT input is:\n");
-    		for (i=0;i<dataImage->height;i++){ 
-		    key = 0;
-            	    for (j=0;j<dataImage->width * 2;j+=2){
-			key++;
-                        printf("%f + i%f\t", flPtr[(i*dataImage->width * 2)+j], flPtr[(i*dataImage->width * 2) + j + 1]);
-			if ((key % 5) == 0) printf("\n");
-            	    }
-            	    printf("\n");
-    		}
-
-		/* Normalize the input withing range of -1.0 to 1.0 (This is mulitply by (1/32767) */
-		cvConvertScale(dataImage,dataImage,0.000030518,0);
-
+		
 		Time_reset(&sTime);
 		Time_delta(&sTime,&time);		
     		DSP_cvDFT(dataImage,integralImage,CV_DXT_FORWARD,0);
 		Time_delta(&sTime,&time);
-		DSP_cvSyncDSP();
-		
-		/* Unnormalize the data */
-		cvConvertScale(integralImage,integralImage,32767,0);
-		/* As output is scaled down by 4, bring it to unscaled form */
- 		cvConvertScale(integralImage,integralImage,4,0);
-		
-				  
-    		
+	  	DSP_cvSyncDSP();
+				    		
 		/* Print the output data for DFT */ 		
     		flPtr = (float *)integralImage->imageData;
     		printf(" The DFT output is:\n");
@@ -636,34 +617,21 @@ int main(int argc, char *argv[])
 		}
 		break;
             case 'a': {
-		int row =16;
-		int col =16; 
-	        floatDataPtr = (float *)cvAlloc(sizeof(float)*row*col);
-		floatOutPtr = (float *)cvAlloc(sizeof(float)*row*col);
+		int row =63;
+		int col =63; 
+	        floatDataPtr = (float *)cvAlloc(sizeof(float)*row*col*2);
+		floatOutPtr = (float *)cvAlloc(sizeof(float)*row*col*2);
 		dataImage = cvCreateImageHeader(cvSize(col, row), IPL_DEPTH_32F, 2);
 		dataImage->imageData = (char *)floatDataPtr;
 		integralImage = cvCreateImageHeader(cvSize(col, row), IPL_DEPTH_32F, 2);
 		integralImage->imageData = (char *)floatOutPtr;
-                
-	
+               
 		for (i=0; i< row * col * 2; i+=2) {
 		    tempFloat += 1.0;
 		    floatDataPtr[i] = tempFloat;
 		    floatDataPtr[i+1] = 0.0;
 	        } 
-		/* Print the input data for DFT */
-		flPtr = (float *)dataImage->imageData;
-/*    		printf(" The DFT input is:\n");
-    		for (i=0;i<dataImage->height;i++){ 
-		    key = 0;
-            	    for (j=0;j<dataImage->width * 2;j+=2){
-			key++;
-                        printf("%f + i%f\t", flPtr[(i*dataImage->width * 2)+j], flPtr[(i*dataImage->width * 2) + j + 1]);
-			if ((key % 5) == 0) printf("\n");
-            	    }
-            	    printf("\n");
-    		}
-*/		
+	
 		Time_reset(&sTime);
 		Time_delta(&sTime,&time);		
     		cvDFT(dataImage,integralImage,CV_DXT_FORWARD,0);

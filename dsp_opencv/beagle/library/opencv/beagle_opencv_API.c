@@ -107,45 +107,25 @@ void DSP_cvDFT( const CvArr* srcarr, CvArr* dstarr, int flags, int nonzero_rows 
     CV_Assert( src.size() == dst.size() );
 
     int status;
-    DSP_Mat src1;
-    DSP_Mat dst1;
+    IplImage *src1;
+    IplImage *dst1;
     DSP_Flags _flags;
 
-    src1 = mat_OpenCV2DSP(src);
+    src1 = (IplImage *)srcarr;
     
-    dst1 = mat_OpenCV2DSP(dst0);
+    dst1 = (IplImage *)dstarr;
     
     
     _flags = FLAGS2_OpenCV2DSP(flags, nonzero_rows);
+   
 
-    int dftRows = dftOptimumSize_OpenCVDSP(src1.rows); // Get Optimum size of DSP. It should be power of 2.
-    int dftCols = dftOptimumSize_OpenCVDSP(src1.cols);
-#if 0        
-    if(src.depth() == CV_32F) {
-            
-        float *flPtr = (float *)src1.data;
-        while(flPtr < (float *)src1.dataend) {
-	    *flPtr = *flPtr / 32767;
-            flPtr++;
-        }
-    }
-#endif    
     
-    status = DSP_cvDFTProcess(&src1, &dst1, &_flags, dftRows, dftCols);
+    status = DSP_cvDFTProcess(src1, dst1, &_flags);
     if (status == OPENCVDSP_ERR) {
         printf("Error: DSP Process failed. \n");
 	return;
     }
-#if 0
-    /* unnormalize */
-    if(dst.depth() == CV_32F) {
-        float *flPtr = (float *)dst1.data;
-        while(flPtr < (float *)dst1.dataend) {
-	    *flPtr = *flPtr / 32767;
-            flPtr++;
-        }
-    }
-#endif    
+  
     
 }
 

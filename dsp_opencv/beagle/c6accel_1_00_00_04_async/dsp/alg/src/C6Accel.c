@@ -2989,41 +2989,36 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
                    case (DSPLIB_FXN_ID):
    		     switch(fxnID & fxnidMsk) {
 		       case (DFT_F_FXN_ID): {
+			 char *src, *dst;
 			 /* Unmarshal Parameters */
 			 DSP_dft_f_Params *C6ACCEL_DSP_dft_f_paramPtr;
                          C6ACCEL_DSP_dft_f_paramPtr = pFnArray;
 			 /* Parameter check */
                          if (((C6ACCEL_DSP_dft_f_paramPtr->src_InArrID1)>INBUF15)|
-                             ((C6ACCEL_DSP_dft_f_paramPtr->dst_OutArrID1)>OUTBUF15)|
-                             ((C6ACCEL_DSP_dft_f_paramPtr->twiddleBuf_OutArrID2)>OUTBUF15)|
-			     ((C6ACCEL_DSP_dft_f_paramPtr->pWorkingBuf_OutArrID3)>OUTBUF15)|
-			     ((C6ACCEL_DSP_dft_f_paramPtr->pWorkingBuf1_OutArrID4)>OUTBUF15)|
-                             (((C6ACCEL_DSP_dft_f_paramPtr->optimCols)<16) && ((C6ACCEL_DSP_dft_f_paramPtr->optimCols) != 1))|
-                             ((C6ACCEL_DSP_dft_f_paramPtr->optimCols)>65536)|
-			     (((C6ACCEL_DSP_dft_f_paramPtr->optimRows)<16) && ((C6ACCEL_DSP_dft_f_paramPtr->optimRows) != 1))|
-			     ((C6ACCEL_DSP_dft_f_paramPtr->optimCols == 1) && (C6ACCEL_DSP_dft_f_paramPtr->optimRows == 1))|
-                             ((C6ACCEL_DSP_dft_f_paramPtr->optimRows)>65536)|
-			     (IsPowOfTwo(C6ACCEL_DSP_dft_f_paramPtr->optimCols) != TRUE)|
-                             (IsPowOfTwo(C6ACCEL_DSP_dft_f_paramPtr->optimRows) != TRUE)){
-                               return(IUNIVERSAL_EPARAMFAIL);
-                          }
-                          else 
-                             /* Call underlying kernel */
-			    C6ACCEL_DSP_dft_f((unsigned char *)inBufs->descs[C6ACCEL_DSP_dft_f_paramPtr->src_InArrID1].buf,
-					      (unsigned char *)outBufs->descs[C6ACCEL_DSP_dft_f_paramPtr->dst_OutArrID1].buf,
-					      C6ACCEL_DSP_dft_f_paramPtr->cols,
-					      C6ACCEL_DSP_dft_f_paramPtr->rows,
-					      C6ACCEL_DSP_dft_f_paramPtr->optimCols,
-					      C6ACCEL_DSP_dft_f_paramPtr->optimRows,
-					      C6ACCEL_DSP_dft_f_paramPtr->srcMatFlag,
-					      C6ACCEL_DSP_dft_f_paramPtr->dstMatFlag,
-					      C6ACCEL_DSP_dft_f_paramPtr->dxtType,
-					      C6ACCEL_DSP_dft_f_paramPtr->nonZeroRows,
-					      (unsigned char *)outBufs->descs[C6ACCEL_DSP_dft_f_paramPtr->twiddleBuf_OutArrID2].buf,
-					      (unsigned char *)outBufs->descs[C6ACCEL_DSP_dft_f_paramPtr->pWorkingBuf_OutArrID3].buf,
-					      (unsigned char *)outBufs->descs[C6ACCEL_DSP_dft_f_paramPtr->pWorkingBuf1_OutArrID4].buf);
-					      
-			 }
+                             ((C6ACCEL_DSP_dft_f_paramPtr->dst_OutArrID1)>OUTBUF15)){
+                              return(IUNIVERSAL_EPARAMFAIL);
+                         }
+                         else {
+                           /* Call underlying kernel */
+			   /* Parameter check is done in the library*/
+                           /* Call underlying kernel */
+   			   src = C6ACCEL_DSP_dft_f_paramPtr->src.imageData;
+  			   dst = C6ACCEL_DSP_dft_f_paramPtr->dst.imageData;
+			   C6ACCEL_DSP_dft_f_paramPtr->src.imageData = (char *)inBufs->descs[C6ACCEL_DSP_dft_f_paramPtr->src_InArrID1].buf;
+  			   C6ACCEL_DSP_dft_f_paramPtr->dst.imageData = (char *)outBufs->descs[C6ACCEL_DSP_dft_f_paramPtr->dst_OutArrID1].buf;
+			   #ifdef USE_CXCORE
+			   cvDFT( &C6ACCEL_DSP_dft_f_paramPtr->src,
+			        &C6ACCEL_DSP_dft_f_paramPtr->dst,
+			     	C6ACCEL_DSP_dft_f_paramPtr->dxtType,
+				C6ACCEL_DSP_dft_f_paramPtr->nonZeroRows
+			        );
+			   #else
+			   return(IUNIVERSAL_EFXNIDFAIL);
+			   #endif
+			   C6ACCEL_DSP_dft_f_paramPtr->src.imageData = src;
+  			   C6ACCEL_DSP_dft_f_paramPtr->dst.imageData = dst;
+			   }
+			 }		         
 			 break;
 		       default:
 			 /* Error caused due to passing of an invalid ID */

@@ -15,6 +15,10 @@
 #include <ti/xdais/xdas.h>
 #include <ti/xdais/dm/iuniversal.h>
 
+#include "cxtypes.h" 
+
+
+
 #ifndef ti_sdo_codecs_C6Accel_C6ACCEL_TI_
 #define ti_sdo_codecs_C6Accel_C6ACCEL_TI_
 
@@ -469,6 +473,7 @@ process call*/
 *  fxn_struct. Multiple function calls are made using a single API call 
 *  by passing an array of Fxn_stuct in the extended Input Argument structure (IC6Accel_InArgs) 
 ************************************************************************************************/
+
 typedef struct{
                 int FxnID;
                 int  Param_ptr_offset;                       // This is the offset of the param structure within overall inArgs
@@ -2025,17 +2030,10 @@ typedef struct IMG_RGB_To_Y_Params{
 typedef struct DSP_dft_f_Params{
 				  unsigned int src_InArrID1;              /* Pointer to input image */
 				  unsigned int dst_OutArrID1;             /* Pointer to Greyscale output image    */
-				  unsigned int cols;			  /* Total Rows	     */
-				  unsigned int rows;			  /* Total Cols      */
-				  unsigned int optimCols;		  /* Number of optimum colons */
-				  unsigned int optimRows;		  /* Number of optimum Rows */
-				  int srcMatFlag;		          /* Flag encoding image type, channels and other stuff */
-				  int dstMatFlag;			  /* Flag encoding image type, channels and other stuff */
 				  int dxtType;				  /* Type of action to take */ 
 				  int nonZeroRows; 			  /* Count of non-zero rows */
-				  unsigned int twiddleBuf_OutArrID2;         /* Buffer for Twiddle factors */
-				  unsigned int pWorkingBuf_OutArrID3;        /* Input working buffer 1   */
-				  unsigned int pWorkingBuf1_OutArrID4;       /* Input working buffer 2   */
+				  IplImage src;
+				  IplImage dst;
 				  }DSP_dft_f_Params;
 
 			  
