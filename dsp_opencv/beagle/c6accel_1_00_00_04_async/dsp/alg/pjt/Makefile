@@ -6,7 +6,7 @@ include ../../../Rules.make
 # uncomment the lines below if you are using VLIB. The library file must be stored at [c6accel_Base_Dir]/dsp/libs
 #VLIB = -l"../../libs/vlib.l64p"
 
-# uncomment the lines below if you are using VLIB. The library file must be stored at [c6accel_Base_Dir]/dsp/libs
+# uncomment the lines below if you are using CXCORE. The library file must be stored at [c6accel_Base_Dir]/dsp/libs
 #CXCORE = -l"../../libs/cxcore.lib"
 
 # Which compiler flags should be used?
