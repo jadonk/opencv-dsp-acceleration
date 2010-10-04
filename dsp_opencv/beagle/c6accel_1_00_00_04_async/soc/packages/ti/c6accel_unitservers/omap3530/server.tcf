@@ -101,7 +101,8 @@ var mem_ext = [
     };
 
     var params = {
-        clockRate: 360,
+        //clockRate: 360,
+        clockRate: 520,
         catalogName: "ti.catalog.c6000",
         deviceName: "3530",
         regs: device_regs,
@@ -193,7 +194,8 @@ bios.setMemDataHeapSections (prog, bios.DDR2);
  *  ===========================================================================
  */
 prog.module("MEM").BIOSOBJSEG = bios.DDR2;
-prog.module("MEM").MALLOCSEG  = bios.DDR2;
+//prog.module("MEM").MALLOCSEG  = bios.DDR2;
+prog.module("MEM").MALLOCSEG  = bios.DDRALGHEAP;
 
 /*  ===========================================================================
  *  TSK : Global

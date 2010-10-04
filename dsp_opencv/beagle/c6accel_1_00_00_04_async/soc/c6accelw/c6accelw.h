@@ -17,6 +17,10 @@
 #include <ti/sdo/ce/Engine.h>
 #include <ti/sdo/ce/universal/universal.h>
 
+#ifndef __OPENCV_OLD_CV_H__
+#include "../../dsp/libs/include/cxtypes.h"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -1050,9 +1054,136 @@ int C6accel_DSP_dft_f(C6accel_Handle hC6accel,
 );
 #endif
 
+
+/* This prototype is added by Pramod */
+int C6accel_OPENCV_cvIntegral(C6accel_Handle hC6accel,
+                          void * restrict ptr_image,   /* Input data pointer                        */
+                          void * restrict ptr_sum,     /* number of rows                            */
+			  void * ptr_sqsum,		/* number of cols                            */
+                          void * ptr_tilted_sum        /* pointer to cols x 1 buffer for carry over */
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType);
+#else 
+);
+#endif
+
+
+/* 				This prototype is added by Pramod                                   */
+/* This function call cvMatchTemplate functions on DSP side                                         */
+int C6accel_OPENCV_cvMatchTemplate(C6accel_Handle hC6accel,
+                          void * restrict ptr_image,       /* Pointer to input array */
+                          void * restrict ptr_templ,       /* Pointer to output array    */
+			  void * ptr_result,		   /* Pointer to result image */
+			  int method			   /* Type of action to take */
+   			  
+#ifdef SUPPORT_ASYNC
+                          		,E_CALL_TYPE callType);
+#else 
+);
+#endif
+
+/* 				This prototype is added by Pramod                                   */
+/* This function call cvCvtColor functions on DSP side                                         */
+int C6accel_OPENCV_cvCvtColor(C6accel_Handle hC6accel,
+                          void * restrict ptr_src,       /* Pointer to input array */
+                          void * ptr_dst,                /* Pointer to output array    */
+			  int code			 /* Type of conversion */
+   			  
+#ifdef SUPPORT_ASYNC
+                          		,E_CALL_TYPE callType);
+#else 
+);
+#endif
+
+/* 				This prototype is added by Pramod                                   */
+/* This function call cvMulSpectrums functions on DSP side                                         */
+int C6accel_OPENCV_cvMulSpectrums(C6accel_Handle hC6accel,
+                          void * restrict ptr_src1,       /* Pointer to input array */
+                          void * restrict ptr_src2,       /* Pointer to output array    */
+			  void * ptr_dst,		  /* Result matrix */
+			  int    flags			  /* Type of action to take */
+   			  
+#ifdef SUPPORT_ASYNC
+                          		,E_CALL_TYPE callType);
+#else 
+);
+#endif
+
+/* 				This prototype is added by Pramod                                   */
+/* This function call cvNormalize functions on DSP side                                         */
+int C6accel_OPENCV_cvNormalize(C6accel_Handle hC6accel,
+                          void * restrict ptr_src,       /* Pointer to input array */
+                          void * ptr_dst,                /* Pointer to output array    */
+			  double a,			 /* Magnitude of absolute value of greatest entry */
+			  double b,			 /* Used in CV_MINMAX to set values in between a and b */
+			  int    norm_type,		 /* Type of normalization */
+			  void * restrict ptr_mask	 /* Type of action to take */
+   			  
+#ifdef SUPPORT_ASYNC
+                          		,E_CALL_TYPE callType);
+#else 
+);
+#endif
+
+/* 				This prototype is added by Pramod                                   */
+/* This function call cvRectangle functions on DSP side                                         */
+int C6accel_OPENCV_cvRectangle(C6accel_Handle hC6accel,
+                          void * ptr_array,       /* Pointer to input array */
+                          CvPoint pt1,       	  /* Point 1 coordinates    */
+			  CvPoint pt2, 		  /* Point 2 coordinates    */
+			  CvScalar color,	  /* Type of coloer         */
+			  int thickness		  /* Thickness of line      */
+   			  
+#ifdef SUPPORT_ASYNC
+                          		,E_CALL_TYPE callType);
+#else 
+);
+#endif
+
+/* 				This prototype is added by Pramod                                   */
+/* This function call cvMinMaxLoc functions on DSP side                                         */
+int C6accel_OPENCV_cvMinMaxLoc(C6accel_Handle hC6accel,
+                          void * restrict ptr_arr,       /* Pointer to input array    */
+                          double*         min_val,       /* Pointer to store min_val  */
+			  double*         max_val,	 /* Pointer to store max_val  */
+			  CvPoint*        min_loc,	 /* Pointer to store min_loc  */
+			  CvPoint*        max_loc,	 /* Pointer to store max_loc  */
+			  void * restrict ptr_mask       /* Pointer to mask */
+   			  
+#ifdef SUPPORT_ASYNC
+                          		,E_CALL_TYPE callType);
+#else 
+);
+#endif
+
+/* 				This prototype is added by Pramod                                   */
+/* This function call cvCopy functions on DSP side                                         */
+int C6accel_OPENCV_cvCopy(C6accel_Handle hC6accel,
+                          void * restrict ptr_src,       /* Pointer to input array */
+                          void *          ptr_dst,       /* Pointer to output array    */
+			  void * restrict ptr_mask
+   			  
+#ifdef SUPPORT_ASYNC
+                          		,E_CALL_TYPE callType);
+#else 
+);
+#endif
+
+/* 				This prototype is added by Pramod                                   */
+/* This function call cvZero functions on DSP side                                         */
+int C6accel_OPENCV_cvZero(C6accel_Handle hC6accel,
+                          void * ptr_arr                  /* Pointer to input array */
+                            			  
+#ifdef SUPPORT_ASYNC
+                          		,E_CALL_TYPE callType);
+#else 
+);
+#endif
+
 #ifdef __cplusplus
 }
 #endif
+
 
 
 #endif

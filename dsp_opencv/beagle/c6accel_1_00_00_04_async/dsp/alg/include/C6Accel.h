@@ -49,6 +49,7 @@
 /*        06 : POWER CONTROL Library                                               */
 /*        07 : AUDIO SPEECH Library                                                */
 /*        08 : VISION Library       (Added by Pramod)                              */
+/*        09 : OPENCV Library                                                      */
 /*   15-0: bits indicate function specific ID within the library                   */
 /*                                                                                 */
 /*                                                                                 */
@@ -71,6 +72,7 @@
 #define PWRCNTRLLIB_FXN_ID                  0x00000006
 #define AUDSPECHLIB_FXN_ID                  0x00000007
 #define VLIB_FXN_ID                         0x00000008   /* Added by Pramod */
+#define OPENCV_FXN_ID                       0x00000009   /* Added by Pramod */
 
 /* Function type describes the nature of function */
 #define FXNTYP_TAG_SHIFT                    0x00000010
@@ -336,6 +338,17 @@
 
 /* VLIB function ids */
 #define INTEGRALIMAGE_8_FXN_ID              0x00000001    /* Added by Pramod */
+
+/* OPENCV function ids */
+#define CVINTEGRAL_FXN_ID                   0x00000001    /* Added by Pramod */
+#define CVMATCHTEMPLATE_FXN_ID         	    0x00000002
+#define CVCVTCOLOR_FXN_ID              	    0x01090003
+#define CVMULSPECTRUMS_FXN_ID          	    0x01090004
+#define CVNORMALIZE_FXN_ID             	    0x01090005
+#define CVRECTANGLE_FXN_ID             	    0x01090006
+#define CVMINMAXLOC_FXN_ID             	    0x01090007
+#define CVCOPY_FXN_ID                  	    0x01090008
+#define CVZERO_FXN_ID                  	    0x01090009
 
 /*  Other IMGLIB fxn IDs  */
 #define RGB_TO_Y_FXN_ID			    0x00000001    /* Added by Pramod */

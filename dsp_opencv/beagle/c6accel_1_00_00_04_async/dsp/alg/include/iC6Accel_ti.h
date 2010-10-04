@@ -45,6 +45,7 @@ process call*/
 *         ** 0x06 : POWER CONTROL Library                                                   *
 *         ** 0x07 : AUDIO SPEECH Library                                                    *
 *         ** 0x08 : VISION Library       (Added by Pramod)                                  *
+*         ** 0x09 : OPENCV Library                                                          *
 *    * 15-0 bits are used to identify the function within the library                       *
 *                                                                                           *
 *********************************************************************************************/
@@ -367,6 +368,24 @@ process call*/
 /*     15-0 bits are used to identify the function within the library  */        
 /**********************************************************************/
 #define VLIB_INTEGRALIMAGE_8_FXN_ID       0x01080001  /* Added by Pramod */
+
+/**********************************************************************/  
+/*                                                                     */
+/*           OPENCV Library functions (Added by Pramod)                */
+/*     31-24 bits   Vendor ID                : 0x01 (TI)               */           
+/*     23-16 bits   Function type/Library ID : 0x09 (OPENCV)             */  
+/*     15-0 bits are used to identify the function within the library  */        
+/**********************************************************************/
+#define OPENCV_CVINTEGRAL_FXN_ID            0x01090001  /* Added by Pramod */
+#define OPENCV_CVMATCHTEMPLATE_FXN_ID       0x01090002
+#define OPENCV_CVCVTCOLOR_FXN_ID            0x01090003
+#define OPENCV_CVMULSPECTRUMS_FXN_ID        0x01090004
+#define OPENCV_CVNORMALIZE_FXN_ID           0x01090005
+#define OPENCV_CVRECTANGLE_FXN_ID           0x01090006
+#define OPENCV_CVMINMAXLOC_FXN_ID           0x01090007
+#define OPENCV_CVCOPY_FXN_ID                0x01090008
+#define OPENCV_CVZERO_FXN_ID                0x01090009
+
 
 /**********************************************************************/  
 /*                                                                    */
@@ -1994,6 +2013,100 @@ typedef struct VLIB_integralImage8_Params{
                                          unsigned int pLastLine_InArrID2;   /* 32-bit carry-over buffer */
                                          unsigned int pOut_OutArrID1;       /* 32-bit output buffer */
                                          }VLIB_integralImage8_Params;
+/* ***********************************************************************************/
+/* Parameter stucture definitions for the OpenCV functions                    */
+/*                     Added by Pramod                                               */
+/*************************************************************************************/
+
+/* Function Call: void cvIntegral(const CvArr* image, CvArr* sum, CvArr* sqsum, CvArr* tilted_sum)*/
+typedef struct OPENCV_cvIntegral_Params{
+                                         int pIn_InArrID1;         /* Image inCols x inRows */
+                                         int pOut_OutArrID1;       /* sum output buffer */
+					 int pOut_OutArrID2;	    /* sqsum output buffer */
+					 int pOut_OutArrID3; 	    /* tilted_sum output buffer */
+					 IplImage image;
+					 IplImage sum;
+					 IplImage sqSum;
+					 IplImage tiltedSum;
+                                         }OPENCV_cvIntegral_Params;
+
+/* Function Call: void OPENCV_cvMatchTemplate(const CvArr* image, CvArr* templ, CvArr* result, int method)*/
+typedef struct OPENCV_cvMatchTemplate_Params{
+                                         int pIn_InArrID1;         /* Image inCols x inRows */
+                                         int pIn_InArrID2;       /* template output buffer */
+					 int pOut_OutArrID1;	    /* result output buffer */
+					 IplImage image;
+					 IplImage templ;
+					 IplImage result;
+					 int method;
+                                         }OPENCV_cvMatchTemplate_Params;
+
+/* Function Call: void OPENCV_cvCvtColor(const CvArr* image, CvArr* sum, CvArr* sqsum, CvArr* tilted_sum)*/
+typedef struct OPENCV_cvCvtColor_Params{
+                                         int pIn_InArrID1;         /* Image inCols x inRows */
+					 int pOut_OutArrID1; 	    /* tilted_sum output buffer */
+					 IplImage src;
+					 IplImage dst;
+					 int code;
+                                         }OPENCV_cvCvtColor_Params;
+
+/* Function Call: void OPENCV_cvMulSpectrums(const CvArr* image, CvArr* templ, CvArr* result, int method)*/
+typedef struct OPENCV_cvMulSpectrums_Params{
+                                         int pIn_InArrID1;         /* Image inCols x inRows */
+                                         int pIn_InArrID2;       /* template output buffer */
+					 int pOut_OutArrID1;	    /* result output buffer */
+					 IplImage src1;
+					 IplImage src2;
+					 IplImage dst;
+					 int flags;
+                                         }OPENCV_cvMulSpectrums_Params;
+
+/* Function Call: void OPENCV_cvNormalize(const CvArr* image, CvArr* sum, CvArr* sqsum, CvArr* tilted_sum)*/
+typedef struct OPENCV_cvNormalize_Params{
+                                         int pIn_InArrID1;         /* Image inCols x inRows */
+                                         int pOut_OutArrID1;       /* sum output buffer */
+					 double a;			 /* Magnitude of absolute value of greatest entry */
+			  		 double b;			 /* Used in CV_MINMAX to set values in between a and b */
+			  		 int    norm_type;		 /* Type of normalization */
+					 IplImage src;
+					 IplImage dst;
+					 IplImage mask;
+                                         }OPENCV_Normalize_Params;
+
+/* Function Call: void OPENCV_cvMatchTemplate(const CvArr* image, CvArr* templ, CvArr* result, int method)*/
+typedef struct OPENCV_cvRectangle_Params{
+                                         int pIn_InArrID1;         /* Image inCols x inRows */
+					 IplImage array;
+					 CvPoint pt1;       	  /* Point 1 coordinates    */
+			  		 CvPoint pt2; 		  /* Point 2 coordinates    */
+			  		 CvScalar color;	  /* Type of coloer         */
+			  		 int thickness;		  /* Thickness of line      */
+                                         }OPENCV_cvRectangle_Params;
+/* Function Call: void cvMinMaxLoc(const CvArr* image, CvArr* sum, CvArr* sqsum, CvArr* tilted_sum)*/
+typedef struct OPENCV_cvMinMaxLoc_Params{
+                                         int            pIn_InArrID1;    /* Image inCols x inRows */
+					 IplImage       arr;
+					 double         min_val;         /* Pointer to store min_val  */
+			  		 double         max_val;	 /* Pointer to store max_val  */
+			  		 CvPoint        min_loc;	 /* Pointer to store min_loc  */
+			  		 CvPoint        max_loc;	 /* Pointer to store max_loc  */
+					 IplImage       mask;
+                                         }OPENCV_cvMinMaxLoc_Params;
+
+/* Function Call: void OPENCV_cvCopy(const CvArr* image, CvArr* templ, CvArr* result, int method)*/
+typedef struct OPENCV_cvCopy_Params{
+                                         int pIn_InArrID1;         /* Image inCols x inRows */
+                                         int pIn_InArrID2;       /* template output buffer */
+					 IplImage src;
+					 IplImage dst;
+					 IplImage mask;
+                                         }OPENCV_cvCopy_Params;
+
+/* Function Call: void OPENCV_cvZero(const CvArr* image, CvArr* templ, CvArr* result, int method)*/
+typedef struct OPENCV_cvZero_Params{
+                                         int pIn_InArrID1;         /* Image inCols x inRows */
+                                         IplImage arr;
+                                         }OPENCV_cvZero_Params;
 
 /* ***********************************************************************************/
 /* Parameter stucture definitions for the Other IMG Library functions                */

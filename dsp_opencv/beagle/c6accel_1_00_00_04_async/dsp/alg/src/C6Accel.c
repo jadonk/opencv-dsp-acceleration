@@ -2979,6 +2979,281 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
                 }
 	        break;
 #endif
+	      case(OPENCV_FXN_ID):
+     		/* OPENCV functions */
+                switch ( fxnID & fxnidMsk){
+                  case(CVINTEGRAL_FXN_ID):{
+		    char *sum=NULL, *image=NULL, *sqSum=NULL, *tiltedSum=NULL;
+                    /* Unmarshal Parameters */
+		    OPENCV_cvIntegral_Params *C6ACCEL_TI_OPENCV_cvIntegral_paramPtr;
+                    C6ACCEL_TI_OPENCV_cvIntegral_paramPtr = pFnArray;
+                    /* Parameter check */
+                    if (((C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->pIn_InArrID1)>INBUF15)|
+                        ((C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->pOut_OutArrID1)>INBUF15)){//|
+		//(((C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->pOut_OutArrID2)>INBUF15)&&((C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->pOut_OutArrID2)!=-1))|
+                //(((C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->pOut_OutArrID3)>INBUF15)&&((C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->pOut_OutArrID3)!=-1))){
+                          return(IUNIVERSAL_EPARAMFAIL);
+                     }
+                     else {
+			image = C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->image.imageData;
+			sum   = C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->sum.imageData;
+			C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->image.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->pIn_InArrID1].buf;
+			C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->sum.imageData   = (char *)outBufs->descs[C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->pOut_OutArrID1].buf;
+                        /* Call underlying kernel */
+                        cvIntegral( &C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->image,
+                                           &C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->sum,
+					   NULL,
+                                           NULL);
+			C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->image.imageData = image;
+			C6ACCEL_TI_OPENCV_cvIntegral_paramPtr->sum.imageData   = sum;
+		      }
+                   }
+		  break;
+		  case (CVMATCHTEMPLATE_FXN_ID): {
+			 char *image=NULL, *templ=NULL, *result=NULL;
+			 /* Unmarshal Parameters */
+			 OPENCV_cvMatchTemplate_Params *C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr;
+                         C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr = pFnArray;
+			 /* Parameter check */
+                         if (((C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pIn_InArrID1)>INBUF15)|
+			     ((C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pIn_InArrID2)>INBUF15)|
+                             ((C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pOut_OutArrID1)>OUTBUF15)){
+                              return(IUNIVERSAL_EPARAMFAIL);
+                         }
+                         else {
+                           /* Call underlying kernel */
+			   /* Parameter check is done in the library*/
+                           /* Call underlying kernel */
+   			   image = C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->image.imageData;
+  			   templ = C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->templ.imageData;
+			   result= C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->result.imageData;
+			   C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->image.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pIn_InArrID1].buf;
+  			   C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->templ.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pIn_InArrID2].buf;
+			   C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->result.imageData = (char *)outBufs->descs[C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pOut_OutArrID1].buf;
+			   
+			   cvMatchTemplate( &C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->image,
+			        &C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->templ,
+			     	&C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->result,
+				C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->method
+			        );
+			   
+			   C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->image.imageData  = image;
+  			   C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->templ.imageData  = templ;
+			   C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->result.imageData = result;
+			   }
+			 }		         
+			 break;
+		  case (CVCVTCOLOR_FXN_ID): {
+			 char *src=NULL, *templ=dst;
+			 /* Unmarshal Parameters */
+			 OPENCV_cvCvtColor_Params *C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr;
+                         C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr = pFnArray;
+			 /* Parameter check */
+                         if (((C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->pIn_InArrID1)>INBUF15)|
+                             ((C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->pOut_OutArrID1)>OUTBUF15)){
+                              return(IUNIVERSAL_EPARAMFAIL);
+                         }
+                         else {
+                           /* Call underlying kernel */
+			   /* Parameter check is done in the library*/
+                           /* Call underlying kernel */
+   			   src = C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->image.imageData;
+			   dst= C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->result.imageData;
+			   C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->src.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->pIn_InArrID1].buf;
+			   C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->dst.imageData = (char *)outBufs->descs[C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->pOut_OutArrID1].buf;
+			   
+			   cvCvtColor( &C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->src,
+			     	&C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->dst,
+				C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->code
+			        );
+			   
+			   C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->src.imageData  = src;
+			   C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->dst.imageData = dst;
+			   }
+			 }		         
+			 break;
+		  case (CVMULSPECTRUMS_FXN_ID): {
+			 char *src1=NULL, *src2=NULL, *dst=NULL;
+			 /* Unmarshal Parameters */
+			 OPENCV_cvMulSpectrums_Params *C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr;
+                         C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr = pFnArray;
+			 /* Parameter check */
+                         if (((C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->pIn_InArrID1)>INBUF15)|
+			     ((C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->pIn_InArrID2)>INBUF15)|
+                             ((C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->pOut_OutArrID1)>OUTBUF15)){
+                              return(IUNIVERSAL_EPARAMFAIL);
+                         }
+                         else {
+                           /* Call underlying kernel */
+			   /* Parameter check is done in the library*/
+                           /* Call underlying kernel */
+   			   src1 = C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->src1.imageData;
+  			   src2 = C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->src2.imageData;
+			   dst= C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->dst.imageData;
+			   C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->src1.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->pIn_InArrID1].buf;
+  			   C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->src2.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->pIn_InArrID2].buf;
+			   C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->dst.imageData = (char *)outBufs->descs[C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->pOut_OutArrID1].buf;
+			   
+			   cvMulSpectrums( &C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->src1,
+			        &C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->src2,
+			     	&C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->dst,
+				C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->flags
+			        );
+			   
+			   C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->src1.imageData  = src1;
+  			   C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->src2.imageData  = src2;
+			   C6ACCEL_TI_OPENCV_cvMulSpectrums_paramPtr->dst.imageData = dst;
+			   }
+			 }		         
+			 break;
+		  case (CVNORMALIZE_FXN_ID): {
+			 char *src=NULL, *dst=NULL;
+			 double a, b;
+			 /* Unmarshal Parameters */
+			 OPENCV_cvNormalize_Params *C6ACCEL_TI_OPENCV_cvNormalize_paramPtr;
+                         C6ACCEL_TI_OPENCV_cvNormalize_paramPtr = pFnArray;
+			 /* Parameter check */
+                         if (((C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->pIn_InArrID1)>INBUF15)|
+			     ((C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->pIn_InArrID2)>INBUF15)|
+                             ((C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->pOut_OutArrID1)>OUTBUF15)){
+                              return(IUNIVERSAL_EPARAMFAIL);
+                         }
+                         else {
+                           /* Call underlying kernel */
+			   /* Parameter check is done in the library*/
+                           /* Call underlying kernel */
+   			   src = C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->src.imageData;
+			   dst = C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->dst.imageData;
+			   a   = _memd8(&C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->a);
+			   b   = _memd8(&C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->b);
+			   C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->src.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->pIn_InArrID1].buf;
+			   C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->dst.imageData = (char *)outBufs->descs[C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->pOut_OutArrID1].buf;
+			   
+			   cvNormalize( &C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->src,
+			        &C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->dst,
+				a,
+				b,
+				C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->norm_type,
+				&C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->mask		// need to check this since this wont be allocated if NULL in ARM
+			        );
+			   
+			   C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->src.imageData  = src;
+			   C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->dst.imageData  = dst;
+			   }
+			 }		         
+			 break;
+		  case (CVRECTANGLE_FXN_ID): {
+			 char *array=NULL;
+			 /* Unmarshal Parameters */
+			 OPENCV_cvRectangle_Params *C6ACCEL_TI_OPENCV_cvRectangle_paramPtr;
+                         C6ACCEL_TI_OPENCV_cvRectangle_paramPtr = pFnArray;
+			 /* Parameter check */
+                         if (((C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->pOut_InArrID1)>INBUF15)){
+                              return(IUNIVERSAL_EPARAMFAIL);
+                         }
+                         else {
+                           /* Call underlying kernel */
+			   /* Parameter check is done in the library*/
+                           /* Call underlying kernel */
+   			   array = C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->array.imageData;
+			   C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->array.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->pIn_InArrID1].buf;
+			   
+			   cvRectangle( &C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->array,
+			        C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->pt1,
+			     	C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->pt2,
+				C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->color,
+				C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->thickness
+			        );
+			   
+			   C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->array.imageData  = array;
+			   }
+			 }		         
+			 break;
+		  case (CVMINMAXLOC_FXN_ID): {
+			 char *arr=NULL;
+			 /* Unmarshal Parameters */
+			 OPENCV_cvMinMaxLoc_Params *C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr;
+                         C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr = pFnArray;
+			 /* Parameter check */
+                         if (((C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->pOut_InArrID1)>INBUF15)){
+                              return(IUNIVERSAL_EPARAMFAIL);
+                         }
+                         else {
+                           /* Call underlying kernel */
+			   /* Parameter check is done in the library*/
+                           /* Call underlying kernel */
+   			   arr = C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->arr.imageData;
+			   C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->arr.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->pIn_InArrID1].buf;
+			   
+			   cvMinMaxLoc( &C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->arr,
+			        &C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->min_val,
+			     	&C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->max_val,
+				&C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->min_loc,
+				&C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->max_loc,
+				&C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->mask
+			        );
+			   
+			   C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->image.imageData  = image;
+			   }
+			 }		         
+			 break;
+		  case (CVCOPY_FXN_ID): {
+			 char *src=NULL, *dst=NULL;
+			 /* Unmarshal Parameters */
+			 OPENCV_cvCopy_Params *C6ACCEL_TI_OPENCV_cvCopy_paramPtr;
+                         C6ACCEL_TI_OPENCV_cvCopy_paramPtr = pFnArray;
+			 /* Parameter check */
+                         if (((C6ACCEL_TI_OPENCV_cvCopy_paramPtr->pIn_InArrID1)>INBUF15)|
+                             ((C6ACCEL_TI_OPENCV_cvCopy_paramPtr->pOut_OutArrID1)>OUTBUF15)){
+                              return(IUNIVERSAL_EPARAMFAIL);
+                         }
+                         else {
+                           /* Call underlying kernel */
+			   /* Parameter check is done in the library*/
+                           /* Call underlying kernel */
+   			   src = C6ACCEL_TI_OPENCV_cvCopy_paramPtr->image.imageData;
+			   dst= C6ACCEL_TI_OPENCV_cvCopy_paramPtr->result.imageData;
+			   C6ACCEL_TI_OPENCV_cvCopy_paramPtr->src.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pIn_InArrID1].buf;
+			   C6ACCEL_TI_OPENCV_cvCopy_paramPtr->dst.imageData = (char *)outBufs->descs[C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pOut_OutArrID1].buf;
+			   
+			   cvCopy( &C6ACCEL_TI_OPENCV_cvCopy_paramPtr->src,
+			        &C6ACCEL_TI_OPENCV_cvCopy_paramPtr->dst,
+			     	&C6ACCEL_TI_OPENCV_cvCopy_paramPtr->mask
+			        );
+			   
+			   C6ACCEL_TI_OPENCV_cvCopy_paramPtr->src.imageData  = src;
+			   C6ACCEL_TI_OPENCV_cvCopy_paramPtr->dst.imageData  = dst;
+			   }
+			 }		         
+			 break;
+		  case (CVZERO_FXN_ID): {
+			 char *arr=NULL;
+			 /* Unmarshal Parameters */
+			 OPENCV_cvZero_Params *C6ACCEL_TI_OPENCV_cvZero_paramPtr;
+                         C6ACCEL_TI_OPENCV_cvZero_paramPtr = pFnArray;
+			 /* Parameter check */
+                         if (((C6ACCEL_TI_OPENCV_cvZero_paramPtr->pIn_InArrID1)>INBUF15)){
+                              return(IUNIVERSAL_EPARAMFAIL);
+                         }
+                         else {
+                           /* Call underlying kernel */
+			   /* Parameter check is done in the library*/
+                           /* Call underlying kernel */
+   			   arr = C6ACCEL_TI_OPENCV_cvZero_paramPtr->arr.imageData;
+			   C6ACCEL_TI_OPENCV_cvZero_paramPtr->arr.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvZero_paramPtr->pIn_InArrID1].buf;
+			   
+			   cvZero( &C6ACCEL_TI_OPENCV_cvZero_paramPtr->arr);
+			   
+			   C6ACCEL_TI_OPENCV_cvZero_paramPtr->arr.imageData  = arr;
+			   }
+			 }		         
+			 break;
+		  default:
+	  	    /*Error caused due to passing of an invalid ID*/
+		    return(IUNIVERSAL_EFXNIDFAIL);
+                }
+	        break;	      
+     				
                 default:
                    return(IUNIVERSAL_EFXNIDFAIL);
             }

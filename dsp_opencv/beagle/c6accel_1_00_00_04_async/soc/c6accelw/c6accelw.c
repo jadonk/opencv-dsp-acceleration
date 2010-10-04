@@ -10754,6 +10754,1178 @@ int C6accel_VLIB_integralImage8(C6accel_Handle hC6accel,
 
 /* This function defination is added by Pramod */
 /*
+int C6Accel_cvIntegral(C6accel_Handle hC6accel, void * restrict ptr_image, void * restrict ptr_sum, void * ptr_sqsum, void * ptr_tilted_sum)
+Arguments
+* hC6accel C6accel Handle
+* ptr_image Pointer to Image.
+* ptr_sum Pointer to integral sum image.
+* ptr_sqsum Pointer to square of sum
+* ptr_tilted_sum Pointer to tilted_sum.
+
+
+Return value:  API returns status of the function call.
+               ==0 Pass
+               <0  Fail
+
+Object classification may be done by calculating image features (such as moments and/or wavelets) on a
+region of interest and feeding them to a classifier (such as k-NN or SVM). Integral image is an important
+step in calculation of a common type of image features, over-complete Haar wavelets [ 2 ]. Integral image
+values may be used as features themselves.
+
+*/
+
+int C6accel_OPENCV_cvIntegral(C6accel_Handle hC6accel,
+                          void * restrict ptr_image,   /* Input data pointer                        */
+                          void * restrict ptr_sum,     /* number of rows                            */
+			  void * ptr_sqsum,		/* number of cols                            */
+                          void * ptr_tilted_sum        /* pointer to cols x 1 buffer for carry over */
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType)
+#else 
+)
+#endif
+{
+    XDM1_BufDesc                inBufDesc;
+    XDM1_BufDesc                outBufDesc;
+    XDAS_Int32                  InArg_Buf_size;
+    IC6Accel_InArgs             *CInArgs;
+    UNIVERSAL_OutArgs           uniOutArgs;
+    Int                         status;
+    IplImage *tempImage = (IplImage *) ptr_image;
+    /* Define pointer to function parameter structure */
+    OPENCV_cvIntegral_Params    *fp0;
+    XDAS_Int8                   *pAlloc;
+
+    ACQUIRE_CODEC_ENGINE;
+
+    /* Allocate the InArgs structure as it varies in size
+    (Needs to be changed everytime we make a API call)*/
+    InArg_Buf_size=  sizeof(Fxn_struct)+
+                     sizeof(OPENCV_cvIntegral_Params)+
+                     sizeof(CInArgs->size)+
+                     sizeof(CInArgs->Num_fxns);
+
+    /* Request contiguous heap memory allocation for the extended input structure */
+    pAlloc = (XDAS_Int8 *)Memory_alloc(InArg_Buf_size, &wrapperMemParams);
+    CInArgs= (IC6Accel_InArgs *)pAlloc;
+
+    /* Initialize .size fields for dummy input and output arguments */
+    uniOutArgs.size    = sizeof(uniOutArgs);
+
+    /* Set up buffers to pass buffers in and out to alg  */
+    inBufDesc.numBufs  = 1;
+    outBufDesc.numBufs = 1;
+    if(ptr_sqsum != NULL) outBufDesc.numBufs++;
+    if(ptr_tilted_sum != NULL) outBufDesc.numBufs++;
+
+    /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
+    /* See wrapper_c6accel_i.h for more details of operation                 */
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+    tempImage = (IplImage *) ptr_sum;
+    size = tempImage->widthStep * tempImage->height;
+    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+    if(ptr_sqsum != NULL) {
+      tempImage = (IplImage *) ptr_sqsum;
+      size = tempImage->widthStep * tempImage->height;
+      CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,1,size);
+    }
+    if(ptr_tilted_sum != NULL) {
+      tempImage = (IplImage *) ptr_tilted_sum;
+      size = tempImage->widthStep * tempImage->height;
+      CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,2,size);
+    }
+
+    /* Initialize the extended InArgs structure */
+    CInArgs->Num_fxns = 1;
+    CInArgs->size     = InArg_Buf_size;
+
+    /* Set function Id and parameter pointers for first function call */
+    CInArgs->fxn[0].FxnID     = OPENCV_CVINTEGRAL_FXN_ID;
+    CInArgs->fxn[0].Param_ptr_offset = sizeof(CInArgs->size)+sizeof(CInArgs->Num_fxns)+sizeof(Fxn_struct);
+
+     /* Initialize pointers to function parameters */
+    fp0 = (OPENCV_cvIntegral_Params *)((XDAS_Int8*)CInArgs + CInArgs->fxn[0].Param_ptr_offset);
+
+    /* Fill in the fields in the parameter structure */
+    fp0->pIn_InArrID1        = INBUF0;
+    memcpy(&(fp0->image),ptr_image,sizeof(IplImage));
+    fp0->pOut_OutArrID1      = OUTBUF0;
+    memcpy(&(fp0->sum),ptr_sum,sizeof(IplImage));
+    if(ptr_sqsum != NULL) {
+      fp0->pOut_OutArrID2    = OUTBUF1;
+      memcpy(&(fp0->sqSum),ptr_sqsum,sizeof(IplImage));
+    }
+    else fp0->pOut_OutArrID2 = -1;
+    if(ptr_tilted_sum != NULL) {
+      fp0->pOut_OutArrID3    = OUTBUF2;
+      memcpy(&(fp0->tiltedSum),ptr_tilted_sum,sizeof(IplImage));
+    }
+    else fp0->pOut_OutArrID3 = -1;
+
+#ifdef SUPPORT_ASYNC
+    /* Call the actual algorithm */
+    if (callType == ASYNC)
+      {
+
+       //Update async structure
+       if (c6accelAsyncParams.asyncCallCount!=0)
+          { status = UNIVERSAL_EFAIL;
+            printf("Async call failed as %d are still pending\n",c6accelAsyncParams.asyncCallCount);
+          }
+       else
+          {c6accelAsyncParams.asyncCallCount++;
+           memcpy(&(c6accelAsyncParams.inBufs),&inBufDesc, sizeof (XDM1_BufDesc));
+ //           memcpy(&(c6accelAsyncParams.inOutBufs),&inOutBufs, sizeof (XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.outBufs), &outBufDesc,sizeof(XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.inArgs), CInArgs,sizeof(UNIVERSAL_InArgs));
+           memcpy(&(c6accelAsyncParams.outArgs),&uniOutArgs,sizeof(UNIVERSAL_OutArgs));
+           c6accelAsyncParams.pBuf = pAlloc;
+           c6accelAsyncParams.pBufSize = InArg_Buf_size;
+
+           status = UNIVERSAL_processAsync(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+           }
+      }
+     else
+       {
+#endif
+         // Sync call
+        status = UNIVERSAL_process(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+        /* Free the InArgs structure */
+        Memory_free(pAlloc, InArg_Buf_size, &wrapperMemParams);
+#ifdef SUPPORT_ASYNC
+        }
+#endif 
+
+    RELEASE_CODEC_ENGINE;
+
+    return status;
+
+}
+
+/*
+int C6Accel_cvMatchTemplate(C6accel_Handle hC6accel, void * restrict ptr_image, void * restrict ptr_templ, void * ptr_result, int method)
+Arguments
+* hC6accel C6accel Handle
+* ptr_image Pointer to Image.
+* ptr_templ Pointer to template image.
+* ptr_result Pointer to result image
+* method Different methods like Normalized,etc
+
+
+Return value:  API returns status of the function call.
+               ==0 Pass
+               <0  Fail
+
+*/
+
+int C6accel_OPENCV_cvMatchTemplate(C6accel_Handle hC6accel,
+                          void * restrict ptr_image,   /* Input data pointer                        */
+                          void * restrict ptr_templ,   /* Pointer to template Image               */
+			  void * restrict ptr_result,      /* Pointer to correlated image             */
+                          int method                   /* method of correlation			 */
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType)
+#else 
+)
+#endif
+{
+    XDM1_BufDesc                inBufDesc;
+    XDM1_BufDesc                outBufDesc;
+    XDAS_Int32                  InArg_Buf_size;
+    IC6Accel_InArgs             *CInArgs;
+    UNIVERSAL_OutArgs           uniOutArgs;
+    Int                         status;
+    IplImage *tempImage = (IplImage *) ptr_image;
+    /* Define pointer to function parameter structure */
+    OPENCV_cvMatchTemplate_Params    *fp0;
+    XDAS_Int8                   *pAlloc;
+
+    ACQUIRE_CODEC_ENGINE;
+
+    /* Allocate the InArgs structure as it varies in size
+    (Needs to be changed everytime we make a API call)*/
+    InArg_Buf_size=  sizeof(Fxn_struct)+
+                     sizeof(OPENCV_cvMatchTemplate_Params)+
+                     sizeof(CInArgs->size)+
+                     sizeof(CInArgs->Num_fxns);
+
+    /* Request contiguous heap memory allocation for the extended input structure */
+    pAlloc = (XDAS_Int8 *)Memory_alloc(InArg_Buf_size, &wrapperMemParams);
+    CInArgs= (IC6Accel_InArgs *)pAlloc;
+
+    /* Initialize .size fields for dummy input and output arguments */
+    uniOutArgs.size    = sizeof(uniOutArgs);
+
+    /* Set up buffers to pass buffers in and out to alg  */
+    inBufDesc.numBufs  = 2;
+    outBufDesc.numBufs = 1;
+
+    /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
+    /* See wrapper_c6accel_i.h for more details of operation                 */
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+
+    tempImage = (IplImage *) ptr_templ;
+    size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,1,size);
+
+    tempImage = (IplImage *) ptr_result;
+    size = tempImage->widthStep * tempImage->height;
+    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+        
+    /* Initialize the extended InArgs structure */
+    CInArgs->Num_fxns = 1;
+    CInArgs->size     = InArg_Buf_size;
+
+    /* Set function Id and parameter pointers for first function call */
+    CInArgs->fxn[0].FxnID     = OPENCV_CVMATCHTEMPLATE_FXN_ID;
+    CInArgs->fxn[0].Param_ptr_offset = sizeof(CInArgs->size)+sizeof(CInArgs->Num_fxns)+sizeof(Fxn_struct);
+
+     /* Initialize pointers to function parameters */
+    fp0 = (OPENCV_cvMatchTemplate_Params *)((XDAS_Int8*)CInArgs + CInArgs->fxn[0].Param_ptr_offset);
+
+    /* Fill in the fields in the parameter structure */
+    fp0->pIn_InArrID1        = INBUF0;
+    memcpy(&(fp0->image),ptr_image,sizeof(IplImage));
+    fp0->pIn_InArrID2        = INBUF1;
+    memcpy(&(fp0->templ),ptr_templ,sizeof(IplImage));
+    fp0->pOut_OutArrID1      = OUTBUF0;
+    memcpy(&(fp0->result),ptr_result,sizeof(IplImage));
+    fp0->method = method;
+
+#ifdef SUPPORT_ASYNC
+    /* Call the actual algorithm */
+    if (callType == ASYNC)
+      {
+
+       //Update async structure
+       if (c6accelAsyncParams.asyncCallCount!=0)
+          { status = UNIVERSAL_EFAIL;
+            printf("Async call failed as %d are still pending\n",c6accelAsyncParams.asyncCallCount);
+          }
+       else
+          {c6accelAsyncParams.asyncCallCount++;
+           memcpy(&(c6accelAsyncParams.inBufs),&inBufDesc, sizeof (XDM1_BufDesc));
+ //           memcpy(&(c6accelAsyncParams.inOutBufs),&inOutBufs, sizeof (XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.outBufs), &outBufDesc,sizeof(XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.inArgs), CInArgs,sizeof(UNIVERSAL_InArgs));
+           memcpy(&(c6accelAsyncParams.outArgs),&uniOutArgs,sizeof(UNIVERSAL_OutArgs));
+           c6accelAsyncParams.pBuf = pAlloc;
+           c6accelAsyncParams.pBufSize = InArg_Buf_size;
+
+           status = UNIVERSAL_processAsync(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+           }
+      }
+     else
+       {
+#endif
+         // Sync call
+        status = UNIVERSAL_process(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+        /* Free the InArgs structure */
+        Memory_free(pAlloc, InArg_Buf_size, &wrapperMemParams);
+#ifdef SUPPORT_ASYNC
+        }
+#endif 
+
+    RELEASE_CODEC_ENGINE;
+
+    return status;
+
+}
+
+
+/*
+int C6Accel_cvCvtColor(C6accel_Handle hC6accel, void * restrict ptr_src, void * ptr_dst, int code)			 
+Arguments
+* hC6accel C6accel Handle
+* ptr_src Pointer to source Image.
+* ptr_dst Pointer to destination image.
+* code Type of conversion
+
+
+Return value:  API returns status of the function call.
+               ==0 Pass
+               <0  Fail
+
+*/
+
+int C6accel_OPENCV_cvCvtColor(C6accel_Handle hC6accel,
+                          void * restrict ptr_src,       /* Pointer to input array */
+                          void * ptr_dst,                /* Pointer to output array    */
+			  int code			 /* Type of conversion */                  
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType)
+#else 
+)
+#endif
+{
+    XDM1_BufDesc                inBufDesc;
+    XDM1_BufDesc                outBufDesc;
+    XDAS_Int32                  InArg_Buf_size;
+    IC6Accel_InArgs             *CInArgs;
+    UNIVERSAL_OutArgs           uniOutArgs;
+    Int                         status;
+    IplImage *tempImage = (IplImage *) ptr_src;
+    /* Define pointer to function parameter structure */
+    OPENCV_cvCvtColors_Params   *fp0;
+    XDAS_Int8                   *pAlloc;
+
+    ACQUIRE_CODEC_ENGINE;
+
+    /* Allocate the InArgs structure as it varies in size
+    (Needs to be changed everytime we make a API call)*/
+    InArg_Buf_size=  sizeof(Fxn_struct)+
+                     sizeof(OPENCV_cvCvtColors_Params)+
+                     sizeof(CInArgs->size)+
+                     sizeof(CInArgs->Num_fxns);
+
+    /* Request contiguous heap memory allocation for the extended input structure */
+    pAlloc = (XDAS_Int8 *)Memory_alloc(InArg_Buf_size, &wrapperMemParams);
+    CInArgs= (IC6Accel_InArgs *)pAlloc;
+
+    /* Initialize .size fields for dummy input and output arguments */
+    uniOutArgs.size    = sizeof(uniOutArgs);
+
+    /* Set up buffers to pass buffers in and out to alg  */
+    inBufDesc.numBufs  = 1;
+    outBufDesc.numBufs = 1;
+
+    /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
+    /* See wrapper_c6accel_i.h for more details of operation                 */
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+
+    tempImage = (IplImage *) ptr_dst;
+    size = tempImage->widthStep * tempImage->height;
+    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+        
+    /* Initialize the extended InArgs structure */
+    CInArgs->Num_fxns = 1;
+    CInArgs->size     = InArg_Buf_size;
+
+    /* Set function Id and parameter pointers for first function call */
+    CInArgs->fxn[0].FxnID     = OPENCV_CVCVTCOLOR_FXN_ID;
+    CInArgs->fxn[0].Param_ptr_offset = sizeof(CInArgs->size)+sizeof(CInArgs->Num_fxns)+sizeof(Fxn_struct);
+
+     /* Initialize pointers to function parameters */
+    fp0 = (OPENCV_cvCvtColor_Params *)((XDAS_Int8*)CInArgs + CInArgs->fxn[0].Param_ptr_offset);
+
+    /* Fill in the fields in the parameter structure */
+    fp0->pIn_InArrID1        = INBUF0;
+    memcpy(&(fp0->src),ptr_src,sizeof(IplImage));
+    fp0->pOut_OutArrID1      = OUTBUF0;
+    memcpy(&(fp0->dst),ptr_dst,sizeof(IplImage));
+    fp0->code = code;
+
+#ifdef SUPPORT_ASYNC
+    /* Call the actual algorithm */
+    if (callType == ASYNC)
+      {
+
+       //Update async structure
+       if (c6accelAsyncParams.asyncCallCount!=0)
+          { status = UNIVERSAL_EFAIL;
+            printf("Async call failed as %d are still pending\n",c6accelAsyncParams.asyncCallCount);
+          }
+       else
+          {c6accelAsyncParams.asyncCallCount++;
+           memcpy(&(c6accelAsyncParams.inBufs),&inBufDesc, sizeof (XDM1_BufDesc));
+ //           memcpy(&(c6accelAsyncParams.inOutBufs),&inOutBufs, sizeof (XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.outBufs), &outBufDesc,sizeof(XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.inArgs), CInArgs,sizeof(UNIVERSAL_InArgs));
+           memcpy(&(c6accelAsyncParams.outArgs),&uniOutArgs,sizeof(UNIVERSAL_OutArgs));
+           c6accelAsyncParams.pBuf = pAlloc;
+           c6accelAsyncParams.pBufSize = InArg_Buf_size;
+
+           status = UNIVERSAL_processAsync(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+           }
+      }
+     else
+       {
+#endif
+         // Sync call
+        status = UNIVERSAL_process(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+        /* Free the InArgs structure */
+        Memory_free(pAlloc, InArg_Buf_size, &wrapperMemParams);
+#ifdef SUPPORT_ASYNC
+        }
+#endif 
+
+    RELEASE_CODEC_ENGINE;
+
+    return status;
+
+}
+
+
+
+/*
+int C6Accel_cvMulSpectrums(C6accel_Handle hC6accel, void * restrict ptr_src1, void * restrict ptr_src2, void * ptr_dst,	int flags)		  
+Arguments
+* hC6accel C6accel Handle
+* ptr_src1 Pointer to source spectrum 1.
+* ptr_src2 Pointer to source spectrum 2.
+* ptr_dst  Pointer to resultant spectrum
+* flags    Type of spectrum multiplication
+
+
+Return value:  API returns status of the function call.
+               ==0 Pass
+               <0  Fail
+
+*/
+
+int C6accel_OPENCV_cvMulSpectrums(C6accel_Handle hC6accel,
+                          void * restrict ptr_src1,       /* Pointer to input array */
+                          void * restrict ptr_src2,       /* Pointer to output array    */
+			  void * ptr_dst,		  /* Result matrix */
+			  int    flags			  /* Type of action to take */
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType)
+#else 
+)
+#endif
+{
+    XDM1_BufDesc                inBufDesc;
+    XDM1_BufDesc                outBufDesc;
+    XDAS_Int32                  InArg_Buf_size;
+    IC6Accel_InArgs             *CInArgs;
+    UNIVERSAL_OutArgs           uniOutArgs;
+    Int                         status;
+    IplImage *tempImage = (IplImage *) ptr_src1;
+    /* Define pointer to function parameter structure */
+    OPENCV_cvMulSpectrums_Params    *fp0;
+    XDAS_Int8                   *pAlloc;
+
+    ACQUIRE_CODEC_ENGINE;
+
+    /* Allocate the InArgs structure as it varies in size
+    (Needs to be changed everytime we make a API call)*/
+    InArg_Buf_size=  sizeof(Fxn_struct)+
+                     sizeof(OPENCV_cvMulSpectrums_Params)+
+                     sizeof(CInArgs->size)+
+                     sizeof(CInArgs->Num_fxns);
+
+    /* Request contiguous heap memory allocation for the extended input structure */
+    pAlloc = (XDAS_Int8 *)Memory_alloc(InArg_Buf_size, &wrapperMemParams);
+    CInArgs= (IC6Accel_InArgs *)pAlloc;
+
+    /* Initialize .size fields for dummy input and output arguments */
+    uniOutArgs.size    = sizeof(uniOutArgs);
+
+    /* Set up buffers to pass buffers in and out to alg  */
+    inBufDesc.numBufs  = 2;
+    outBufDesc.numBufs = 1;
+
+    /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
+    /* See wrapper_c6accel_i.h for more details of operation                 */
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+
+    tempImage = (IplImage *) ptr_src2;
+    size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,1,size);
+
+    tempImage = (IplImage *) ptr_dst;
+    size = tempImage->widthStep * tempImage->height;
+    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+        
+    /* Initialize the extended InArgs structure */
+    CInArgs->Num_fxns = 1;
+    CInArgs->size     = InArg_Buf_size;
+
+    /* Set function Id and parameter pointers for first function call */
+    CInArgs->fxn[0].FxnID     = OPENCV_CVMULSPECTRUMS_FXN_ID;
+    CInArgs->fxn[0].Param_ptr_offset = sizeof(CInArgs->size)+sizeof(CInArgs->Num_fxns)+sizeof(Fxn_struct);
+
+     /* Initialize pointers to function parameters */
+    fp0 = (OPENCV_cvMulSpectrums_Params *)((XDAS_Int8*)CInArgs + CInArgs->fxn[0].Param_ptr_offset);
+
+    /* Fill in the fields in the parameter structure */
+    fp0->pIn_InArrID1        = INBUF0;
+    memcpy(&(fp0->src1),ptr_src1,sizeof(IplImage));
+    fp0->pIn_InArrID2        = INBUF1;
+    memcpy(&(fp0->src2),ptr_src2,sizeof(IplImage));
+    fp0->pOut_OutArrID1      = OUTBUF0;
+    memcpy(&(fp0->dst),ptr_dst,sizeof(IplImage));
+    fp0->flags = flags;
+
+#ifdef SUPPORT_ASYNC
+    /* Call the actual algorithm */
+    if (callType == ASYNC)
+      {
+
+       //Update async structure
+       if (c6accelAsyncParams.asyncCallCount!=0)
+          { status = UNIVERSAL_EFAIL;
+            printf("Async call failed as %d are still pending\n",c6accelAsyncParams.asyncCallCount);
+          }
+       else
+          {c6accelAsyncParams.asyncCallCount++;
+           memcpy(&(c6accelAsyncParams.inBufs),&inBufDesc, sizeof (XDM1_BufDesc));
+ //           memcpy(&(c6accelAsyncParams.inOutBufs),&inOutBufs, sizeof (XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.outBufs), &outBufDesc,sizeof(XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.inArgs), CInArgs,sizeof(UNIVERSAL_InArgs));
+           memcpy(&(c6accelAsyncParams.outArgs),&uniOutArgs,sizeof(UNIVERSAL_OutArgs));
+           c6accelAsyncParams.pBuf = pAlloc;
+           c6accelAsyncParams.pBufSize = InArg_Buf_size;
+
+           status = UNIVERSAL_processAsync(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+           }
+      }
+     else
+       {
+#endif
+         // Sync call
+        status = UNIVERSAL_process(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+        /* Free the InArgs structure */
+        Memory_free(pAlloc, InArg_Buf_size, &wrapperMemParams);
+#ifdef SUPPORT_ASYNC
+        }
+#endif 
+
+    RELEASE_CODEC_ENGINE;
+
+    return status;
+
+}
+
+
+/*
+int C6Accel_cvNormalize(C6accel_Handle hC6accel, void * restrict ptr_src, void * ptr_dst, double a, double b, int norm_type, void * restrict ptr_mask)
+Arguments
+* hC6accel C6accel Handle
+* ptr_src Pointer to source matrix.
+* ptr_dst Pointer to destination matrix.
+* a       Data will be normalized to a. ie, the max value
+* b       Lower limit to normalize. ie, data normalized in range of (b,a), including
+* norm_type Method of Normalization
+* pat_mask Mask for normalization
+
+
+Return value:  API returns status of the function call.
+               ==0 Pass
+               <0  Fail
+
+*/
+
+int C6accel_OPENCV_cvNormalize(C6accel_Handle hC6accel,
+                          void * restrict ptr_src,       /* Pointer to input array */
+                          void * ptr_dst,                /* Pointer to output array    */
+			  double a,			 /* Magnitude of absolute value of greatest entry */
+			  double b,			 /* Used in CV_MINMAX to set values in between a and b */
+			  int    norm_type,		 /* Type of normalization */
+			  void * restrict ptr_mask	 /* Type of action to take */
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType)
+#else 
+)
+#endif
+{
+    XDM1_BufDesc                inBufDesc;
+    XDM1_BufDesc                outBufDesc;
+    XDAS_Int32                  InArg_Buf_size;
+    IC6Accel_InArgs             *CInArgs;
+    UNIVERSAL_OutArgs           uniOutArgs;
+    Int                         status;
+    IplImage *tempImage = (IplImage *) ptr_src;
+    /* Define pointer to function parameter structure */
+    OPENCV_cvNormalize_Params   *fp0;
+    XDAS_Int8                   *pAlloc;
+
+    ACQUIRE_CODEC_ENGINE;
+
+    /* Allocate the InArgs structure as it varies in size
+    (Needs to be changed everytime we make a API call)*/
+    InArg_Buf_size=  sizeof(Fxn_struct)+
+                     sizeof(OPENCV_cvNormalize_Params)+
+                     sizeof(CInArgs->size)+
+                     sizeof(CInArgs->Num_fxns);
+
+    /* Request contiguous heap memory allocation for the extended input structure */
+    pAlloc = (XDAS_Int8 *)Memory_alloc(InArg_Buf_size, &wrapperMemParams);
+    CInArgs= (IC6Accel_InArgs *)pAlloc;
+
+    /* Initialize .size fields for dummy input and output arguments */
+    uniOutArgs.size    = sizeof(uniOutArgs);
+
+    /* Set up buffers to pass buffers in and out to alg  */
+    inBufDesc.numBufs  = 1;
+    outBufDesc.numBufs = 1;
+
+    /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
+    /* See wrapper_c6accel_i.h for more details of operation                 */
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+
+    tempImage = (IplImage *) ptr_dst;
+    size = tempImage->widthStep * tempImage->height;
+    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+        
+    /* Initialize the extended InArgs structure */
+    CInArgs->Num_fxns = 1;
+    CInArgs->size     = InArg_Buf_size;
+
+    /* Set function Id and parameter pointers for first function call */
+    CInArgs->fxn[0].FxnID     = OPENCV_CVNORMALIZE_FXN_ID;
+    CInArgs->fxn[0].Param_ptr_offset = sizeof(CInArgs->size)+sizeof(CInArgs->Num_fxns)+sizeof(Fxn_struct);
+
+     /* Initialize pointers to function parameters */
+    fp0 = (OPENCV_cvNormalize_Params *)((XDAS_Int8*)CInArgs + CInArgs->fxn[0].Param_ptr_offset);
+
+    /* Fill in the fields in the parameter structure */
+    fp0->pIn_InArrID1        = INBUF0;
+    memcpy(&(fp0->src),ptr_src,sizeof(IplImage));
+    fp0->pOut_OutArrID1      = OUTBUF0;
+    memcpy(&(fp0->dst),ptr_dst,sizeof(IplImage));
+
+    fp0->a = a;
+    fp0->b = b;
+    fp0->norm_type = norm_type;
+    if(ptr_mask)									// Need to cross check on this. It may cause segfault if mask
+	memcpy(&(fp0->mask),ptr_mask,sizeof(IplImage));					// is not IplImage type. Need to come-up with better way to tackle
+											// this problem, avoiding type-checking in ARM as weel as DSP
+#ifdef SUPPORT_ASYNC
+    /* Call the actual algorithm */
+    if (callType == ASYNC)
+      {
+
+       //Update async structure
+       if (c6accelAsyncParams.asyncCallCount!=0)
+          { status = UNIVERSAL_EFAIL;
+            printf("Async call failed as %d are still pending\n",c6accelAsyncParams.asyncCallCount);
+          }
+       else
+          {c6accelAsyncParams.asyncCallCount++;
+           memcpy(&(c6accelAsyncParams.inBufs),&inBufDesc, sizeof (XDM1_BufDesc));
+ //           memcpy(&(c6accelAsyncParams.inOutBufs),&inOutBufs, sizeof (XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.outBufs), &outBufDesc,sizeof(XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.inArgs), CInArgs,sizeof(UNIVERSAL_InArgs));
+           memcpy(&(c6accelAsyncParams.outArgs),&uniOutArgs,sizeof(UNIVERSAL_OutArgs));
+           c6accelAsyncParams.pBuf = pAlloc;
+           c6accelAsyncParams.pBufSize = InArg_Buf_size;
+
+           status = UNIVERSAL_processAsync(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+           }
+      }
+     else
+       {
+#endif
+         // Sync call
+        status = UNIVERSAL_process(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+        /* Free the InArgs structure */
+        Memory_free(pAlloc, InArg_Buf_size, &wrapperMemParams);
+#ifdef SUPPORT_ASYNC
+        }
+#endif 
+
+    RELEASE_CODEC_ENGINE;
+
+    return status;
+
+}
+
+/*
+int C6Accel_cvRectangle(C6accel_Handle hC6accel, void * ptr_array, CvPoint pt1, CvPoint pt2, CvScalar color, int thickness)	
+Arguments
+* hC6accel C6accel Handle
+* ptr_array Pointer to Image.
+* pt1 Coordinates of top-left point.
+* pt2 Coordinates of bottom-right point.
+* color Type of color for the lines in rectangle
+* thickness  Thickness of line to draw
+
+Return value:  API returns status of the function call.
+               ==0 Pass
+               <0  Fail
+
+*/
+
+int C6accel_OPENCV_cvRectangle(C6accel_Handle hC6accel,
+                          void * ptr_array,       /* Pointer to input array */
+                          CvPoint pt1,       	  /* Point 1 coordinates    */
+			  CvPoint pt2, 		  /* Point 2 coordinates    */
+			  CvScalar color,	  /* Type of coloer         */
+			  int thickness		  /* Thickness of line      */
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType)
+#else 
+)
+#endif
+{
+    XDM1_BufDesc                inBufDesc;
+    XDM1_BufDesc                outBufDesc;
+    XDAS_Int32                  InArg_Buf_size;
+    IC6Accel_InArgs             *CInArgs;
+    UNIVERSAL_OutArgs           uniOutArgs;
+    Int                         status;
+    IplImage *tempImage = (IplImage *) ptr_array;
+    /* Define pointer to function parameter structure */
+    OPENCV_cvMatchTemplate_Params    *fp0;
+    XDAS_Int8                   *pAlloc;
+
+    ACQUIRE_CODEC_ENGINE;
+
+    /* Allocate the InArgs structure as it varies in size
+    (Needs to be changed everytime we make a API call)*/
+    InArg_Buf_size=  sizeof(Fxn_struct)+
+                     sizeof(OPENCV_cvRectangle_Params)+
+                     sizeof(CInArgs->size)+
+                     sizeof(CInArgs->Num_fxns);
+
+    /* Request contiguous heap memory allocation for the extended input structure */
+    pAlloc = (XDAS_Int8 *)Memory_alloc(InArg_Buf_size, &wrapperMemParams);
+    CInArgs= (IC6Accel_InArgs *)pAlloc;
+
+    /* Initialize .size fields for dummy input and output arguments */
+    uniOutArgs.size    = sizeof(uniOutArgs);
+
+    /* Set up buffers to pass buffers in and out to alg  */
+    inBufDesc.numBufs  = 1;
+    outBufDesc.numBufs = 0;
+
+    /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
+    /* See wrapper_c6accel_i.h for more details of operation                 */    // Same buffer acts as input and output
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+
+        
+    /* Initialize the extended InArgs structure */
+    CInArgs->Num_fxns = 1;
+    CInArgs->size     = InArg_Buf_size;
+
+    /* Set function Id and parameter pointers for first function call */
+    CInArgs->fxn[0].FxnID     = OPENCV_CVRECTANGLE_FXN_ID;
+    CInArgs->fxn[0].Param_ptr_offset = sizeof(CInArgs->size)+sizeof(CInArgs->Num_fxns)+sizeof(Fxn_struct);
+
+     /* Initialize pointers to function parameters */
+    fp0 = (OPENCV_cvRectangle_Params *)((XDAS_Int8*)CInArgs + CInArgs->fxn[0].Param_ptr_offset);
+
+    /* Fill in the fields in the parameter structure */
+    fp0->pIn_InArrID1        = INBUF0;
+    memcpy(&(fp0->array),ptr_array,sizeof(IplImage));
+   
+    memcpy(&(fp0->pt1),&pt1,sizeof(CvPoint));   
+    memcpy(&(fp0->pt2),&pt2,sizeof(CvPoint));
+    memcpy(&(fp0->color),&color,sizeof(CvScalar));
+    fp0->thickness = thickness;
+
+#ifdef SUPPORT_ASYNC
+    /* Call the actual algorithm */
+    if (callType == ASYNC)
+      {
+
+       //Update async structure
+       if (c6accelAsyncParams.asyncCallCount!=0)
+          { status = UNIVERSAL_EFAIL;
+            printf("Async call failed as %d are still pending\n",c6accelAsyncParams.asyncCallCount);
+          }
+       else
+          {c6accelAsyncParams.asyncCallCount++;
+           memcpy(&(c6accelAsyncParams.inBufs),&inBufDesc, sizeof (XDM1_BufDesc));
+ //           memcpy(&(c6accelAsyncParams.inOutBufs),&inOutBufs, sizeof (XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.outBufs), &outBufDesc,sizeof(XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.inArgs), CInArgs,sizeof(UNIVERSAL_InArgs));
+           memcpy(&(c6accelAsyncParams.outArgs),&uniOutArgs,sizeof(UNIVERSAL_OutArgs));
+           c6accelAsyncParams.pBuf = pAlloc;
+           c6accelAsyncParams.pBufSize = InArg_Buf_size;
+
+           status = UNIVERSAL_processAsync(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+           }
+      }
+     else
+       {
+#endif
+         // Sync call
+        status = UNIVERSAL_process(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+        /* Free the InArgs structure */
+        Memory_free(pAlloc, InArg_Buf_size, &wrapperMemParams);
+#ifdef SUPPORT_ASYNC
+        }
+#endif 
+
+    RELEASE_CODEC_ENGINE;
+
+    return status;
+
+}
+
+
+/*
+int C6Accel_cvMinMaxLoc(C6accel_Handle hC6accel, void * restrict ptr_arr, double* min_val, double* max_val, CvPoint* min_loc, CvPoint* max_loc, 									 						 void * restrict ptr_mask)
+Arguments
+* hC6accel C6accel Handle
+* ptr_arr Pointer to source matrix.
+* min_val Pointer store minimum value.
+* max_val Pointer to store maximum value.
+* min_loc Pointer to store minimum value coordinates.
+* max_loc Pointer to store maximum vlaue coordinates.
+* ptr_mask  Pointer to structure holding info about mask.
+
+
+Return value:  API returns status of the function call.
+               ==0 Pass
+               <0  Fail
+
+*/
+
+int C6accel_OPENCV_cvMinMaxLoc(C6accel_Handle hC6accel,
+                          void * restrict ptr_arr,       /* Pointer to input array    */
+                          double*         min_val,       /* Pointer to store min_val  */
+			  double*         max_val,	 /* Pointer to store max_val  */
+			  CvPoint*        min_loc,	 /* Pointer to store min_loc  */
+			  CvPoint*        max_loc,	 /* Pointer to store max_loc  */
+			  void * restrict ptr_mask       /* Pointer to mask */
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType)
+#else 
+)
+#endif
+{
+    XDM1_BufDesc                inBufDesc;
+    XDM1_BufDesc                outBufDesc;
+    XDAS_Int32                  InArg_Buf_size;
+    IC6Accel_InArgs             *CInArgs;
+    UNIVERSAL_OutArgs           uniOutArgs;
+    Int                         status;
+    IplImage *tempImage = (IplImage *) ptr_arr;
+    /* Define pointer to function parameter structure */
+    OPENCV_cvMinMaxLoc_Params   *fp0;
+    XDAS_Int8                   *pAlloc;
+
+    ACQUIRE_CODEC_ENGINE;
+
+    /* Allocate the InArgs structure as it varies in size
+    (Needs to be changed everytime we make a API call)*/
+    InArg_Buf_size=  sizeof(Fxn_struct)+
+                     sizeof(OPENCV_cvMinMaxLoc_Params)+
+                     sizeof(CInArgs->size)+
+                     sizeof(CInArgs->Num_fxns);
+
+    /* Request contiguous heap memory allocation for the extended input structure */
+    pAlloc = (XDAS_Int8 *)Memory_alloc(InArg_Buf_size, &wrapperMemParams);
+    CInArgs= (IC6Accel_InArgs *)pAlloc;
+
+    /* Initialize .size fields for dummy input and output arguments */
+    uniOutArgs.size    = sizeof(uniOutArgs);
+
+    /* Set up buffers to pass buffers in and out to alg  */
+    inBufDesc.numBufs  = 1;
+    outBufDesc.numBufs = 0;
+
+    /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
+    /* See wrapper_c6accel_i.h for more details of operation                 */
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+
+        
+    /* Initialize the extended InArgs structure */
+    CInArgs->Num_fxns = 1;
+    CInArgs->size     = InArg_Buf_size;
+
+    /* Set function Id and parameter pointers for first function call */
+    CInArgs->fxn[0].FxnID     = OPENCV_CVMINMAXLOC_FXN_ID;
+    CInArgs->fxn[0].Param_ptr_offset = sizeof(CInArgs->size)+sizeof(CInArgs->Num_fxns)+sizeof(Fxn_struct);
+
+     /* Initialize pointers to function parameters */
+    fp0 = (OPENCV_cvMinMaxLoc_Params *)((XDAS_Int8*)CInArgs + CInArgs->fxn[0].Param_ptr_offset);
+
+    /* Fill in the fields in the parameter structure */
+    fp0->pIn_InArrID1        = INBUF0;
+    memcpy(&(fp0->arr),ptr_arr,sizeof(IplImage));
+    
+    fp0->min_val = min_val;     							// need to check on this since pointer is to be passed
+    fp0->max_val = max_val;  								// need to check on this since pointer is to be passed
+    fp0->min_loc = min_loc;								//  xxxxxxxx   check this too   xxxxxxxxxxxxxxxxxxxxxx
+    fp0->max_loc = max_loc;								//  xxxxxxxx   check this too   xxxxxxxxxxxxxxxxxxxxxx
+    if(ptr_mask)
+    	memcpy(&(fp0->mask),ptr_mask,sizeof(IplImage));					// since mask cannot be IplImage, may lead to segfault.(check)
+
+
+#ifdef SUPPORT_ASYNC
+    /* Call the actual algorithm */
+    if (callType == ASYNC)
+      {
+
+       //Update async structure
+       if (c6accelAsyncParams.asyncCallCount!=0)
+          { status = UNIVERSAL_EFAIL;
+            printf("Async call failed as %d are still pending\n",c6accelAsyncParams.asyncCallCount);
+          }
+       else
+          {c6accelAsyncParams.asyncCallCount++;
+           memcpy(&(c6accelAsyncParams.inBufs),&inBufDesc, sizeof (XDM1_BufDesc));
+ //           memcpy(&(c6accelAsyncParams.inOutBufs),&inOutBufs, sizeof (XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.outBufs), &outBufDesc,sizeof(XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.inArgs), CInArgs,sizeof(UNIVERSAL_InArgs));
+           memcpy(&(c6accelAsyncParams.outArgs),&uniOutArgs,sizeof(UNIVERSAL_OutArgs));
+           c6accelAsyncParams.pBuf = pAlloc;
+           c6accelAsyncParams.pBufSize = InArg_Buf_size;
+
+           status = UNIVERSAL_processAsync(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+           }
+      }
+     else
+       {
+#endif
+         // Sync call
+        status = UNIVERSAL_process(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+        /* Free the InArgs structure */
+        Memory_free(pAlloc, InArg_Buf_size, &wrapperMemParams);
+#ifdef SUPPORT_ASYNC
+        }
+#endif 
+
+    RELEASE_CODEC_ENGINE;
+
+    return status;
+
+}
+
+
+/*
+int C6Accel_cvCopy(C6accel_Handle hC6accel, void * restrict ptr_src, void * ptr_dst, void * restrict ptr_mask)
+Arguments
+* hC6accel C6accel Handle
+* ptr_src Pointer to source matrix.
+* ptr_dst Pointer to destination matrix.
+* ptr_mask Pointer to mask.
+
+
+Return value:  API returns status of the function call.
+               ==0 Pass
+               <0  Fail
+
+*/
+
+int C6accel_OPENCV_cvCopy(C6accel_Handle hC6accel,
+                          void * restrict ptr_src,       /* Pointer to input array */
+                          void *          ptr_dst,       /* Pointer to output array    */
+			  void * restrict ptr_mask
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType)
+#else 
+)
+#endif
+{
+    XDM1_BufDesc                inBufDesc;
+    XDM1_BufDesc                outBufDesc;
+    XDAS_Int32                  InArg_Buf_size;
+    IC6Accel_InArgs             *CInArgs;
+    UNIVERSAL_OutArgs           uniOutArgs;
+    Int                         status;
+    IplImage *tempImage = (IplImage *) ptr_src;
+    /* Define pointer to function parameter structure */
+    OPENCV_cvCopy_Params        *fp0;
+    XDAS_Int8                   *pAlloc;
+
+    ACQUIRE_CODEC_ENGINE;
+
+    /* Allocate the InArgs structure as it varies in size
+    (Needs to be changed everytime we make a API call)*/
+    InArg_Buf_size=  sizeof(Fxn_struct)+
+                     sizeof(OPENCV_cvCopy_Params)+
+                     sizeof(CInArgs->size)+
+                     sizeof(CInArgs->Num_fxns);
+
+    /* Request contiguous heap memory allocation for the extended input structure */
+    pAlloc = (XDAS_Int8 *)Memory_alloc(InArg_Buf_size, &wrapperMemParams);
+    CInArgs= (IC6Accel_InArgs *)pAlloc;
+
+    /* Initialize .size fields for dummy input and output arguments */
+    uniOutArgs.size    = sizeof(uniOutArgs);
+
+    /* Set up buffers to pass buffers in and out to alg  */
+    inBufDesc.numBufs  = 1;
+    outBufDesc.numBufs = 1;
+
+    /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
+    /* See wrapper_c6accel_i.h for more details of operation                 */
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+
+    tempImage = (IplImage *) ptr_dst;
+    size = tempImage->widthStep * tempImage->height;
+    CACHE_INV_OUTPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+        
+    /* Initialize the extended InArgs structure */
+    CInArgs->Num_fxns = 1;
+    CInArgs->size     = InArg_Buf_size;
+
+    /* Set function Id and parameter pointers for first function call */
+    CInArgs->fxn[0].FxnID     = OPENCV_CVCOPY_FXN_ID;
+    CInArgs->fxn[0].Param_ptr_offset = sizeof(CInArgs->size)+sizeof(CInArgs->Num_fxns)+sizeof(Fxn_struct);
+
+     /* Initialize pointers to function parameters */
+    fp0 = (OPENCV_cvCopy_Params *)((XDAS_Int8*)CInArgs + CInArgs->fxn[0].Param_ptr_offset);
+
+    /* Fill in the fields in the parameter structure */
+    fp0->pIn_InArrID1        = INBUF0;
+    memcpy(&(fp0->src),ptr_src,sizeof(IplImage));    
+    fp0->pOut_OutArrID1      = OUTBUF0;
+    memcpy(&(fp0->dst),ptr_dst,sizeof(IplImage));
+
+    if(ptr_mask)
+    	memcpy(&(fp0->mask),ptr_mask,sizeof(IplImage));     			// Need to check on this. May raise segfault due to mask struct size
+
+#ifdef SUPPORT_ASYNC
+    /* Call the actual algorithm */
+    if (callType == ASYNC)
+      {
+
+       //Update async structure
+       if (c6accelAsyncParams.asyncCallCount!=0)
+          { status = UNIVERSAL_EFAIL;
+            printf("Async call failed as %d are still pending\n",c6accelAsyncParams.asyncCallCount);
+          }
+       else
+          {c6accelAsyncParams.asyncCallCount++;
+           memcpy(&(c6accelAsyncParams.inBufs),&inBufDesc, sizeof (XDM1_BufDesc));
+ //           memcpy(&(c6accelAsyncParams.inOutBufs),&inOutBufs, sizeof (XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.outBufs), &outBufDesc,sizeof(XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.inArgs), CInArgs,sizeof(UNIVERSAL_InArgs));
+           memcpy(&(c6accelAsyncParams.outArgs),&uniOutArgs,sizeof(UNIVERSAL_OutArgs));
+           c6accelAsyncParams.pBuf = pAlloc;
+           c6accelAsyncParams.pBufSize = InArg_Buf_size;
+
+           status = UNIVERSAL_processAsync(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+           }
+      }
+     else
+       {
+#endif
+         // Sync call
+        status = UNIVERSAL_process(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+        /* Free the InArgs structure */
+        Memory_free(pAlloc, InArg_Buf_size, &wrapperMemParams);
+#ifdef SUPPORT_ASYNC
+        }
+#endif 
+
+    RELEASE_CODEC_ENGINE;
+
+    return status;
+
+}
+
+
+/*
+int C6Accel_cvZero(C6accel_Handle hC6accel, void * ptr_arr)
+Arguments
+* hC6accel C6accel Handle
+* ptr_arr Pointer to Image.
+
+Return value:  API returns status of the function call.
+               ==0 Pass
+               <0  Fail
+
+*/
+
+int C6accel_OPENCV_cvZero(C6accel_Handle hC6accel,
+                          void * ptr_arr                  /* Pointer to input array */
+#ifdef SUPPORT_ASYNC
+                          ,E_CALL_TYPE callType)
+#else 
+)
+#endif
+{
+    XDM1_BufDesc                inBufDesc;
+    XDM1_BufDesc                outBufDesc;
+    XDAS_Int32                  InArg_Buf_size;
+    IC6Accel_InArgs             *CInArgs;
+    UNIVERSAL_OutArgs           uniOutArgs;
+    Int                         status;
+    IplImage *tempImage = (IplImage *) ptr_arr;
+    /* Define pointer to function parameter structure */
+    OPENCV_cvZero_Params        *fp0;
+    XDAS_Int8                   *pAlloc;
+
+    ACQUIRE_CODEC_ENGINE;
+
+    /* Allocate the InArgs structure as it varies in size
+    (Needs to be changed everytime we make a API call)*/
+    InArg_Buf_size=  sizeof(Fxn_struct)+
+                     sizeof(OPENCV_cvZero_Params)+
+                     sizeof(CInArgs->size)+
+                     sizeof(CInArgs->Num_fxns);
+
+    /* Request contiguous heap memory allocation for the extended input structure */
+    pAlloc = (XDAS_Int8 *)Memory_alloc(InArg_Buf_size, &wrapperMemParams);
+    CInArgs= (IC6Accel_InArgs *)pAlloc;
+
+    /* Initialize .size fields for dummy input and output arguments */
+    uniOutArgs.size    = sizeof(uniOutArgs);
+
+    /* Set up buffers to pass buffers in and out to alg  */
+    inBufDesc.numBufs  = 1;
+    outBufDesc.numBufs = 0;
+
+    /* Fill in input/output buffer descriptor parameters and manage ARM cache*/
+    /* See wrapper_c6accel_i.h for more details of operation                 */
+    int size = tempImage->widthStep * tempImage->height;
+    CACHE_WB_INV_INPUT_BUFFERS_AND_SETUP_FOR_C6ACCEL(tempImage->imageData,0,size);
+        
+    /* Initialize the extended InArgs structure */
+    CInArgs->Num_fxns = 1;
+    CInArgs->size     = InArg_Buf_size;
+
+    /* Set function Id and parameter pointers for first function call */
+    CInArgs->fxn[0].FxnID     = OPENCV_CVZERO_FXN_ID;
+    CInArgs->fxn[0].Param_ptr_offset = sizeof(CInArgs->size)+sizeof(CInArgs->Num_fxns)+sizeof(Fxn_struct);
+
+     /* Initialize pointers to function parameters */
+    fp0 = (OPENCV_cvZero_Params *)((XDAS_Int8*)CInArgs + CInArgs->fxn[0].Param_ptr_offset);
+
+    /* Fill in the fields in the parameter structure */
+    fp0->pIn_InArrID1        = INBUF0;
+    memcpy(&(fp0->arr),ptr_arr,sizeof(IplImage));
+
+
+#ifdef SUPPORT_ASYNC
+    /* Call the actual algorithm */
+    if (callType == ASYNC)
+      {
+
+       //Update async structure
+       if (c6accelAsyncParams.asyncCallCount!=0)
+          { status = UNIVERSAL_EFAIL;
+            printf("Async call failed as %d are still pending\n",c6accelAsyncParams.asyncCallCount);
+          }
+       else
+          {c6accelAsyncParams.asyncCallCount++;
+           memcpy(&(c6accelAsyncParams.inBufs),&inBufDesc, sizeof (XDM1_BufDesc));
+ //           memcpy(&(c6accelAsyncParams.inOutBufs),&inOutBufs, sizeof (XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.outBufs), &outBufDesc,sizeof(XDM1_BufDesc));
+           memcpy(&(c6accelAsyncParams.inArgs), CInArgs,sizeof(UNIVERSAL_InArgs));
+           memcpy(&(c6accelAsyncParams.outArgs),&uniOutArgs,sizeof(UNIVERSAL_OutArgs));
+           c6accelAsyncParams.pBuf = pAlloc;
+           c6accelAsyncParams.pBufSize = InArg_Buf_size;
+
+           status = UNIVERSAL_processAsync(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+           }
+      }
+     else
+       {
+#endif
+         // Sync call
+        status = UNIVERSAL_process(hC6accel->hUni, &inBufDesc, &outBufDesc, NULL,(UNIVERSAL_InArgs *)CInArgs, &uniOutArgs);
+        /* Free the InArgs structure */
+        Memory_free(pAlloc, InArg_Buf_size, &wrapperMemParams);
+#ifdef SUPPORT_ASYNC
+        }
+#endif 
+
+    RELEASE_CODEC_ENGINE;
+
+    return status;
+
+}
+
+
+
+/* This function defination is added by Pramod */
+/*
 int C6accel_RGB_To_Y(C6accel_Handle hC6accel, unsigned char * restrict ptr_src, unsigned char * restrict ptr_dst, unsigned int count)
 Arguments
 * hC6accel C6accel Handle
