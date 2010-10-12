@@ -385,7 +385,7 @@ process call*/
 #define OPENCV_CVMINMAXLOC_FXN_ID           0x01090007
 #define OPENCV_CVCOPY_FXN_ID                0x01090008
 #define OPENCV_CVZERO_FXN_ID                0x01090009
-
+#define OPENCV_CVSETZERO_FXN_ID             0x01090009 // (cvSetZero == cvZero)
 
 /**********************************************************************/  
 /*                                                                    */
@@ -2070,8 +2070,8 @@ typedef struct OPENCV_cvNormalize_Params{
 			  		 int    norm_type;		 /* Type of normalization */
 					 IplImage src;
 					 IplImage dst;
-					 IplImage mask;
-                                         }OPENCV_Normalize_Params;
+					 CvArr* mask;
+                                         }OPENCV_cvNormalize_Params;
 
 /* Function Call: void OPENCV_cvMatchTemplate(const CvArr* image, CvArr* templ, CvArr* result, int method)*/
 typedef struct OPENCV_cvRectangle_Params{
@@ -2081,25 +2081,27 @@ typedef struct OPENCV_cvRectangle_Params{
 			  		 CvPoint pt2; 		  /* Point 2 coordinates    */
 			  		 CvScalar color;	  /* Type of coloer         */
 			  		 int thickness;		  /* Thickness of line      */
+					 int line_type;		  /* Type of line           */
+					 int shift;		 /* Shift                   */
                                          }OPENCV_cvRectangle_Params;
 /* Function Call: void cvMinMaxLoc(const CvArr* image, CvArr* sum, CvArr* sqsum, CvArr* tilted_sum)*/
 typedef struct OPENCV_cvMinMaxLoc_Params{
                                          int            pIn_InArrID1;    /* Image inCols x inRows */
 					 IplImage       arr;
-					 double         min_val;         /* Pointer to store min_val  */
-			  		 double         max_val;	 /* Pointer to store max_val  */
-			  		 CvPoint        min_loc;	 /* Pointer to store min_loc  */
-			  		 CvPoint        max_loc;	 /* Pointer to store max_loc  */
-					 IplImage       mask;
+					 double*        min_val;         /* Pointer to store min_val  */
+			  		 double*        max_val;	 /* Pointer to store max_val  */
+			  		 CvPoint*       min_loc;	 /* Pointer to store min_loc  */
+			  		 CvPoint*       max_loc;	 /* Pointer to store max_loc  */
+					 CvArr*         mask;
                                          }OPENCV_cvMinMaxLoc_Params;
 
 /* Function Call: void OPENCV_cvCopy(const CvArr* image, CvArr* templ, CvArr* result, int method)*/
 typedef struct OPENCV_cvCopy_Params{
                                          int pIn_InArrID1;         /* Image inCols x inRows */
-                                         int pIn_InArrID2;       /* template output buffer */
+                                         int pOut_OutArrID1;       /* template output buffer */
 					 IplImage src;
 					 IplImage dst;
-					 IplImage mask;
+					 CvArr* mask;
                                          }OPENCV_cvCopy_Params;
 
 /* Function Call: void OPENCV_cvZero(const CvArr* image, CvArr* templ, CvArr* result, int method)*/

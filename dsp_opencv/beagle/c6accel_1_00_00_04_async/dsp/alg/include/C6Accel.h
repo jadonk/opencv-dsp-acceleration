@@ -342,13 +342,14 @@
 /* OPENCV function ids */
 #define CVINTEGRAL_FXN_ID                   0x00000001    /* Added by Pramod */
 #define CVMATCHTEMPLATE_FXN_ID         	    0x00000002
-#define CVCVTCOLOR_FXN_ID              	    0x01090003
-#define CVMULSPECTRUMS_FXN_ID          	    0x01090004
-#define CVNORMALIZE_FXN_ID             	    0x01090005
-#define CVRECTANGLE_FXN_ID             	    0x01090006
-#define CVMINMAXLOC_FXN_ID             	    0x01090007
-#define CVCOPY_FXN_ID                  	    0x01090008
-#define CVZERO_FXN_ID                  	    0x01090009
+#define CVCVTCOLOR_FXN_ID              	    0x00000003
+#define CVMULSPECTRUMS_FXN_ID          	    0x00000004
+#define CVNORMALIZE_FXN_ID             	    0x00000005
+#define CVRECTANGLE_FXN_ID             	    0x00000006
+#define CVMINMAXLOC_FXN_ID             	    0x00000007
+#define CVCOPY_FXN_ID                  	    0x00000008
+#define CVZERO_FXN_ID                  	    0x00000009
+#define CVSETZERO_FXN_ID                    0x00000009  // (cvSetZero == cvZero)
 
 /*  Other IMGLIB fxn IDs  */
 #define RGB_TO_Y_FXN_ID			    0x00000001    /* Added by Pramod */

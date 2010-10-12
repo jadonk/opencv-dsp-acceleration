@@ -3044,7 +3044,7 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
 			 }		         
 			 break;
 		  case (CVCVTCOLOR_FXN_ID): {
-			 char *src=NULL, *templ=dst;
+			 char *src=NULL, *dst=NULL;
 			 /* Unmarshal Parameters */
 			 OPENCV_cvCvtColor_Params *C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr;
                          C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr = pFnArray;
@@ -3057,8 +3057,8 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
                            /* Call underlying kernel */
 			   /* Parameter check is done in the library*/
                            /* Call underlying kernel */
-   			   src = C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->image.imageData;
-			   dst= C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->result.imageData;
+   			   src = C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->src.imageData;
+			   dst= C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->dst.imageData;
 			   C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->src.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->pIn_InArrID1].buf;
 			   C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->dst.imageData = (char *)outBufs->descs[C6ACCEL_TI_OPENCV_cvCvtColor_paramPtr->pOut_OutArrID1].buf;
 			   
@@ -3114,7 +3114,6 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
                          C6ACCEL_TI_OPENCV_cvNormalize_paramPtr = pFnArray;
 			 /* Parameter check */
                          if (((C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->pIn_InArrID1)>INBUF15)|
-			     ((C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->pIn_InArrID2)>INBUF15)|
                              ((C6ACCEL_TI_OPENCV_cvNormalize_paramPtr->pOut_OutArrID1)>OUTBUF15)){
                               return(IUNIVERSAL_EPARAMFAIL);
                          }
@@ -3148,7 +3147,7 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
 			 OPENCV_cvRectangle_Params *C6ACCEL_TI_OPENCV_cvRectangle_paramPtr;
                          C6ACCEL_TI_OPENCV_cvRectangle_paramPtr = pFnArray;
 			 /* Parameter check */
-                         if (((C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->pOut_InArrID1)>INBUF15)){
+                         if (((C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->pIn_InArrID1)>INBUF15)){
                               return(IUNIVERSAL_EPARAMFAIL);
                          }
                          else {
@@ -3162,7 +3161,9 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
 			        C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->pt1,
 			     	C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->pt2,
 				C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->color,
-				C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->thickness
+				C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->thickness,
+				C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->line_type,
+				C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->shift
 			        );
 			   
 			   C6ACCEL_TI_OPENCV_cvRectangle_paramPtr->array.imageData  = array;
@@ -3175,7 +3176,7 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
 			 OPENCV_cvMinMaxLoc_Params *C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr;
                          C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr = pFnArray;
 			 /* Parameter check */
-                         if (((C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->pOut_InArrID1)>INBUF15)){
+                         if (((C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->pIn_InArrID1)>INBUF15)){
                               return(IUNIVERSAL_EPARAMFAIL);
                          }
                          else {
@@ -3186,14 +3187,14 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
 			   C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->arr.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->pIn_InArrID1].buf;
 			   
 			   cvMinMaxLoc( &C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->arr,
-			        &C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->min_val,
-			     	&C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->max_val,
-				&C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->min_loc,
-				&C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->max_loc,
-				&C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->mask
+			        C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->min_val,
+			     	C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->max_val,
+				C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->min_loc,
+				C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->max_loc,
+				C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->mask
 			        );
 			   
-			   C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->image.imageData  = image;
+			   C6ACCEL_TI_OPENCV_cvMinMaxLoc_paramPtr->arr.imageData  = arr;
 			   }
 			 }		         
 			 break;
@@ -3211,10 +3212,10 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
                            /* Call underlying kernel */
 			   /* Parameter check is done in the library*/
                            /* Call underlying kernel */
-   			   src = C6ACCEL_TI_OPENCV_cvCopy_paramPtr->image.imageData;
-			   dst= C6ACCEL_TI_OPENCV_cvCopy_paramPtr->result.imageData;
-			   C6ACCEL_TI_OPENCV_cvCopy_paramPtr->src.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pIn_InArrID1].buf;
-			   C6ACCEL_TI_OPENCV_cvCopy_paramPtr->dst.imageData = (char *)outBufs->descs[C6ACCEL_TI_OPENCV_cvMatchTemplate_paramPtr->pOut_OutArrID1].buf;
+   			   src = C6ACCEL_TI_OPENCV_cvCopy_paramPtr->src.imageData;
+			   dst= C6ACCEL_TI_OPENCV_cvCopy_paramPtr->dst.imageData;
+			   C6ACCEL_TI_OPENCV_cvCopy_paramPtr->src.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvCopy_paramPtr->pIn_InArrID1].buf;
+			   C6ACCEL_TI_OPENCV_cvCopy_paramPtr->dst.imageData = (char *)outBufs->descs[C6ACCEL_TI_OPENCV_cvCopy_paramPtr->pOut_OutArrID1].buf;
 			   
 			   cvCopy( &C6ACCEL_TI_OPENCV_cvCopy_paramPtr->src,
 			        &C6ACCEL_TI_OPENCV_cvCopy_paramPtr->dst,
@@ -3242,7 +3243,7 @@ XDAS_Int32 C6ACCEL_TI_process(IUNIVERSAL_Handle handle,
    			   arr = C6ACCEL_TI_OPENCV_cvZero_paramPtr->arr.imageData;
 			   C6ACCEL_TI_OPENCV_cvZero_paramPtr->arr.imageData = (char *)inBufs->descs[C6ACCEL_TI_OPENCV_cvZero_paramPtr->pIn_InArrID1].buf;
 			   
-			   cvZero( &C6ACCEL_TI_OPENCV_cvZero_paramPtr->arr);
+			   cvSetZero( &C6ACCEL_TI_OPENCV_cvZero_paramPtr->arr);
 			   
 			   C6ACCEL_TI_OPENCV_cvZero_paramPtr->arr.imageData  = arr;
 			   }
