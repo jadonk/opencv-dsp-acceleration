@@ -59,11 +59,30 @@ int DSP_cvSobelProcess(DSP_Mat *, DSP_Mat *, DSP_Flags *);
 
 int DSP_cvDFTProcess(void *, void *, DSP_Flags *);
 
+int DSP_cvIntegralProcess(void *, void *, void *, void *);
+/*
 int DSP_cvIntegralProcess(DSP_Mat *, DSP_Mat *, DSP_Mat *, DSP_Mat *);
+*/
+int DSP_cvMatchTemplateProcess(void *, void *, void *, int);
 
-int DSP_cvCvtColorProcess(DSP_Mat *, DSP_Mat *, DSP_Flags *);
+int DSP_CvtColorProcess(DSP_Mat *, DSP_Mat *, DSP_Flags *);
 
 int DSP_cvCvtColor_cvSobelProcess(DSP_Mat *, DSP_Mat *, DSP_Flags *, DSP_Mat *, DSP_Mat *, DSP_Flags *);
+
+int DSP_cvCvtColorProcess( const CvArr* srcarr, CvArr* dstarr, int code );
+
+int DSP_cvMulSpectrumsProcess( const CvArr* src1, const CvArr* src2, CvArr* dst, int flags );
+
+int DSP_cvNormalizeProcess( const CvArr* src, CvArr* dst, double a, double b, int norm_type, const CvArr* mask );
+
+int DSP_cvRectangleProcess( const CvArr* array, CvPoint pt1, CvPoint pt2, CvScalar color, int thickness, int line_type, int shift );
+
+int DSP_cvMinMaxLocProcess( const CvArr* src, double* min_val, double* max_val, CvPoint* min_loc, CvPoint* max_loc, const CvArr* mask );
+
+int DSP_cvCopyProcess( const CvArr* src, CvArr* dst, const CvArr* mask );
+
+int DSP_cvZeroProcess( CvArr* arr );
+
 
 void DSP_cvSyncDSPProcess();
 

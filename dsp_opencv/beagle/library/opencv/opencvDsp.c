@@ -7,13 +7,14 @@
 #include <ti/sdo/ce/Engine.h>
 #include <ti/sdo/ce/osal/Memory.h>
 #include <ti/sdo/ce/CERuntime.h>
-#include "../c6accelw/c6accelw.h"
+
+#include <string.h>
+#include <opencv/cv.h>
 
 #include "beagle_opencv_API.h"
 #include "opencvDsp.h"
 
-#include <string.h>
-#include <opencv/cv.h>
+#include "../c6accelw/c6accelw.h"
 
 #ifndef SUPPORT_ASYNC
 #define SUPPORT_ASYNC
@@ -100,7 +101,125 @@ int DSP_cvDFTProcess(void * src, void * dst, DSP_Flags * flags)
 
 }
 
+
 /* Process Integral algorithm on the DSP */
+int DSP_cvIntegralProcess( void * src, void * sum, void * sqsum, void * tiltedsum)
+{
+    int status;
+    
+    status = C6accel_OPENCV_cvIntegral(hC6accel, src, sum, sqsum, tiltedsum, ASYNC);
+    
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    return OPENCVDSP_OK;
+
+}
+
+/* Process Match Template algorithm on the DSP */
+int DSP_cvMatchTemplateProcess( void * image, void * templ, void * result, int method)
+{
+    int status;
+    
+    status = C6accel_OPENCV_cvMatchTemplate(hC6accel, image, templ, result, method, ASYNC);
+    
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    return OPENCVDSP_OK;
+
+}
+
+/* Process cvCvtColor() algorithm on the DSP */
+int DSP_cvCvtColorProcess( const CvArr* srcarr, CvArr* dstarr, int code )
+{
+    int status;
+    
+    status = C6accel_OPENCV_cvCvtColor(hC6accel, (void*)srcarr, dstarr, code, ASYNC);
+    
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    return OPENCVDSP_OK;
+
+}
+
+/* Process cvMulSpectrum() algorithm on the DSP */
+int DSP_cvMulSpectrumsProcess( const CvArr* src1, const CvArr* src2, CvArr* dst, int flags )
+{
+    int status;
+    
+    status = C6accel_OPENCV_cvMulSpectrums(hC6accel, (void*)src1, (void*)src2, dst, flags, ASYNC);
+    
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    return OPENCVDSP_OK;
+
+}
+/* Process cvNormalize() on DSP */
+int DSP_cvNormalizeProcess( const CvArr* src, CvArr* dst, double a, double b, int norm_type, const CvArr* mask )
+{
+    int status;
+    
+    status = C6accel_OPENCV_cvNormalize(hC6accel, (void*)src, dst, a, b, norm_type, (void*)mask, ASYNC);
+    
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    return OPENCVDSP_OK;
+
+}
+
+/* Process cvRectangle() on DSP */
+int DSP_cvRectangleProcess( const CvArr* array, CvPoint pt1, CvPoint pt2, CvScalar color, int thickness, int line_type, int shift )
+{
+    int status;
+    
+    status = C6accel_OPENCV_cvRectangle(hC6accel, (void*)array, pt1, pt2, color, thickness, line_type, shift, ASYNC);
+    
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    return OPENCVDSP_OK;
+
+}
+
+/* Process cvMinMaxLoc() on DSP */
+int DSP_cvMinMaxLocProcess( const CvArr* src, double* min_val, double* max_val, CvPoint* min_loc, CvPoint* max_loc, const CvArr* mask )
+{
+    int status;
+    
+    status = C6accel_OPENCV_cvMinMaxLoc(hC6accel, (void*)src, min_val, max_val, min_loc, max_loc, (void*)mask, ASYNC);
+    
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    return OPENCVDSP_OK;
+
+}
+
+/* Process cvCopy() on DSP */
+int DSP_cvCopyProcess( const CvArr* src, CvArr* dst, const CvArr* mask )
+{
+    int status;
+    
+    status = C6accel_OPENCV_cvCopy(hC6accel, (void*)src, dst, (void*)mask, ASYNC);
+    
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    return OPENCVDSP_OK;
+
+}
+
+/* Process cvZero() on DSP */
+int DSP_cvZeroProcess( CvArr* arr )
+{
+    int status;
+    
+    status = C6accel_OPENCV_cvZero(hC6accel, arr, ASYNC);
+    
+    if(status != 0)
+	return OPENCVDSP_ERR;
+    return OPENCVDSP_OK;
+
+}
+
+/*
+      //////This routine use integral algorithm from VLIB////// 
 int DSP_cvIntegralProcess( DSP_Mat * src, DSP_Mat * sum, DSP_Mat * sqsum, DSP_Mat * tiltedsum)
 {
     int status;
@@ -122,9 +241,11 @@ int DSP_cvIntegralProcess( DSP_Mat * src, DSP_Mat * sum, DSP_Mat * sqsum, DSP_Ma
     return OPENCVDSP_OK;
 
 }
+*/
 
 /* Process color space conversion on DSP */
-int DSP_cvCvtColorProcess(DSP_Mat * src, DSP_Mat * dst, DSP_Flags * flags)
+ //////////This routine does not use opencv library on the DSP side //////////////
+int DSP_CvtColorProcess(DSP_Mat * src, DSP_Mat * dst, DSP_Flags * flags)
 {   
     int status;
     unsigned int count = src->rows * src->cols;

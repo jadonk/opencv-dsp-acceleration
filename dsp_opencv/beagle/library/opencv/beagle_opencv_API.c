@@ -25,7 +25,7 @@ void DSP_cvStartDSP()
 {   int status;
     status = DSP_cvStartDSPProcess();
     if (status == OPENCVDSP_ERR) {
-       	printf("Error: DSP initilaization Failed. \n");
+       	printf("Error: DSP initilaization (DSP_cvStartDSPProcess) Failed. \n");
     }
 }
 
@@ -65,32 +65,11 @@ void DSP_cvSobel( const CvArr* srcarr, CvArr* dstarr, int dx, int dy, int apertu
     dst1 = mat_OpenCV2DSP(dst);
     flags = FLAGS3_OpenCV2DSP(dx,dy,aperture_size);
 
-#if 0 
-    /* Normalize if float */
-    if(src.depth() == CV_32F) {
-            
-        float *flPtr = (float *)src1.data;
-        while(flPtr < (float *)src1.dataend) {
-	    *flPtr = *flPtr / 32767;
-            flPtr++;
-        }
-    }
-#endif
-
     status = DSP_cvSobelProcess(&src1, &dst1, &flags);
 
     if (status == OPENCVDSP_ERR) 
-        printf("Error: DSP Process failed. \n");
-#if 0      
-    /* unnormalize */
-    if(dst.depth() == CV_32F) {
-        float *flPtr = (float *)dst1.data;
-        while(flPtr < (float *)dst1.dataend) {
-	    *flPtr = *flPtr / 32767;
-            flPtr++;
-        }
-    }
-#endif
+        printf("Error: DSP Process (DSP_cvSobelProcess) failed. \n");
+
 
 }
 
@@ -122,7 +101,7 @@ void DSP_cvDFT( const CvArr* srcarr, CvArr* dstarr, int flags, int nonzero_rows 
     
     status = DSP_cvDFTProcess(src1, dst1, &_flags);
     if (status == OPENCVDSP_ERR) {
-        printf("Error: DSP Process failed. \n");
+        printf("Error: DSP Process (DSP_cvDFTProcess) failed. \n");
 	return;
     }
   
@@ -130,8 +109,44 @@ void DSP_cvDFT( const CvArr* srcarr, CvArr* dstarr, int flags, int nonzero_rows 
 }
 
 /*
+ *  ======== cvMatchTemplate ========
+ */
+
+void DSP_cvMatchTemplate( const CvArr* image, const CvArr* templ,
+            CvArr* result, int method )
+{
+           
+    int status;
+        
+    status = DSP_cvMatchTemplateProcess( (void *)image, (void *)templ, result , method );
+	    
+    if (status == OPENCVDSP_ERR) 
+        printf("Error: DSP Process (DSP_cvMatchTemplateProcess) failed. \n");
+
+}
+
+/*
  *  ======== cvIntegral ========
  */
+
+void DSP_cvIntegral( const CvArr* image, CvArr* sumImage,
+            CvArr* sumSqImage, CvArr* tiltedSumImage )
+{
+           
+    int status;
+        
+    status = DSP_cvIntegralProcess( (void *)image, sumImage, sumSqImage , tiltedSumImage );
+	    
+    if (status == OPENCVDSP_ERR) 
+        printf("Error: DSP Process (DSP_cvIntegralProcess) failed. \n");
+
+}
+
+
+/*
+ *  ======== cvIntegral ========
+ */
+/*
 void DSP_cvIntegral( const CvArr* image, CvArr* sumImage,
             CvArr* sumSqImage, CvArr* tiltedSumImage )
 {
@@ -173,7 +188,7 @@ void DSP_cvIntegral( const CvArr* image, CvArr* sumImage,
        tilted_ = mat_OpenCV2DSP(tilted);        
     
 #if 0 
-    /* Normalize if float */
+    // Normalize if float 
     if(src.depth() == CV_32F) {            
         float *flPtr = (float *)src1.data;
         while(flPtr < (float *)src1.dataend) {
@@ -189,7 +204,7 @@ void DSP_cvIntegral( const CvArr* image, CvArr* sumImage,
         printf("Error: DSP Process failed. \n");
 
 #if 0 
-    /* unnormalize */
+    // unnormalize 
     if(sum.depth() == CV_32F) {
         float *flPtr = (float *)dst1.data;
         while(flPtr < (float *)dst1.dataend) {
@@ -200,11 +215,13 @@ void DSP_cvIntegral( const CvArr* image, CvArr* sumImage,
 #endif
 
 }
+*/
 
 /*
  *  ======== cvCvtColor ========
  */
-void DSP_cvCvtColor( const CvArr* srcarr, CvArr* dstarr, int code )
+     //This segment does not uses opecvlibrary on DSP
+void DSP_CvtColor( const CvArr* srcarr, CvArr* dstarr, int code )
 {
     cv::Mat src = cv::cvarrToMat(srcarr);
     cv::Mat dst = cv::cvarrToMat(dstarr);
@@ -226,17 +243,107 @@ void DSP_cvCvtColor( const CvArr* srcarr, CvArr* dstarr, int code )
             if( ((MAT_CN(src.flags) != 3) && (MAT_CN(src.flags) != 4)) || (MAT_CN(dst.flags) != 1) )
                 CV_Error( CV_BadNumChannels,"Incorrect number of channels for this conversion code" );
 
-            status = DSP_cvCvtColorProcess(&src1, &dst1, &flags);
+            status = DSP_CvtColorProcess(&src1, &dst1, &flags);
             break;
 	default:
 	    printf("DSP: Color conversion code NOT SUPPORTED.\n");
     }
     
     if(status == OPENCVDSP_ERR)
-	printf("Error: DSP Process failed. \n");
+	printf("Error: DSP Process (CvtColor) failed. \n");
 	
 }
 
+
+void DSP_cvCvtColor( const CvArr* srcarr, CvArr* dstarr, int code )
+{        
+    int status;
+      
+    status = DSP_cvCvtColorProcess((void *)srcarr, dstarr, code);
+        
+    if(status == OPENCVDSP_ERR)
+	printf("Error: DSP Process (DSP_cvCvtColorProcess) failed. \n");
+	
+}
+
+/* ****** cvMulSpectrums()**************************/
+
+void DSP_cvMulSpectrums( const CvArr* src1, const CvArr* src2, CvArr* dst, int flags )
+{        
+    int status;    
+           
+    status = DSP_cvMulSpectrumsProcess((void *)src1, (void *)src2, dst, flags);
+        
+    if(status == OPENCVDSP_ERR)
+	printf("Error: DSP Process (DSP_cvMulSpectrumsProcess) failed. \n");
+	
+}
+
+/******** cvNormalize()**************************/
+
+void DSP_cvNormalize( const CvArr* src, CvArr* dst, double a, double b, int norm_type, const CvArr* mask )
+{        
+    int status;    
+           
+    status = DSP_cvNormalizeProcess((void *)src, dst, a, b, norm_type, (void *)mask);
+        
+    if(status == OPENCVDSP_ERR)
+	printf("Error: DSP Process (cvNormalize) failed. \n");
+	
+}
+
+/******** cvRectangle()**************************/
+
+void DSP_cvRectangle( const CvArr* array, CvPoint pt1, CvPoint pt2, CvScalar color, int thickness, int line_type, int shift )
+{        
+    int status;    
+           
+    status = DSP_cvRectangleProcess(array, pt1, pt2, color, thickness, line_type, shift);
+        
+    if(status == OPENCVDSP_ERR)
+	printf("Error: DSP Process (cvRectangle) failed. \n");
+	
+}
+
+/******** cvMinMaxLoc()**************************/
+
+void DSP_cvMinMaxLoc( const CvArr* src, double* min_val, double* max_val, CvPoint* min_loc, CvPoint* max_loc, const CvArr* mask )
+{
+        
+    int status;    
+           
+    status = DSP_cvMinMaxLocProcess((void *)src, min_val, max_val, min_loc, max_loc, (void *)mask);
+        
+    if(status == OPENCVDSP_ERR)
+	printf("Error: DSP Process (cvMinMaxLoc) failed. \n");
+	
+}
+
+/******** cvCopy()**************************/
+
+void DSP_cvCopy( const CvArr* src, CvArr* dst, const CvArr* mask )
+{        
+    int status;    
+           
+    status = DSP_cvCopyProcess((void *)src, dst, (void *)mask);
+        
+    if(status == OPENCVDSP_ERR)
+	printf("Error: DSP Process (cvCopy)failed. \n");
+	
+}
+
+/******** cvZero()**************************/
+
+void DSP_cvZero( CvArr* arr )
+{        
+    int status;    
+           
+    status = DSP_cvZeroProcess( arr );
+        
+    if(status == OPENCVDSP_ERR)
+	printf("Error: DSP Process failed. \n");
+	
+}
 /*
  *  ======== DSP_cvCvtColor_cvSobel ========
  */
