@@ -1132,8 +1132,9 @@ int C6accel_OPENCV_cvRectangle(C6accel_Handle hC6accel,
                           CvPoint pt1,       	  /* Point 1 coordinates    */
 			  CvPoint pt2, 		  /* Point 2 coordinates    */
 			  CvScalar color,	  /* Type of coloer         */
-			  int thickness		  /* Thickness of line      */
-   			  
+			  int thickness,	  /* Thickness of line      */
+   			  int line_type,	  /* Type of line           */
+			  int shift		  /* Shift                   */
 #ifdef SUPPORT_ASYNC
                           		,E_CALL_TYPE callType);
 #else 

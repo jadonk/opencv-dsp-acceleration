@@ -7,7 +7,8 @@ include ../../../Rules.make
 #VLIB = -l"../../libs/vlib.l64p"
 
 # uncomment the lines below if you are using CXCORE. The library file must be stored at [c6accel_Base_Dir]/dsp/libs
-CXCORE =  -l"../../libs/cv.lib" -l"../../libs/cxcore.lib" -l"../../libs/fastrts64x.lib"
+CXCORE =  -l"../../libs/cv.lib" -l"../../libs/cxcore.lib" -l"../../libs/fastrts64x.lib" 
+#CXCORE =  -l"../../libs/cv.lib" -l"../../libs/cxcore.lib"
 
 # Which compiler flags should be used?
 BUILD_TYPE=release

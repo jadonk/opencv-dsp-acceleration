@@ -11068,7 +11068,7 @@ int C6accel_OPENCV_cvCvtColor(C6accel_Handle hC6accel,
     Int                         status;
     IplImage *tempImage = (IplImage *) ptr_src;
     /* Define pointer to function parameter structure */
-    OPENCV_cvCvtColors_Params   *fp0;
+    OPENCV_cvCvtColor_Params   *fp0;
     XDAS_Int8                   *pAlloc;
 
     ACQUIRE_CODEC_ENGINE;
@@ -11076,7 +11076,7 @@ int C6accel_OPENCV_cvCvtColor(C6accel_Handle hC6accel,
     /* Allocate the InArgs structure as it varies in size
     (Needs to be changed everytime we make a API call)*/
     InArg_Buf_size=  sizeof(Fxn_struct)+
-                     sizeof(OPENCV_cvCvtColors_Params)+
+                     sizeof(OPENCV_cvCvtColor_Params)+
                      sizeof(CInArgs->size)+
                      sizeof(CInArgs->Num_fxns);
 
@@ -11383,9 +11383,11 @@ int C6accel_OPENCV_cvNormalize(C6accel_Handle hC6accel,
     fp0->a = a;
     fp0->b = b;
     fp0->norm_type = norm_type;
-    if(ptr_mask)									// Need to cross check on this. It may cause segfault if mask
-	memcpy(&(fp0->mask),ptr_mask,sizeof(IplImage));					// is not IplImage type. Need to come-up with better way to tackle
-											// this problem, avoiding type-checking in ARM as weel as DSP
+    if(ptr_mask)
+    	fp0->mask  = (CvArr*)CMEM_getPhys(ptr_mask);
+    else
+      	fp0->mask  = NULL;	
+
 #ifdef SUPPORT_ASYNC
     /* Call the actual algorithm */
     if (callType == ASYNC)
@@ -11447,7 +11449,9 @@ int C6accel_OPENCV_cvRectangle(C6accel_Handle hC6accel,
                           CvPoint pt1,       	  /* Point 1 coordinates    */
 			  CvPoint pt2, 		  /* Point 2 coordinates    */
 			  CvScalar color,	  /* Type of coloer         */
-			  int thickness		  /* Thickness of line      */
+			  int thickness,	  /* Thickness of line      */
+			  int line_type,	  /* Type of line           */
+			  int shift		  /* Shift                  */
 #ifdef SUPPORT_ASYNC
                           ,E_CALL_TYPE callType)
 #else 
@@ -11462,7 +11466,7 @@ int C6accel_OPENCV_cvRectangle(C6accel_Handle hC6accel,
     Int                         status;
     IplImage *tempImage = (IplImage *) ptr_array;
     /* Define pointer to function parameter structure */
-    OPENCV_cvMatchTemplate_Params    *fp0;
+    OPENCV_cvRectangle_Params    *fp0;
     XDAS_Int8                   *pAlloc;
 
     ACQUIRE_CODEC_ENGINE;
@@ -11510,6 +11514,8 @@ int C6accel_OPENCV_cvRectangle(C6accel_Handle hC6accel,
     memcpy(&(fp0->pt2),&pt2,sizeof(CvPoint));
     memcpy(&(fp0->color),&color,sizeof(CvScalar));
     fp0->thickness = thickness;
+    fp0->line_type = line_type;
+    fp0->shift     = shift;
 
 #ifdef SUPPORT_ASYNC
     /* Call the actual algorithm */
@@ -11635,13 +11641,14 @@ int C6accel_OPENCV_cvMinMaxLoc(C6accel_Handle hC6accel,
     fp0->pIn_InArrID1        = INBUF0;
     memcpy(&(fp0->arr),ptr_arr,sizeof(IplImage));
     
-    fp0->min_val = min_val;     							// need to check on this since pointer is to be passed
-    fp0->max_val = max_val;  								// need to check on this since pointer is to be passed
-    fp0->min_loc = min_loc;								//  xxxxxxxx   check this too   xxxxxxxxxxxxxxxxxxxxxx
-    fp0->max_loc = max_loc;								//  xxxxxxxx   check this too   xxxxxxxxxxxxxxxxxxxxxx
+    fp0->min_val = (double*)CMEM_getPhys(min_val);     						
+    fp0->max_val = (double*)CMEM_getPhys(max_val);  						
+    fp0->min_loc = (CvPoint*)CMEM_getPhys(min_loc);						
+    fp0->max_loc = (CvPoint*)CMEM_getPhys(max_loc);						
     if(ptr_mask)
-    	memcpy(&(fp0->mask),ptr_mask,sizeof(IplImage));					// since mask cannot be IplImage, may lead to segfault.(check)
-
+    	fp0->mask  = (CvArr*)CMEM_getPhys(ptr_mask);				
+    else
+      	fp0->mask  = NULL;
 
 #ifdef SUPPORT_ASYNC
     /* Call the actual algorithm */
@@ -11767,7 +11774,9 @@ int C6accel_OPENCV_cvCopy(C6accel_Handle hC6accel,
     memcpy(&(fp0->dst),ptr_dst,sizeof(IplImage));
 
     if(ptr_mask)
-    	memcpy(&(fp0->mask),ptr_mask,sizeof(IplImage));     			// Need to check on this. May raise segfault due to mask struct size
+    	fp0->mask  = (CvArr*)CMEM_getPhys(ptr_mask);				
+    else
+      	fp0->mask  = NULL;
 
 #ifdef SUPPORT_ASYNC
     /* Call the actual algorithm */
